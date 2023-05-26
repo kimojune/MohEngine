@@ -4,8 +4,9 @@
 #include <d3d11.h>
 #include <d3dcompiler.h>
 
-#pragma commnet(lib,"d3d11.lib")
-#pragma commnet(lib,"d3compiler.lib")
+#pragma comment(lib,"d3d11.lib")
+#pragma comment(lib,"d3dcompiler.lib")
+
 
 namespace ya::graphics
 {
@@ -15,6 +16,11 @@ class GraphicDevice_Dx11
 public:
 	GraphicDevice_Dx11();
 	~GraphicDevice_Dx11();
+
+	bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd);
+	bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* date);
+	void Draw();
+
 
 private:
 	//실제 그래픽카드 객체
