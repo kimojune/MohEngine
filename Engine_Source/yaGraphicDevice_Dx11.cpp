@@ -1,5 +1,6 @@
 #include "yaGraphicDevice_Dx11.h"
 #include "yaApplication.h"
+#include "yaRenderer.h"
 
 extern ya::Application application;
 
@@ -92,6 +93,37 @@ namespace ya::graphics
 
 		if (FAILED(pFactory->CreateSwapChain(mDevice.Get(), &dxgiDesc, mSwapChain.GetAddressOf())))
 			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data)
+	{
+		if (FAILED(mDevice->CreateBuffer(desc, data, buffer)))
+			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateShader()
+	{
+		ID3DBlob* vsBlob = nullptr;
+		std::filesystem::path shaderPath = std::filesystem::current_path().parent_path();
+		shaderPath += L"\\Shader_Source\\";
+
+		std::filesystem::path vsPath(shaderPath.c_str());
+		vsPath += L"TriangleVS.hlsl";
+
+		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, "main", "vs_5_0", 0, 0, &ya::renderer::triangleVSBlob, &ya::renderer::errorBlob);
+
+		if (ya::renderer::errorBlob)
+		{
+			OutputDebugStringA((char*)ya::renderer::errorBlob->GetBufferPointer());
+			ya::renderer::errorBlob->Release();
+		}
+
+		mDevice->CreateVertexShader(ya::renderer::triangleVSBlob->GetBufferPointer()
+			, ya::renderer::triangleVSBlob->GetBufferSize()
+			, nullptr, &ya::renderer::triangleVSShader);
 
 		return true;
 	}

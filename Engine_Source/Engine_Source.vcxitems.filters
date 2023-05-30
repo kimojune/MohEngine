@@ -51,6 +51,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -87,6 +90,9 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
