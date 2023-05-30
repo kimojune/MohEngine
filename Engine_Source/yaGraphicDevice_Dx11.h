@@ -22,6 +22,9 @@ public:
 	bool CreateShader();
 
 	bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* date);
+
+	void BindViewPort(D3D11_VIEWPORT* viewport);
+
 	void Draw();
 
 
@@ -48,6 +51,7 @@ private:
 	//더블 버퍼링 작업을 진행해주는 swapchain
 	Microsoft::WRL::ComPtr<IDXGISwapChain> mSwapChain;
 	
+	D3D11_VIEWPORT mViewPort;
 
 };
 
