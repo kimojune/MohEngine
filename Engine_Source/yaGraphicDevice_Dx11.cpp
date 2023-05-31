@@ -166,7 +166,7 @@ namespace ya::graphics
 			ya::renderer::errorBlob->Release();
 		}
 
-		mDevice->CreatePixelShader(ya::renderer::trianglePSBlob->GetBufferPointer()
+ 		mDevice->CreatePixelShader(ya::renderer::trianglePSBlob->GetBufferPointer()
 			, ya::renderer::trianglePSBlob->GetBufferSize()
 			, nullptr, &ya::renderer::trianglePSShader);
 
@@ -260,7 +260,7 @@ namespace ya::graphics
 		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
 
 		// Draw Render Target
-		mContext->Draw(3, 0);
+		mContext->Draw(6, 0);
 
 		// 레더타겟에 있는 이미지를 화면에 그려준다
 		mSwapChain->Present(0, 0);
