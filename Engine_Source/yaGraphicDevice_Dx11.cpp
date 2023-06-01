@@ -223,6 +223,54 @@ namespace ya::graphics
 	{
 		mContext->RSSetViewports(1, viewport);
 	}
+
+	void GraphicDevice_Dx11::SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size)
+	{
+		D3D11_MAPPED_SUBRESOURCE subRes = {};
+		mContext->Map(buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &subRes);
+		memcpy(subRes.pData, data, size);
+		mContext->Unmap(buffer, 0);
+	}
+
+	void GraphicDevice_Dx11::BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
+	{
+		switch (stage)
+		{
+		case eShaderStage::VS:
+			mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::HS:
+			mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::DS:
+			mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::GS:
+			mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::PS:
+			mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::CS:
+			mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::End:
+			break;
+		default:
+			break;
+		}
+	}
+
+	void GraphicDevice_Dx11::BindsConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
+	{
+		mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 		//reder target clear
@@ -252,7 +300,8 @@ namespace ya::graphics
 
 		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);
 		mContext->IASetInputLayout(renderer::triangleLayout);
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		mContext->IASetIndexBuffer(renderer::triangleIdxBuffer, DXGI_FORMAT_R32_UINT, 0);
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
 		//Bind VS, PS 
 
@@ -260,8 +309,8 @@ namespace ya::graphics
 		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
 
 		// Draw Render Target
-		mContext->Draw(6, 0);
-
+		//mContext->Draw(9, 0);
+		mContext->DrawIndexed(3, 0, 0);
 		// 레더타겟에 있는 이미지를 화면에 그려준다
 		mSwapChain->Present(0, 0);
 	}

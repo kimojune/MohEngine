@@ -1,3 +1,4 @@
+//structBuffer
 
 struct VSIn
 {
@@ -11,11 +12,17 @@ struct VSOut
     float4 Color : COLOR;
 };
 
+cbuffer Transform : register(b0)
+{
+    float4 pos;
+}
+
 VSOut main(VSIn In)
 {
     VSOut Out = (VSOut)0.0f;
 
     Out.Pos = float4(In.Pos, 1.0f);
+    Out.Pos.x += pos.x;
     Out.Color = In.Color;
 
     return Out;

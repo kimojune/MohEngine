@@ -1,5 +1,6 @@
 #pragma once
 #include "MohEngine.h"
+#include "yaGraphic.h"
 
 #include <d3d11.h>
 #include <d3dcompiler.h>
@@ -24,6 +25,10 @@ public:
 	bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* date);
 
 	void BindViewPort(D3D11_VIEWPORT* viewport);
+
+	void SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size);
+	void BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
+	void BindsConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer);
 
 	void Draw();
 
