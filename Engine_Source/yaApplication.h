@@ -34,6 +34,7 @@ private:
 	HWND mHwnd;
 	UINT mWidth;
 	UINT mHeight;
+
 };
 
 }

@@ -72,9 +72,7 @@ namespace ya::renderer
 
 		ya::graphics::GetDevice()->CreateBuffer(&triangleConstantBuffer, &triangleCSDesc, nullptr);
 
-		Vector4 pos(0.4f, 0.0f, 0.0f, 1.0f);
-		ya::graphics::GetDevice()->SetConstantBuffer(triangleConstantBuffer, &pos, sizeof(Vector4));
-		ya::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBType::Transform, triangleConstantBuffer);
+
 		//
 
 	}

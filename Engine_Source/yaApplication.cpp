@@ -5,6 +5,8 @@
 
 namespace ya
 {
+	static Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
+
 	Application::Application()
 		: graphicDevice(nullptr)
 		, mHwnd(NULL)
@@ -33,9 +35,26 @@ namespace ya
 	{
 		Time::Update();
 		Input::Update();
+
+		
+
 	}
 	void Application::LateUpdate()
 	{
+
+		if (Input::GetKey(eKeyCode::UP))
+			pos.y += 5 * Time::DeltaTime();
+		if (Input::GetKey(eKeyCode::DOWN))
+			pos.y -= 5 * Time::DeltaTime();
+		if (Input::GetKey(eKeyCode::LEFT))
+			pos.x -= 5 * Time::DeltaTime();
+		if (Input::GetKey(eKeyCode::RIGHT))
+			pos.x += 5 * Time::DeltaTime();
+
+			
+		ya::graphics::GetDevice()->SetConstantBuffer(ya::renderer::triangleConstantBuffer, &pos, sizeof(Vector4));
+		ya::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBType::Transform, ya::renderer::triangleConstantBuffer);
+
 	}
 	void Application::Render()
 	{
