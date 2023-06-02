@@ -4,6 +4,7 @@
 #include "framework.h"
 #include "Editor_Window.h"
 #include "yaApplication.h"
+#include "yaRenderer.h"
 
 ya::Application application;
 
@@ -64,6 +65,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         }
     }
 
+    ya::renderer::Release();
 	return (int)msg.wParam;
 }
 

@@ -5,13 +5,15 @@
 
 namespace ya
 {
-	static Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
+	
 
 	Application::Application()
 		: graphicDevice(nullptr)
 		, mHwnd(NULL)
 		, mWidth(-1)
 		, mHeight(-1)
+
+		
 	{
 	}
 	Application::~Application()
@@ -41,6 +43,8 @@ namespace ya
 	}
 	void Application::LateUpdate()
 	{
+
+		
 
 		if (Input::GetKey(eKeyCode::UP))
 			pos.y += 5 * Time::DeltaTime();

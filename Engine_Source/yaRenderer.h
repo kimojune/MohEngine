@@ -23,4 +23,5 @@ namespace ya::renderer
 	extern ID3D11PixelShader* trianglePSShader;
 
 	void Initialize();
+	void Release();
 }

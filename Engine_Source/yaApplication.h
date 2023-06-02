@@ -29,7 +29,7 @@ private:
 	
 	//오로지 한개의 객체만 만들수 있는 스마트 포인터
 	std::unique_ptr<ya::graphics::GraphicDevice_Dx11> graphicDevice;
-
+	math::Vector4 pos;
 	//HDC mhdc; -> GPU API;
 	HWND mHwnd;
 	UINT mWidth;
