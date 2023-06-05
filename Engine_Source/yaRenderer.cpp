@@ -7,24 +7,11 @@ namespace ya::renderer
 	// Input Layout (정점 정보)
 	ID3D11InputLayout* triangleLayout = nullptr;
 
-	// Vertex Buffer
-	ID3D11Buffer* triangleBuffer = nullptr;
-	
-	// Index Buffer, ConstantBuffer
-	ID3D11Buffer* triangleIdxBuffer = nullptr;
+	//Vertex Buffer
+	ya::Mesh* mesh = nullptr;
 	ID3D11Buffer* triangleConstantBuffer = nullptr;
 
-	// error blob
-	ID3DBlob* errorBlob = nullptr;
-
-	// Vertex Shader code -> Binary Code
-	ID3DBlob* triangleVSBlob = nullptr;
-
-	// Vertex Shader
-	ID3D11VertexShader* triangleVSShader = nullptr;
-
-	// Pixel Shader code -> Binary Code
-	ID3DBlob* trianglePSBlob = nullptr;
+	ya::Shader* shader = nullptr;
 
 	// Vertex Shader
 	ID3D11PixelShader* trianglePSShader = nullptr;
@@ -36,32 +23,14 @@ namespace ya::renderer
 
 	void LoadBuffer()
 	{
-		//Vertex buffer
-		D3D11_BUFFER_DESC triangleDesc = {};
-		triangleDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		triangleDesc.ByteWidth = sizeof(Vertex) * 3;                                    
-		triangleDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-		triangleDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-
-		D3D11_SUBRESOURCE_DATA triangleData = {};
-		triangleData.pSysMem = vertexes;
-		ya::graphics::GetDevice()->CreateBuffer(&triangleBuffer, &triangleDesc, &triangleData);
+		mesh = new ya::Mesh();
+		mesh->CreateVertexBuffer(vertexes, 3);
 
 		std::vector<UINT> indexes = {};
 		indexes.push_back(1);
 		indexes.push_back(2);
 		indexes.push_back(0);
-
-		//Index Buffer
-		D3D11_BUFFER_DESC triangleIdxDesc = {};
-		triangleIdxDesc.ByteWidth = sizeof(UINT) * indexes.size();
-		triangleIdxDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_INDEX_BUFFER;
-		triangleIdxDesc.Usage = D3D11_USAGE_DEFAULT;
-		triangleIdxDesc.CPUAccessFlags = 0;
-
-		D3D11_SUBRESOURCE_DATA triangleIdxData = {};
-		triangleIdxData.pSysMem = indexes.data();
-		ya::graphics::GetDevice()->CreateBuffer(&triangleIdxBuffer, &triangleIdxDesc, &triangleIdxData);
+		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		//constant Buffer
 		D3D11_BUFFER_DESC triangleCSDesc = {};
@@ -79,7 +48,10 @@ namespace ya::renderer
 
 	void LoadShader()
 	{
-		ya::graphics::GetDevice()->CreateShader();
+		//ya::graphics::GetDevice()->CreateShader();
+		shader = new ya::Shader();
+		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
+		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 	}
 
 	void Initialize()
@@ -103,26 +75,9 @@ namespace ya::renderer
 		if (triangleLayout != nullptr)
 			triangleLayout->Release();
 
-		if (triangleBuffer != nullptr)
-			triangleBuffer->Release();
-
-		if (triangleIdxBuffer != nullptr)
-			triangleIdxBuffer->Release();
-
 		if (triangleConstantBuffer != nullptr)
 			triangleConstantBuffer->Release();
 
-		if (errorBlob != nullptr)
-			errorBlob->Release();
-
-		if (triangleVSBlob != nullptr)
-			triangleVSBlob->Release();
-
-		if (triangleVSShader != nullptr)
-			triangleVSShader->Release();
-
-		if (trianglePSBlob != nullptr)
-			trianglePSBlob->Release();
 
 		if (trianglePSShader != nullptr)
 			trianglePSShader->Release();

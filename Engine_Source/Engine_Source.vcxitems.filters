@@ -54,6 +54,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -95,6 +97,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
