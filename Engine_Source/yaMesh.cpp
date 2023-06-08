@@ -35,7 +35,8 @@ namespace ya
 		return true;
 	}
 	bool Mesh::CreateIndexBuffer(void* data, UINT Count)
-	{
+	{ 
+		mIndexCount = Count;
 		//Index Buffer
 		mIBDesc.ByteWidth = sizeof(UINT) * Count;
 		mIBDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_INDEX_BUFFER;

@@ -31,7 +31,6 @@ namespace ya::renderer
 		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 2
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
-
 	}
 
 	void LoadBuffer()
