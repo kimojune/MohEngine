@@ -60,7 +60,15 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaScript.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -108,7 +116,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaScript.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

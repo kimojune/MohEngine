@@ -1,6 +1,7 @@
 #pragma once
 #include "MohEngine.h"
 #include "yaGraphicDevice_Dx11.h"
+#include "yaScene.h"
 
 namespace ya
 {
@@ -34,6 +35,7 @@ private:
 	UINT mWidth;
 	UINT mHeight;
 
+	Scene* mScene;
 };
 
 }

@@ -273,6 +273,11 @@ namespace ya::graphics
 		mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
 	}
 
+	void GraphicDevice_Dx11::DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation)
+	{
+		mContext->DrawIndexed(IndexCount, StartIndexLocation, BaseVertexLocation);
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 		//reder target clear
@@ -295,15 +300,9 @@ namespace ya::graphics
 
 		BindViewPort(&mViewPort);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
-
-		mContext->IASetInputLayout(renderer::shader->GetInputLayout());
-		mContext->IASetPrimitiveTopology(renderer::shader->GetTopology());
-
-		renderer::mesh->BindBuffer();
-		renderer::shader->Binds();
-
-		mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
-		
+	}
+	void GraphicDevice_Dx11::Present()
+	{
 		mSwapChain->Present(0, 0);
 	}
 }

@@ -15,7 +15,6 @@ namespace ya
 
 		bool Create(const eShaderStage stage, const std::wstring& filename, const std::string& funcName);
 		void Binds();
-		D3D11_PRIMITIVE_TOPOLOGY GetTopology() { return mTopology; }
 
 		ID3DBlob* GetVSCode() { return mVSBlob.Get(); }
 		ID3D11InputLayout* GetInputLayout() { return mInputLayout; }

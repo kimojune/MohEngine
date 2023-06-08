@@ -37,8 +37,9 @@ public:
 
 	void BindViewPort(D3D11_VIEWPORT* viewport);
 
+	void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
 	void Draw();
-
+	void Present();
 
 private:
 	//실제 그래픽카드 객체
