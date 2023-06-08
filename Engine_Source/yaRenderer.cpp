@@ -5,9 +5,8 @@ namespace ya::renderer
 	Vertex vertexes[3] = {};
 
 	ya::Mesh* mesh = nullptr;
-	ID3D11Buffer* triangleConstantBuffer = nullptr;
-
 	ya::Shader* shader = nullptr;
+	ya::graphics::ConstantBuffer* constantBuffer = nullptr;
 
 	void SetupState()
 	{
@@ -33,8 +32,6 @@ namespace ya::renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
-		
-
 	}
 
 	void LoadBuffer()
@@ -49,16 +46,12 @@ namespace ya::renderer
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		//constant Buffer
-		D3D11_BUFFER_DESC triangleCSDesc = {};
-		triangleCSDesc.ByteWidth = sizeof(Vector4);
-		triangleCSDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_CONSTANT_BUFFER;
-		triangleCSDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		triangleCSDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		constantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
+		constantBuffer->Create(sizeof(Vector4));
 
-		ya::graphics::GetDevice()->CreateBuffer(&triangleConstantBuffer, &triangleCSDesc, nullptr);
-
-
-
+		Vector4 pos(0.2f, 0.0f, 0.0f, 1.0f);
+		constantBuffer->SetData(&pos);
+		constantBuffer->Bind(eShaderStage::VS);
 	}
 
 	void LoadShader()
@@ -87,11 +80,8 @@ namespace ya::renderer
 	}
 	void Release()
 	{
-
-		if (triangleConstantBuffer != nullptr)
-			triangleConstantBuffer->Release();
-
-
-
+		delete mesh;
+		delete shader;
+		delete constantBuffer;
 	}
 }

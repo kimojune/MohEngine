@@ -9,6 +9,7 @@ namespace ya
 	}
 	Shader::~Shader()
 	{
+		mInputLayout->Release();
 	}
 	HRESULT Shader::Load(const std::wstring& path)
 	{
@@ -41,7 +42,6 @@ namespace ya
 	}
 	void Shader::Binds()
 	{
-		GetDevice()->BindPrimitiveTopology(mTopology);
 
 		GetDevice()->BindVertexShader(mVS.Get());
 		GetDevice()->BindPixelShader(mPS.Get());
