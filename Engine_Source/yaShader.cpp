@@ -3,6 +3,8 @@
 namespace ya
 {
 	Shader::Shader()
+		:mInputLayout(nullptr)
+		, mTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST)
 	{
 	}
 	Shader::~Shader()
@@ -39,6 +41,8 @@ namespace ya
 	}
 	void Shader::Binds()
 	{
+		GetDevice()->BindPrimitiveTopology(mTopology);
+
 		GetDevice()->BindVertexShader(mVS.Get());
 		GetDevice()->BindPixelShader(mPS.Get());
 	}

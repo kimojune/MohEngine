@@ -14,13 +14,11 @@ namespace ya::renderer
 	};
 
 	extern Vertex vertexes[];
-	extern ID3D11InputLayout* triangleLayout;
 	extern ya::Mesh* mesh;
 	extern ID3D11Buffer* triangleConstantBuffer;
 
 	extern ya::Shader* shader;
-	extern ID3D11PixelShader* trianglePSShader;
-
+	
 	void Initialize();
 	void Release();
 }
