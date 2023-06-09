@@ -29,12 +29,12 @@ namespace ya
 	}
 	void GameObject::Render()
 	{
-		Info info = GetInfo();
-		Vector4 vector = { info.x, info.y, info.Scale, 0.0f };
+		
+		Vector4 vector = { mInfo.x, mInfo.y, mInfo.Scale, 0.0f };
 		ya::renderer::constantBuffer->SetData(&vector);
 		ya::renderer::constantBuffer->Bind(eShaderStage::VS);
 
-		Vector4 Color = info.mColor;
+		Vector4 Color = mInfo.mColor;
 		ya::renderer::constantBuffer2->SetData(&Color);
 		ya::renderer::constantBuffer2->Bind(eShaderStage::VS);
 
@@ -44,6 +44,7 @@ namespace ya
 		renderer::shader->Binds();
 		graphics::GetDevice()->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
 	}
+
 	float GameObject::RandomNumder()
 	{
 		srand(time(0));

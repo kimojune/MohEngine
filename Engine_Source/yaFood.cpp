@@ -12,13 +12,16 @@ namespace ya
 	}
 	void Food::Intialize()
 	{
-		mInfo.Scale = 0.01f;
+		mInfo = GetInfo();
+		mInfo.Scale = 0.05f;
 		
 		mInfo.x = RandomNumder() / 10 * IsNegative();
 		mInfo.y = RandomNumder() / 10 * IsNegative();
 
 		Vector4 vector = { mInfo.x , mInfo.y, RandomNumder() / 10 , 1 };
 		mInfo.mColor = vector;
+
+		SetInfo(mInfo);
 		
 	}
 	void Food::Update()

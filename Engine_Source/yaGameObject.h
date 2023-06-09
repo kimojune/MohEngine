@@ -35,9 +35,9 @@ public:
 	virtual void LateUpdate();
 	virtual void Render();
 
-	virtual Info GetInfo() = 0;/*
+	virtual Info GetInfo() { return mInfo; }
 	virtual void SetInfo(Info info){ mInfo = info;}
-	*/
+	
 
 	float RandomNumder();
 	int IsNegative();

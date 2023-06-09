@@ -34,7 +34,7 @@ VSOut main(VSIn In)
     Out.Pos = float4(In.Pos , 1.0f);
     Out.Pos.x *= pos.z;
     Out.Pos.y *= pos.z;
-
+ 
     Out.Pos.x += pos.x;
     Out.Pos.y += pos.y;
     Out.Color = color;

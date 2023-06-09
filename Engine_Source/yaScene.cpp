@@ -68,9 +68,11 @@ namespace ya
 				&& fabs(PlayerYLength + ObjYLength) > fabs(playerpos.y - objpos.y))
 			{
 				playerinfo.Scale += objinfo.Scale;
+				objinfo.Scale = 0;
+				mplayer->SetInfo(playerinfo);
+				obj->SetInfo(objinfo);
 			}
 			
-			mplayer->SetInfo(playerinfo);
 		}
 
 	}
