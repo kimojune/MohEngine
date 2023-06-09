@@ -12,10 +12,15 @@ struct VSOut
     float4 Color : COLOR;
 };
 
+
+
 cbuffer Transform : register(b0)
 {
     float4 pos;
+    
 }
+
+
 
 VSOut main(VSIn In)
 {

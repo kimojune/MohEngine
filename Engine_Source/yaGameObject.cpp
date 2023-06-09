@@ -1,13 +1,15 @@
 #include "yaGameObject.h"
 #include "yaRenderer.h"
 #include "yaGraphicDevice_Dx11.h"
+#include "yaInput.h"
+#include "yaTime.h"
 
 namespace ya
 {
+	using namespace graphics;
+
 	GameObject::GameObject()
 		:mState(eState::Active)
-		,y(0)
-		,x(0)
 	{
 	}
 	GameObject::~GameObject()
@@ -15,17 +17,15 @@ namespace ya
 	}
 	void GameObject::Intialize()
 	{
-
 	}
 	void GameObject::Update()
 	{
-		// 공 움직임 구현
-
-
 
 	}
 	void GameObject::LateUpdate()
 	{
+
+
 	}
 	void GameObject::Render()
 	{

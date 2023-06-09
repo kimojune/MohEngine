@@ -16,6 +16,7 @@ public:
 	virtual void LateUpdate();
 	virtual void Render();
 
+
 private:
 	std::vector<GameObject*> mGameObjects;
 };

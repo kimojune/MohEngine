@@ -1,6 +1,7 @@
 #pragma once
 #include "yaEntity.h"
 #include "yaComponent.h"
+#include "yaConstantBuffer.h"
 
 namespace ya
 {
@@ -17,6 +18,13 @@ public:
 	GameObject();
 	virtual ~GameObject();
 
+	struct Info
+	{
+		float Scale;
+		float y;
+		float x;
+	};
+
 	virtual void Intialize();
 	virtual void Update();
 	virtual void LateUpdate();
@@ -25,7 +33,5 @@ public:
 private:
 	eState mState;
 	//std::vector<Component*> mComponent;
-	int y;
-	int x;
 };
 }

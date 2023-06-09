@@ -20,6 +20,8 @@ enum class eShaderStage
 enum class eCBType
 {
 	Transform,
+	Color,
+	Scale,
 	End,
 };
 

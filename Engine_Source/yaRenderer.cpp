@@ -2,7 +2,7 @@
 
 namespace ya::renderer
 {
-	Vertex vertexes[3] = {};
+	Vertex vertexes[4] = {};
 
 	ya::Mesh* mesh = nullptr;
 	ya::Shader* shader = nullptr;
@@ -36,21 +36,28 @@ namespace ya::renderer
 	void LoadBuffer()
 	{
 		mesh = new ya::Mesh();
-		mesh->CreateVertexBuffer(vertexes, 3);
+		mesh->CreateVertexBuffer(vertexes, 6);
 
 		std::vector<UINT> indexes = {};
+		indexes.push_back(0);
 		indexes.push_back(1);
 		indexes.push_back(2);
+
 		indexes.push_back(0);
+		indexes.push_back(2);
+		indexes.push_back(3);
+
+
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		//constant Buffer
 		constantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer->Create(sizeof(Vector4));
-
-		Vector4 pos(0.2f, 0.0f, 0.0f, 1.0f);
+		
+		Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
 		constantBuffer->SetData(&pos);
 		constantBuffer->Bind(eShaderStage::VS);
+
 	}
 
 	void LoadShader()
@@ -63,14 +70,17 @@ namespace ya::renderer
 
 	void Initialize()
 	{
-		vertexes[0].pos = Vector3(0.0f, 0.8f, 0.0f);
+		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 
-		vertexes[1].pos = Vector3(0.3f, -0.5f, 0.0f);
+		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
 		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
 
-		vertexes[2].pos = Vector3(-0.3f, 0.0f, 0.0f);
+		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
 		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		
+		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 
 
 		LoadBuffer();
@@ -82,5 +92,11 @@ namespace ya::renderer
 		delete mesh;
 		delete shader;
 		delete constantBuffer;
+	}
+	void Setpos(float x, float y)
+	{
+		Vector4 pos(x, y, 0.0f, 1.0f);
+		constantBuffer->SetData(&pos);
+		constantBuffer->Bind(eShaderStage::VS);
 	}
 }

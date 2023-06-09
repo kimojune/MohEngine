@@ -24,6 +24,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaFood.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp" />
@@ -45,6 +47,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaFood.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h" />

@@ -1,4 +1,6 @@
 #include "yaScene.h"
+#include "yaPlayer.h"
+#include "yaFood.h"
 
 
 namespace ya
@@ -11,8 +13,16 @@ namespace ya
 	}
 	void Scene::Intialize()
 	{
-		GameObject* obj = new GameObject;
-		mGameObjects.push_back(obj);
+		
+		Player* player = new Player;
+		player->Intialize();
+		mGameObjects.push_back(player);
+
+		Food* food = new Food;
+		food->Intialize();
+		mGameObjects.push_back(food);
+
+
 	}
 	void Scene::Update()
 	{
