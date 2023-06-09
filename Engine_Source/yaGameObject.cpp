@@ -34,6 +34,11 @@ namespace ya
 		ya::renderer::constantBuffer->SetData(&vector);
 		ya::renderer::constantBuffer->Bind(eShaderStage::VS);
 
+		Vector4 Color = info.mColor;
+		ya::renderer::constantBuffer2->SetData(&Color);
+		ya::renderer::constantBuffer2->Bind(eShaderStage::VS);
+
+		
 		//상수버퍼로 위치정보 크기정보, 색깔, 업데이트 해줘야한다.
 		renderer::mesh->BindBuffer();
 		renderer::shader->Binds();

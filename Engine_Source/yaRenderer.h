@@ -17,6 +17,7 @@ namespace ya::renderer
 	extern Vertex vertexes[];
 	extern ya::Mesh* mesh;
 	extern ya::graphics::ConstantBuffer* constantBuffer;
+	extern ya::graphics::ConstantBuffer* constantBuffer2;
 	extern ya::Shader* shader;
 	
 	void Initialize();

@@ -16,7 +16,8 @@ namespace ya
 		mInfo.x = RandomNumder() / 10 * IsNegative();
 		mInfo.y = RandomNumder() / 10 * IsNegative();
 
-		
+		Vector4 vector = { mInfo.x , mInfo.y, RandomNumder() / 10 , 1 };
+		mInfo.mColor = vector;
 		
 	}
 	void Food::Update()

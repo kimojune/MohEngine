@@ -7,6 +7,7 @@ namespace ya::renderer
 	ya::Mesh* mesh = nullptr;
 	ya::Shader* shader = nullptr;
 	ya::graphics::ConstantBuffer* constantBuffer = nullptr;
+	ya::graphics::ConstantBuffer* constantBuffer2 = nullptr;
 
 
 	void SetupState()
@@ -57,9 +58,19 @@ namespace ya::renderer
 		constantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer->Create(sizeof(Vector4));
 		
-		Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
-		constantBuffer->SetData(&pos);
-		constantBuffer->Bind(eShaderStage::VS);
+		//Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
+		//constantBuffer->SetData(&pos);
+		//constantBuffer->Bind(eShaderStage::VS);
+
+
+		constantBuffer2 = new ya::graphics::ConstantBuffer(eCBType::Color);
+		constantBuffer2->Create(sizeof(Vector4));
+
+		//Vector4 Color(0.0f, 0.0f, 0.0f, 1.0f);
+		//constantBuffer2->SetData(&Color);
+		//constantBuffer2->Bind(eShaderStage::VS);
+		
+	
 
 
 	}
@@ -96,5 +107,6 @@ namespace ya::renderer
 		delete mesh;
 		delete shader;
 		delete constantBuffer;
+		delete constantBuffer2;
 	}
 }
