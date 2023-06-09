@@ -13,9 +13,10 @@ namespace ya
 	}
 	void Player::Intialize()
 	{
-		mInfo.Scale = 0.01f;
+		mInfo.Scale = 0.1f;
 		mInfo.x = 0;
 		mInfo.y = 0;
+		mInfo.mColor = Vector4{ 1.0f, 0.0f, 0.0f, 0.0f };
 	}
 	void Player::Update()
 	{

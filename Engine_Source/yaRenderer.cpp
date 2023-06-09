@@ -8,6 +8,7 @@ namespace ya::renderer
 	ya::Shader* shader = nullptr;
 	ya::graphics::ConstantBuffer* constantBuffer = nullptr;
 
+
 	void SetupState()
 	{
 		// Input layout 정점 구조 정보를 넘겨줘야한다.
@@ -51,12 +52,15 @@ namespace ya::renderer
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		//constant Buffer
+
+
 		constantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer->Create(sizeof(Vector4));
 		
 		Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
 		constantBuffer->SetData(&pos);
 		constantBuffer->Bind(eShaderStage::VS);
+
 
 	}
 

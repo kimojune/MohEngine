@@ -11,10 +11,13 @@ namespace ya
 	}
 	void Food::Intialize()
 	{
-		mInfo.Scale = 0.01f;
+		mInfo.Scale = 0.1f;
 		
 		mInfo.x = RandomNumder() / 10 * IsNegative();
 		mInfo.y = RandomNumder() / 10 * IsNegative();
+
+		
+		
 	}
 	void Food::Update()
 	{

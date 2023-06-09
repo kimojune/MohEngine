@@ -30,7 +30,7 @@ namespace ya
 	void GameObject::Render()
 	{
 		Info info = GetInfo();
-		Vector4 vector = { info.x,info.y,0.0f,0.0f };
+		Vector4 vector = { info.x,info.y,info.Scale,0.0f };
 		ya::renderer::constantBuffer->SetData(&vector);
 		ya::renderer::constantBuffer->Bind(eShaderStage::VS);
 

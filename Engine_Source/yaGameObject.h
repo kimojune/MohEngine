@@ -7,6 +7,7 @@
 namespace ya
 {
 	using namespace graphics;
+	using namespace math;
 
 class GameObject : public Entity
 {
@@ -26,6 +27,9 @@ public:
 		float Scale;
 		float x;
 		float y;
+
+		Vector4 mColor;
+
 	};
 
 	virtual void Intialize();
