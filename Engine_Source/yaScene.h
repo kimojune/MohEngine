@@ -5,6 +5,7 @@
 namespace ya
 {
 
+class Player;
 class Scene : public Entity
 {
 public:
@@ -16,9 +17,11 @@ public:
 	virtual void LateUpdate();
 	virtual void Render();
 
-
+	void CollisionCheck(GameObject* obj);
+	
 private:
 	std::vector<GameObject*> mGameObjects;
+	Player* mplayer;
 };
 
 }

@@ -85,16 +85,16 @@ namespace ya::renderer
 
 	void Initialize()
 	{
-		vertexes[0].pos = Vector3(-0.5f, 0.85f, 0.0f);
+		vertexes[0].pos = Vector3(-1.0f, 1.7f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 
-		vertexes[1].pos = Vector3(0.5f, 0.85f, 0.0f);
+		vertexes[1].pos = Vector3(1.0f, 1.7f, 0.0f);
 		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
 
-		vertexes[2].pos = Vector3(0.5f, -0.85f, 0.0f);
+		vertexes[2].pos = Vector3(1.0f, -1.7f, 0.0f);
 		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 		
-		vertexes[3].pos = Vector3(-0.5f, -0.85f, 0.0f);
+		vertexes[3].pos = Vector3(-1.0f, -1.7f, 0.0f);
 		vertexes[3].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 
 

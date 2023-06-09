@@ -5,13 +5,14 @@ namespace ya
 {
 	Food::Food()
 	{
+		Entity::SetName(L"Food");
 	}
 	Food::~Food()
 	{
 	}
 	void Food::Intialize()
 	{
-		mInfo.Scale = 0.1f;
+		mInfo.Scale = 0.01f;
 		
 		mInfo.x = RandomNumder() / 10 * IsNegative();
 		mInfo.y = RandomNumder() / 10 * IsNegative();

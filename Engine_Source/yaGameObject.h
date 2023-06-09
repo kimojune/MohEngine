@@ -24,12 +24,10 @@ public:
 
 	struct Info
 	{
-		float Scale;
 		float x;
 		float y;
-
+		float Scale;
 		Vector4 mColor;
-
 	};
 
 	virtual void Intialize();
@@ -37,11 +35,13 @@ public:
 	virtual void LateUpdate();
 	virtual void Render();
 
-	virtual Info GetInfo() = 0;
+	virtual Info GetInfo() = 0;/*
 	virtual void SetInfo(Info info){ mInfo = info;}
+	*/
 
 	float RandomNumder();
 	int IsNegative();
+
 
 private:
 	eState mState;

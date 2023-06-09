@@ -16,6 +16,8 @@ public:
 	virtual void Render() override;
 
 	virtual Info GetInfo() { return mInfo; }
+	virtual void SetInfo(Info info) { mInfo = info; }
+
 private:
 	Info mInfo;
 };
