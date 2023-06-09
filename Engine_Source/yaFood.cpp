@@ -18,8 +18,9 @@ namespace ya
 		mInfo.x = RandomNumder() / 10 * IsNegative();
 		mInfo.y = RandomNumder() / 10 * IsNegative();
 
-		Vector4 vector = { mInfo.x , mInfo.y, RandomNumder() / 10 , 1 };
+		Vector4 vector = { RandomNumder() / 10 , mInfo.y, mInfo.x, 1 };
 		mInfo.mColor = vector;
+		mInfo.Scale = RandomNumder() / 100;
 
 		SetInfo(mInfo);
 		

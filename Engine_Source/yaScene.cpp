@@ -28,12 +28,23 @@ namespace ya
 	}
 	void Scene::Update()
 	{
+		mTime += Time::DeltaTime();
+
 		for (GameObject* gameObj : mGameObjects)
 		{
 			/*if (gameObj == nullptr)
 				continue;*/
 			gameObj->Update();
 			CollisionCheck(gameObj);
+		}
+
+		if (mTime > 0.5f)
+		{
+			mTime = 0;
+
+			Food* food = new Food;
+			food->Intialize();
+			mGameObjects.push_back(food);
 		}
 	}
 	void Scene::LateUpdate()
@@ -67,7 +78,7 @@ namespace ya
 			if (fabs(PlayerXLength + ObjXLength) > fabs(playerpos.x - objpos.x)
 				&& fabs(PlayerYLength + ObjYLength) > fabs(playerpos.y - objpos.y))
 			{
-				playerinfo.Scale += objinfo.Scale;
+				playerinfo.Scale += objinfo.Scale / 10 ;
 				objinfo.Scale = 0;
 				mplayer->SetInfo(playerinfo);
 				obj->SetInfo(objinfo);
