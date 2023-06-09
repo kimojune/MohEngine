@@ -16,6 +16,8 @@ namespace ya
 		virtual void LateUpdate();
 		virtual void Render();
 
+		virtual Info GetInfo() { return mInfo; }
+
 	private:
 		Info mInfo;
 	};

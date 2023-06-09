@@ -29,10 +29,22 @@ namespace ya
 	}
 	void GameObject::Render()
 	{
+		Info info = GetInfo();
+		Vector4 vector = { info.x,info.y,0.0f,0.0f };
+		ya::renderer::constantBuffer->SetData(&vector);
+		ya::renderer::constantBuffer->Bind(eShaderStage::VS);
 
 		//상수버퍼로 위치정보 크기정보, 색깔, 업데이트 해줘야한다.
 		renderer::mesh->BindBuffer();
 		renderer::shader->Binds();
 		graphics::GetDevice()->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
 	}
+	float GameObject::RandomNumder()
+	{
+		srand(time(0));
+		float fnum = rand() % 10;
+	
+		return fnum;
+	}
+
 }

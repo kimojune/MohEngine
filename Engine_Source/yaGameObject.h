@@ -2,9 +2,12 @@
 #include "yaEntity.h"
 #include "yaComponent.h"
 #include "yaConstantBuffer.h"
+#include "yaTime.h"
 
 namespace ya
 {
+	using namespace graphics;
+
 class GameObject : public Entity
 {
 public:
@@ -21,8 +24,8 @@ public:
 	struct Info
 	{
 		float Scale;
-		float y;
 		float x;
+		float y;
 	};
 
 	virtual void Intialize();
@@ -30,8 +33,14 @@ public:
 	virtual void LateUpdate();
 	virtual void Render();
 
+	virtual Info GetInfo() = 0;
+	virtual void SetInfo(Info info){ mInfo = info;}
+
+	float RandomNumder();
+
 private:
 	eState mState;
-	//std::vector<Component*> mComponent;
-};
+	Info mInfo;
+
+	};
 }

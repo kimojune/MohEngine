@@ -93,10 +93,4 @@ namespace ya::renderer
 		delete shader;
 		delete constantBuffer;
 	}
-	void Setpos(float x, float y)
-	{
-		Vector4 pos(x, y, 0.0f, 1.0f);
-		constantBuffer->SetData(&pos);
-		constantBuffer->Bind(eShaderStage::VS);
-	}
 }

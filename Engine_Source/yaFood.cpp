@@ -12,13 +12,13 @@ namespace ya
 	void Food::Intialize()
 	{
 		mInfo.Scale = 0.01f;
-		mInfo.x = 0;
-		mInfo.y = 0;
+		
+		mInfo.x = RandomNumder() / 10;
+		mInfo.y = RandomNumder() / 10;
 	}
 	void Food::Update()
 	{
-		ya::renderer::Setpos(mInfo.x, mInfo.y);
-
+	
 	}
 	void Food::LateUpdate()
 	{

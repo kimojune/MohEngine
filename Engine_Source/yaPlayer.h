@@ -15,10 +15,8 @@ public:
 	virtual void LateUpdate() override;
 	virtual void Render() override;
 
+	virtual Info GetInfo() { return mInfo; }
 private:
 	Info mInfo;
-
-
 };
-
 }

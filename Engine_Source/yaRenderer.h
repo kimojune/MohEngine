@@ -22,6 +22,5 @@ namespace ya::renderer
 	void Initialize();
 	void Release();
 
-	void Setpos(float x, float y);
 
 }

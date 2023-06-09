@@ -16,7 +16,6 @@ namespace ya
 		mInfo.Scale = 0.01f;
 		mInfo.x = 0;
 		mInfo.y = 0;
-		
 	}
 	void Player::Update()
 	{
@@ -29,13 +28,14 @@ namespace ya
 		if (Input::GetKey(eKeyCode::RIGHT))
 			mInfo.x += 1 * Time::DeltaTime();
 		
-		ya::renderer::Setpos(mInfo.x, mInfo.y);
+		
 	}
 	void Player::LateUpdate()
 	{
 	}
 	void Player::Render()
 	{
+
 		GameObject::Render();
 	}
 }
