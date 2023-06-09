@@ -37,7 +37,7 @@ public:
 	virtual void SetInfo(Info info){ mInfo = info;}
 
 	float RandomNumder();
-
+	int IsNegative();
 private:
 	eState mState;
 	Info mInfo;

@@ -47,4 +47,14 @@ namespace ya
 		return fnum;
 	}
 
+	int GameObject::IsNegative()
+	{
+		if ((UINT)RandomNumder() % 2 == 0)
+		{
+			return 1;
+		}
+
+		return -1;
+	}
+
 }
