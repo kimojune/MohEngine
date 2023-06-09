@@ -38,6 +38,7 @@ public:
 
 	float RandomNumder();
 	int IsNegative();
+
 private:
 	eState mState;
 	Info mInfo;

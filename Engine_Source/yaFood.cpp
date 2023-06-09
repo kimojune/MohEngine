@@ -13,7 +13,6 @@ namespace ya
 	{
 		mInfo.Scale = 0.01f;
 		
-		
 		mInfo.x = RandomNumder() / 10 * IsNegative();
 		mInfo.y = RandomNumder() / 10 * IsNegative();
 	}
