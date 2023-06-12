@@ -15,15 +15,22 @@ namespace ya
 		mInfo = GetInfo();
 		mInfo.Scale = 0.05f;
 		
-		mInfo.x = RandomNumder() / 10 * IsNegative();
-		mInfo.y = RandomNumder() / 10 * IsNegative();
+		/*mInfo.x = RandomNumder() / 10 * IsNegative();
+		mInfo.y = RandomNumder() / 10 * IsNegative();*/
+		float x = (RandomNumder() / 10) * IsNegative();
+		float y = (RandomNumder() / 10) * IsNegative();
 
-		Vector4 vector = { RandomNumder() / 10 , mInfo.y, mInfo.x, 1 };
+
+		mInfo.x = x;
+		mInfo.y = y;
+
+
+
+		Vector4 vector = { x, y, (RandomNumder() / 10), 1 };
 		mInfo.mColor = vector;
 		mInfo.Scale = RandomNumder() / 100;
 
 		SetInfo(mInfo);
-		
 	}
 	void Food::Update()
 	{

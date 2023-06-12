@@ -38,7 +38,7 @@ namespace ya
 			CollisionCheck(gameObj);
 		}
 
-		if (mTime > 0.5f)
+		if (mTime > 3.0f)
 		{
 			mTime = 0;
 

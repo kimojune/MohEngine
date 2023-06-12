@@ -47,7 +47,14 @@ namespace ya
 
 	float GameObject::RandomNumder()
 	{
-		srand(time(0));
+		static bool seed = false;
+
+		if (!seed)
+		{
+			srand(time(0));
+			seed = true;
+		}
+
 		float fnum = rand() % 10;
 	
 		return fnum;

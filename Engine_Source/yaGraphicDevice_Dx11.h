@@ -72,6 +72,6 @@ inline GraphicDevice_Dx11*& GetDevice()
 {
 	static GraphicDevice_Dx11* device = nullptr;
 	return device;
-}
+ }
 
 }
