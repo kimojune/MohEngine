@@ -15,7 +15,7 @@ namespace ya
 	}
 	void Scene::Intialize()
 	{
-		
+
 		mplayer = new Player;
 		mplayer->Intialize();
 		mGameObjects.push_back(mplayer);
@@ -63,13 +63,13 @@ namespace ya
 	void Scene::CollisionCheck(GameObject* obj)
 	{
 		if (obj->GetName() == L"Food")
-		{ 
+		{
 			GameObject::Info playerinfo = mplayer->GetInfo();
 			GameObject::Info objinfo = obj->GetInfo();
 			Vector2 playerpos = { playerinfo.x, playerinfo.y };
 			Vector2 objpos = { objinfo.x, objinfo.y };
 			Vector3 vetexespos = ya::renderer::vertexes[1].pos;
-			
+
 			float PlayerXLength = vetexespos.x * playerinfo.Scale;
 			float PlayerYLength = vetexespos.y * playerinfo.Scale;
 			float ObjXLength = vetexespos.x * objinfo.Scale;
@@ -78,12 +78,15 @@ namespace ya
 			if (fabs(PlayerXLength + ObjXLength) > fabs(playerpos.x - objpos.x)
 				&& fabs(PlayerYLength + ObjYLength) > fabs(playerpos.y - objpos.y))
 			{
-				playerinfo.Scale += objinfo.Scale / 10 ;
-				objinfo.Scale = 0;
-				mplayer->SetInfo(playerinfo);
-				obj->SetInfo(objinfo);
+				if (playerinfo.Scale >= objinfo.Scale)
+				{
+					playerinfo.Scale += objinfo.Scale / 10;
+					objinfo.Scale = 0;
+					mplayer->SetInfo(playerinfo);
+					obj->SetInfo(objinfo);
+				}
 			}
-			
+
 		}
 
 	}
