@@ -40,6 +40,8 @@ public:
 	
 
 	float RandomNumder();
+	double RandomDegrees();
+	double degreeToRadian(double degree);
 	int IsNegative();
 
 

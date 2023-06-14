@@ -25,6 +25,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaFood.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMonster.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
@@ -48,6 +49,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaFood.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMonster.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />
@@ -60,6 +62,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)MohEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEnums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphics.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaDefine.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl" />

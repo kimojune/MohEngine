@@ -7,7 +7,7 @@ namespace ya
 {
 	Player::Player()
 	{
-		Entity::SetName(L"player");
+		Entity::SetName(L"Player");
 	}
 	Player::~Player()
 	{
@@ -15,7 +15,7 @@ namespace ya
 	void Player::Intialize()
 	{
 		mInfo = GetInfo();
-		mInfo.Scale = 0.01f;
+		mInfo.Scale = 0.03f;
 		mInfo.x = 0;
 		mInfo.y = 0;
 		mInfo.mColor = Vector4{ 1.0f, 0.0f, 0.0f, 1.0f };

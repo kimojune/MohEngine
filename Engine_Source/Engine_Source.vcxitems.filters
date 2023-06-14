@@ -102,6 +102,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaFood.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMonster.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -175,6 +178,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaFood.h">
       <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMonster.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaDefine.h">
+      <Filter>Common\Math</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

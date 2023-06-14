@@ -23,6 +23,7 @@ private:
 	std::vector<GameObject*> mGameObjects;
 	Player* mplayer;
 	float mTime;
+	float mMonsterTime;
 };
 
 }

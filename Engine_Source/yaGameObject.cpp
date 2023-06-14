@@ -7,6 +7,7 @@
 namespace ya
 {
 	using namespace graphics;
+	static bool seed = false;
 
 	GameObject::GameObject()
 		:mState(eState::Active)
@@ -47,7 +48,6 @@ namespace ya
 
 	float GameObject::RandomNumder()
 	{
-		static bool seed = false;
 
 		if (!seed)
 		{
@@ -58,6 +58,23 @@ namespace ya
 		float fnum = rand() % 10;
 	
 		return fnum;
+	}
+
+	double GameObject::RandomDegrees()
+	{
+		if (!seed)
+		{
+			srand(time(0));
+			seed = true;
+		}	
+		double degree = rand() * 361;
+		
+		return degree;
+	}
+
+	double GameObject::degreeToRadian(double degree)
+	{
+		return degree * PI / 180;
 	}
 
 	int GameObject::IsNegative()
