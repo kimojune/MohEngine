@@ -94,7 +94,7 @@ namespace ya
 			{
 				if (playerinfo.Scale >= objinfo.Scale)
 				{
-					playerinfo.Scale += objinfo.Scale / 10;
+					playerinfo.Scale += objinfo.Scale ;
 					objinfo.Scale = 0;
 					mplayer->SetInfo(playerinfo);
 					obj->SetInfo(objinfo);

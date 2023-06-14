@@ -23,7 +23,7 @@ namespace ya
 		Vector4 vector = { x, y, (RandomNumder() / 10), 1 };
 		mInfo.mColor = vector;
 		mInfo.Scale = RandomNumder() / 100;
-		
+
 		SetInfo(mInfo);
 
 		double angle = degreeToRadian(RandomDegrees());
@@ -37,81 +37,108 @@ namespace ya
 	{
 		mInfo = GetInfo();
 
-		if(-1<= mInfo.x&& mInfo.x <=1)
+		if (-1.0f <= mInfo.x && mInfo.x <= 1.0f)
 			mInfo.x += mDirection.x * Time::DeltaTime() / 10;
-
-		else
-		{
-			float mValue = sqrt(mDirection.x * mDirection.x + mDirection.y * mDirection.y);
-
-			Vector2 nomalizeDirection;
-			nomalizeDirection.x = mDirection.x / mValue;
-			nomalizeDirection.y = mDirection.y / mValue;
-
-			if (mInfo.x <= -1)
-			{
-				Vector2 Left = { -1.0f,0.0f };
-
-
-				float dot = nomalizeDirection.x * Left.x + nomalizeDirection.y * Left.y;
-
-				Vector2 reflectVector = nomalizeDirection - (2 * dot * Left);
-
-				mDirection = reflectVector * mValue;
-			}
-
-			if (mInfo.x >= 1)
-			{
-				Vector2 Right = { 1.0f,0.0f };
-
-
-				float dot = nomalizeDirection.x * Right.x + nomalizeDirection.y * Right.y;
-
-				Vector2 reflectVector = nomalizeDirection - (2 * dot * Right);
-
-				mDirection = reflectVector * mValue;
-			}
-		}
-
-		if (-1 <= mInfo.y && mInfo.y <= 1)
-			mInfo.y += mDirection.y * Time::DeltaTime() / 10;
-		else
-		{
-			float mValue = sqrt(mDirection.x * mDirection.x + mDirection.y * mDirection.y);
-
-			Vector2 nomalizeDirection;
-			nomalizeDirection.x = mDirection.x / mValue;
-			nomalizeDirection.y = mDirection.y / mValue;
-
-			if (mInfo.y <= -1)
-			{
-				Vector2 Top = { 1.0f,0.0f };
-
-
-				float dot = nomalizeDirection.x * Top.x + nomalizeDirection.y * Top.y;
-
-				Vector2 reflectVector = nomalizeDirection - (2 * dot * Top);
-
-				mDirection = reflectVector * mValue;
-			}
-
-			if (mInfo.y >= 1)
-			{
-				Vector2 Bottom = { -1.0f,0.0f };
-
-
-				float dot = nomalizeDirection.x * Bottom.x + nomalizeDirection.y * Bottom.y;
-
-				Vector2 reflectVector = nomalizeDirection - (2 * dot * Bottom);
-
-				mDirection = reflectVector * mValue;
-			}
-		}
-
-	 
-
-
 		
+		else if (mInfo.x <= -1.0f)
+		{
+			mInfo.x = -1.0f;
+			mDirection.x *= -1;
+		}
+		
+		else
+		{
+			mInfo.x = 1.0f;
+			mDirection.x *= -1;
+		}
+
+
+		if (-1.0f <= mInfo.y && mInfo.y <= 1.0f)
+			mInfo.y += mDirection.y * Time::DeltaTime() / 10;
+
+		else if (mInfo.y <= -1.0f)
+		{
+			mInfo.y = -1.0f;
+			mDirection.y *= -1;
+		}
+		else
+		{
+			mInfo.y = 1.0f;
+			mDirection.y *= -1;
+		}
+
+		//if(-1<= mInfo.x&& mInfo.x <=1)
+		//	mInfo.x += mDirection.x * Time::DeltaTime() / 10;
+
+		//else
+		//{
+		//	float mValue = sqrt(mDirection.x * mDirection.x + mDirection.y * mDirection.y);
+
+		//	Vector2 nomalizeDirection;
+		//	nomalizeDirection.x = mDirection.x / mValue;
+		//	nomalizeDirection.y = mDirection.y / mValue;
+
+		//	if (mInfo.x <= -1)
+		//	{
+		//		Vector2 Left = { -1.0f,0.0f };
+
+
+		//		float dot = nomalizeDirection.x * Left.x + nomalizeDirection.y * Left.y;
+
+		//		Vector2 reflectVector = nomalizeDirection - (2 * dot * Left);
+
+		//		mDirection = reflectVector * mValue;
+		//	}
+
+		//	if (mInfo.x >= 1)
+		//	{
+		//		Vector2 Right = { 1.0f,0.0f };
+
+
+		//		float dot = nomalizeDirection.x * Right.x + nomalizeDirection.y * Right.y;
+
+		//		Vector2 reflectVector = nomalizeDirection - (2 * dot * Right);
+
+		//		mDirection = reflectVector * mValue;
+		//	}
+		//}
+
+		//if (-1 <= mInfo.y && mInfo.y <= 1)
+		//	mInfo.y += mDirection.y * Time::DeltaTime() / 10;
+		//else
+		//{
+		//	float mValue = sqrt(mDirection.x * mDirection.x + mDirection.y * mDirection.y);
+
+		//	Vector2 nomalizeDirection;
+		//	nomalizeDirection.x = mDirection.x / mValue;
+		//	nomalizeDirection.y = mDirection.y / mValue;
+
+		//	if (mInfo.y <= -1)
+		//	{
+		//		Vector2 Top = { 1.0f,0.0f };
+
+
+		//		float dot = nomalizeDirection.x * Top.x + nomalizeDirection.y * Top.y;
+
+		//		Vector2 reflectVector = nomalizeDirection - (2 * dot * Top);
+
+		//		mDirection = reflectVector * mValue;
+		//	}
+
+		//	if (mInfo.y >= 1)
+		//	{
+		//		Vector2 Bottom = { -1.0f,0.0f };
+
+
+		//		float dot = nomalizeDirection.x * Bottom.x + nomalizeDirection.y * Bottom.y;
+
+		//		Vector2 reflectVector = nomalizeDirection - (2 * dot * Bottom);
+
+		//		mDirection = reflectVector * mValue;
+		//	}
+		//}
+
+	 //
 
 		SetInfo(mInfo);
 
