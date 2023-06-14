@@ -38,10 +38,14 @@ public:
 	virtual Info GetInfo() { return mInfo; }
 	virtual void SetInfo(Info info){ mInfo = info;}
 	
+	virtual eState GetState() { return mState; }
+	virtual void SetState(eState state) { mState = state; }
 
 	float RandomNumder();
 	double RandomDegrees();
+
 	double degreeToRadian(double degree);
+
 	int IsNegative();
 
 

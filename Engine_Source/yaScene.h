@@ -6,6 +6,7 @@ namespace ya
 {
 
 class Player;
+class Monster;
 class Scene : public Entity
 {
 public:
@@ -22,6 +23,7 @@ public:
 private:
 	std::vector<GameObject*> mGameObjects;
 	Player* mplayer;
+	Monster* monster[10];
 	float mTime;
 	float mMonsterTime;
 };

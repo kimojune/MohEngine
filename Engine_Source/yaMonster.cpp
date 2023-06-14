@@ -31,6 +31,7 @@ namespace ya
 		mDirection.x = std::cos(angle);
 		mDirection.y = std::sin(angle);
 
+		
 
 	}
 	void Monster::Update()

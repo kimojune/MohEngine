@@ -24,10 +24,15 @@ namespace ya
 		food->Intialize();
 		mGameObjects.push_back(food);
 
-		Monster* monster = new Monster;
-		monster->Intialize();
-		mGameObjects.push_back(monster);
 
+		for (size_t i = 0; i < 10; i++)
+		{
+
+			monster[i] = new Monster;
+			monster[i]->Intialize();
+			mGameObjects.push_back(monster[i]);
+
+		}
 	}
 	void Scene::Update()
 	{
@@ -38,8 +43,11 @@ namespace ya
 		{
 			/*if (gameObj == nullptr)
 				continue;*/
-			gameObj->Update();
-			CollisionCheck(gameObj);
+			if (gameObj->GetState() == GameObject::eState::Active)
+			{
+				gameObj->Update();
+				CollisionCheck(gameObj);
+			}
 		}
 
 		if (mTime > 1.0f)
@@ -55,9 +63,15 @@ namespace ya
 		{
 			mMonsterTime = 0;
 
-			Monster* monster = new Monster;
-			monster->Intialize();
-			mGameObjects.push_back(monster);
+			for (size_t i = 0; i < 10; i++)
+			{
+				if (monster[i]->GetState() == GameObject::eState::Paused)
+				{ 
+					monster[i]->SetState(GameObject::eState::Active);
+					monster[i]->Intialize();
+				}
+			}
+			
 		}
 
 	}
@@ -71,15 +85,21 @@ namespace ya
 		{
 			if (gameObj == nullptr)
 				continue;
-			gameObj->Render();
+			
+			if(gameObj->GetState() == GameObject::eState::Active)
+				gameObj->Render();
 		}
 	}
 	void Scene::CollisionCheck(GameObject* obj)
 	{
 		if (obj->GetName() == L"Food")
 		{
+			
 			GameObject::Info playerinfo = mplayer->GetInfo();
 			GameObject::Info objinfo = obj->GetInfo();
+		
+
+			
 			Vector2 playerpos = { playerinfo.x, playerinfo.y };
 			Vector2 objpos = { objinfo.x, objinfo.y };
 			Vector3 vetexespos = ya::renderer::vertexes[1].pos;
@@ -100,6 +120,8 @@ namespace ya
 					obj->SetInfo(objinfo);
 				}
 			}
+
+			
 		}
 
 		if (obj->GetName() == L"Monster")
@@ -124,6 +146,7 @@ namespace ya
 					objinfo.Scale = 0;
 					mplayer->SetInfo(playerinfo);
 					obj->SetInfo(objinfo);
+					obj->SetState(GameObject::eState::Paused);
 				}
 
 				else
