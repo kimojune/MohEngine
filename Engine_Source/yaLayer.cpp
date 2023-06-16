@@ -1,1 +1,35 @@
 #include "yaLayer.h"
+
+namespace ya
+{
+	Layer::Layer()
+	{
+	}
+	Layer::~Layer()
+	{
+	}
+	void Layer::Initialize()
+	{
+	}
+	void Layer::Update()
+	{
+		for (GameObject* gameobj : mGameObjects)
+		{
+			gameobj->Update();
+		}
+	}
+	void Layer::LateUpdate()
+	{
+		for (GameObject* gameobj : mGameObjects)
+		{
+			gameobj->LateUpdate();
+		}
+	}
+	void Layer::Render()
+	{
+		for (GameObject* gameobj : mGameObjects)
+		{
+			gameobj->Render();
+		}
+	}
+}

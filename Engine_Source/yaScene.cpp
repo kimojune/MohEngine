@@ -9,17 +9,17 @@ namespace ya
 	Scene::~Scene()
 	{
 	}
-	void Scene::Intialize()
+	void Scene::Initialize()
 	{
 		
 	}
 	void Scene::Update()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			if (gameObj == nullptr)
+			if (layer == nullptr)
 				continue;
-			gameObj->Update();
+			layer->Update();
 		}
 	}
 	void Scene::LateUpdate()
@@ -27,11 +27,11 @@ namespace ya
 	}
 	void Scene::Render()
 	{
-		for (GameObject* gameObj : mGameObjects)
+		for (Layer* layer : mLayers)
 		{
-			if (gameObj == nullptr)
+			if (layer == nullptr)
 				continue;
-			gameObj->Render();
+			layer->Render();
 		}
 	}
 }

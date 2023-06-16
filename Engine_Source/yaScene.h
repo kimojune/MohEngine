@@ -1,6 +1,6 @@
 #pragma once
 #include "yaEntity.h"
-#include "yaGameObject.h"
+#include "yaLayer.h"
 
 namespace ya
 {
@@ -11,13 +11,13 @@ public:
 	Scene();
 	virtual ~Scene();
 
-	virtual void Intialize();
+	virtual void Initialize();
 	virtual void Update();
 	virtual void LateUpdate();
 	virtual void Render();
 
 private:
-	std::vector<GameObject*> mGameObjects;
+	std::vector<Layer*> mLayers;
 };
 
 }

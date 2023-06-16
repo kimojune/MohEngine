@@ -22,8 +22,8 @@ namespace ya
 	}
 	void GameObject::Render()
 	{
-		renderer::mesh->BindBuffer();
-		renderer::shader->Binds();
-		graphics::GetDevice()->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
+		//renderer::mesh->BindBuffer();
+		//renderer::shader->Binds();
+		//graphics::GetDevice()->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
 	}
 }

@@ -300,6 +300,7 @@ namespace ya::graphics
 
 		BindViewPort(&mViewPort);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
+
 	}
 	void GraphicDevice_Dx11::Present()
 	{
