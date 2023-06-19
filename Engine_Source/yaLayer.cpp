@@ -32,4 +32,8 @@ namespace ya
 			gameobj->Render();
 		}
 	}
+	void Layer::AddGameObject(GameObject* gameObj)
+	{
+		mGameObjects.push_back(gameObj);
+	}
 }

@@ -2,9 +2,8 @@
 
 namespace ya
 {
-	Component::Component()
-		:mType(eComponentType::None)
-
+	Component::Component(eComponentType type)
+		:mType(type)
 	{
 	}
 	Component::~Component()

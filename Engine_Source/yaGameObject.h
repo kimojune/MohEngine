@@ -25,12 +25,12 @@ namespace ya
 		template <typename T>
 		T* GetComponent()
 		{
-			T* comp;
-			for (T* component : mComponents)
+			T* component;
+			for (Component* comp : mComponents)
 			{
-				Component* buff = dynamic_cast<T*>(comp);
+				component = dynamic_cast<T*>(comp);
 
-				if (buff != nullptr)
+				if (component != nullptr)
 					return component;
 			}
 
@@ -38,7 +38,7 @@ namespace ya
 		}
 
 		template <typename T>
-		T* AddComponet()
+		T* AddComponent()
 		{
 			T* comp = new T();
 
@@ -48,6 +48,7 @@ namespace ya
 				return nullptr;
 
 			mComponents.push_back(buff);
+			comp->SetOwner(this);
 
 			return comp;
 		}

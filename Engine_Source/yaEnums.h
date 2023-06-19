@@ -8,7 +8,16 @@ namespace ya::enums
 		Transform,
 		Mesh,
 		Particle,
+		MeshRender,
 		Script,
+		End,
+	};
+	
+	enum class eLayerType
+	{
+		Player,
+		Monster,
+		UI,
 		End,
 	};
 }
