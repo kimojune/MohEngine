@@ -18,6 +18,7 @@ public:
 	bool CreateIndexBuffer(void* data, UINT Count);
 
 	void BindBuffer();
+	void Render();
 
 	UINT GetIndexCount() { return mIndexCount; }
 

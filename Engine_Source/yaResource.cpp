@@ -3,7 +3,8 @@
 
 namespace ya
 {
-	Resource::Resource()
+	Resource::Resource(enums::eResourceType type)
+		: mType(type)
 	{
 
 	}

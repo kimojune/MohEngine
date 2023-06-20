@@ -1,14 +1,13 @@
 #include "yaRenderer.h"
 #include "yaResources.h"
 #include "yaTexture.h"
+#include "yaMaterial.h"
 
 namespace ya::renderer
 {
 	Vertex vertexes[4] = {};
 
-	ya::Mesh* mesh = nullptr;
-	ya::Shader* shader = nullptr;
-	ya::graphics::ConstantBuffer* constantBuffer = nullptr;
+	ya::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 
 	void SetupState()
@@ -38,7 +37,12 @@ namespace ya::renderer
 		arrLayout[2].SemanticIndex = 0;
 
 
+		Shader* shader = ya::Resources::Find<Shader>(L"TriangleShader");
+		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
 
+		shader = ya::Resources::Find<Shader>(L"SpriteShader");
 		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -59,7 +63,9 @@ namespace ya::renderer
 
 	void LoadBuffer()
 	{
-		mesh = new ya::Mesh();
+		Mesh* mesh = new ya::Mesh();
+		Resources::Insert(L"RectMesh", mesh);
+
 		mesh->CreateVertexBuffer(vertexes, 4);
 
 		std::vector<UINT> indexes = {};
@@ -74,8 +80,8 @@ namespace ya::renderer
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		//constant Buffer
-		constantBuffer = new ya::graphics::ConstantBuffer(eCBType::Transform);
-		constantBuffer->Create(sizeof(Vector4));
+		constantBuffer[(UINT)eCBType::Transform] = new ya::graphics::ConstantBuffer(eCBType::Transform);
+		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(Vector4));
 
 		//Vector4 pos(0.2f, 0.0f, 0.0f, 1.0f);
 		//constantBuffer->SetData(&pos);
@@ -85,9 +91,22 @@ namespace ya::renderer
 	void LoadShader()
 	{
 		//ya::graphics::GetDevice()->CreateShader();
-		shader = new ya::Shader();
+		Shader* shader = new ya::Shader();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		ya::Resources::Insert(L"TriangleShader", shader);
+		
+		Shader* spriteShader= new ya::Shader();
+		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
+		ya::Resources::Insert(L"SpriteShader", spriteShader);
+		
+		Texture* texture = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+
+		Material* spriteMaterial = new ya::graphics::Material();
+		spriteMaterial->SetShader(spriteShader);
+		spriteMaterial->SetTexture(texture);
+		Resources::Insert(L"SpriteMaterial", spriteMaterial);
 	}
 
 	void Initialize()
@@ -116,12 +135,20 @@ namespace ya::renderer
 		Texture* texture
 			= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
 
+			texture
+			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+
 		texture->BindShader(eShaderStage::PS, 0);
 	}
 	void Release()
 	{
-		delete mesh;
-		delete shader;
-		delete constantBuffer;
+		for (ConstantBuffer* buff : constantBuffer)
+		{
+			if (buff == nullptr)
+				continue;
+			
+			delete buff;
+			buff = nullptr;
+		}
 	}
 }

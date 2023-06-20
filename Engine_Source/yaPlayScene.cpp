@@ -1,6 +1,8 @@
 #include "yaPlayScene.h"
 #include "yaTransform.h"
 #include "yaMeshRenderer.h"
+#include "yaResources.h"
+#include "yaMesh.h"
 
 namespace ya
 {
@@ -14,7 +16,9 @@ namespace ya
 	{
 		GameObject* player = new GameObject();
 		AddGameObject(eLayerType::Player, player);
-		player->AddComponent<MeshRenderer>();
+		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
+		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial")));
 	}
 	void PlayScene::Update()
 	{
