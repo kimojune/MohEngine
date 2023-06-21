@@ -1,6 +1,7 @@
 #pragma once
 #include "yaEntity.h"
 #include "yaComponent.h"
+#include "yaScript.h"
 
 namespace ya
 {
@@ -34,6 +35,13 @@ namespace ya
 					return component;
 			}
 
+			for (Script* script : mScripts)
+			{
+				component = dynamic_cast<T*>(script);
+				if (component != nullptr)
+					return component;
+			}
+
 			return nullptr;
 		}
 
@@ -42,12 +50,20 @@ namespace ya
 		{
 			T* comp = new T();
 
-			Component* buff = dynamic_cast<T*>(comp);
-
+			Component* buff
+				= dynamic_cast<T*>(comp);
+			Script* script
+				= dynamic_cast<Script*>(buff);
+			
 			if (buff == nullptr)
 				return nullptr;
 
-			mComponents.push_back(buff);
+			if (script == nullptr)
+				mComponents.push_back(buff);
+
+			else
+				mScripts.push_back(script);
+
 			comp->SetOwner(this);
 
 			return comp;
@@ -56,5 +72,6 @@ namespace ya
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
+		std::vector<Script*> mScripts;
 	};
 }

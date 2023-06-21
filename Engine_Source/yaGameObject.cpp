@@ -20,6 +20,15 @@ namespace ya
 			delete comp;
 			comp = nullptr;
 		}
+
+		for (Script* script : mScripts)
+		{
+			if (script == nullptr)
+				continue;
+
+			delete script;
+			script = nullptr;
+		}
 	}
 	void GameObject::Intialize()
 	{
@@ -30,6 +39,11 @@ namespace ya
 		{
 			comp->Update();
 		}
+
+		for (Script* script : mScripts)
+		{
+			script->Update();
+		}
 	}
 	void GameObject::LateUpdate()
 	{
@@ -37,12 +51,22 @@ namespace ya
 		{
 			comp->LateUpdate();
 		}
+
+		for (Script* script : mScripts)
+		{
+			script->LateUpdate();
+		}
 	}
 	void GameObject::Render()
 	{
 		for (Component* comp : mComponents)
 		{
 			comp->Render();
+		}
+
+		for (Script* script : mScripts)
+		{
+			script->Render();
 		}
 	}
 }
