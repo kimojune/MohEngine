@@ -37,7 +37,7 @@ namespace ya::renderer
 		arrLayout[2].SemanticIndex = 0;
 
 
-		Shader* shader = ya::Resources::Find<Shader>(L"TriangleShader");
+		std::shared_ptr<Shader> shader = ya::Resources::Find<Shader>(L"TriangleShader");
 		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -63,7 +63,7 @@ namespace ya::renderer
 
 	void LoadBuffer()
 	{
-		Mesh* mesh = new ya::Mesh();
+		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
 
 		mesh->CreateVertexBuffer(vertexes, 4);
@@ -91,19 +91,20 @@ namespace ya::renderer
 	void LoadShader()
 	{
 		//ya::graphics::GetDevice()->CreateShader();
-		Shader* shader = new ya::Shader();
+		std::shared_ptr<Shader>  shader = std::make_shared<Shader>();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 		ya::Resources::Insert(L"TriangleShader", shader);
 		
-		Shader* spriteShader= new ya::Shader();
+		std::shared_ptr<Shader>  spriteShader= std::make_shared<Shader>();
 		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		ya::Resources::Insert(L"SpriteShader", spriteShader);
 		
-		Texture* texture = Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+		std::shared_ptr<Texture> texture 
+			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
 
-		Material* spriteMaterial = new ya::graphics::Material();
+		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
 		spriteMaterial->SetShader(spriteShader);
 		spriteMaterial->SetTexture(texture);
 		Resources::Insert(L"SpriteMaterial", spriteMaterial);
@@ -132,10 +133,10 @@ namespace ya::renderer
 		LoadShader();
 		SetupState();
 
-		Texture* texture
+		std::shared_ptr<Texture> texture
 			= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
 
-			texture
+		texture
 			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
 
 		texture->BindShader(eShaderStage::PS, 0);

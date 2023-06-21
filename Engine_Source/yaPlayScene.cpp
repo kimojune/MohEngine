@@ -22,10 +22,14 @@ namespace ya
 		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial")));
 
 		player->AddComponent<CameraScript>();
+
+		player->GetComponent<CameraScript>();
 	}
 	void PlayScene::Update()
 	{
 		Scene::Update();
+		
+		
 	}
 	void PlayScene::LateUpdate()
 	{

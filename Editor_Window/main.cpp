@@ -71,7 +71,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     }
 
     ya::renderer::Release();
-    ya::Resources::Release();
     ya::SceneManager::Release();
 	return (int)msg.wParam;
 }
