@@ -23,7 +23,9 @@ namespace ya
 
 		player->AddComponent<CameraScript>();
 
-		player->GetComponent<CameraScript>();
+		Transform* tr = player->GetComponent<Transform>();
+		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+
 	}
 	void PlayScene::Update()
 	{
