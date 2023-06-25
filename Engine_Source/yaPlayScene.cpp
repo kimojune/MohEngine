@@ -4,6 +4,7 @@
 #include "yaResources.h"
 #include "yaMesh.h"
 #include "yaCameraScript.h"
+#include "yaCamera.h"
 
 namespace ya
 {
@@ -20,11 +21,16 @@ namespace ya
 		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
 		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial")));
-
-		player->AddComponent<CameraScript>();
-
+		//player->AddComponent<CameraScript>();
 		Transform* tr = player->GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+
+		GameObject* camera = new GameObject();
+		AddGameObject(eLayerType::Player, camera);
+		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		Camera* cameraComp = camera->AddComponent<Camera>();
+		camera->AddComponent<CameraScript>();
+
 
 	}
 	void PlayScene::Update()
