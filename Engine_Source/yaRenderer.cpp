@@ -97,6 +97,7 @@ namespace ya::renderer
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		ya::Resources::Insert(L"SpriteShader", spriteShader);
 		
+		{
 		std::shared_ptr<Texture> texture 
 			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
 
@@ -104,6 +105,18 @@ namespace ya::renderer
 		spriteMaterial->SetShader(spriteShader);
 		spriteMaterial->SetTexture(texture);
 		Resources::Insert(L"SpriteMaterial", spriteMaterial);
+		}
+
+		{
+		std::shared_ptr<Texture> texture 
+			= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+
+		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
+		spriteMaterial->SetShader(spriteShader);
+		spriteMaterial->SetTexture(texture);
+		Resources::Insert(L"SpriteMaterial02", spriteMaterial);
+		}
+
 	}
 
 	void Initialize()
@@ -128,6 +141,7 @@ namespace ya::renderer
 		LoadBuffer();
 		LoadShader();
 		SetupState();
+
 
 		std::shared_ptr<Texture> texture
 			= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");

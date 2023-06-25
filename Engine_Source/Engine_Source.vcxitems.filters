@@ -123,6 +123,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCamera.cpp">
       <Filter>GameObject\Component\Script</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -212,6 +213,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCamera.h">
       <Filter>GameObject\Component\Script</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
