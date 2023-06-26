@@ -107,8 +107,7 @@ namespace ya::renderer
 		spriteMaterial->SetTexture(texture);
 		Resources::Insert(L"SpriteMaterial", spriteMaterial);
 		}
-		//= Resources::Load<Texture>(L"Dog", L"..\\Texture\\Charactor\\The Hunter\\Companions\\dig_right\\dog_dig_right_001.png");
-
+		
 		{
 			std::shared_ptr<Texture> texture
 				= Resources::Load<Texture>(L"Dog", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
@@ -117,6 +116,16 @@ namespace ya::renderer
 		spriteMaterial->SetShader(spriteShader);
 		spriteMaterial->SetTexture(texture);
 		Resources::Insert(L"SpriteMaterial02", spriteMaterial);
+		}
+		
+		{
+			std::shared_ptr<Texture> texture
+				= Resources::Load<Texture>(L"marsh_of_gungeon", L"..\\Resources\\Texture\\TitleScreenCollection\\marsh_of_gungeon_001.png");
+
+		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
+		spriteMaterial->SetShader(spriteShader);
+		spriteMaterial->SetTexture(texture);
+		Resources::Insert(L"SpriteMaterial03", spriteMaterial);
 		}
 
 	}
