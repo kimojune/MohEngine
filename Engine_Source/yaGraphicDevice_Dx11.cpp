@@ -30,8 +30,8 @@ namespace ya::graphics
 			return;;
 
 		mDevice->CreateRenderTargetView(mRenderTarget.Get(), nullptr, mRenderTargetView.GetAddressOf());
-
-
+		
+		
 
 		D3D11_TEXTURE2D_DESC depthStencilDesc{};
 		depthStencilDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL;

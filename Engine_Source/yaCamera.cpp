@@ -16,7 +16,7 @@ namespace ya
 		,mAspectRatio(1.0f)
 		,mNear(1.0f)
 		,mFar(1000.0f)
-		,mSize(5.0f)
+		,mSize(10.0f)
 	{
 	}
 	Camera::~Camera()
@@ -71,7 +71,7 @@ namespace ya
 
 		if (mType == eProjectionType::OrthoGraphic)
 		{
-			float OrthorGraphicRatio = mSize / 1000.0f ;
+			float OrthorGraphicRatio = mSize / 800.0f;
 			width *= OrthorGraphicRatio;
 			height *= OrthorGraphicRatio;
 

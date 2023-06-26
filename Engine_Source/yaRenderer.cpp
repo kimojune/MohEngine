@@ -99,7 +99,8 @@ namespace ya::renderer
 		
 		{
 		std::shared_ptr<Texture> texture 
-			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+			= Resources::Load<Texture>(L"guide_idle", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
+
 
 		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
 		spriteMaterial->SetShader(spriteShader);
@@ -143,13 +144,6 @@ namespace ya::renderer
 		SetupState();
 
 
-		std::shared_ptr<Texture> texture
-			= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-
-		texture
-			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
-
-		texture->BindShader(eShaderStage::PS, 0);
 	}
 	void Release()
 	{

@@ -46,13 +46,10 @@ namespace ya
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		camera->AddComponent<CameraScript>();
 
-
 	}
 	void PlayScene::Update()
 	{
 		Scene::Update();
-		
-		
 	}
 	void PlayScene::LateUpdate()
 	{
