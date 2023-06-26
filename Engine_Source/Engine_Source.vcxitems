@@ -19,6 +19,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaDog.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp" />
@@ -49,6 +50,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCameraScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaDog.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h" />

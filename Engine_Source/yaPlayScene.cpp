@@ -17,27 +17,25 @@ namespace ya
 	}
 	void PlayScene::Initialize()
 	{
-		{
+		
 		Player* player = new Player();
 		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
-		Camera* cameraComp = player->AddComponent<Camera>();
-		player->AddComponent<CameraScript>();
-		}
-
-		{
-		GameObject* player = new GameObject();
-		AddGameObject(eLayerType::Companions, player);
-		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		
+		GameObject* dog = new GameObject();
+		AddGameObject(eLayerType::Companions, dog);
+		MeshRenderer* mr = dog->AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
 		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial02")));
 		//player->AddComponent<CameraScript>();
-		Transform* tr = player->GetComponent<Transform>();
-		tr->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
-		}
-
-
-
+		Transform* dogtr = dog->GetComponent<Transform>();
+		dogtr->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
+		
+		GameObject* camera = new GameObject();
+		AddGameObject(eLayerType::Player, camera);
+		Camera* camecomp = camera->AddComponent<Camera>();
+		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		camera->AddComponent<CameraScript>();
 	}
 	void PlayScene::Update()
 	{
