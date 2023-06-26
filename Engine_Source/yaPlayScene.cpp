@@ -5,6 +5,7 @@
 #include "yaMesh.h"
 #include "yaCameraScript.h"
 #include "yaCamera.h"
+#include "yaPlayer.h"
 
 namespace ya
 {
@@ -17,14 +18,11 @@ namespace ya
 	void PlayScene::Initialize()
 	{
 		{
-		GameObject* player = new GameObject();
+		Player* player = new Player();
+		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
-		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
-		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial")));
-		//player->AddComponent<CameraScript>();
-		Transform* tr = player->GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		Camera* cameraComp = player->AddComponent<Camera>();
+		player->AddComponent<CameraScript>();
 		}
 
 		{
@@ -38,13 +36,10 @@ namespace ya
 		tr->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
 		}
 
-
-
-		GameObject* camera = new GameObject();
-		AddGameObject(eLayerType::Player, camera);
-		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		camera->AddComponent<CameraScript>();
+		//GameObject* camera = new GameObject();
+		//AddGameObject(eLayerType::Player, camera);
+		//camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//camera->AddComponent<CameraScript>();
 
 	}
 	void PlayScene::Update()

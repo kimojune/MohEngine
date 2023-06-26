@@ -50,6 +50,8 @@ namespace ya::graphics
 
 		D3D11_SUBRESOURCE_DATA data;
 
+
+
 		if (!CreateTexture(&depthStencilDesc, &data))
 			return;
 
@@ -66,6 +68,29 @@ namespace ya::graphics
 		};
 
 		BindViewPort(&mViewPort);
+
+		D3D11_BLEND_DESC blendDesc;
+		ZeroMemory(&blendDesc, sizeof(blendDesc));
+
+		D3D11_RENDER_TARGET_BLEND_DESC rtbd;
+		ZeroMemory(&rtbd, sizeof(rtbd));
+
+		rtbd.BlendEnable = true;
+		rtbd.SrcBlend = D3D11_BLEND_SRC_ALPHA;
+		rtbd.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+		rtbd.BlendOp = D3D11_BLEND_OP_ADD;
+		rtbd.SrcBlendAlpha = D3D11_BLEND_ONE;
+		rtbd.DestBlendAlpha = D3D11_BLEND_ZERO;
+		rtbd.BlendOpAlpha = D3D11_BLEND_OP_ADD;
+		rtbd.RenderTargetWriteMask = D3D10_COLOR_WRITE_ENABLE_ALL;
+
+		blendDesc.AlphaToCoverageEnable = false;
+		blendDesc.RenderTarget[0] = rtbd;
+
+		float blendFactor[4] = { 0.f, 0.f, 0.f, 0.f };
+		ID3D11BlendState* Transparency;
+		mDevice->CreateBlendState(&blendDesc, &Transparency);
+		mContext->OMSetBlendState(Transparency, blendFactor, 0xffffffff);
 
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 	}

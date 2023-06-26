@@ -1,22 +1,18 @@
 #pragma once
-#include "yaScene.h"
-
+#include "yaGameObject.h"
 namespace ya
 {
-
-	class PlayScene : public Scene
+	class Player : public GameObject
 	{
 	public:
-		PlayScene();
-		virtual ~PlayScene();
+		Player();
+		~Player();
 
-		virtual void Initialize() override;
+		virtual void Intialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
 	private:
-
 	};
-
 }

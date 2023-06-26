@@ -107,10 +107,11 @@ namespace ya::renderer
 		spriteMaterial->SetTexture(texture);
 		Resources::Insert(L"SpriteMaterial", spriteMaterial);
 		}
+		//= Resources::Load<Texture>(L"Dog", L"..\\Texture\\Charactor\\The Hunter\\Companions\\dig_right\\dog_dig_right_001.png");
 
 		{
-		std::shared_ptr<Texture> texture 
-			= Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+			std::shared_ptr<Texture> texture
+				= Resources::Load<Texture>(L"Dog", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
 
 		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
 		spriteMaterial->SetShader(spriteShader);

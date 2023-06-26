@@ -41,6 +41,7 @@ namespace ya
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
 
+		pos.z -= 10.0f;
 		//View Translate Matrix
 		mView = Matrix::Identity;
 		mView *= Matrix::CreateTranslation(-pos);

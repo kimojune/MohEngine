@@ -34,6 +34,7 @@ namespace ya
 
 		renderer::Initialize();
 		SceneManager::Initialize();
+
 	}
 	void Application::Update()
 	{

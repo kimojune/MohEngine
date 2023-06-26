@@ -16,9 +16,9 @@ public:
 	static Scene* GetActiveScene() { return mActiveScene; }
 	static Scene* LoadScene(std::wstring name);
 
+	static std::map<std::wstring, Scene*> mScenes;
 private:
 	static Scene* mActiveScene;
-	static std::map<std::wstring, Scene*> mScenes;
 };
 
 }
