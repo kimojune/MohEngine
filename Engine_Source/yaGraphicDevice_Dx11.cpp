@@ -69,29 +69,7 @@ namespace ya::graphics
 
 		BindViewPort(&mViewPort);
 
-		D3D11_BLEND_DESC blendDesc;
-		ZeroMemory(&blendDesc, sizeof(blendDesc));
-
-		D3D11_RENDER_TARGET_BLEND_DESC rtbd;
-		ZeroMemory(&rtbd, sizeof(rtbd));
-
-		rtbd.BlendEnable = true;
-		rtbd.SrcBlend = D3D11_BLEND_SRC_ALPHA;
-		rtbd.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
-		rtbd.BlendOp = D3D11_BLEND_OP_ADD;
-		rtbd.SrcBlendAlpha = D3D11_BLEND_ONE;
-		rtbd.DestBlendAlpha = D3D11_BLEND_ZERO;
-		rtbd.BlendOpAlpha = D3D11_BLEND_OP_ADD;
-		rtbd.RenderTargetWriteMask = D3D10_COLOR_WRITE_ENABLE_ALL;
-
-		blendDesc.AlphaToCoverageEnable = false;
-		blendDesc.RenderTarget[0] = rtbd;
-
-		float blendFactor[4] = { 0.f, 0.f, 0.f, 0.f };
-		ID3D11BlendState* Transparency;
-		mDevice->CreateBlendState(&blendDesc, &Transparency);
-		mContext->OMSetBlendState(Transparency, blendFactor, 0xffffffff);
-
+		
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 	}
 
@@ -214,9 +192,30 @@ namespace ya::graphics
 
 		return true;
 	}
-	bool GraphicDevice_Dx11::CreateSampler(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState)
+	bool GraphicDevice_Dx11::CreateSamplerState(const D3D11_SAMPLER_DESC* pSamplerDesc, ID3D11SamplerState** ppSamplerState)
 	{
 		if (FAILED(mDevice->CreateSamplerState(pSamplerDesc, ppSamplerState)))
+			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateRasterizerState(const D3D11_RASTERIZER_DESC* pRasterizerDesc, ID3D11RasterizerState** ppRasterizerState)
+	{
+		if (FAILED(mDevice->CreateRasterizerState(pRasterizerDesc, ppRasterizerState)))
+			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateDepthStencilState(const D3D11_DEPTH_STENCIL_DESC* pDepthStencilDesc, ID3D11DepthStencilState** ppDepthStencilState)
+	{
+		if (FAILED(mDevice->CreateDepthStencilState(pDepthStencilDesc, ppDepthStencilState)))
+			return false;
+
+		return true;
+	}
+	bool GraphicDevice_Dx11::CreateBlendState(const D3D11_BLEND_DESC* pBlendStateDesc, ID3D11BlendState** ppBlendState)
+	{
+		if (FAILED(mDevice->CreateBlendState(pBlendStateDesc, ppBlendState)))
 			return false;
 
 		return true;
@@ -224,6 +223,21 @@ namespace ya::graphics
 	void GraphicDevice_Dx11::BindViewPort(D3D11_VIEWPORT* viewport)
 	{
 		mContext->RSSetViewports(1, viewport);
+	}
+
+	void GraphicDevice_Dx11::BindRasterizeState(ID3D11RasterizerState* pRasterizerState)
+	{
+		mContext->RSSetState(pRasterizerState);
+	}
+
+	void GraphicDevice_Dx11::BindDepthStencilState(ID3D11DepthStencilState* pDepthStencilState)
+	{
+		mContext->OMSetDepthStencilState(pDepthStencilState, 0);
+	}
+
+	void GraphicDevice_Dx11::BindBlendState(ID3D11BlendState* pBlendState)
+	{
+		mContext->OMSetBlendState(pBlendState, nullptr, 0xffffffff);
 	}
 
 	void GraphicDevice_Dx11::BindInputLayout(ID3D11InputLayout* pInputLayout)

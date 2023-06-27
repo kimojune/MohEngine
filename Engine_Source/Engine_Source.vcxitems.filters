@@ -128,6 +128,7 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaDog.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -222,6 +223,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

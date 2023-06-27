@@ -31,5 +31,15 @@ namespace ya
 			pos.x += 5.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
+		else if (Input::GetKey(eKeyCode::Q))
+		{
+			pos.z -= 5.0f * Time::DeltaTime();
+			tr->SetPosition(pos);
+		}
+		else if (Input::GetKey(eKeyCode::E))
+		{
+			pos.z += 5.0f * Time::DeltaTime();
+			tr->SetPosition(pos);
+		}
 	}
 }

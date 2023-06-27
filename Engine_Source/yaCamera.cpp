@@ -71,7 +71,7 @@ namespace ya
 
 		if (mType == eProjectionType::OrthoGraphic)
 		{
-			float OrthorGraphicRatio = mSize / 1000.0f;
+			float OrthorGraphicRatio = mSize / 500.0f;
 			width *= OrthorGraphicRatio;
 			height *= OrthorGraphicRatio;
 

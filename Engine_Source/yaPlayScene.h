@@ -16,7 +16,7 @@ namespace ya
 		virtual void Render() override;
 
 	private:
-
+		
 	};
 
 }

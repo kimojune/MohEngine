@@ -1,5 +1,6 @@
 #pragma once
 #include "yaScript.h"
+#include "yaGameObject.h"
 
 namespace ya
 {
@@ -7,7 +8,10 @@ namespace ya
 	{
 	public:
 		virtual void Update() override;
-	private:
 
+		void SetTarget(GameObject* obj) { mTarget = obj; }
+
+	private:
+		GameObject* mTarget;
 	};
 }

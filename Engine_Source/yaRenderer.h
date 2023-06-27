@@ -25,7 +25,11 @@ namespace ya::renderer
 	extern Vertex vertexes[];
 	extern ya::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 	
-	
+	extern Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[];
+	extern Microsoft::WRL::ComPtr<ID3D11RasterizerState> rasterizerStates[];
+	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
+	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
+
 	void Initialize();
 	void Release();
 }

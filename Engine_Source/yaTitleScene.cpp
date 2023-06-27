@@ -24,7 +24,7 @@ namespace ya
 		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
 		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial03")));
 		Transform* tr = obj->GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.5f, 0.5f, 0.0f));
+		tr->SetPosition(Vector3(0.5f, 0.5f, -0.4f));
 		
 
 	}

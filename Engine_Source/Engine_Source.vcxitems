@@ -30,6 +30,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMeshRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayerScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
@@ -61,6 +62,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayerScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />

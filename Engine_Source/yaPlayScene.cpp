@@ -6,9 +6,11 @@
 #include "yaCameraScript.h"
 #include "yaCamera.h"
 #include "yaPlayer.h"
+#include "yaPlayerScript.h"
 
 namespace ya
 {
+	
 	PlayScene::PlayScene()
 	{
 	}
@@ -21,6 +23,7 @@ namespace ya
 		Player* player = new Player();
 		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
+		player->AddComponent<PlayerScript>();
 		
 		GameObject* dog = new GameObject();
 		AddGameObject(eLayerType::Companions, dog);
@@ -35,7 +38,9 @@ namespace ya
 		AddGameObject(eLayerType::Player, camera);
 		Camera* camecomp = camera->AddComponent<Camera>();
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		camera->AddComponent<CameraScript>();
+		CameraScript* camerasc = camera->AddComponent<CameraScript>();
+		camerasc->SetTarget(player);
+		
 	}
 	void PlayScene::Update()
 	{
