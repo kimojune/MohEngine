@@ -7,6 +7,7 @@
 #include "yaRenderer.h"
 #include "yaResources.h"
 #include "yaSceneManager.h"
+#include "LoadScenes.h"
 
 ya::Application application;
 
@@ -129,6 +130,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    application.Initialize();
+   ya::InitializeScenes();
 
    return TRUE;
 }

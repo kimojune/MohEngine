@@ -1,6 +1,4 @@
 #include "yaSceneManager.h"
-#include "yaPlayScene.h"
-#include "yaTitleScene.h"
 #include "yaInput.h"
 
 namespace ya
@@ -10,25 +8,9 @@ namespace ya
 
 	void SceneManager::Initialize()
 	{
-		TitleScene* titlescene = new TitleScene();
-		PlayScene* playScene = new PlayScene();
-
-
-		mScenes.insert(std::make_pair(L"TitleScene", titlescene));
-		mScenes.insert(std::make_pair(L"PlayScene", playScene));
-
-		for (auto iter : mScenes)
-		{
-			iter.second->Initialize();
-		}
-
-		mActiveScene = titlescene;
-
 	}
 	void SceneManager::Update()
 	{
-		if (Input::GetKeyDown(eKeyCode::N))
-			mActiveScene = mScenes.find(L"PlayScene")->second;
 		mActiveScene->Update();
 	}
 	void SceneManager::LateUpdate()
@@ -41,7 +23,7 @@ namespace ya
 	}
 	void SceneManager::Release()
 	{
-		for (auto iter : mScenes)
+		for (auto& iter : mScenes)
 		{
 			delete iter.second;
 			iter.second = nullptr;

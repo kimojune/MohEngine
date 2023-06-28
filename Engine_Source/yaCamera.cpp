@@ -2,6 +2,7 @@
 #include "yaTransform.h"
 #include "yaGameObject.h"
 #include "yaApplication.h"
+#include "yaRenderer.h"
 
 extern ya::Application application;
 
@@ -12,11 +13,15 @@ namespace ya
 
 	Camera::Camera()
 		:Component(eComponentType::Camera)
-		,mType(eProjectionType::OrthoGraphic)
+		,mType(eProjectionType::Perpective)
 		,mAspectRatio(1.0f)
 		,mNear(1.0f)
 		,mFar(1000.0f)
 		,mSize(5.0f)
+		, mLayerMask{}
+		, mOpaqueGameObjects{}
+		, mCutOutGameObjects{}
+		, mTransparentGameObjects{}
 	{
 	}
 	Camera::~Camera()
@@ -24,6 +29,7 @@ namespace ya
 	}
 	void Camera::Initialize()
 	{
+		EnableLayerMasks();
 	}
 	void Camera::Update()
 	{
@@ -32,9 +38,15 @@ namespace ya
 	{
 		CreateViewMatrix();
 		CreateProjectionMatrix(mType);
+		RegisterCameraInRenderer();
 	}
 	void Camera::Render()
 	{
+		SortGameObjects();
+
+		RenderOpaque();
+		RenderCutOut();
+		RenderTransparent();
 	}
 	bool Camera::CreateViewMatrix()
 	{
@@ -84,5 +96,46 @@ namespace ya
 		}
 
 		return true;
+	}
+	void Camera::RegisterCameraInRenderer()
+	{
+		renderer::cameras.push_back(this);
+	}
+	void Camera::TurnLayerMask(eLayerType type, bool enable)
+	{
+		mLayerMask.set((UINT)type, enable);
+	}
+	void Camera::SortGameObjects()
+	{
+	}
+	void Camera::RenderOpaque()
+	{
+		for (GameObject* gameObj : mOpaqueGameObjects)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			gameObj->Render();
+		}
+	}
+	void Camera::RenderCutOut()
+	{
+		for (GameObject* gameObj : mCutOutGameObjects)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			gameObj->Render();
+		}
+	}
+	void Camera::RenderTransparent()
+	{
+		for (GameObject* gameObj : mTransparentGameObjects)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			gameObj->Render();
+		}
 	}
 }

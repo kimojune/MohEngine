@@ -7,6 +7,7 @@ namespace ya::graphics
 		: Resource(ya::enums::eResourceType::Material)
 		, mShader(nullptr)
 		, mTexture(nullptr)
+		, mMode(eRenderingMode::Opaque)
 	{
 
 	}

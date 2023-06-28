@@ -46,6 +46,42 @@
     <Filter Include="Scene\Manager">
       <UniqueIdentifier>{3a98f9aa-f2ac-442b-a718-14b26c45d080}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Graphics\ConstantBuffer">
+      <UniqueIdentifier>{3c83e915-4678-4ddf-b834-bf05dc8b9a2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\GraphicDevice">
+      <UniqueIdentifier>{d25f5bd7-a72f-4783-ad0a-c4ca6c4e6fee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Renderer">
+      <UniqueIdentifier>{a779d26a-1c74-4901-a14b-22d6cfe19b47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Material">
+      <UniqueIdentifier>{bc3816ed-e3fd-4bc8-b6f4-ef81f708e6a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mesh">
+      <UniqueIdentifier>{67e96c21-282b-4587-83d4-6f4b50e9ea4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Resources">
+      <UniqueIdentifier>{830366ab-51ae-4dfb-9656-2723d75cb9b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader">
+      <UniqueIdentifier>{3a4b6e83-b7cc-4c94-b68c-0d8e52e6d259}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{35094a9b-a2db-4fc5-90a3-950b37b3a6be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Camera">
+      <UniqueIdentifier>{d12ed666-3d9a-49f6-b563-69c39f6d9c48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Base">
+      <UniqueIdentifier>{624bded0-19bd-44e4-b2f2-47b6f24a321c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\Transform">
+      <UniqueIdentifier>{98b3ec7c-1407-4eb4-96cb-5b80a7f807f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\MeshRenderer">
+      <UniqueIdentifier>{e25b6bfa-890d-4d50-b3ec-cfbabf993dba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
@@ -57,9 +93,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp">
       <Filter>Input</Filter>
     </ClCompile>
@@ -69,26 +102,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp">
       <Filter>High Level Interface</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp">
       <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp">
-      <Filter>GameObject\Component</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaScript.cpp">
       <Filter>GameObject\Component\Script</Filter>
@@ -102,33 +117,42 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaScene.cpp">
       <Filter>Scene\Base</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTransform.cpp">
-      <Filter>GameObject\Component</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp">
+      <Filter>Graphics\ConstantBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaMeshRenderer.cpp">
-      <Filter>GameObject\Component</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTexture.cpp">
-      <Filter>Resource</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp">
+      <Filter>Graphics\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMaterial.cpp">
-      <Filter>Resource</Filter>
+      <Filter>Resource\Material</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayScene.cpp">
-      <Filter>Scene</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp">
+      <Filter>Resource\Mesh</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaCameraScript.cpp">
-      <Filter>GameObject\Component\Script</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaResources.cpp">
+      <Filter>Resource\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp">
+      <Filter>Resource\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTexture.cpp">
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaMeshRenderer.cpp">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTransform.cpp">
+      <Filter>GameObject\Component\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp">
+      <Filter>GameObject\Component\Base</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCamera.cpp">
-      <Filter>GameObject\Component\Script</Filter>
+      <Filter>GameObject\Component\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTitleScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaDog.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaPlayerScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -138,9 +162,6 @@
       <Filter>Common\Time</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h">
       <Filter>Resource</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h">
@@ -164,26 +185,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h">
       <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h">
-      <Filter>GameObject\Component</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaScript.h">
       <Filter>GameObject\Component\Script</Filter>
@@ -194,36 +197,45 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaScene.h">
       <Filter>Scene\Base</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTransform.h">
-      <Filter>GameObject\Component</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h">
+      <Filter>Graphics\ConstantBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaMeshRenderer.h">
-      <Filter>GameObject\Component</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTexture.h">
-      <Filter>Resource</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h">
+      <Filter>Graphics\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMaterial.h">
-      <Filter>Resource</Filter>
+      <Filter>Resource\Material</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayScene.h">
-      <Filter>Scene</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h">
+      <Filter>Resource\Mesh</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaCameraScript.h">
-      <Filter>GameObject\Component\Script</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaResources.h">
+      <Filter>Resource\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h">
+      <Filter>Resource\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTexture.h">
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h">
+      <Filter>Scene\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaMeshRenderer.h">
+      <Filter>GameObject\Component\MeshRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTransform.h">
+      <Filter>GameObject\Component\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h">
+      <Filter>GameObject\Component\Base</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCamera.h">
-      <Filter>GameObject\Component\Script</Filter>
+      <Filter>GameObject\Component\Camera</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTitleScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaDog.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

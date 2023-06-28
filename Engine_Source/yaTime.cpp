@@ -1,5 +1,6 @@
 #include "yaTime.h"
 #include "yaApplication.h"
+#include "yaInput.h"
 
 extern ya::Application application;
 
@@ -41,7 +42,10 @@ namespace ya
 
 			wchar_t szFloat[50] = {};
 			float FPS = 1.0f / (float)mDeltaTime;
+			//Vector2 cursorPos = Input::GetMousePos();
+
 			swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
+			//swprintf_s(szFloat, 50, L"FPS : %d | Mouse X: %d, Y: %d", (UINT)FPS, cursorPos.x, cursorPos.y);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hWnd, szFloat);
 			
