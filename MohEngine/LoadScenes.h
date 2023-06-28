@@ -1,6 +1,7 @@
 #pragma once
 #include "yaSceneManager.h"
 #include "yaPlayScene.h"
+#include "yaTitleScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\MohEngine.lib")
@@ -17,6 +18,7 @@ namespace ya
 	void InitializeScenes()
 	{
 		//PlayScene* playScene = new PlayScene();
-		SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		//SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 	}
 }

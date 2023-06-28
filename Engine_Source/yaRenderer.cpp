@@ -195,36 +195,36 @@ namespace ya::renderer
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		ya::Resources::Insert(L"SpriteShader", spriteShader);
 		
-		{
-		std::shared_ptr<Texture> texture 
-			= Resources::Load<Texture>(L"guide_idle", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
+		//{
+		//std::shared_ptr<Texture> texture 
+		//	= Resources::Load<Texture>(L"guide_idle", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
 
 
-		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
-		spriteMaterial->SetShader(spriteShader);
-		spriteMaterial->SetTexture(texture);
-		Resources::Insert(L"SpriteMaterial", spriteMaterial);
-		}
-		
-		{
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"Dog", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
+		//std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
+		//spriteMaterial->SetShader(spriteShader);
+		//spriteMaterial->SetTexture(texture);
+		//Resources::Insert(L"guide_Material", spriteMaterial);
+		//}
+		//
+		//{
+		//	std::shared_ptr<Texture> texture
+		//		= Resources::Load<Texture>(L"Dog", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
 
-		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
-		spriteMaterial->SetShader(spriteShader);
-		spriteMaterial->SetTexture(texture);
-		Resources::Insert(L"SpriteMaterial02", spriteMaterial);
-		}
-		
-		{
-			std::shared_ptr<Texture> texture
-				= Resources::Load<Texture>(L"marsh_of_gungeon", L"..\\Resources\\Texture\\TitleScreenCollection\\marsh_of_gungeon_001.png");
+		//std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
+		//spriteMaterial->SetShader(spriteShader);
+		//spriteMaterial->SetTexture(texture);
+		//Resources::Insert(L"Dog_Material", spriteMaterial);
+		//}
+		//
+		//{
+		//	std::shared_ptr<Texture> texture
+		//		= Resources::Load<Texture>(L"marsh_of_gungeon", L"..\\Resources\\Texture\\TitleScreenCollection\\marsh_of_gungeon_001.png");
 
-		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
-		spriteMaterial->SetShader(spriteShader);
-		spriteMaterial->SetTexture(texture);
-		Resources::Insert(L"SpriteMaterial03", spriteMaterial);
-		}
+		//std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
+		//spriteMaterial->SetShader(spriteShader);
+		//spriteMaterial->SetTexture(texture);
+		//Resources::Insert(L"marsh_of_gungeon_material", spriteMaterial);
+		//}
 
 	}
 

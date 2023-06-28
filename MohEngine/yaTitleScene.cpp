@@ -14,19 +14,17 @@ namespace ya
 	void TitleScene::Initialize()
 	{
 
-		Player* player = new Player();
-		player->Intialize();
-		AddGameObject(eLayerType::Player, player);
+		//Player* player = new Player();
+		//player->Intialize();
+		//AddGameObject(eLayerType::Player, player);
 
 		GameObject* obj = new GameObject();
 		AddGameObject(eLayerType::UI, obj);
 		MeshRenderer* mr = obj->AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
-		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial03")));
+		mr->SetMaterial(Resources::Find<Material>((L"guide_Material")));
 		Transform* tr = obj->GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.5f, 0.5f, -0.4f));
-		
-
 	}
 	void TitleScene::Update()
 	{

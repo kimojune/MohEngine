@@ -20,6 +20,7 @@ namespace ya::enums
 		Companions,
 		Monster,
 		UI,
+		BG,
 		End,
 	};
 

@@ -23,6 +23,9 @@
     <ClInclude Include="LoadScenes.h">
       <Filter>Contents\Load</Filter>
     </ClInclude>
+    <ClInclude Include="CreateMaterial.h">
+      <Filter>Contents\Load</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">

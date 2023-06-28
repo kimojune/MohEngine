@@ -153,6 +153,7 @@
     <ClInclude Include="yaPlayerScript.h" />
     <ClInclude Include="yaPlayScene.h" />
     <ClInclude Include="yaTitleScene.h" />
+    <ClInclude Include="CreateMaterial.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp" />
