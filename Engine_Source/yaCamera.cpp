@@ -13,11 +13,11 @@ namespace ya
 
 	Camera::Camera()
 		:Component(eComponentType::Camera)
-		,mType(eProjectionType::Perpective)
+		,mType(eProjectionType::OrthoGraphic)
 		,mAspectRatio(1.0f)
 		,mNear(1.0f)
 		,mFar(1000.0f)
-		,mSize(5.0f)
+		,mSize(6.0f)
 		, mLayerMask{}
 		, mOpaqueGameObjects{}
 		, mCutOutGameObjects{}
@@ -83,7 +83,7 @@ namespace ya
 
 		if (mType == eProjectionType::OrthoGraphic)
 		{
-			float OrthorGraphicRatio = mSize / 500.0f;
+			float OrthorGraphicRatio = mSize /10;
 			width *= OrthorGraphicRatio;
 			height *= OrthorGraphicRatio;
 

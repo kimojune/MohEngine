@@ -8,23 +8,23 @@
     <ClInclude Include="yaPlayer.h">
       <Filter>Contents</Filter>
     </ClInclude>
-    <ClInclude Include="yaCameraScript.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaPlayerScript.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="yaPlayScene.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="yaTitleScene.h">
-      <Filter>Contents\Script</Filter>
-    </ClInclude>
     <ClInclude Include="LoadScenes.h">
       <Filter>Contents\Load</Filter>
     </ClInclude>
     <ClInclude Include="CreateMaterial.h">
       <Filter>Contents\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="yaCameraScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayerScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="yaTitleScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayScene.h">
+      <Filter>Contents\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -38,16 +38,16 @@
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="yaCameraScript.cpp">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Script</Filter>
     </ClCompile>
     <ClCompile Include="yaPlayerScript.cpp">
-      <Filter>Contents\Scene</Filter>
+      <Filter>Contents\Script</Filter>
     </ClCompile>
     <ClCompile Include="yaPlayScene.cpp">
-      <Filter>Contents\Script</Filter>
+      <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="yaTitleScene.cpp">
-      <Filter>Contents\Script</Filter>
+      <Filter>Contents\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
