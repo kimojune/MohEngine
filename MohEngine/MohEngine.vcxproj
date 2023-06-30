@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="hoCursor.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="yaCameraScript.h" />
     <ClInclude Include="yaDog.h" />
@@ -156,6 +157,7 @@
     <ClInclude Include="CreateMaterial.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="hoCursor.cpp" />
     <ClCompile Include="MohEngine.cpp" />
     <ClCompile Include="yaCameraScript.cpp" />
     <ClCompile Include="yaDog.cpp" />

@@ -130,15 +130,17 @@ namespace ya
 		titletr->SetPosition(Vector3(0.0f, half_width / 32, 0.0f));
 		titletr->SetScale(Vector3(436.0f, 139.0f, 1.0f));
 				
-
-		
-
 		GameObject* camera = new GameObject();
 		AddGameObject(eLayerType::Player, camera);
 		Camera* camecomp = camera->AddComponent<Camera>();
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		CameraScript* camerasc = camera->AddComponent<CameraScript>();
 
+
+		//GameObject* mouse = new GameObject();
+		//AddGameObject(eLayerType::UI, mouse);
+		//Transform* mousetr = mouse->GetComponent<Transform>();
+		
 
 	}
 	void TitleScene::Update()

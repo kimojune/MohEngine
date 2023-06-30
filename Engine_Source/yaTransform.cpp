@@ -86,4 +86,17 @@ namespace ya
 		cb->Bind(eShaderStage::VS);
 
 	}
+	Vector3 Transform::TranslateWorldMatrix(Vector3 vector)
+	{
+		Matrix mView = Camera::GetViewMatrix();
+		Matrix mProjection = Camera::GetProjectionMatrix();
+
+		Matrix mViewReverce = mView.Invert();
+		Matrix mProjectionReverce = mProjection.Invert();
+
+		Vector4 cameraPos = Vector4::Transform(Vector4(vector.x, vector.y, vector.z, 1.0f), mProjectionReverce);
+		Vector4 worldpos = Vector4::Transform(Vector4(vector.x, vector.y, vector.z, 1.0f), mViewReverce);
+
+		return Vector3(worldpos.x, worldpos.y, worldpos.z)/ worldpos.w;
+	}
 }

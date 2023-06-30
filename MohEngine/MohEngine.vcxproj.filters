@@ -26,6 +26,7 @@
     <ClInclude Include="yaPlayScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="hoCursor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -49,6 +50,7 @@
     <ClCompile Include="yaTitleScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="hoCursor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
