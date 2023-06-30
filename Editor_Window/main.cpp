@@ -3,12 +3,18 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
-#include "yaApplication.h"
-#include "yaRenderer.h"
-#include "yaResources.h"
-#include "yaSceneManager.h"
+#include "..\Engine_SOURCE\yaApplication.h"
+#include "..\Engine_SOURCE\yaRenderer.h"
+#include "..\Engine_SOURCE\yaResources.h"
 #include "LoadScenes.h"
 #include "CreateMaterial.h"
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\MohEngine.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\MohEngine.lib")
+#endif
+
 
 ya::Application application;
 
@@ -98,7 +104,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_EDITORWINDOW));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_EDITORWINDOW);
+    wcex.lpszMenuName   = NULL;     //MAKEINTRESOURCEW(IDC_EDITORWINDOW);
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 

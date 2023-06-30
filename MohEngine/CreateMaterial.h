@@ -1,8 +1,8 @@
 #pragma once
-#include "yaResources.h"
-#include "yaTexture.h"
-#include "yaMaterial.h"
-#include "yaShader.h"
+#include "..\Engine_SOURCE\yaResources.h"
+#include "..\Engine_SOURCE\yaTexture.h"
+#include "..\Engine_SOURCE\yaMaterial.h"
+#include "..\Engine_SOURCE\yaShader.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\MohEngine.lib")
@@ -10,6 +10,11 @@
 #pragma comment(lib, "..\\x64\\Release\\MohEngine.lib")
 #endif
 
+
+//#include "yaResources.h"
+//#include "yaTexture.h"
+//#include "yaMaterial.h"
+//#include "yaShader.h"
 
 
 namespace ya
@@ -30,7 +35,12 @@ namespace ya
 		std::shared_ptr<ya::graphics::Texture> guide_idle_front_001
 			= Resources::Load<ya::graphics::Texture>(L"guide_idle_front_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
 		
-		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_Material");
+		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_idle_front_001_material");
+
+		std::shared_ptr<ya::graphics::Texture> dog_idle_left_001
+			= Resources::Load<ya::graphics::Texture>(L"dog_idle_left_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
+		
+		CreateMaterial(L"SpriteShader", dog_idle_left_001, L"dog_idle_left_001_material");
 
 		std::shared_ptr<ya::graphics::Texture> marsh_of_gungeon_001
 			= Resources::Load<ya::graphics::Texture>(L"marsh_of_gungeon_001", L"..\\Resources\\Texture\\TitleScreenCollection\\marsh_of_gungeon_001.png");
@@ -78,6 +88,10 @@ namespace ya
 		std::shared_ptr<ya::graphics::Texture> title_words_black_001
 			= Resources::Load<ya::graphics::Texture>(L"title_words_black_001", L"..\\Resources\\Texture\\TitleScreenCollection\\title_words_black_001.png");
 		CreateMaterial(L"SpriteShader", title_words_black_001, L"title_words_black_001_material");
+
+				std::shared_ptr<ya::graphics::Texture> dragun_title_screen_001
+			= Resources::Load<ya::graphics::Texture>(L"dragun_title_screen_001", L"..\\Resources\\Texture\\TitleScreenCollection\\dragun_title_screen_001.png");
+		CreateMaterial(L"SpriteShader", dragun_title_screen_001, L"dragun_title_screen_001_material");
 
 		
 

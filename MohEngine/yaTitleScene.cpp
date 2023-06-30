@@ -74,6 +74,14 @@ namespace ya
 		//tr->SetScale(Vector3(296.0f, 437.0f, 1.0f));
 		castletr->SetScale(Vector3(296.0f, 437.0f, 1.0f));
 
+		GameObject* dragon = new GameObject();
+		AddGameObject(eLayerType::BG, dragon);
+		MeshRenderer* dragonmr = dragon->AddComponent<MeshRenderer>();
+		dragonmr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
+		dragonmr->SetMaterial(Resources::Find<Material>((L"dragun_title_screen_001_material")));
+		Transform* dragontr = dragon->GetComponent<Transform>();
+		dragontr->SetPosition(Vector3((half_width / 2) - (half_width / 12), half_width / 16, 0.0f));
+		dragontr->SetScale(Vector3(66.0f, 70.0f, 1.0f));
 
 		GameObject* catlelight = new GameObject();
 		AddGameObject(eLayerType::BG, catlelight);
@@ -119,8 +127,9 @@ namespace ya
 		Transform* titletr = title->GetComponent<Transform>();
 		titletr->SetPosition(Vector3(0.0f, half_width / 32, 0.0f));
 		titletr->SetScale(Vector3(436.0f, 139.0f, 1.0f));
+				
 
-
+		
 
 		GameObject* camera = new GameObject();
 		AddGameObject(eLayerType::Player, camera);

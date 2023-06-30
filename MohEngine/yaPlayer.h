@@ -14,5 +14,6 @@ namespace ya
 		virtual void Render() override;
 
 	private:
+		Vector3 mPixelSize;
 	};
 }

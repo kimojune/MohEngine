@@ -53,6 +53,5 @@ Global
 		Editor_Source\Editor_Source.vcxitems*{a280bb2e-7373-4a87-8bfd-4dacb93c6e04}*SharedItemsImports = 9
 		Engine_Source\Engine_Source.vcxitems*{d9cb4e77-e342-443c-910a-ebd2b4faf63c}*SharedItemsImports = 9
 		Editor_Source\Editor_Source.vcxitems*{de33bb7e-d683-4c71-936a-a72d75947594}*SharedItemsImports = 4
-		Engine_Source\Engine_Source.vcxitems*{de33bb7e-d683-4c71-936a-a72d75947594}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

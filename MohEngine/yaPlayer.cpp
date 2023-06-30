@@ -8,6 +8,7 @@
 namespace ya
 {
 	Player::Player()
+		:mPixelSize(Vector3(26.0f, 31.0f, 0.0f))
 	{
 	}
 	Player::~Player()
@@ -17,10 +18,12 @@ namespace ya
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
-		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial")));
+		mr->SetMaterial(Resources::Find<Material>((L"guide_idle_front_001_material")));
 		//player->AddComponent<CameraScript>();
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		
+		tr->SetScale(mPixelSize);
 	
 	}
 	void Player::Update()
