@@ -60,12 +60,21 @@ namespace ya
 				}
 			}
 
+			
+
 			POINT mousePos = {};
 			GetCursorPos(&mousePos);
-
 			ScreenToClient(application.GetHwnd(), &mousePos);
-			mMousePos.x = mousePos.x;
-			mMousePos.y = mousePos.y;
+
+			Vector2 mousenomal = Vector2::Zero;
+
+			mousenomal.x = (2.0f * mousePos.x / application.GetWidth()) - 1.0f;
+			mousenomal.y = 1.0f - (2.0f * mousePos.y / application.GetHeight());
+
+			mMousePos.x = mousenomal.x;
+			mMousePos.y = mousenomal.y;
+
+
 		}
 		else
 		{

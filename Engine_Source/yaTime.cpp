@@ -45,7 +45,7 @@ namespace ya
 			Vector2 cursorPos = Input::GetMousePos();
 
 			//swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
-			swprintf_s(szFloat, 50, L"FPS : %d | Mouse X: %d, Y: %d", (UINT)FPS, cursorPos.x, cursorPos.y);
+			swprintf_s(szFloat, 50, L"FPS : %d | Mouse X: %f, Y: %f", (UINT)FPS, cursorPos.x, cursorPos.y);
 			//int iLen = wcsnlen_s(szFloat, 50);
 			SetWindowText(hWnd, szFloat);
 			

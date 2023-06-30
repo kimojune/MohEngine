@@ -6,6 +6,8 @@
 #include "yaCamera.h"
 #include "yaCameraScript.h"
 #include "yaApplication.h"
+#include "yaInput.h"
+#include "yaSceneManager.h"
 
 extern ya::Application application;
 
@@ -141,6 +143,22 @@ namespace ya
 	}
 	void TitleScene::Update()
 	{
+		int width = application.GetWidth();
+		int height = application.GetHeight();
+
+		int half_width = width / 2;
+		int half_height = height / 2;
+
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		{
+			Vector2 mousePos = Input::GetMousePos();
+			
+			//if ((mousePos.x >= -218.0f && mousePos.x <= 218.0f)
+			//	&& (mousePos.y <= half_width - 64.0f && mousePos.y >= half_width + 64.0f))
+				SceneManager::LoadScene(L"PlayScene");
+		}
+
+
 		Scene::Update();
 	}
 	void TitleScene::LateUpdate()
