@@ -29,13 +29,23 @@ namespace ya
 		spriteMaterial->SetTexture(texture);
 		Resources::Insert(materialname, spriteMaterial);
 	}
+	void CreateMaterial(const std::wstring& shadername, std::shared_ptr<ya::graphics::Texture> texture, const std::wstring& materialname, eRenderingMode mode)
+	{
+		std::shared_ptr<Shader> spriteShader = Resources::Find<Shader>(shadername);
+
+		std::shared_ptr<Material>  spriteMaterial = std::make_shared<Material>();
+		spriteMaterial->SetShader(spriteShader);
+		spriteMaterial->SetTexture(texture);
+		spriteMaterial->SetRenderingMode(mode);
+		Resources::Insert(materialname, spriteMaterial);
+	}
 
 	void LoadMaterial()
 	{
 		std::shared_ptr<ya::graphics::Texture> guide_idle_front_001
 			= Resources::Load<ya::graphics::Texture>(L"guide_idle_front_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
 		
-		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_idle_front_001_material");
+		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_idle_front_001_material", eRenderingMode::Opaque);
 
 		std::shared_ptr<ya::graphics::Texture> dog_idle_left_001
 			= Resources::Load<ya::graphics::Texture>(L"dog_idle_left_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
