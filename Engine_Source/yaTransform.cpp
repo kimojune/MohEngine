@@ -46,6 +46,11 @@ namespace ya
 
 		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 
+
+		if (mParent)
+		{
+			mWorld *= mParent->mWorld;
+		}
 		//CreateRotationX Matrix
 		//XMMATRIX M;
 		//M.m[0][0] = 1.0f;	 M.m[1][0] = 0.0f;		 M.m[2][0] = 0.0f;			M.m[3][0] = 0.0f;
