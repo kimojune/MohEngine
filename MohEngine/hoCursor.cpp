@@ -5,6 +5,7 @@
 namespace ho
 {
 	Cursor::Cursor()
+		:mPos(Vector3::(0.0f,0.0f,-20.0f))
 	{
 	}
 	Cursor::~Cursor()
@@ -12,23 +13,24 @@ namespace ho
 	}
 	void Cursor::Intialize()
 	{
+
 	}
 	void Cursor::Update()
 	{
-		Vector2 nomalPos = ya::Input::GetMousePos();
-		mPos = Vector3(nomalPos.x, nomalPos.y, 0.0f);
+		Vector2 Pos = ya::Input::GetMousePos();
+		mPos = Vector3(Pos.x, Pos.y, -20.0f);
 
 		Transform* tr = GetComponent<Transform>();
-		Vector3 worldPos = tr->TranslateWorldMatrix(mPos);
-		
-		tr->SetPosition(worldPos.x, worldPos.y, worldPos.z);
-		
+		tr->SetPosition(mPos);
 
+		GameObject::Update();
 	}
 	void Cursor::LateUpdate()
 	{
+		GameObject::LateUpdate();
 	}
 	void Cursor::Render()
 	{
+		GameObject::Render();
 	}
 }

@@ -43,6 +43,8 @@ namespace ya
 
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
+
+		void SetSize(float size) { mSize = size; }
 	private:
 		static Matrix View;
 		static Matrix Projection;

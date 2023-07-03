@@ -148,8 +148,10 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="hoCursor.h" />
     <ClInclude Include="LoadScenes.h" />
+    <ClInclude Include="yaBackGround.h" />
     <ClInclude Include="yaCameraScript.h" />
     <ClInclude Include="yaDog.h" />
+    <ClInclude Include="yaMainCamera.h" />
     <ClInclude Include="yaPlayer.h" />
     <ClInclude Include="yaPlayerScript.h" />
     <ClInclude Include="yaPlayScene.h" />
@@ -159,8 +161,10 @@
   <ItemGroup>
     <ClCompile Include="hoCursor.cpp" />
     <ClCompile Include="MohEngine.cpp" />
+    <ClCompile Include="yaBackGround.cpp" />
     <ClCompile Include="yaCameraScript.cpp" />
     <ClCompile Include="yaDog.cpp" />
+    <ClCompile Include="yaMainCamera.cpp" />
     <ClCompile Include="yaPlayer.cpp" />
     <ClCompile Include="yaPlayerScript.cpp" />
     <ClCompile Include="yaPlayScene.cpp" />

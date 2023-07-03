@@ -26,7 +26,15 @@
     <ClInclude Include="yaPlayScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="hoCursor.h" />
+    <ClInclude Include="yaBackGround.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="yaMainCamera.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="hoCursor.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -50,7 +58,15 @@
     <ClCompile Include="yaTitleScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="hoCursor.cpp" />
+    <ClCompile Include="yaBackGround.cpp">
+      <Filter>Contents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="hoCursor.cpp">
+      <Filter>Contents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="yaMainCamera.cpp">
+      <Filter>Contents\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -64,6 +80,9 @@
     </Filter>
     <Filter Include="Contents\Script">
       <UniqueIdentifier>{21ee4e4d-57d8-4aa8-abce-17608dfdbfcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject">
+      <UniqueIdentifier>{ebb191ca-2029-40ac-8f69-999042b9a0b8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
