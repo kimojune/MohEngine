@@ -3,10 +3,13 @@
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
 #include "yaMesh.h"
-#include "yaCameraScript.h"
-#include "yaCamera.h"
 #include "yaPlayer.h"
 #include "yaPlayerScript.h"
+#include "yaMainCamera.h"
+#include "hoCursor.h"
+#include "yaUICamera.h"
+
+using namespace ho;
 
 namespace ya
 {
@@ -35,12 +38,13 @@ namespace ya
 		//dogtr->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
 		//
 		
-		GameObject* camera = new GameObject();
-		AddGameObject(eLayerType::Player, camera);
-		Camera* camecomp = camera->AddComponent<Camera>();
-		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		CameraScript* camerasc = camera->AddComponent<CameraScript>();
-		camerasc->SetTarget(player);
+		Cursor* cursor = new Cursor();
+
+		MainCamera* camera = new MainCamera();
+		camera->Intialize();
+
+		UICamera* uicamera = new UICamera();
+
 		
 	}
 	void PlayScene::Update()

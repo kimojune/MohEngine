@@ -8,8 +8,11 @@
 #include "yaInput.h"
 #include "yaSceneManager.h"
 #include "yaBackGround.h"
+#include "hoCursor.h"
 
 extern ya::Application application;
+
+using namespace ho;
 
 namespace ya
 {
@@ -75,10 +78,7 @@ namespace ya
 		MainCamera* mainCamera = new MainCamera();
 		mainCamera->Intialize();
 
-		//GameObject* mouse = new GameObject();
-		//AddGameObject(eLayerType::UI, mouse);
-		//Transform* mousetr = mouse->GetComponent<Transform>();
-		
+		Cursor* cursor = new Cursor();
 
 	}
 	void TitleScene::Update()

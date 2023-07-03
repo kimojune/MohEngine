@@ -101,6 +101,8 @@ namespace ya
 
 		Vector4 cameraPos = Vector4::Transform(Vector4(vector.x, vector.y, vector.z, 1.0f), mProjectionReverce);
 		Vector4 worldpos = Vector4::Transform(Vector4(vector.x, vector.y, vector.z, 1.0f), mViewReverce);
+		
+		mPosition = vector;
 
 		return Vector3(worldpos.x, worldpos.y, worldpos.z)/ worldpos.w;
 	}

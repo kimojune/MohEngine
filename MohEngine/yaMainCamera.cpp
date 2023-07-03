@@ -16,7 +16,8 @@ namespace ya
 	{
 		Camera* camera =AddComponent<Camera>();
 		camera->SetSize(0.6f);
-	
+		camera->TurnLayerMask(eLayerType::UI, false);
+
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
 		AddComponent<CameraScript>();

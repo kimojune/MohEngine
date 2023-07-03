@@ -103,9 +103,13 @@ namespace ya
 			= Resources::Load<ya::graphics::Texture>(L"title_words_black_001", L"..\\Resources\\Texture\\TitleScreenCollection\\title_words_black_001.png");
 		CreateMaterial(L"SpriteShader", title_words_black_001, L"title_words_black_001_material");
 
-				std::shared_ptr<ya::graphics::Texture> dragun_title_screen_001
+		std::shared_ptr<ya::graphics::Texture> dragun_title_screen_001
 			= Resources::Load<ya::graphics::Texture>(L"dragun_title_screen_001", L"..\\Resources\\Texture\\TitleScreenCollection\\dragun_title_screen_001.png");
 		CreateMaterial(L"SpriteShader", dragun_title_screen_001, L"dragun_title_screen_001_material");
+		
+		std::shared_ptr<ya::graphics::Texture> reticle_crosshair_002
+			= Resources::Load<ya::graphics::Texture>(L"reticle_crosshair_002", L"..\\Resources\\Texture\\UI\\reticle_crosshair_002.png");
+		CreateMaterial(L"SpriteShader", reticle_crosshair_002, L"reticle_crosshair_002_material");
 
 		
 

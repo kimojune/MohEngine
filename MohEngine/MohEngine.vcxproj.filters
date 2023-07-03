@@ -29,11 +29,14 @@
     <ClInclude Include="yaBackGround.h">
       <Filter>Contents\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="yaMainCamera.h">
-      <Filter>Contents\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="hoCursor.h">
       <Filter>Contents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="yaMainCamera.h">
+      <Filter>Contents\GameObject\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="yaUICamera.h">
+      <Filter>Contents\GameObject\Camera</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -65,7 +68,10 @@
       <Filter>Contents\GameObject</Filter>
     </ClCompile>
     <ClCompile Include="yaMainCamera.cpp">
-      <Filter>Contents\GameObject</Filter>
+      <Filter>Contents\GameObject\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="yaUICamera.cpp">
+      <Filter>Contents\GameObject\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -83,6 +89,9 @@
     </Filter>
     <Filter Include="Contents\GameObject">
       <UniqueIdentifier>{ebb191ca-2029-40ac-8f69-999042b9a0b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Camera">
+      <UniqueIdentifier>{cb24e935-f25d-4c71-a6d2-bb87e96f6005}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
