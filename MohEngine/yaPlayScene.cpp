@@ -38,12 +38,22 @@ namespace ya
 		//dogtr->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
 		//
 		
-		Cursor* cursor = new Cursor();
+
+		//GameObject* HP_effect = new GameObject();
+		//MeshRenderer* HP_effectmr = HP_effect->AddComponent< MeshRenderer>();
+		//HP_effectmr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
+		//HP_effectmr->SetMaterial(Resources::Find<Material>((L"HP_effect_material")));
+		//Transform* HP_effectTr = HP_effect->GetComponent<Transform>();
+		//HP_effectTr->SetPosition(Vector3::Zero);
+		//HP_effectTr->SetScale(Vector3(100.0f, 14.0f, 0.0f));
+		//AddGameObject(eLayerType::UI, HP_effect);
+
 
 		MainCamera* camera = new MainCamera();
 		camera->Intialize();
-
 		UICamera* uicamera = new UICamera();
+
+		Cursor* cursor = new Cursor(uicamera);
 
 		
 	}

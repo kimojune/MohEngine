@@ -8,11 +8,14 @@ namespace ya
 		:mPos(Vector3(0.0f,0.0f,-20.0f))
 	{
 		Camera* camera = AddComponent<Camera>();
-		camera->SetSize(0.2f);
+		camera->SetSize(0.3f);
 		camera->DisableLayerMasks();
 		camera->TurnLayerMask(eLayerType::UI);
+		camera->SetType(Camera::eProjectionType::OrthoGraphic);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
+
+		
 
 		SetName(L"UICamera");
 

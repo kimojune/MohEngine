@@ -110,10 +110,16 @@ namespace ya
 		std::shared_ptr<ya::graphics::Texture> reticle_crosshair_002
 			= Resources::Load<ya::graphics::Texture>(L"reticle_crosshair_002", L"..\\Resources\\Texture\\UI\\reticle_crosshair_002.png");
 		CreateMaterial(L"SpriteShader", reticle_crosshair_002, L"reticle_crosshair_002_material");
+		
+		std::shared_ptr<ya::graphics::Texture> HP_effect
+			= Resources::Load<ya::graphics::Texture>(L"HP_effect", L"..\\Resources\\Texture\\UI\\GameUI\\HP_effect.png");
+		CreateMaterial(L"SpriteShader", HP_effect, L"HP_effect_material");
+
+		std::shared_ptr<ya::graphics::Texture> Heart
+			= Resources::Load<ya::graphics::Texture>(L"Heart", L"..\\Resources\\Texture\\UI\\GameUI\\Heart.png");
+		CreateMaterial(L"SpriteShader", Heart, L"Heart_material");
 
 		
-
-
 	
 		
 

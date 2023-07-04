@@ -45,6 +45,11 @@ namespace ya
 		void DisableDepthStencilState();
 
 		void SetSize(float size) { mSize = size; }
+		void SetType(eProjectionType type) { mType = type; }
+
+		Matrix GetViewInverseMatrix();
+		Matrix GetProjectionInverseMatrix();
+	
 	private:
 		static Matrix View;
 		static Matrix Projection;

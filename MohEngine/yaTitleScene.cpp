@@ -78,7 +78,7 @@ namespace ya
 		MainCamera* mainCamera = new MainCamera();
 		mainCamera->Intialize();
 
-		Cursor* cursor = new Cursor();
+		Cursor* cursor = new Cursor(mainCamera);
 
 	}
 	void TitleScene::Update()

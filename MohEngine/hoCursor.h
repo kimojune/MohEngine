@@ -1,15 +1,17 @@
 #pragma once
 #include "yaGameObject.h"
+#include "yaUICamera.h"
 
 using namespace ya::math;
 using namespace ya;
+using namespace ya::graphics;
 
 namespace ho
 {
 class Cursor : public ya::GameObject
 {
 public:
-	Cursor();
+	Cursor(GameObject* camera);
 	~Cursor();
 
 	virtual void Intialize() override;
@@ -17,8 +19,11 @@ public:
 	virtual void LateUpdate() override;
 	virtual void Render() override;
 
+	Vector3 TranslateWorldPos(Vector3 pos);
+
 private:
 	Vector3 mPos;
+	GameObject* mCamera;
 };
 }
 

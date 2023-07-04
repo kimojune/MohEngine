@@ -4,11 +4,16 @@
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
 #include "yaSceneManager.h"
+#include "yaUICamera.h"
+#include "yaCamera.h"
+
 
 namespace ho
 {
-	Cursor::Cursor()
-		:mPos(Vector3(0.0f,0.0f,-20.0f))
+	using namespace ya;
+
+	Cursor::Cursor(GameObject* camera)
+		:mPos(Vector3(0.0f, 0.0f, -10.0f))
 	{
 		Transform* tr = GetComponent<Transform>();
 		tr->SetScale(Vector3(13.0f, 13.0f, 1.0f));
@@ -18,6 +23,7 @@ namespace ho
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
+		mCamera = camera;
 		SetName(L"Cursor");
 	}
 	Cursor::~Cursor()
@@ -30,11 +36,9 @@ namespace ho
 	void Cursor::Update()
 	{
 		Transform* tr = GetComponent<Transform>();
-		Vector2 Pos = ya::Input::GetMousePos() * 100.0f;
-		mPos = Vector3(Pos.x, Pos.y, 0.0f);
-
-		Vector3 inversepos = tr->TranslateWorldMatrix(mPos);
-		//tr->SetPosition(inversepos);
+		Vector2 Pos = ya::Input::GetMousePos() ;
+		mPos = Vector3(Pos.x, Pos.y, -10.0f);
+		tr->SetPosition(TranslateWorldPos(mPos));
 		
 		GameObject::Update();
 	}
@@ -45,5 +49,18 @@ namespace ho
 	void Cursor::Render()
 	{
 		GameObject::Render();
+	}
+	Vector3 Cursor::TranslateWorldPos(Vector3 pos)
+	{
+		Vector4 mpos = Vector4(pos.x, pos.y, pos.z, 1.0f);
+		Camera* camera = mCamera->GetComponent<Camera>();
+		Matrix viewInverse = camera->GetViewInverseMatrix();
+		Matrix projectionInverse = camera->GetProjectionInverseMatrix();
+		
+		Vector4 translateProjectionPos = XMVector4Transform(mpos, projectionInverse);
+		Vector4 translatePos = XMVector4Transform(translateProjectionPos, viewInverse);
+		
+		
+		return Vector3(translatePos.x, translatePos.y, translatePos.z);
 	}
 }

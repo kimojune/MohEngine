@@ -22,6 +22,7 @@ namespace ya::graphics
 		swapChainDesc.BufferCount = 2;
 		swapChainDesc.BufferDesc.Width= application.GetWidth();
 		swapChainDesc.BufferDesc.Height = application.GetHeight();
+		//swapChainDesc.Flags = DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH;
 
 		if (!CreateSwapChain(&swapChainDesc, hWnd))
 			return;

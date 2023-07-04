@@ -227,4 +227,15 @@ namespace ya
 			= renderer::depthStencilStates[(UINT)eDSType::None];
 		GetDevice()->BindDepthStencilState(dsState.Get());
 	}
+
+	Matrix Camera::GetViewInverseMatrix()
+	{
+		Matrix viewInvert = mView.Invert();
+		return viewInvert;
+	}
+	Matrix Camera::GetProjectionInverseMatrix()
+	{
+		Matrix projectionInvert = mProjection.Invert();
+		return projectionInvert;
+	}
 }
