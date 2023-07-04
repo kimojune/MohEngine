@@ -228,14 +228,12 @@ namespace ya
 		GetDevice()->BindDepthStencilState(dsState.Get());
 	}
 
-	Matrix Camera::GetViewInverseMatrix()
+	Matrix Camera::GetmView()
 	{
-		Matrix viewInvert = mView.Invert();
-		return viewInvert;
+		return mView;
 	}
-	Matrix Camera::GetProjectionInverseMatrix()
+	Matrix Camera::GetmProjection()
 	{
-		Matrix projectionInvert = mProjection.Invert();
-		return projectionInvert;
+		return mProjection;
 	}
 }

@@ -68,16 +68,19 @@ namespace ya
 
 			Vector2 mousenomal = Vector2::Zero;
 
-			mousenomal.x = (2.0f * mousePos.x / application.GetWidth()) - 1.0f;
-			mousenomal.y = 1.0f - (2.0f * mousePos.y / application.GetHeight());
+			//mousenomal.x = (2.0f * mousePos.x / application.GetWidth()) - 1.0f;
+			//mousenomal.y = 1.0f - (2.0f * mousePos.y / application.GetHeight());
 			//float width = application.GetWidth() / 2;
 			//float height = application.GetHeight() / 2;
 			//mousenomal.x = mousePos.x - width;
 			//mousenomal.y = -mousePos.y + height;
 
-			mMousePos.x = mousenomal.x;
-			mMousePos.y = mousenomal.y;
+			//mMousePos.x = mousenomal.x;
+			//mMousePos.y = mousenomal.y;
+			mMousePos.x = mousePos.x;
+			mMousePos.y = mousePos.y;
 
+			
 
 		}
 		else

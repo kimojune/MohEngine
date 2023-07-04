@@ -43,12 +43,10 @@ namespace ya
 		BackGround* gunmanarm = new BackGround(Vector3((-half_width / 2) + (half_width / 12), half_height / 4, 0.0f), (L"silhouette_lich_click_Material"));
 		BackGround* title = new BackGround(Vector3(0.0f, half_width / 32, 0.0f), (L"title_words_black_001_material"));
 
-
 		MainCamera* mainCamera = new MainCamera();
+		UICamera* uicamera = new UICamera();
 
-
-		Cursor* cursor = new Cursor(mainCamera);
-
+		Cursor* cursor = new Cursor(uicamera);
 	}
 	void TitleScene::Update()
 	{

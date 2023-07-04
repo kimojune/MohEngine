@@ -47,8 +47,8 @@ namespace ya
 		void SetSize(float size) { mSize = size; }
 		void SetType(eProjectionType type) { mType = type; }
 
-		Matrix GetViewInverseMatrix();
-		Matrix GetProjectionInverseMatrix();
+		Matrix GetmView();
+		Matrix GetmProjection();
 	
 	private:
 		static Matrix View;

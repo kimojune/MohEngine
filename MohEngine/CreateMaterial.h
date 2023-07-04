@@ -44,13 +44,12 @@ namespace ya
 	{
 		std::shared_ptr<ya::graphics::Texture> MagentaTexture
 			= Resources::Load<ya::graphics::Texture>(L"MagentaTexture", L"..\\Resources\\Texture\\MagentaTexture.png");
-
-		CreateMaterial(L"SpriteShader", MagentaTexture, L"MagentaTexture_material", eRenderingMode::Opaque);
+		CreateMaterial(L"SpriteShader", MagentaTexture, L"MagentaTexture_material");
 
 		std::shared_ptr<ya::graphics::Texture> guide_idle_front_001
 			= Resources::Load<ya::graphics::Texture>(L"guide_idle_front_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
-		
-		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_idle_front_001_material", eRenderingMode::Opaque);
+		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_idle_front_001_material");
+
 		std::shared_ptr<ya::graphics::Texture> dog_idle_left_001
 			= Resources::Load<ya::graphics::Texture>(L"dog_idle_left_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
 		
@@ -86,10 +85,6 @@ namespace ya
 		std::shared_ptr<ya::graphics::Texture> title_water_001
 			= Resources::Load<ya::graphics::Texture>(L"title_water_001", L"..\\Resources\\Texture\\TitleScreenCollection\\title_water_001.png");
 		CreateMaterial(L"SpriteShader", title_water_001, L"title_water_001_material");
-		
-		//std::shared_ptr<ya::graphics::Texture> title_water_001
-		//	= Resources::Load<ya::graphics::Texture>(L"title_water_001", L"..\\Resources\\Texture\\TitleScreenCollection\\title_water_001.png");
-		//CreateMaterial(L"SpriteShader", title_water_001, L"title_water_001_material");
 		
 		std::shared_ptr<ya::graphics::Texture> marsh_of_gungeon_glow_001
 			= Resources::Load<ya::graphics::Texture>(L"marsh_of_gungeon_glow_001", L"..\\Resources\\Texture\\TitleScreenCollection\\marsh_of_gungeon_glow_001.png");
@@ -139,13 +134,26 @@ namespace ya
 			= Resources::Load<ya::graphics::Texture>(L"weapon_box_01", L"..\\Resources\\Texture\\UI\\GameUI\\weapon_box_02.png");
 		CreateMaterial(L"SpriteShader", weapon_box_02, L"weapon_box_02_material");
 
-		std::shared_ptr<ya::graphics::Texture> Bullet_type
-			= Resources::Load<ya::graphics::Texture>(L"Bullet_type", L"..\\Resources\\Texture\\UI\\GameUI\\Bullet_type.png");
-		CreateMaterial(L"SpriteShader", Bullet_type, L"Bullet_type_material");
+		std::shared_ptr<ya::graphics::Texture> Bullet_count_bottom
+			= Resources::Load<ya::graphics::Texture>(L"Bullet_count_bottom", L"..\\Resources\\Texture\\UI\\GameUI\\bullet_count\\Bullet_count_bottom.png");
+		CreateMaterial(L"SpriteShader", Bullet_count_bottom, L"Bullet_count_bottom_material");
 		
-		std::shared_ptr<ya::graphics::Texture> Bullet_count
-			= Resources::Load<ya::graphics::Texture>(L"Bullet_count", L"..\\Resources\\Texture\\UI\\GameUI\\Bullet_count.png");
-		CreateMaterial(L"SpriteShader", Bullet_count, L"Bullet_count_material");
+		std::shared_ptr<ya::graphics::Texture> Bullet_count_top
+			= Resources::Load<ya::graphics::Texture>(L"Bullet_count_top", L"..\\Resources\\Texture\\UI\\GameUI\\bullet_count\\Bullet_count_top.png");
+		CreateMaterial(L"SpriteShader", Bullet_count_top, L"Bullet_count_top_material");
+
+
+		//bullet emepty
+		std::shared_ptr<ya::graphics::Texture> Emepty_Bullet_01
+			= Resources::Load<ya::graphics::Texture>(L"Emepty_Bullet_01", L"..\\Resources\\Texture\\UI\\GameUI\\bullet_count\\Emepty\\Emepty_Bullet_01.png");
+		CreateMaterial(L"SpriteShader", Emepty_Bullet_01, L"Emepty_Bullet_01_material");
+
+
+		//bullet type
+		std::shared_ptr<ya::graphics::Texture> Bullet_type_01
+			= Resources::Load<ya::graphics::Texture>(L"Bullet_type_01", L"..\\Resources\\Texture\\UI\\GameUI\\bullet_count\\Bullet\\Bullet_type_01.png");
+		CreateMaterial(L"SpriteShader", Bullet_type_01, L"Bullet_type_01_material");
+		
 
 
 		
