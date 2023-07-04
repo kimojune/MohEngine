@@ -38,6 +38,9 @@
     <ClInclude Include="yaUICamera.h">
       <Filter>Contents\GameObject\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="yaUI.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -72,6 +75,9 @@
     </ClCompile>
     <ClCompile Include="yaUICamera.cpp">
       <Filter>Contents\GameObject\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="yaUI.cpp">
+      <Filter>Contents\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -118,6 +118,35 @@ namespace ya
 		std::shared_ptr<ya::graphics::Texture> Heart
 			= Resources::Load<ya::graphics::Texture>(L"Heart", L"..\\Resources\\Texture\\UI\\GameUI\\Heart.png");
 		CreateMaterial(L"SpriteShader", Heart, L"Heart_material");
+		
+		std::shared_ptr<ya::graphics::Texture> ui_key
+			= Resources::Load<ya::graphics::Texture>(L"ui_key", L"..\\Resources\\Texture\\UI\\GameUI\\ui_key.png");
+		CreateMaterial(L"SpriteShader", ui_key, L"ui_key_material");
+
+		std::shared_ptr<ya::graphics::Texture> ui_coin
+			= Resources::Load<ya::graphics::Texture>(L"ui_coin", L"..\\Resources\\Texture\\UI\\GameUI\\ui_coin.png");
+		CreateMaterial(L"SpriteShader", ui_coin, L"ui_coin_material");
+				
+		std::shared_ptr<ya::graphics::Texture> ui_blank
+			= Resources::Load<ya::graphics::Texture>(L"ui_blank", L"..\\Resources\\Texture\\UI\\GameUI\\ui_blank.png");
+		CreateMaterial(L"SpriteShader", ui_blank, L"ui_blank_material");
+
+		std::shared_ptr<ya::graphics::Texture> weapon_box_01
+			= Resources::Load<ya::graphics::Texture>(L"weapon_box_01", L"..\\Resources\\Texture\\UI\\GameUI\\weapon_box_01.png");
+		CreateMaterial(L"SpriteShader", weapon_box_01, L"weapon_box_01_material");
+
+		std::shared_ptr<ya::graphics::Texture> weapon_box_02
+			= Resources::Load<ya::graphics::Texture>(L"weapon_box_01", L"..\\Resources\\Texture\\UI\\GameUI\\weapon_box_02.png");
+		CreateMaterial(L"SpriteShader", weapon_box_02, L"weapon_box_02_material");
+
+		std::shared_ptr<ya::graphics::Texture> Bullet_type
+			= Resources::Load<ya::graphics::Texture>(L"Bullet_type", L"..\\Resources\\Texture\\UI\\GameUI\\Bullet_type.png");
+		CreateMaterial(L"SpriteShader", Bullet_type, L"Bullet_type_material");
+		
+		std::shared_ptr<ya::graphics::Texture> Bullet_count
+			= Resources::Load<ya::graphics::Texture>(L"Bullet_count", L"..\\Resources\\Texture\\UI\\GameUI\\Bullet_count.png");
+		CreateMaterial(L"SpriteShader", Bullet_count, L"Bullet_count_material");
+
 
 		
 	

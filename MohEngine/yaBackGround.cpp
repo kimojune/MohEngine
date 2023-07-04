@@ -13,29 +13,31 @@ namespace ya
 		,mScale(Vector3::One)
 	{
 	}
-	BackGround::BackGround(Vector3 pos, Vector3 scale)
+	BackGround::BackGround(Vector3 pos, const std::wstring& materialname)
 		:mMesh(Resources::Find<Mesh>((L"RectMesh")))
 		, mMaterial(Resources::Find<Material>((L"MagentaTexture_material")))
 		, mPositon(pos)
-		, mScale(scale)
 	{
-		
+		MeshRenderer* mr = AddComponent<MeshRenderer>();
+		mMaterial = Resources::Find<Material>(materialname);
+		mr->SetMesh(mMesh);
+		mr->SetMaterial(mMaterial);
+
+		Vector2 scale = mr->GetSize();
+		mScale = Vector3(scale.x, scale.y, 1.0f);
+
+		Transform* tr = GetComponent<Transform>();
+		tr->SetPosition(mPositon);
+		tr->SetScale(mScale);
+
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(eLayerType::BG, this);
 	}
 	BackGround::~BackGround()
 	{
 	}
 	void BackGround::Intialize()
 	{
-		MeshRenderer* mr = AddComponent<MeshRenderer>();
-		mr->SetMesh(mMesh);
-		mr->SetMaterial(mMaterial);
-		Transform* tr = GetComponent<Transform>();
-		tr->SetPosition(mPositon);
-		tr->SetScale(mScale);
-		
-		Scene* scene = SceneManager::GetActiveScene();
-		scene->AddGameObject(eLayerType::BG, this);
-
 
 	}
 	void BackGround::Update()

@@ -8,12 +8,16 @@
 #include "yaMainCamera.h"
 #include "hoCursor.h"
 #include "yaUICamera.h"
+#include "yaApplication.h"
+#include "yaUI.h"
 
 using namespace ho;
+extern ya::Application application;
+
 
 namespace ya
 {
-	
+
 	PlayScene::PlayScene()
 	{
 	}
@@ -22,40 +26,28 @@ namespace ya
 	}
 	void PlayScene::Initialize()
 	{
-		
+		float half_width = application.GetWidth() / 2;
+		float half_height = application.GetHeight() / 2;
+
 		Player* player = new Player();
 		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
-
-
-		//GameObject* dog = new GameObject();
-		//AddGameObject(eLayerType::Player, dog);
-		//MeshRenderer* mr = dog->AddComponent<MeshRenderer>();
-		//mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
-		//mr->SetMaterial(Resources::Find<Material>((L"dog_idle_left_001")));
-		////player->AddComponent<CameraScript>();
-		//Transform* dogtr = dog->GetComponent<Transform>();
-		//dogtr->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
-		//
-		
-
-		//GameObject* HP_effect = new GameObject();
-		//MeshRenderer* HP_effectmr = HP_effect->AddComponent< MeshRenderer>();
-		//HP_effectmr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
-		//HP_effectmr->SetMaterial(Resources::Find<Material>((L"HP_effect_material")));
-		//Transform* HP_effectTr = HP_effect->GetComponent<Transform>();
-		//HP_effectTr->SetPosition(Vector3::Zero);
-		//HP_effectTr->SetScale(Vector3(100.0f, 14.0f, 0.0f));
-		//AddGameObject(eLayerType::UI, HP_effect);
-
 
 		MainCamera* camera = new MainCamera();
 		camera->Intialize();
 		UICamera* uicamera = new UICamera();
 
 		Cursor* cursor = new Cursor(uicamera);
+		UI* heart = new UI(Vector3(-half_width / 4, half_height / 4, 0.0f), (L"Heart_material"));
+		UI* key = new UI(heart, Vector3(-16.0f, -16.0f, 0.0f), (L"ui_key_material"));
+		UI* ui_coin = new UI(heart, Vector3(16.0f, -16.0f, 0.0f), (L"ui_coin_material"));
+		UI* ui_blank[5] = {};
+		for (size_t i = 0; i < 5; i++)
+		{
+			ui_blank[i] = new UI(heart, Vector3(-16.0f + (16.0f * i), -32.0f, 0.0f), (L"ui_blank_material"));
+		}
 
-		
+
 	}
 	void PlayScene::Update()
 	{

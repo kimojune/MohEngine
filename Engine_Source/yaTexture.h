@@ -24,6 +24,11 @@ namespace ya::graphics
 
 		void Clear();
 
+		math::Vector2 GetSize()
+		{
+			return math::Vector2((float)mImage.GetImages()->width, ((float)mImage.GetImages()->height));
+		}
+
 	private:
 		ScratchImage mImage;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mTexture;

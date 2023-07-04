@@ -3,22 +3,18 @@
 
 namespace ya
 {
-	class Mesh;
-	class graphics::Material;
-	class BackGround : public GameObject
+	class UI : public GameObject
 	{
 	public:
-		BackGround();
-		BackGround(Vector3 pos, const std::wstring& materialname);
-		~BackGround() override;
+
+		UI(Vector3 pos, const std::wstring& materialname);
+		UI(GameObject* obj,Vector3 pos, const std::wstring& materialname);
+		~UI();
 
 		virtual void Intialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
-
-		void SetPosition(Vector3 pos) { mPositon = pos; }
-		void SetScale(Vector3 scale) { mScale = scale; }
 
 	private:
 		std::shared_ptr<Mesh> mMesh;
@@ -28,4 +24,3 @@ namespace ya
 		Vector3 mScale;
 	};
 }
-

@@ -8,20 +8,19 @@ namespace ya
 	MainCamera::MainCamera()
 		:mPos(Vector3(0.0f, 0.0f, -10.0f))
 	{
-	}
-	MainCamera::~MainCamera()
-	{
-	}
-	void MainCamera::Intialize()
-	{
-		Camera* camera =AddComponent<Camera>();
+		Camera* camera = AddComponent<Camera>();
 		camera->SetSize(0.6f);
 		camera->TurnLayerMask(eLayerType::UI, false);
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
 		AddComponent<CameraScript>();
-
+	}
+	MainCamera::~MainCamera()
+	{
+	}
+	void MainCamera::Intialize()
+	{
 		GameObject::Intialize();
 	}
 	void MainCamera::Update()
