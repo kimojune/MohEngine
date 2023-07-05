@@ -15,10 +15,7 @@ namespace ya
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
 
-		
-
 		SetName(L"UICamera");
-
 	}
 	UICamera::~UICamera()
 	{

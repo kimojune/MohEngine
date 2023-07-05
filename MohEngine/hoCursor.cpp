@@ -6,7 +6,9 @@
 #include "yaSceneManager.h"
 #include "yaUICamera.h"
 #include "yaCamera.h"
+#include "yaApplication.h"
 
+extern ya::Application application;
 
 namespace ho
 {
@@ -55,14 +57,18 @@ namespace ho
 	Vector3 Cursor::TranslateWorldPos(Vector3 pos)
 	{		
 		Camera* camera = mCamera->GetComponent<Camera>();
-		Matrix view = camera->GetmView();
-		Matrix projection = camera->GetmProjection();
+		
 		Vector3 mpos = Vector3(pos.x, pos.y, pos.z);
+		Matrix projection = camera->GetmProjection();
+		Matrix view = camera->GetmView();
 		Matrix world = Matrix::Identity;
-		Viewport viewport;
-		//Vector3 Project(const Vector3 & p, const Matrix & proj, const Matrix & view, const Matrix & world) const noexcept;
 
-		Vector3 translatePos = viewport.Project(mpos, projection, view, world);
+		RECT rt = {};
+		GetClientRect(application.GetHwnd(), &rt);
+
+		Viewport viewport(rt);
+		//Vector3 Project(const Vector3 & p, const Matrix & proj, const Matrix & view, const Matrix & world) const noexcept;
+		Vector3 translatePos = viewport.Unproject(mpos, projection, view, world);
 		
 		return Vector3(translatePos.x, translatePos.y, translatePos.z);
 	}
