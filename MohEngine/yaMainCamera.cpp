@@ -35,4 +35,9 @@ namespace ya
 	{
 		GameObject::Render();
 	}
+	void MainCamera::SetTarget(GameObject* obj)
+	{
+		CameraScript* camScript = GetComponent<CameraScript>();
+		camScript->SetTarget(obj);
+	}
 }

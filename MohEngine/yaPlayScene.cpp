@@ -34,7 +34,6 @@ namespace ya
 		AddGameObject(eLayerType::Player, player);
 
 		MainCamera* camera = new MainCamera();
-		camera->Intialize();
 		UICamera* uicamera = new UICamera();
 
 		UI* heart = new UI(Vector3(-half_width / 4, half_height / 4, 0.0f), (L"Heart_material"));
@@ -48,6 +47,7 @@ namespace ya
 		}
 		UI* EmeptyBullet = new UI(BulletCount, Vector3(0.0f, 30.0f, -3.0f), (L"Emepty_Bullet_01_material"));
 			
+		camera->SetTarget(player);
 		Cursor* cursor = new Cursor(uicamera);
 
 

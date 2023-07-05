@@ -15,6 +15,7 @@ namespace ya
 		virtual void Render();
 
 		void SetPos(Vector3 pos) { mPos = pos; }
+		void SetTarget(GameObject* obj);
 
 	private:
 		Vector3 mPos;

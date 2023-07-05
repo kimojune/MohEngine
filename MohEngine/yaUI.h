@@ -16,11 +16,14 @@ namespace ya
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		Vector3 GetScale() { return mScale; }
+
 	private:
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;
 
 		Vector3 mPositon;
 		Vector3 mScale;
+		
 	};
 }
