@@ -47,7 +47,7 @@ namespace ya
 		}
 		UI* EmeptyBullet = new UI(BulletCount, Vector3(0.0f, 30.0f, -3.0f), (L"Emepty_Bullet_01_material"));
 			
-		//camera->SetTarget(player);
+		camera->SetTarget(player);
 		Cursor* cursor = new Cursor(uicamera);
 
 		GameObject* grid = new GameObject();

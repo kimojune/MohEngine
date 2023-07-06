@@ -13,32 +13,32 @@ namespace ya
 
 		if (Input::GetKey(eKeyCode::W))
 		{
-			pos.y += 5.0f * Time::DeltaTime();
+			pos.y += 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S))
 		{
-			pos.y -= 5.0f * Time::DeltaTime();
+			pos.y -= 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 5.0f * Time::DeltaTime();
+			pos.x -= 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 5.0f * Time::DeltaTime();
+			pos.x += 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::Q))
 		{
-			pos.z -= 5.0f * Time::DeltaTime();
+			pos.z -= 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::E))
 		{
-			pos.z += 5.0f * Time::DeltaTime();
+			pos.z += 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 	}
