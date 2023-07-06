@@ -16,6 +16,7 @@ namespace ya::enums
 	
 	enum class eLayerType
 	{
+		Grid,
 		Player,
 		Companions,
 		Monster,

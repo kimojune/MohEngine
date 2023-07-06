@@ -47,6 +47,8 @@ namespace ya
 		void SetSize(float size) { mSize = size; }
 		void SetType(eProjectionType type) { mType = type; }
 
+		float GetSize() { return mSize; }
+
 		Matrix GetmView();
 		Matrix GetmProjection();
 	
