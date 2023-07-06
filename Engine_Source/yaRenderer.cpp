@@ -47,6 +47,7 @@ namespace ya::renderer
 
 
 		std::shared_ptr<Shader> shader = ya::Resources::Find<Shader>(L"TriangleShader");
+		
 		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -55,6 +56,12 @@ namespace ya::renderer
 		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
+
+		shader = ya::Resources::Find<Shader>(L"GridShader");
+		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		//Sampler State
@@ -206,18 +213,18 @@ namespace ya::renderer
 	}
 
 	void LoadShader()
-	{
-		//ya::graphics::GetDevice()->CreateShader();
+	{		
 		std::shared_ptr<Shader>  shader = std::make_shared<Shader>();
-
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 		ya::Resources::Insert(L"TriangleShader", shader);
 		
+		shader = std::make_shared<Shader>();
 		shader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		ya::Resources::Insert(L"SpriteShader", shader);
 
+		shader = std::make_shared<Shader>();
 		shader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
 		ya::Resources::Insert(L"GridShader", shader);

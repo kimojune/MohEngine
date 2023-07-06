@@ -43,7 +43,7 @@ namespace ya
 
 		void EnableDepthStencilState();
 		void DisableDepthStencilState();
-
+		
 		void SetSize(float size) { mSize = size; }
 		void SetType(eProjectionType type) { mType = type; }
 

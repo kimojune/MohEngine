@@ -10,7 +10,7 @@
 #include "yaUICamera.h"
 #include "yaApplication.h"
 #include "yaUI.h"
-
+#include  "yaGridScript.h"
 using namespace ho;
 extern ya::Application application;
 
@@ -47,9 +47,17 @@ namespace ya
 		}
 		UI* EmeptyBullet = new UI(BulletCount, Vector3(0.0f, 30.0f, -3.0f), (L"Emepty_Bullet_01_material"));
 			
-		camera->SetTarget(player);
+		//camera->SetTarget(player);
 		Cursor* cursor = new Cursor(uicamera);
 
+		GameObject* grid = new GameObject();
+		grid->SetName(L"Grid");
+		AddGameObject(eLayerType::Grid, grid);
+		MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
+		GridScript* gridSc = grid->AddComponent<GridScript>();
+		gridSc->SetCamera(uicamera->GetComponent<Camera>());
 
 	}
 	void PlayScene::Update()
