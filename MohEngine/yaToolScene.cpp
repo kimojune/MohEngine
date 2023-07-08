@@ -54,7 +54,7 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
     {
        
         std::shared_ptr <ya::graphics::Texture> tile = std::make_shared<ya::graphics::Texture>();
-        tile = ya::Resources::Load<ya::graphics::Texture>(L"TileAtlas", L"..\\Resources\\Tile\\env_tileset_forge data\\atlas0.png");
+        //tile = ya::Resources::Load<ya::graphics::Texture>(L"TileAtlas", L"..\\Resources\\Tile\\env_tileset_forge data\\atlas0.png");
         RECT rect = { 0, 0, 512, 512 };
         AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 

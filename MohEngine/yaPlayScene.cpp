@@ -57,7 +57,7 @@ namespace ya
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
 		GridScript* gridSc = grid->AddComponent<GridScript>();
-		gridSc->SetCamera(uicamera->GetComponent<Camera>());
+		gridSc->SetCamera(camera->GetComponent<Camera>());
 
 	}
 	void PlayScene::Update()
