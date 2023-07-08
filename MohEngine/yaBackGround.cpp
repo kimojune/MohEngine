@@ -1,3 +1,4 @@
+#pragma once
 #include "yaBackGround.h"
 #include "yaResources.h"
 #include "yaMeshRenderer.h"

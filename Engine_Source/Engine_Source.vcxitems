@@ -21,7 +21,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaImage.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMaterial.cpp" />
@@ -48,7 +47,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaImage.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMaterial.h" />

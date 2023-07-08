@@ -9,6 +9,7 @@
 #include "LoadScenes.h"
 #include "CreateMaterial.h"
 #include "yaToolScene.h"
+
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\MohEngine.lib")
 #else
@@ -142,10 +143,10 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd2, nCmdShow);
    UpdateWindow(hWnd2);
-
    application.Initialize();
    ya::LoadMaterial();
    ya::InitializeScenes();
+   application.SetToolHwnd(hWnd2);
 
    return TRUE;
 }

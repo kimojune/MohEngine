@@ -25,10 +25,13 @@ public:
 	UINT GetWidth() { return mWidth; }
 	UINT GetHeight() { return mHeight; }
 	HWND GetHwnd() { return mHwnd; }
-	//HWND GetHDC() { return mHdc; }
+	HDC GetHdc() { return mHdc; }
 
-	//void SetToolHwnd(HWND hwnd) { mToolHwnd = hwnd; }
-	//HDC GetToolHdc() { return mToolHdc; }
+	void SetToolHwnd(HWND hwnd) { mToolHwnd = hwnd; }
+	HWND GetToolHwnd() { return mToolHwnd; }
+
+
+	HDC GetToolHdc() { return mToolHdc; }
 
 
 private:
@@ -38,9 +41,9 @@ private:
 	std::unique_ptr<ya::graphics::GraphicDevice_Dx11> graphicDevice;
 	//HDC mhdc; -> GPU API;
 	HWND mHwnd;
-	//HDC mHdc;
+	HDC mHdc;
 	//Tool
-	//HWND mToolHwnd;
+	HWND mToolHwnd;
 	HDC mToolHdc;
 
 	UINT mWidth;

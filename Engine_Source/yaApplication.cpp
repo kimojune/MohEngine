@@ -13,9 +13,8 @@ namespace ya
 		, mHwnd(NULL)
 		, mWidth(-1)
 		, mHeight(-1)
-
-		
 	{
+		mHdc = GetDC(mHwnd);
 	}
 	Application::~Application()
 	{
