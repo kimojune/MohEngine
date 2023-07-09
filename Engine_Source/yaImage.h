@@ -1,6 +1,5 @@
 #pragma once
 #include "yaResource.h"
-
 namespace ya
 {
 	class Image : public ya::Resource
