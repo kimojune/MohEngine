@@ -1,6 +1,7 @@
 #include "yaToolScene.h"
 #include "yaResources.h"
 #include "yaTexture.h"
+#include "yaImage.h"
 
 namespace ya
 {
@@ -53,8 +54,8 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
     case WM_CREATE:
     {
        
-        std::shared_ptr <ya::graphics::Texture> tile = std::make_shared<ya::graphics::Texture>();
-        //tile = ya::Resources::Load<ya::graphics::Texture>(L"TileAtlas", L"..\\Resources\\Tile\\env_tileset_forge data\\atlas0.png");
+        std::shared_ptr <ya::Image> tile = std::make_shared<ya::Image>();
+        tile = ya::Resources::Load<ya::Image >(L"TileAtlas", L"..\\Resources\\Tile\\Tile.bmp");
         RECT rect = { 0, 0, 512, 512 };
         AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
@@ -70,12 +71,12 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
 
-        std::shared_ptr <ya::graphics::Texture> tile =
-            tile = ya::Resources::Find<ya::graphics::Texture>(L"TileAtlas");
-        //BitBlt(hdc, 0, 0, tile->GetSize().x, tile->GetHeight(), tile->GetHdc(), 0, 0, SRCCOPY);
-        //Ellipse(hdc, 500, 500, 600, 700);
+        std::shared_ptr <ya::Image> tile
+            = ya::Resources::Find<ya::Image>(L"TileAtlas");
+        ::BitBlt(hdc, 0, 0, tile->GetWidth(), tile->GetHeight(), tile->GetHdc(), 0, 0, SRCCOPY);
+        Ellipse(hdc, 500, 500, 600, 700);
         //RoundRect(hdc, 200, 200, 300, 300, 500, 500);
-
+        
         // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
         EndPaint(hWnd, &ps);
     }

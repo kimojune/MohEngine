@@ -31,6 +31,7 @@ namespace ya::enums
 		Shader,
 		Material,
 		Mesh,
+		Image,
 		End,
 	};
 }

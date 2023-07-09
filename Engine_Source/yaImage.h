@@ -1,10 +1,14 @@
+#pragma once
 #include "yaResource.h"
+#include "yaApplication.h"
+
+extern ya::Application application;
 namespace ya
 {
-	class Image : public Resource
+	class Image : public ya::Resource
 	{
 	public:
-		static std::shared_ptr<Image> Create(const std::wstring& name, UINT widht, UINT height, COLORREF rgb = RGB(255, 255, 255));
+		//static std::shared_ptr<Image> Create(const std::wstring& name, UINT widht, UINT height, COLORREF rgb = RGB(255, 255, 255));
 
 		Image();
 		~Image();
