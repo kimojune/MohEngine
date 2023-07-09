@@ -237,8 +237,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCamera.h">
       <Filter>GameObject\Component\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaImage.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaObject.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

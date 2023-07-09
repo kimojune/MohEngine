@@ -2,12 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="yaDog.h">
-      <Filter>Contents</Filter>
-    </ClInclude>
-    <ClInclude Include="yaPlayer.h">
-      <Filter>Contents</Filter>
-    </ClInclude>
     <ClInclude Include="LoadScenes.h">
       <Filter>Contents\Load</Filter>
     </ClInclude>
@@ -26,20 +20,11 @@
     <ClInclude Include="yaPlayScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="yaBackGround.h">
-      <Filter>Contents\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="hoCursor.h">
-      <Filter>Contents\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="yaMainCamera.h">
       <Filter>Contents\GameObject\Camera</Filter>
     </ClInclude>
     <ClInclude Include="yaUICamera.h">
       <Filter>Contents\GameObject\Camera</Filter>
-    </ClInclude>
-    <ClInclude Include="yaUI.h">
-      <Filter>Contents\GameObject</Filter>
     </ClInclude>
     <ClInclude Include="yaGridScript.h">
       <Filter>Contents\Script</Filter>
@@ -47,15 +32,24 @@
     <ClInclude Include="yaToolScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="yaDog.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayer.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="hoCursor.h">
+      <Filter>Contents\GameObject\Cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="yaBackGround.h">
+      <Filter>Contents\GameObject\BackGround\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="yaUI.h">
+      <Filter>Contents\GameObject\UI\Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
-      <Filter>Contents</Filter>
-    </ClCompile>
-    <ClCompile Include="yaDog.cpp">
-      <Filter>Contents</Filter>
-    </ClCompile>
-    <ClCompile Include="yaPlayer.cpp">
       <Filter>Contents</Filter>
     </ClCompile>
     <ClCompile Include="yaCameraScript.cpp">
@@ -70,26 +64,32 @@
     <ClCompile Include="yaTitleScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="yaBackGround.cpp">
-      <Filter>Contents\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="hoCursor.cpp">
-      <Filter>Contents\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="yaMainCamera.cpp">
       <Filter>Contents\GameObject\Camera</Filter>
     </ClCompile>
     <ClCompile Include="yaUICamera.cpp">
       <Filter>Contents\GameObject\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="yaUI.cpp">
-      <Filter>Contents\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="yaGridScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
     <ClCompile Include="yaToolScene.cpp">
       <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaDog.cpp">
+      <Filter>Contents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="yaPlayer.cpp">
+      <Filter>Contents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="hoCursor.cpp">
+      <Filter>Contents\GameObject\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="yaBackGround.cpp">
+      <Filter>Contents\GameObject\BackGround\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="yaUI.cpp">
+      <Filter>Contents\GameObject\UI\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +110,21 @@
     </Filter>
     <Filter Include="Contents\GameObject\Camera">
       <UniqueIdentifier>{cb24e935-f25d-4c71-a6d2-bb87e96f6005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Cursor">
+      <UniqueIdentifier>{e1e66834-dd95-41c3-94fe-eacd3e942613}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\BackGround">
+      <UniqueIdentifier>{ef2901e3-4d62-4ee2-96e0-0d4f3ee355d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\BackGround\Base">
+      <UniqueIdentifier>{55e06ea9-a205-4a83-9ffd-ca946489ea82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\UI">
+      <UniqueIdentifier>{6270e3e2-ec7d-4422-ab23-74322b623a52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\UI\Base">
+      <UniqueIdentifier>{2f7493c1-b21e-4c98-b5a6-152086f9644e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
