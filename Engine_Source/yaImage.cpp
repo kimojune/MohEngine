@@ -1,49 +1,52 @@
 #include "yaImage.h"
+#include "yaApplication.h"
+#include "yaResources.h"
 
+extern ya::Application application;
 
 namespace ya
 {
-	/*std::shared_ptr<image> image::create(const std::wstring& name, uint widht, uint height, colorref rgb)
+	std::shared_ptr<Image> Image::Create(const std::wstring& name, UINT widht, UINT height, COLORREF rgb)
 	{
 		if (widht == 0 || height == 0)
 			return nullptr;
 
-		std::shared_ptr<image> image = resources::find<image>(name);
+		std::shared_ptr<Image> image = Resources::Find<Image>(name);
 		if (image != nullptr)
 			return image;
 
-		image = std::make_shared<image>();
-		hdc mainhdc = getdc(application.gethwnd());
-		
+		image = std::make_shared<Image>();
+		HDC mainHdc = application.GetHdc();
 
-		image->mbitmap = createcompatiblebitmap(mainhdc, widht, height);
+		image->mBitmap = CreateCompatibleBitmap(mainHdc, widht, height);
 
-		image->mhdc = createcompatibledc(mainhdc);
+		image->mHdc = CreateCompatibleDC(mainHdc);
 
-		hbitmap oldbitmap = (hbitmap)selectobject(image->mhdc, image->mbitmap);
-		deleteobject(oldbitmap);
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(image->mHdc, image->mBitmap);
+		DeleteObject(oldBitmap);
 
-		image->mwidth = widht;
-		image->mheight = height;
+		image->mWidth = widht;
+		image->mHeight = height;
 
-		image->setkey(name);
-		resources::insert<image>(name, image);
+		image->SetKey(name);
+		Resources::Insert<Image>(name, image);
 
-		hbrush brush = createsolidbrush(rgb);
-		hbrush oldbrush = (hbrush)selectobject(image->gethdc(), brush);
-		::rectangle(image->gethdc(), -1, -1, image->mwidth + 1, image->mheight + 1);
+		HBRUSH brush = CreateSolidBrush(rgb);
+		HBRUSH oldbrush = (HBRUSH)SelectObject(image->GetHdc(), brush);
+		::Rectangle(image->GetHdc(), -1, -1, image->mWidth + 1, image->mHeight + 1);
 
-		selectobject(image->gethdc(), oldbrush);
-		deleteobject(brush);
+		SelectObject(image->GetHdc(), oldbrush);
+		DeleteObject(brush);
 
-		return image;*/
-	//}
+		return image;
+	}
 	Image::Image()
-		: Resource(ya::enums::eResourceType::Image)
+		: Resource(enums::eResourceType::Image)
 		, mBitmap(NULL)
 		, mHdc(NULL)
 		, mWidth(0)
 		, mHeight(0)
+		
 	{
 
 
@@ -69,7 +72,7 @@ namespace ya
 		mWidth = bitInfo.bmWidth;
 		mHeight = bitInfo.bmHeight;
 
-		HDC mainDC = GetDC(application.GetHwnd());
+		HDC mainDC = application.GetHdc();
 		mHdc = CreateCompatibleDC(mainDC);
 
 		HBITMAP oldBitmap = (HBITMAP)SelectObject(mHdc, mBitmap);

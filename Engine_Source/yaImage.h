@@ -1,8 +1,12 @@
 #pragma once
 #include "yaResource.h"
+<<<<<<< HEAD
 #include "yaApplication.h"
 
 extern ya::Application application;
+=======
+
+>>>>>>> d9a94a9551f41f858dde7da4e143a0c74f01405b
 namespace ya
 {
 	class Image : public ya::Resource
