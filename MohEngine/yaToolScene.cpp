@@ -121,7 +121,7 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 			int MAX_X = tile ->GetWidth() / TILE_SIZE_X;
 			int MAX_Y = tile ->GetHeight() / TILE_SIZE_Y;
 
-			int index = (y * MAX_Y) + (x % MAX_X);
+			int index = (y * MAX_X) + (x % MAX_X);
 
 			ya::TilePalatte::SetIndex(index);
 		}
