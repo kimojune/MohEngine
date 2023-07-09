@@ -12,7 +12,7 @@ namespace ya
 		: graphicDevice(nullptr)
 		, mHwnd(NULL)
 		, mWidth(-1)
-		, mHeight(-1)
+		, mHeight(-1) 
 	{
 	}
 	Application::~Application()

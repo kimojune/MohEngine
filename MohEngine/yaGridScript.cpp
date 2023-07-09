@@ -27,13 +27,13 @@ namespace ya
 		if (mCamera == nullptr)
 			return;
 
-		static float chTime = 0.0f;
-		chTime += Time::DeltaTime();
+		//static float chTime = 0.0f;
+		//chTime += Time::DeltaTime();
 
-		if (chTime > 3.0f)
-		{
-			object::Destroy(GetOwner());
-		}
+		//if (chTime > 3.0f)
+		//{
+		//	object::Destroy(GetOwner());
+		//}
 
 
 		GameObject* gameObj = mCamera->GetOwner();

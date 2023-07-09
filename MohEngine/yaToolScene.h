@@ -10,12 +10,15 @@ namespace ya
 		ToolScene();
 		~ToolScene();
 
-		virtual void Initialize();
-		virtual void Update();
-		virtual void LateUpdate();
+		virtual void Initialize() override;
+		virtual void Update() override;
+		virtual void LateUpdate() override;
+		virtual void Render() override;
 
+		
 		virtual void OnEnter();
 		virtual void OnExit();
 	private:
+
 	};
 }

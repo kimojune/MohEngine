@@ -7,6 +7,8 @@ namespace ya
 	UICamera::UICamera()
 		:mPos(Vector3(0.0f,0.0f,-20.0f))
 	{
+		SetName(L"UICamera");
+
 		Camera* camera = AddComponent<Camera>();
 		camera->SetSize(0.3f);
 		camera->DisableLayerMasks();
@@ -15,7 +17,6 @@ namespace ya
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
 
-		SetName(L"UICamera");
 	}
 	UICamera::~UICamera()
 	{

@@ -2,6 +2,7 @@
 #include "..\Engine_SOURCE\yaSceneManager.h"
 #include "yaPlayScene.h"
 #include "yaTitleScene.h"
+#include "yaToolScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\MohEngine.lib")
@@ -20,5 +21,6 @@ namespace ya
 		//PlayScene* playScene = new PlayScene();
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
+		SceneManager::CreateScene<ToolScene>(L"ToolScene");
 	}
 }

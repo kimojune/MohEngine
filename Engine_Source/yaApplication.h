@@ -26,9 +26,9 @@ public:
 	UINT GetHeight() { return mHeight; }
 	HWND GetHwnd() { return mHwnd; }
 	
-	//void SetToolHwnd(HWND hwnd) { mToolHwnd = hwnd; }
-	//HDC GetToolHdc() { return mToolHdc; }
-
+	void SetToolHwnd(HWND hwnd) { mToolHwnd = hwnd; }
+	HWND GetToolHwnd() { return mToolHwnd; }
+	
 
 private:
 	bool mbInitialize = false;
@@ -38,8 +38,7 @@ private:
 	//HDC mhdc; -> GPU API;
 	HWND mHwnd;
 	//Tool
-	//HWND mToolHwnd;
-	HDC mToolHdc;
+	HWND mToolHwnd;
 
 	UINT mWidth;
 	UINT mHeight;

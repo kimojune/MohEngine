@@ -82,6 +82,12 @@
     <Filter Include="GameObject\Component\MeshRenderer">
       <UniqueIdentifier>{e25b6bfa-890d-4d50-b3ec-cfbabf993dba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Image">
+      <UniqueIdentifier>{4faf0d52-e66f-470a-8926-b4dcfbc3fddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Tile">
+      <UniqueIdentifier>{f14ad532-3a7f-4635-92f2-ba8f17eee07e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
@@ -153,7 +159,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCamera.cpp">
       <Filter>GameObject\Component\Camera</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaImage.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaImage.cpp">
+      <Filter>Resource\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTilePalatte.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -240,7 +252,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaImage.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaImage.h">
+      <Filter>Resource\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTilePalatte.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTile.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

@@ -144,6 +144,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    ShowWindow(hWnd2, nCmdShow);
    UpdateWindow(hWnd2);
    application.Initialize();
+   application.SetToolHwnd(hWnd2);
    ya::LoadMaterial();
    ya::InitializeScenes();
 

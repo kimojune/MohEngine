@@ -151,6 +151,7 @@
     <ClInclude Include="yaBackGround.h" />
     <ClInclude Include="yaCameraScript.h" />
     <ClInclude Include="yaDog.h" />
+    <ClInclude Include="yaGrid.h" />
     <ClInclude Include="yaGridScript.h" />
     <ClInclude Include="yaMainCamera.h" />
     <ClInclude Include="yaPlayer.h" />
@@ -168,6 +169,7 @@
     <ClCompile Include="yaBackGround.cpp" />
     <ClCompile Include="yaCameraScript.cpp" />
     <ClCompile Include="yaDog.cpp" />
+    <ClCompile Include="yaGrid.cpp" />
     <ClCompile Include="yaGridScript.cpp" />
     <ClCompile Include="yaMainCamera.cpp" />
     <ClCompile Include="yaPlayer.cpp" />

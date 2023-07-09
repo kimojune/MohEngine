@@ -18,6 +18,7 @@ namespace ya::enums
 	{
 		Grid,
 		Player,
+		Tile,
 		Companions,
 		Monster,
 		UI,

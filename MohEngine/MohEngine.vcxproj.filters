@@ -47,6 +47,9 @@
     <ClInclude Include="yaUI.h">
       <Filter>Contents\GameObject\UI\Base</Filter>
     </ClInclude>
+    <ClInclude Include="yaGrid.h">
+      <Filter>Contents\GameObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -90,6 +93,9 @@
     </ClCompile>
     <ClCompile Include="yaUI.cpp">
       <Filter>Contents\GameObject\UI\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="yaGrid.cpp">
+      <Filter>Contents\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
