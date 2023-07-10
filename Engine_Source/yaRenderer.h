@@ -30,6 +30,12 @@ namespace ya::renderer
 		Vector2 Resolution;
 	};
 
+	CBUFFER(uvCB, CBSLOT_UV)
+	{
+		Vector2 LeftTop;
+		Vector2 RightBot;
+	};
+
 	extern Vertex vertexes[];
 	extern ya::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 	

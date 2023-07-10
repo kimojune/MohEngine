@@ -154,8 +154,10 @@ namespace ya
 			= Resources::Load<ya::graphics::Texture>(L"Bullet_type_01", L"..\\Resources\\Texture\\UI\\GameUI\\bullet_count\\Bullet\\Bullet_type_01.png");
 		CreateMaterial(L"SpriteShader", Bullet_type_01, L"Bullet_type_01_material");
 		
-
-
+		//Tile Texture
+		std::shared_ptr<ya::graphics::Texture> tile
+			= Resources::Load<ya::graphics::Texture>(L"Tile", L"..\\Resources\\Tile\\Tile.bmp");
+		CreateMaterial(L"TileShader", tile, L"tile_material");
 		
 	
 		

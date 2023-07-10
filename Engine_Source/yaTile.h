@@ -15,6 +15,7 @@ namespace ya
 		void SetIndex(int index);
 
 		virtual void Update() override;
+		virtual void Render() override;
 
 		UINT Y() { return mY; }
 		UINT X() { return mX; }

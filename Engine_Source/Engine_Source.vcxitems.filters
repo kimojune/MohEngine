@@ -165,7 +165,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTilePalatte.cpp">
       <Filter>Tile</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaTile.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaTile.cpp">
+      <Filter>Tile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -258,7 +260,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTilePalatte.h">
       <Filter>Tile</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaTile.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaTile.h">
+      <Filter>Tile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

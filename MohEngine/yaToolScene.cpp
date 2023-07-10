@@ -8,7 +8,7 @@
 #include "yaGridScript.h"
 #include "yaMainCamera.h"
 #include "hoCursor.h"
-
+#include "yaToolScript.h"
 
 
 using namespace ho;
@@ -45,7 +45,7 @@ namespace ya
 		UICamera* uicamera = new UICamera();
 
 		Cursor* cursor = new Cursor(uicamera);
-
+		cursor->AddComponent<ToolScript>();
 		Grid* grid = object::Instantiate<Grid>(eLayerType::Grid);
 		grid->GetScript()->SetCamera(camera->GetComponent<Camera>());
 
@@ -57,6 +57,8 @@ namespace ya
 
 	void ToolScene::Update()
 	{
+
+
 		Scene::Update();
 	}
 

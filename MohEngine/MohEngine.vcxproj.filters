@@ -50,6 +50,9 @@
     <ClInclude Include="yaGrid.h">
       <Filter>Contents\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="yaToolScript.h">
+      <Filter>Contents\Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -96,6 +99,9 @@
     </ClCompile>
     <ClCompile Include="yaGrid.cpp">
       <Filter>Contents\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="yaToolScript.cpp">
+      <Filter>Contents\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

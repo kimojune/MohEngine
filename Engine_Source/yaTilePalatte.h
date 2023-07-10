@@ -15,6 +15,8 @@ namespace ya
 		UINT64 id;
 	};
 
+
+
 	class TilePalatte
 	{
 	public:

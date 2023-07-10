@@ -15,6 +15,12 @@ cbuffer Grid : register(b2)
     float2 Resolution;
 }
 
+cbuffer Grid : register(b3)
+{
+    float2 LeftTop;
+    float2 RightBot;
+}
+
 
 Texture2D albedoTexture : register(t0);
 

@@ -83,7 +83,7 @@ namespace ya::graphics
 
 		dxgiDesc.OutputWindow = hWnd;
 		dxgiDesc.Windowed = true;
-		dxgiDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_DISCARD;
+		dxgiDesc.SwapEffect = DXGI_SWAP_EFFECT::DXGI_SWAP_EFFECT_FLIP_DISCARD;
 		dxgiDesc.BufferCount = desc->BufferCount;
 
 

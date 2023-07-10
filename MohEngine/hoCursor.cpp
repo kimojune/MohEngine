@@ -67,8 +67,8 @@ namespace ho
 		GetClientRect(application.GetHwnd(), &rt);
 
 		Viewport viewport(rt);
-		//Vector3 Project(const Vector3 & p, const Matrix & proj, const Matrix & view, const Matrix & world) const noexcept;
 		Vector3 translatePos = viewport.Unproject(mpos, projection, view, world);
+		//Vector3 Project(const Vector3 & p, const Matrix & proj, const Matrix & view, const Matrix & world) const noexcept;
 		
 		return Vector3(translatePos.x, translatePos.y, translatePos.z);
 	}

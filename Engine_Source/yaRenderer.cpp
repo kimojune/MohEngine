@@ -62,6 +62,11 @@ namespace ya::renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = ya::Resources::Find<Shader>(L"TileShader");
+		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 #pragma endregion
 #pragma region Sampler State
 		//Sampler State
@@ -184,15 +189,16 @@ namespace ya::renderer
 		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
 		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 		vertexes[3].uv = Vector2(0.0f, 1.0f);
+
 	}
 
 	void LoadBuffer()
 	{
 		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
-
+		
 		mesh->CreateVertexBuffer(vertexes, 4);
-
+		
 		std::vector<UINT> indexes = {};
 		indexes.push_back(0);
 		indexes.push_back(1);
@@ -203,7 +209,7 @@ namespace ya::renderer
 		indexes.push_back(3);
 
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
-
+		
 		//constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new ya::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
@@ -228,6 +234,13 @@ namespace ya::renderer
 		shader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
 		ya::Resources::Insert(L"GridShader", shader);
+		
+		shader = std::make_shared<Shader>();
+		shader->Create(eShaderStage::VS, L"TileVS.hlsl", "main");
+		shader->Create(eShaderStage::PS, L"TilePS.hlsl", "main");
+		ya::Resources::Insert(L"TileShader", shader);
+
+
 	}
 
 	void LoadMaterial()

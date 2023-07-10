@@ -34,33 +34,11 @@ namespace ya
 		tile->InitializeTile(mImage, index);
 
 
-		Vector2 tilePos(pos.x * TILE_SIZE_X, pos.y * TILE_SIZE_Y);
+		//TileID id;
+		//id.x = (UINT32)pos.x;
+		//id.y = (UINT32)pos.y;
 
-		//mPixels = Image::Create(L"mPixels", TILE_SIZE_X, TILE_SIZE_Y, RGB(255, 255, 255));
-
-		//int a = 0;
-		//if (index >= 0)
-		//{
-		//	Image* mPixel = Image::Create(L"MagentaPixel", TILE_SIZE_X, TILE_SIZE_Y, RGB(255, 0, 255));
-		//
-		//	StretchBlt(mPixels->GetHdc(), tilePos.x, tilePos.y
-		//	, tilePos.x + TILE_SIZE_X
-		//	, tilePos.y + TILE_SIZE_Y
-		//	, mPixel->GetHdc(), 0, 0
-		//	, TILE_SIZE_X, TILE_SIZE_Y, SRCCOPY);
-		//
-		//}
-
-
-
-		//tile->GetComponent<Transform>()->SetPos(tilePos);
-
-
-		TileID id;
-		id.x = (UINT32)pos.x;
-		id.y = (UINT32)pos.y;
-
-		mTiles.insert(std::make_pair(id.id, tile));
+		//mTiles.insert(std::make_pair(id.id, tile));
 
 	}
 

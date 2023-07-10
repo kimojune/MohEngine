@@ -160,6 +160,7 @@
     <ClInclude Include="yaTitleScene.h" />
     <ClInclude Include="CreateMaterial.h" />
     <ClInclude Include="yaToolScene.h" />
+    <ClInclude Include="yaToolScript.h" />
     <ClInclude Include="yaUI.h" />
     <ClInclude Include="yaUICamera.h" />
   </ItemGroup>
@@ -177,6 +178,7 @@
     <ClCompile Include="yaPlayScene.cpp" />
     <ClCompile Include="yaTitleScene.cpp" />
     <ClCompile Include="yaToolScene.cpp" />
+    <ClCompile Include="yaToolScript.cpp" />
     <ClCompile Include="yaUI.cpp" />
     <ClCompile Include="yaUICamera.cpp" />
   </ItemGroup>

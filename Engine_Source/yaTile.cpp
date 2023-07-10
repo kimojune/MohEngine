@@ -1,7 +1,9 @@
 #include "yaTile.h"
 #include "yaTransform.h"
 #include "yaCamera.h"
-#include "yaTransform.h"
+#include "yaMeshRenderer.h"
+#include "yaResources.h"
+
 namespace ya
 {
 	Tile::Tile()
@@ -10,6 +12,9 @@ namespace ya
 		, mX(-1)
 		, mY(-1)
 	{
+		SetName(L"Tile");
+		Transform* tr = GetComponent<Transform>();
+		tr->SetScale(Vector3(512.0f, 512.0f, -10.0f));
 	}
 	Tile::Tile(Vector2 pos)
 		:mAtlas(nullptr)
@@ -17,8 +22,7 @@ namespace ya
 		, mX(-1)
 		, mY(-1)
 	{
-		//GetComponent<Transform>()->SetPosition(pos.x,);
-
+		SetName(L"Tile");
 	}
 	Tile::~Tile()
 	{
@@ -29,13 +33,12 @@ namespace ya
 		if (atlas == nullptr || index < 0)
 			return;
 
-		//	Collider* collider = AddComponent<Collider>();
-			//collider->SetSize(Vector2(36.0f, 36.0f));
-
-
 		mAtlas = atlas;
 		SetIndex(index);
 
+		MeshRenderer* mr = AddComponent<MeshRenderer>();
+		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(Resources::Find<Material>(L"tile_material"));
 		//GameObject::Initialize();
 	}
 
@@ -53,7 +56,11 @@ namespace ya
 
 		GameObject::Update();
 	}
-	
+	void Tile::Render()
+	{
+		GameObject::Render();
+	}
+
 	void Tile::OnCollisionEnter(Collider* other)
 	{
 		//GameObject* obj = other->GetOwner();
