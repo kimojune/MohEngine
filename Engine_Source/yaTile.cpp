@@ -3,6 +3,7 @@
 #include "yaCamera.h"
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
+#include "yaImage.h"
 
 namespace ya
 {
@@ -13,8 +14,7 @@ namespace ya
 		, mY(-1)
 	{
 		SetName(L"Tile");
-		Transform* tr = GetComponent<Transform>();
-		tr->SetScale(Vector3(512.0f, 512.0f, -10.0f));
+
 	}
 	Tile::Tile(Vector2 pos)
 		:mAtlas(nullptr)
@@ -35,7 +35,8 @@ namespace ya
 
 		mAtlas = atlas;
 		SetIndex(index);
-
+		Transform* tr = GetComponent<Transform>();
+		tr->SetScale(Vector3(mAtlas->GetWidth(), mAtlas->GetHeight(), -10.0f));
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"tile_material"));

@@ -107,6 +107,8 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 			, rect.bottom - rect.top
 			, 0);
 		ShowWindow(hWnd, true);
+		
+		ya::TilePalatte::Intialize();
 	}
 	case WM_LBUTTONDOWN:
 	{
@@ -124,7 +126,7 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 			int MAX_Y = tile ->GetHeight() / TILE_SIZE_Y;
 
 			int index = (y * MAX_X) + (x % MAX_X);
-
+			
 			ya::TilePalatte::SetIndex(index);
 		}
 	}
