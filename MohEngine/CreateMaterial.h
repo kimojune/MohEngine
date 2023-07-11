@@ -4,12 +4,6 @@
 #include "..\Engine_SOURCE\yaMaterial.h"
 #include "..\Engine_SOURCE\yaShader.h"
 
-#ifdef _DEBUG
-#pragma comment(lib, "..\\x64\\Debug\\MohEngine.lib")
-#else
-#pragma comment(lib, "..\\x64\\Release\\MohEngine.lib")
-#endif
-
 
 //#include "yaResources.h"
 //#include "yaTexture.h"

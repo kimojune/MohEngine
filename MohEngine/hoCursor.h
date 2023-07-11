@@ -4,7 +4,7 @@
 
 using namespace ya::math;
 using namespace ya;
-using namespace ya::graphics;
+
 
 namespace ho
 {

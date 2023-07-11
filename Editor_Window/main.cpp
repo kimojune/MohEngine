@@ -10,6 +10,8 @@
 #include "CreateMaterial.h"
 #include "yaToolScene.h"
 
+#include "guiEditor.h"
+
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\MohEngine.lib")
 #else

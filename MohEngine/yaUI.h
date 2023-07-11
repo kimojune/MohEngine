@@ -1,5 +1,7 @@
 #pragma once
 #include "yaGameObject.h"
+#include "yaMesh.h"
+#include "yaMaterial.h"
 
 namespace ya
 {
