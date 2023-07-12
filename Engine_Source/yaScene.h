@@ -45,6 +45,7 @@ public:
 
 private:
 	std::vector<Layer> mLayers;
+	static MainCamera* mMainCamera;
 };
 
 }
