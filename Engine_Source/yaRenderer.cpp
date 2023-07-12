@@ -185,19 +185,19 @@ namespace ya::renderer
 		vertexes.resize(4);
 		vertexes[0].pos = Vector3(-1.0f, 1.0f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		vertexes[0].uv = Vector2(0.0f, 0.0f);
+		vertexes[0].uv = Vector2(0.25f, 0.25f);
 
 		vertexes[1].pos = Vector3(1.0f, 1.0f, 0.0f);
 		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		vertexes[1].uv = Vector2(1.0f, 0.0f);
+		vertexes[1].uv = Vector2(0.5f, 0.25f);
 
 		vertexes[2].pos = Vector3(1.0f, -1.0f, 0.0f);
 		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		vertexes[2].uv = Vector2(1.0f, 1.0f);
+		vertexes[2].uv = Vector2(0.5f, 0.5f);
 
 		vertexes[3].pos = Vector3(-1.0f, -1.0f, 0.0f);
 		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertexes[3].uv = Vector2(0.0f, 1.0f);
+		vertexes[3].uv = Vector2(0.25f, 0.5f);
 
 		//Vertex Buffer
 		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
@@ -277,6 +277,9 @@ namespace ya::renderer
 
 		constantBuffer[(UINT)eCBType::Grid] = new ya::graphics::ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(TransformCB));
+
+		constantBuffer[(UINT)eCBType::UV] = new ya::graphics::ConstantBuffer(eCBType::UV);
+		constantBuffer[(UINT)eCBType::UV]->Create(sizeof(uvCB));
 	}
 
 	void LoadShader()

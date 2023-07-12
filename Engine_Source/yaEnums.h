@@ -45,4 +45,11 @@ namespace ya::enums
 		Cube,
 		End,
 	};
+
+	enum class eCameraType
+	{
+		Main,
+		UI,
+		End,
+	};
 }

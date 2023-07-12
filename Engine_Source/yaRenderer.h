@@ -32,8 +32,7 @@ namespace ya::renderer
 
 	CBUFFER(uvCB, CBSLOT_UV)
 	{
-		Vector2 LeftTop;
-		Vector2 RightBot;
+		Vector4 LeftTop;
 	};
 
 	extern Vertex vertexes[];

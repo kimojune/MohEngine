@@ -15,10 +15,9 @@ cbuffer Grid : register(b2)
     float2 Resolution;
 }
 
-cbuffer Grid : register(b3)
+cbuffer UVCB : register(b3)
 {
-    float2 LeftTop;
-    float2 RightBot;
+    float4 LeftTop;
 }
 
 

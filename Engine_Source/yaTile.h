@@ -20,11 +20,13 @@ namespace ya
 		UINT Y() { return mY; }
 		UINT X() { return mX; }
 		UINT Index() { return mIndex; }
+		
 
+		void BindConstantBuffer();
 
-		virtual void OnCollisionEnter(class Collider* other);
+		/*virtual void OnCollisionEnter(class Collider* other);
 		virtual void OnCollisionStay(class Collider* other);
-		virtual void OnCollisionExit(class Collider* other);
+		virtual void OnCollisionExit(class Collider* other);*/
 
 
 

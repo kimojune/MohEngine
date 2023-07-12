@@ -35,6 +35,7 @@ namespace ya::graphics
 		Transform,
 		Material,
 		Grid,
+		UV,
 		End,
 	};
 

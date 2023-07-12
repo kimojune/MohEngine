@@ -4,6 +4,7 @@
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
 #include "yaImage.h"
+#include "yaRenderer.h"
 
 namespace ya
 {
@@ -58,61 +59,73 @@ namespace ya
 	}
 	void Tile::Render()
 	{
+		BindConstantBuffer();
+
 		GameObject::Render();
 	}
 
-	void Tile::OnCollisionEnter(Collider* other)
+	void Tile::BindConstantBuffer()
 	{
-		//GameObject* obj = other->GetOwner();
+		ya::renderer::uvCB uvCB = {};
 
-		//Rigidbody* rb = obj->GetComponent<Rigidbody>();
+		uvCB.LeftTop = Vector4(0.0f, 0.0f,0.0f, 0.0f);
 
-		//if (rb == nullptr)
-		//{
-		//	return;
-		//}
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::UV];
 
-		//rb->SetGround(true);
-
-
-		//Collider* objCol = obj->GetComponent<Collider>();
-		//Vector2 objPos = objCol->GetPos();
-
-		//Collider* groundCol = this->GetComponent<Collider>();
-		//Vector2 groundPos = groundCol->GetPos();
-
-		//float fLen = fabs(objPos.y - groundPos.y);
-
-
-		//float fSize = (objCol->GetSize().y / 2.0f) + (groundCol->GetSize().y / 2.0f);
-
-		//if (fLen < fSize)
-		//{
-		//	Transform* objTr = obj->GetComponent<Transform>();
-		//	Transform* grTr = this->GetComponent<Transform>();
-
-		//	Vector2 objPos = objTr->GetPos();
-		//	Vector2 grPos = grTr->GetPos();
-
-		//	objPos.y -= (fSize - fLen) - 1.0f;
-		//	objTr->SetPos(objPos);
-		//}
+		cb->SetData(&uvCB);
+		cb->Bind(eShaderStage::VS);
 	}
 
-	void Tile::OnCollisionStay(Collider* other)
-	{
-	}
+	//void Tile::OnCollisionEnter(Collider* other)
+	//{
+	//	//GameObject* obj = other->GetOwner();
 
-	void Tile::OnCollisionExit(Collider* other)
-	{
-		//GameObject* obj = other->GetOwner();
+	//	//Rigidbody* rb = obj->GetComponent<Rigidbody>();
 
-		//Rigidbody* rb = obj->GetComponent<Rigidbody>();
-		//if (rb == nullptr)
-		//	return;
+	//	//if (rb == nullptr)
+	//	//{
+	//	//	return;
+	//	//}
 
-		//rb->SetGround(false);
-	}
+	//	//rb->SetGround(true);
 
 
+	//	//Collider* objCol = obj->GetComponent<Collider>();
+	//	//Vector2 objPos = objCol->GetPos();
+
+	//	//Collider* groundCol = this->GetComponent<Collider>();
+	//	//Vector2 groundPos = groundCol->GetPos();
+
+	//	//float fLen = fabs(objPos.y - groundPos.y);
+
+
+	//	//float fSize = (objCol->GetSize().y / 2.0f) + (groundCol->GetSize().y / 2.0f);
+
+	//	//if (fLen < fSize)
+	//	//{
+	//	//	Transform* objTr = obj->GetComponent<Transform>();
+	//	//	Transform* grTr = this->GetComponent<Transform>();
+
+	//	//	Vector2 objPos = objTr->GetPos();
+	//	//	Vector2 grPos = grTr->GetPos();
+
+	//	//	objPos.y -= (fSize - fLen) - 1.0f;
+	//	//	objTr->SetPos(objPos);
+	//	//}
+	//}
+
+	//void Tile::OnCollisionStay(Collider* other)
+	//{
+	//}
+
+	//void Tile::OnCollisionExit(Collider* other)
+	//{
+	//	//GameObject* obj = other->GetOwner();
+
+	//	//Rigidbody* rb = obj->GetComponent<Rigidbody>();
+	//	//if (rb == nullptr)
+	//	//	return;
+
+	//	//rb->SetGround(false);
+	//}
 }
