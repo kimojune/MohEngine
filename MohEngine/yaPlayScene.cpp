@@ -36,7 +36,7 @@ namespace ya
 		MainCamera* camera = new MainCamera();
 		UICamera* uicamera = new UICamera();
 
-		UI* heart = new UI(Vector3(-half_width / 4, half_height / 4, 0.0f), (L"Heart_material"));
+		UI* heart = new UI(Vector3(-half_width, half_height,-3), (L"Heart_material"));
 		UI* key = new UI(heart, Vector3(-16.0f, -16.0f, -3.0f), (L"ui_key_material"));
 		UI* ui_coin = new UI(heart, Vector3(16.0f, -16.0f, -3.0f), (L"ui_coin_material"));
 		UI* ui_blank[5] = {};	for (size_t i = 0; i < 5; i++)	{
@@ -50,14 +50,14 @@ namespace ya
 		camera->SetTarget(player);
 		Cursor* cursor = new Cursor(uicamera);
 
-		GameObject* grid = new GameObject();
-		grid->SetName(L"Grid");
-		AddGameObject(eLayerType::Grid, grid);
-		MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
-		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
-		GridScript* gridSc = grid->AddComponent<GridScript>();
-		gridSc->SetCamera(camera->GetComponent<Camera>());
+		//GameObject* grid = new GameObject();
+		//grid->SetName(L"Grid");
+		//AddGameObject(eLayerType::Grid, grid);
+		//MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
+		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
+		//GridScript* gridSc = grid->AddComponent<GridScript>();
+		//gridSc->SetCamera(camera->GetComponent<Camera>());
 
 	}
 	void PlayScene::Update()

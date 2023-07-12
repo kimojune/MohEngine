@@ -14,7 +14,7 @@ namespace ya
 	bool CompareZSort(GameObject* a, GameObject* b)
 	{
 		if (a->GetComponent<Transform>()->GetPosition().z
-			< b->GetComponent<Transform>()->GetPosition().z)
+			<= b->GetComponent<Transform>()->GetPosition().z)
 			return false;
 
 		return true;
@@ -190,7 +190,8 @@ namespace ya
 		{
 			if (gameObj == nullptr)
 				continue;
-
+			if (gameObj->GetState() != GameObject::eState::Active)
+				continue;
 			gameObj->Render();
 		}
 	}
@@ -200,7 +201,8 @@ namespace ya
 		{
 			if (gameObj == nullptr)
 				continue;
-
+			if (gameObj->GetState() != GameObject::eState::Active)
+				continue;
 			gameObj->Render();
 		}
 	}
@@ -210,7 +212,8 @@ namespace ya
 		{
 			if (gameObj == nullptr)
 				continue;
-
+			if (gameObj->GetState() != GameObject::eState::Active)
+				continue;
 			gameObj->Render();
 		}
 	}

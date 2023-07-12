@@ -44,7 +44,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    //_CrtSetBreakAlloc(228);
+    _CrtSetBreakAlloc(285);
  
     // TODO: 여기에 코드를 입력합니다.
 
@@ -79,11 +79,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // 여기서 게임 로직이 돌아가야한다.
             application.Run();
+            gui::Editor::Run();
+            application.Present();
         }
     }
 
     ya::renderer::Release();
     ya::SceneManager::Release();
+    gui::Editor::Release();
 	return (int)msg.wParam;
 }
 
@@ -149,6 +152,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    application.SetToolHwnd(hWnd2);
    ya::LoadMaterial();
    ya::InitializeScenes();
+   gui::Editor::Initialize();
 
    return TRUE;
 }

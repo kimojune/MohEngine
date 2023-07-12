@@ -7,6 +7,7 @@ namespace ya::enums
 		None,
 		Transform,
 		Mesh,
+		Collider2D,
 		Particle,
 		MeshRender,
 		Script,
@@ -33,6 +34,15 @@ namespace ya::enums
 		Material,
 		Mesh,
 		Image,
+		End,
+	};
+
+	enum class eColliderType
+	{
+		Rect,
+		Circle,
+		Sphere,
+		Cube,
 		End,
 	};
 }

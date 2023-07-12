@@ -9,7 +9,8 @@ namespace ya
 	{
 	public:
 		BackGround();
-		BackGround(Vector3 pos, const std::wstring& materialname);
+		BackGround(const std::wstring& materialname);
+		BackGround(GameObject* obj, const std::wstring& materialname);
 		~BackGround() override;
 
 		virtual void Intialize() override;
@@ -17,14 +18,17 @@ namespace ya
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetPosition(Vector3 pos) { mPositon = pos; }
-		void SetScale(Vector3 scale) { mScale = scale; }
+		void SetPosition(Vector3 pos);
+		void SetScale(Vector3 scale);
+		
+		float GetWidth() { return mScale.x; }
+		float GetHeight() { return mScale.y; }
 
 	private:
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;
-
-		Vector3 mPositon;
+		
+		Vector3 mPosition;
 		Vector3 mScale;
 	};
 }

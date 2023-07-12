@@ -22,8 +22,7 @@ namespace ya
 		//player->AddComponent<CameraScript>();
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		
-		tr->SetScale(mPixelSize * 1.5);
+		tr->SetScale(mPixelSize);
 	
 	}
 	void Player::Update()

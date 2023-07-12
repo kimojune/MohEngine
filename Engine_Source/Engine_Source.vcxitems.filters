@@ -88,6 +88,9 @@
     <Filter Include="Tile">
       <UniqueIdentifier>{f14ad532-3a7f-4635-92f2-ba8f17eee07e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Collider2D">
+      <UniqueIdentifier>{4d4f7079-e4b4-4d9c-9d3a-b1896a3c4674}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
@@ -167,6 +170,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTile.cpp">
       <Filter>Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaCollider2D.cpp">
+      <Filter>GameObject\Component\Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaCollisionManager.cpp">
+      <Filter>GameObject\Component\Collider2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -262,6 +271,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTile.h">
       <Filter>Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaCollider2D.h">
+      <Filter>GameObject\Component\Collider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaCollisionManager.h">
+      <Filter>GameObject\Component\Collider2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

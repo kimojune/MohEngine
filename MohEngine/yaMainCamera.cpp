@@ -2,6 +2,7 @@
 #include "yaCamera.h"
 #include "yaSceneManager.h"
 #include "yaCameraScript.h"
+#include "yaRenderer.h"
 
 namespace ya
 {
@@ -9,8 +10,9 @@ namespace ya
 		:mPos(Vector3(0.0f, 0.0f, -10.0f))
 	{
 		Camera* camera = AddComponent<Camera>();
-		camera->SetSize(0.6f);
+		camera->SetSize(1.0f);
 		camera->TurnLayerMask(eLayerType::UI, false);
+		renderer::cameras.push_back(camera);
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);

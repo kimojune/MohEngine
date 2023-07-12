@@ -18,6 +18,19 @@ float4 main(VSOut In) : SV_TARGET
     //return In.Color;
     float4 color = (float) 0.0f;
     
+    //if (In.UV.y < 0.2f)
+    //{
+    //    discard;
+    //}
+    //else
+    //{
+    //    color = albedoTexture.Sample(anisotropicSampler, In.UV);
+    //}
+    
+    
+    color = albedoTexture.Sample(anisotropicSampler, In.UV);
+    
+    
     color = albedoTexture.Sample(pointSampler, In.UV);
     
     return color;
