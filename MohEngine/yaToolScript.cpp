@@ -23,7 +23,10 @@ namespace ya
 
 		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
-			TilePalatte::CreateTile(mIndex, Input::GetMousePos());
+			Transform* tr = GetOwner()->GetComponent<Transform>();
+			Vector3 cursorPos = tr->GetPosition();
+			
+			TilePalatte::CreateTile(mIndex, Vector2(cursorPos.x,cursorPos.y));
 		}
 	}
 	void ToolScript::LateUpdate()

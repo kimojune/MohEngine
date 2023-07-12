@@ -9,11 +9,13 @@
 #include "yaMainCamera.h"
 #include "hoCursor.h"
 #include "yaToolScript.h"
+#include "haWorldCursor.h"
 
 
 using namespace ho;
 
 extern ya::Application application;
+static MainCamera* mCamera = nullptr;
 
 namespace ya
 {
@@ -41,13 +43,18 @@ namespace ya
 
 	void ToolScene::Initialize()
 	{
-		MainCamera* camera = new MainCamera();
+		MainCamera* mCamera = new MainCamera();
 		UICamera* uicamera = new UICamera();
 
 		Cursor* cursor = new Cursor(uicamera);
-		cursor->AddComponent<ToolScript>();
-		Grid* grid = object::Instantiate<Grid>(eLayerType::Grid);
-		grid->GetScript()->SetCamera(camera->GetComponent<Camera>());
+		WorldCursor* wCursor = new WorldCursor(mCamera);
+		wCursor->AddComponent<ToolScript>();
+		
+
+		//GameObject* tileGenerator = new GameObject();
+		//tileGenerator->AddComponent<ToolScript>();
+		//Grid* grid = object::Instantiate<Grid>(eLayerType::Grid);
+		//grid->GetScript()->SetCamera(camera->GetComponent<Camera>());
 
 		TilePalatte::Intialize();
 

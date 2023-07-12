@@ -16,7 +16,6 @@ namespace ya
 		camera->SetType(Camera::eProjectionType::OrthoGraphic);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
-
 	}
 	UICamera::~UICamera()
 	{

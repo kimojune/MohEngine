@@ -53,6 +53,9 @@
     <ClInclude Include="yaToolScript.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
+    <ClInclude Include="haWorldCursor.h">
+      <Filter>Contents\GameObject\Cursor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -102,6 +105,9 @@
     </ClCompile>
     <ClCompile Include="yaToolScript.cpp">
       <Filter>Contents\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="haWorldCursor.cpp">
+      <Filter>Contents\GameObject\Cursor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

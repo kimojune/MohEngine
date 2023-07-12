@@ -231,12 +231,17 @@ namespace ya
 		GetDevice()->BindDepthStencilState(dsState.Get());
 	}
 
-	Matrix Camera::GetmView()
-	{
-		return mView;
+	Vector3 Camera::GetWorldTransform(Vector3 pos)
+	{	
+		Vector3 mpos = Vector3(pos.x, pos.y, pos.z);
+		Matrix world = Matrix::Identity;
+		RECT rt = {};	
+		GetClientRect(application.GetHwnd(), &rt);
+		
+		Viewport viewport(rt);
+		Vector3 translatePos = viewport.Unproject(mpos, mProjection, mView, world);
+		
+		return Vector3(translatePos.x, translatePos.y, translatePos.z);
 	}
-	Matrix Camera::GetmProjection()
-	{
-		return mProjection;
-	}
+
 }

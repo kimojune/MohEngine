@@ -32,12 +32,14 @@ namespace ya
 
 		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
 		tile->InitializeTile(mImage, index);
+		Transform* tr = tile->GetComponent<Transform>();
+		tr->SetPosition(Vector3((float)pos.x, (float)pos.y, 0.5f));
 
+		TileID id;
+		id.x = (UINT32)pos.x;
+		id.y = (UINT32)pos.y;
 
-		//TileID id;
-		//id.x = (UINT32)pos.x;
-		//id.y = (UINT32)pos.y;
-
+		//tr->SetPosition(Vector3((float)id.x, (float)id.y, 0.5f));
 		//mTiles.insert(std::make_pair(id.id, tile));
 
 	}

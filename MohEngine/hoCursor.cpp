@@ -41,8 +41,8 @@ namespace ho
 		Transform* tr = GetComponent<Transform>();
 		Vector2 Pos = ya::Input::GetMousePos() ;
 		mPos = Vector3(Pos.x, Pos.y, -10.0f);
-
-		tr->SetPosition(TranslateWorldPos(mPos));
+		Camera* camera = mCamera->GetComponent<Camera>();
+		tr->SetPosition(camera->GetWorldTransform(mPos));
 		
 		GameObject::Update();
 	}
@@ -54,22 +54,22 @@ namespace ho
 	{
 		GameObject::Render();
 	}
-	Vector3 Cursor::TranslateWorldPos(Vector3 pos)
-	{		
-		Camera* camera = mCamera->GetComponent<Camera>();
-		
-		Vector3 mpos = Vector3(pos.x, pos.y, pos.z);
-		Matrix projection = camera->GetmProjection();
-		Matrix view = camera->GetmView();
-		Matrix world = Matrix::Identity;
+	//Vector3 Cursor::TranslateWorldPos(Vector3 pos)
+	//{		
+	//	Camera* camera = mCamera->GetComponent<Camera>();
+	//	
+	//	Vector3 mpos = Vector3(pos.x, pos.y, pos.z);
+	//	Matrix projection = camera->GetmProjection();
+	//	Matrix view = camera->GetmView();
+	//	Matrix world = Matrix::Identity;
 
-		RECT rt = {};
-		GetClientRect(application.GetHwnd(), &rt);
+	//	RECT rt = {};
+	//	GetClientRect(application.GetHwnd(), &rt);
 
-		Viewport viewport(rt);
-		Vector3 translatePos = viewport.Unproject(mpos, projection, view, world);
-		//Vector3 Project(const Vector3 & p, const Matrix & proj, const Matrix & view, const Matrix & world) const noexcept;
-		
-		return Vector3(translatePos.x, translatePos.y, translatePos.z);
-	}
+	//	Viewport viewport(rt);
+	//	Vector3 translatePos = viewport.Unproject(mpos, projection, view, world);
+	//	//Vector3 Project(const Vector3 & p, const Matrix & proj, const Matrix & view, const Matrix & world) const noexcept;
+	//	
+	//	return Vector3(translatePos.x, translatePos.y, translatePos.z);
+	//}
 }

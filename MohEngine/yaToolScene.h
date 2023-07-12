@@ -2,6 +2,7 @@
 #include "..\Engine_SOURCE\yaScene.h"
 
 
+
 namespace ya
 {
 	class ToolScene : public Scene
@@ -19,6 +20,5 @@ namespace ya
 		virtual void OnEnter();
 		virtual void OnExit();
 	private:
-
 	};
 }

@@ -20,6 +20,6 @@
 #include "yaEnums.h"
 #include "yaMath.h"
 
-#define TILE_SIZE_X 64
-#define TILE_SIZE_Y 64
+#define TILE_SIZE_X 32
+#define TILE_SIZE_Y 32
 

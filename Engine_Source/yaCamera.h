@@ -49,8 +49,7 @@ namespace ya
 
 		float GetSize() { return mSize; }
 
-		Matrix GetmView();
-		Matrix GetmProjection();
+		Vector3 GetWorldTransform(Vector3 pos);
 	
 	private:
 		static Matrix View;

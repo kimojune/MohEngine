@@ -13,8 +13,7 @@ namespace ya
 		, mX(-1)
 		, mY(-1)
 	{
-		SetName(L"Tile");
-
+		
 	}
 	Tile::Tile(Vector2 pos)
 		:mAtlas(nullptr)
@@ -22,7 +21,6 @@ namespace ya
 		, mX(-1)
 		, mY(-1)
 	{
-		SetName(L"Tile");
 	}
 	Tile::~Tile()
 	{
@@ -32,11 +30,12 @@ namespace ya
 		mIndex = index;
 		if (atlas == nullptr || index < 0)
 			return;
+		SetName(L"Tile");
 
 		mAtlas = atlas;
 		SetIndex(index);
 		Transform* tr = GetComponent<Transform>();
-		tr->SetScale(Vector3(mAtlas->GetWidth(), mAtlas->GetHeight(), -10.0f));
+		tr->SetScale(Vector3(TILE_SIZE_X, TILE_SIZE_Y, -10.0f));
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"tile_material"));
