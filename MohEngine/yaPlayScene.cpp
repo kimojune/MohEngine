@@ -34,8 +34,9 @@ namespace ya
 		Player* player = new Player();
 		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
-		player->AddComponent<Collider2D>();
-
+		Collider2D* cd = player->AddComponent<Collider2D>();
+		cd->SetCenter(Vector2(0.0f, -10.0f));
+		cd->SetSize(Vector2(0.6f, 0.6f));
 		MainCamera* camera = new MainCamera();
 		
 		Camera* maincam = camera->GetComponent<Camera>();
