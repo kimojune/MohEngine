@@ -35,6 +35,8 @@ namespace ya
 		UINT mIndex;
 		UINT mX;
 		UINT mY;
+		UINT maxCol;
+		UINT maxRow;
 	};
 
 }

@@ -13,6 +13,8 @@ namespace ya
 		, mIndex(-1)
 		, mX(-1)
 		, mY(-1)
+		,maxCol(0)
+		,maxRow(0)
 	{
 		
 	}
@@ -21,6 +23,8 @@ namespace ya
 		, mIndex(-1)
 		, mX(-1)
 		, mY(-1)
+		, maxCol(0)
+		, maxRow(0)
 	{
 	}
 	Tile::~Tile()
@@ -36,19 +40,19 @@ namespace ya
 		mAtlas = atlas;
 		SetIndex(index);
 		Transform* tr = GetComponent<Transform>();
-		tr->SetScale(Vector3(TILE_SIZE_X, TILE_SIZE_Y, -10.0f));
+		tr->SetScale(Vector3(TILE_SIZE_X / 2, TILE_SIZE_Y / 2, -10.0f));
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
-		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		mr->SetMesh(Resources::Find<Mesh>(L"TileMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"tile_material"));
 		//GameObject::Initialize();
 	}
 
 	void Tile::SetIndex(int index)
 	{
-		int maxCol = mAtlas->GetWidth() / TILE_SIZE_X;
-		int maxRow = mAtlas->GetHeight() / TILE_SIZE_Y;
-
-		mY = index / maxCol;
+		maxRow = mAtlas->GetWidth() / TILE_SIZE_X;
+		maxCol = mAtlas->GetHeight() / TILE_SIZE_Y;
+		
+		mY = index / maxRow;
 		mX = index % maxRow;
 	}
 	void Tile::Update()
@@ -67,10 +71,9 @@ namespace ya
 	void Tile::BindConstantBuffer()
 	{
 		ya::renderer::uvCB uvCB = {};
-
-		uvCB.LeftTop = Vector4(0.0f, 0.0f,0.0f, 0.0f);
-
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::UV];
+		
+		uvCB.LeftTop = Vector4(mX * 0.125f, mY * 0.1666f, 0.0f, 0.0f);
 
 		cb->SetData(&uvCB);
 		cb->Bind(eShaderStage::VS);

@@ -15,6 +15,7 @@ namespace ya
 	void TilePalatte::Intialize()
 	{
 		mImage = Resources::Find<Image>(L"TileAtlas");
+		
 	}
 	void TilePalatte::Update()
 	{
@@ -33,7 +34,7 @@ namespace ya
 		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
 		tile->InitializeTile(mImage, index);
 		Transform* tr = tile->GetComponent<Transform>();
-		tr->SetPosition(Vector3((float)pos.x, (float)pos.y, 0.5f));
+		tr->SetPosition(Vector3((float)pos.x * TILE_SIZE_X, (float)pos.y * TILE_SIZE_Y, 0.5f));
 
 		TileID id;
 		id.x = (UINT32)pos.x;

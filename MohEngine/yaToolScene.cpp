@@ -11,7 +11,6 @@
 #include "yaToolScript.h"
 #include "haWorldCursor.h"
 
-
 using namespace ho;
 
 extern ya::Application application;
