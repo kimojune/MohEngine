@@ -10,7 +10,10 @@
 #include "yaUICamera.h"
 #include "yaApplication.h"
 #include "yaUI.h"
-#include  "yaGridScript.h"
+#include "yaGridScript.h"
+#include "yaCollider2D.h"
+#include "yaRenderer.h"
+
 using namespace ho;
 extern ya::Application application;
 
@@ -31,8 +34,12 @@ namespace ya
 		Player* player = new Player();
 		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
+		player->AddComponent<Collider2D>();
 
 		MainCamera* camera = new MainCamera();
+		
+		Camera* maincam = camera->GetComponent<Camera>();
+		ya::renderer::mainCamera = maincam;
 		UICamera* uicamera = new UICamera();
 
 		UI* heart = new UI(Vector3(-half_width/2 + 32.0f, half_height/2 - 32.0f,-6.0f), (L"Heart_material"));

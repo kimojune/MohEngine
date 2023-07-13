@@ -1,11 +1,12 @@
 #include "guiEditor.h"
-#include "yaMesh.h"
-#include "yaResources.h"
-#include "yaTransform.h"
-#include "yaMeshRenderer.h"
-#include "yaMaterial.h"
+#include "..\\Engine_SOURCE\\yaMesh.h"
+#include "..\\Engine_SOURCE\\yaResources.h"
+#include "..\\Engine_SOURCE\\yaTransform.h"
+#include "..\\Engine_SOURCE\\yaMeshRenderer.h"
+#include "..\\Engine_SOURCE\\yaMaterial.h"
+#include "..\\Engine_SOURCE\\yaRenderer.h"
+
 #include "yaGridScript.h"
-#include "yaRenderer.h"
 
 namespace gui
 {
@@ -30,16 +31,16 @@ namespace gui
 		mr->SetMaterial(material);
 		mr->SetMesh(mesh);
 
-		EditorObject* grid = new EditorObject();
-		grid->SetName(L"Grid");
+		//EditorObject* grid = new EditorObject();
+		//grid->SetName(L"Grid");
 
-		mr = grid->AddComponent<ya::MeshRenderer>();
-		mr->SetMesh(ya::Resources::Find<ya::Mesh>(L"RectMesh"));
-		mr->SetMaterial(ya::Resources::Find<ya::Material>(L"GridMaterial"));
-		ya::GridScript* gridSc = grid->AddComponent<ya::GridScript>();
-		gridSc->SetCamera(ya::renderer::cameras[0]);
+		//mr = grid->AddComponent<ya::MeshRenderer>();
+		//mr->SetMesh(ya::Resources::Find<ya::Mesh>(L"RectMesh"));
+		//mr->SetMaterial(ya::Resources::Find<ya::Material>(L"GridMaterial"));
+		//ya::GridScript* gridSc = grid->AddComponent<ya::GridScript>();
+		//gridSc->SetCamera(ya::renderer::cameras[0]);
 
-		mEditorObjects.push_back(grid);
+		//mEditorObjects.push_back(grid);
 	}
 	void Editor::Run()
 	{
@@ -76,7 +77,23 @@ namespace gui
 	}
 	void Editor::Release()
 	{
+		for (auto widget : mWidgets)
+		{
+			delete widget;
+			widget = nullptr;
+		}
 
+		for (auto editorObj : mEditorObjects)
+		{
+			delete editorObj;
+			editorObj = nullptr;
+		}
+
+		for (auto debugObj : mDebugObjects)
+		{
+			delete debugObj;
+			debugObj = nullptr;
+		}
 	}
 	void Editor::DebugRender(const ya::graphics::DebugMesh& mesh)
 	{
@@ -84,6 +101,24 @@ namespace gui
 
 		// 위치 크기 회전 정보를 받아와서
 		// 해당 게임오브젝트위에 그려주면된다.
+		ya::Transform* tr = debugObj->GetComponent<ya::Transform>();
+
+		Vector3 pos = mesh.position;
+		pos.z -= 0.01f;
+
+		tr->SetPosition(pos);
+		tr->SetScale(mesh.scale);
+		tr->SetRotation(mesh.rotation);
+
+		tr->LateUpdate();
+
+		/*ya::MeshRenderer * mr
+		= debugObj->GetComponent<ya::MeshRenderer>();*/
+
+		// main camera
+		ya::Camera* mainCamara = ya::renderer::mainCamera;
+		ya::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
+		ya::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
 
 		debugObj->Render();
 	}

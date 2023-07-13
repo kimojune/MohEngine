@@ -1,6 +1,6 @@
 #include "yaCollider2D.h"
 #include "yaGameObject.h"
-
+#include "yaRenderer.h"
 namespace ya
 {
 	Collider2D::Collider2D()
@@ -22,6 +22,15 @@ namespace ya
 	}
 	void Collider2D::LateUpdate()
 	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+
+		graphics::DebugMesh mesh = {};
+		mesh.position = tr->GetPosition();
+		mesh.scale = tr->GetScale();
+		mesh.rotation = tr->GetRotation();
+		mesh.type = eColliderType::Rect;
+
+		renderer::PushDebugMeshAttribute(mesh);
 	}
 	void Collider2D::Render()
 	{

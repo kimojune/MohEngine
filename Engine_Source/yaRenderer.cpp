@@ -12,6 +12,7 @@ namespace ya::renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::End];
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End];
 
+	ya::Camera* mainCamera = nullptr;
 	std::vector<ya::Camera*> cameras = {};
 	std::vector<DebugMesh> debugMeshes = {};
 
@@ -185,19 +186,19 @@ namespace ya::renderer
 		vertexes.resize(4);
 		vertexes[0].pos = Vector3(-1.0f, 1.0f, 0.0f);
 		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		vertexes[0].uv = Vector2(0.25f, 0.25f);
+		vertexes[0].uv = Vector2(0.0f, 0.0f);
 
 		vertexes[1].pos = Vector3(1.0f, 1.0f, 0.0f);
 		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		vertexes[1].uv = Vector2(0.5f, 0.25f);
+		vertexes[1].uv = Vector2(1.0f, 0.0f);
 
 		vertexes[2].pos = Vector3(1.0f, -1.0f, 0.0f);
 		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		vertexes[2].uv = Vector2(0.5f, 0.5f);
+		vertexes[2].uv = Vector2(1.0f, 1.0f);
 
 		vertexes[3].pos = Vector3(-1.0f, -1.0f, 0.0f);
 		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertexes[3].uv = Vector2(0.25f, 0.5f);
+		vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		//Vertex Buffer
 		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
@@ -307,8 +308,8 @@ namespace ya::renderer
 		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
 		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
 		debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
-		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
-		debugShader->SetRSState(eRSType::SolidNone);
+		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		debugShader->SetRSState(eRSType::WireframeNone);
 		//debugShader->SetDSState(eDSType::NoWrite);
 		ya::Resources::Insert(L"DebugShader", debugShader);
 	}

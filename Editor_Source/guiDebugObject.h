@@ -1,9 +1,19 @@
 #pragma once
-#include "yaGameObject.h"
+#include "..\\Engine_SOURCE\\yaGameObject.h"
 
 namespace gui
 {
 	class DebugObject : public ya::GameObject
 	{
+	public:
+		DebugObject();
+		~DebugObject();
+
+		virtual void Intialize() override;
+		virtual void Update() override;
+		virtual void LateUpdate() override;
+		virtual void Render() override;
+
+	private:
 	};
 }

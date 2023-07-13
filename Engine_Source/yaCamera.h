@@ -14,8 +14,10 @@ namespace ya
 			None
 		};
 
-		static Matrix GetViewMatrix() { return View; }
-		static Matrix GetProjectionMatrix() { return Projection; }
+		static Matrix& GetGpuViewMatrix() { return View; }
+		static void SetGpuViewMatrix(Matrix view) { View = view; }
+		static Matrix& GetGpuProjectionMatrix() { return Projection; }
+		static void SetGpuProjectionMatrix(Matrix projection) { Projection = projection; }
 
 		Camera();
 		~Camera();
@@ -50,6 +52,9 @@ namespace ya
 		float GetSize() { return mSize; }
 
 		Vector3 GetWorldTransform(Vector3 pos);
+
+		Matrix& GetViewMatrix() { return mView; }
+		Matrix& GetProjectionMatrix() { return mProjection; }
 	
 	private:
 		static Matrix View;

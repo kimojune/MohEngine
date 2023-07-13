@@ -17,6 +17,8 @@ namespace ya
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
 		AddComponent<CameraScript>();
+		
+		
 	}
 	MainCamera::~MainCamera()
 	{

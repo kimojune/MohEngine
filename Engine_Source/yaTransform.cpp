@@ -85,28 +85,13 @@ namespace ya
 		renderer::TransformCB trCB = {};
 
 		trCB.mWorld = mWorld;
-		trCB.mView = Camera::GetViewMatrix();
-		trCB.mProjection = Camera::GetProjectionMatrix();
+		trCB.mView = Camera::GetGpuViewMatrix();
+		trCB.mProjection = Camera::GetGpuProjectionMatrix();
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];
 
 		cb->SetData(&trCB);
 		cb->Bind(eShaderStage::VS);
 
-	}
-	Vector3 Transform::TranslateWorldMatrix(Vector3 vector)
-	{
-		Matrix mView = Camera::GetViewMatrix();
-		Matrix mProjection = Camera::GetProjectionMatrix();
-
-		Matrix mViewReverce = mView.Invert();
-		Matrix mProjectionReverce = mProjection.Invert();
-
-		Vector4 cameraPos = Vector4::Transform(Vector4(vector.x, vector.y, vector.z, 1.0f), mProjectionReverce);
-		Vector4 worldpos = Vector4::Transform(Vector4(vector.x, vector.y, vector.z, 1.0f), mViewReverce);
-		
-		mPosition = vector;
-
-		return Vector3(worldpos.x, worldpos.y, worldpos.z)/ worldpos.w;
 	}
 }

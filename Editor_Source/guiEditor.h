@@ -1,10 +1,11 @@
 #pragma once
-#include "CommonInclude.h"
-#include "MohEngine.h"
+#include "..\\Engine_SOURCE\\CommonInclude.h"
+#include "..\\Engine_SOURCE\\MohEngine.h"
+#include "..\\Engine_SOURCE\\yaGraphics.h"
+
 #include "guiWidget.h"
 #include "guiEditorObject.h"
 #include "guiDebugObject.h"
-#include "yaGraphics.h"
 
 namespace gui
 {
