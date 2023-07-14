@@ -44,6 +44,7 @@ namespace ya
 	}
 	void Application::LateUpdate()
 	{
+		ya::renderer::debugMeshes.clear();
 		SceneManager::LateUpdate();
 	}
 	void Application::Render()
