@@ -74,6 +74,7 @@ namespace gui
 		{
 			DebugRender(mesh);
 		}
+		ya::renderer::debugMeshes.clear();
 	}
 	void Editor::Release()
 	{
