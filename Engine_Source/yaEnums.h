@@ -24,7 +24,7 @@ namespace ya::enums
 		Monster,
 		UI,
 		BG,
-		End,
+		End = 16,
 	};
 
 	enum class eResourceType
