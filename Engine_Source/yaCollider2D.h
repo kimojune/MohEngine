@@ -23,8 +23,17 @@ namespace ya
 		void SetSize(Vector2 size) { mSize = size; }
 		void SetCenter(Vector2 size) { mCenter = size; }
 		UINT GetColliderID() { return mColliderID; }
+		eColliderType GetColliderType() { return mType; }
 
-	
+		Vector3 GetPosition() { return mPosition; }
+		Vector2 GetSize() { return mSize; }
+		float GetRadius() { return mRadius; }
+
+		Vector3 TranslateWorldPos(Vector3 pos);
+		Vector3 GetSideVector(Vector3 left, Vector3 right);
+
+		
+
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;
@@ -34,5 +43,7 @@ namespace ya
 		Vector3 mPosition;
 		Vector2 mSize;
 		Vector2 mCenter;
+
+		float mRadius;
 	};
 }

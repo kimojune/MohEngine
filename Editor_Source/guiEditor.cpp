@@ -18,8 +18,8 @@ namespace gui
 	void Editor::Initialize()
 	{
 		mDebugObjects.resize((UINT)eColliderType::End);
-
-		std::shared_ptr<ya::Mesh>mesh 
+	{
+		std::shared_ptr<ya::Mesh>mesh
 			= ya::Resources::Find<ya::Mesh>(L"DebugRect");
 		std::shared_ptr<ya::Material> material
 			= ya::Resources::Find<ya::Material>(L"DebugMaterial");
@@ -30,7 +30,21 @@ namespace gui
 			= mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<ya::MeshRenderer>();
 		mr->SetMaterial(material);
 		mr->SetMesh(mesh);
+	}
 
+		{
+			std::shared_ptr<ya::Mesh>mesh
+				= ya::Resources::Find<ya::Mesh>(L"DebugCircle");
+			std::shared_ptr<ya::Material> material
+				= ya::Resources::Find<ya::Material>(L"DebugMaterial");
+
+			mDebugObjects[(UINT)eColliderType::Circle] = new DebugObject();
+			mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<ya::Transform>();
+			ya::MeshRenderer* mr
+				= mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<ya::MeshRenderer>();
+			mr->SetMaterial(material);
+			mr->SetMesh(mesh);
+		}
 		//EditorObject* grid = new EditorObject();
 		//grid->SetName(L"Grid");
 

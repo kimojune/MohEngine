@@ -4,6 +4,7 @@
 #include "yaTransform.h"
 #include "yaCamera.h"
 #include "yaCameraScript.h"
+#include "yaPlayerScript.h"
 
 namespace ya
 {
@@ -23,6 +24,8 @@ namespace ya
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 		tr->SetScale(mPixelSize);
+
+		AddComponent<PlayerScript>();
 	
 	}
 	void Player::Update()

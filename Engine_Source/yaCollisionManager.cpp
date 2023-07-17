@@ -1,21 +1,22 @@
 #include "yaCollisionManager.h"
 #include "yaSceneManager.h"
 
+
 namespace ya
 {
-	std::bitset<LAYER_MAX> mMatrix[LAYER_MAX] = {};
-	std::map<UINT64, bool> mCollisionMap = {};
+	std::bitset<LAYER_MAX> CollisionManager::mMatrix[LAYER_MAX] = {};
+	std::map<UINT64, bool> CollisionManager::mCollisionMap = {};
 
 	void CollisionManager::Initialize()
 	{
 	}
 	void CollisionManager::Update()
 	{
-		for (UINT column = 0; column < LAYER_MAX; column++)
+		for (UINT column = 0; column < (UINT)eLayerType::End; column++)
 		{
-			for (UINT row = 0; row < LAYER_MAX; row++)
+			for (UINT row = 0; row < (UINT)eLayerType::End; row++)
 			{
-				if (mMatrix[row] == true)
+				if (mMatrix[column][row] == true)
 				{
 					LayerCollision((eLayerType)column, (eLayerType)row);
 				}
@@ -102,12 +103,25 @@ namespace ya
 	}
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
 	{
-		// 네모 네모 충돌
-		// 분리축 이론
 
-		// To do... (숙제)
-		// 분리축이 어렵다 하시는분들은
-		// 원 - 원 충돌
+		//원 충돌
+		if (left->GetColliderType() == eColliderType::Circle 
+			&& right->GetColliderType() == eColliderType::Circle)
+		{	
+		Vector3 leftPos = left->GetPosition();
+		Vector3 rightPos = right->GetPosition();
+
+		float leftRadius = left->GetRadius();
+		float rightRadius = right->GetRadius();
+		
+		float sumRadius = leftRadius + rightRadius;
+
+		float distance = 
+		sqrt((rightPos.x - leftPos.x) * (rightPos.x - leftPos.x) + (rightPos.y - leftPos.y) * (rightPos.y - leftPos.y));
+		
+		if (distance <= sumRadius)
+			return true;
+		}
 
 		return false;
 	}

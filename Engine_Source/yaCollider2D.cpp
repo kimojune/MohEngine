@@ -10,6 +10,8 @@ namespace ya
 		, mTransform(nullptr)
 		, mSize(Vector2::One)
 		, mCenter(Vector2::Zero)
+		, mRadius(1)
+		, mType(eColliderType::Rect)
 	{
 		mColliderNumber++;
 		mColliderID = mColliderNumber;
@@ -41,9 +43,44 @@ namespace ya
 		graphics::DebugMesh mesh = {};
 
 		mesh.position = pos;
-		mesh.scale = scale;
 		mesh.rotation = tr->GetRotation();
-		mesh.type = eColliderType::Rect;
+		
+		switch (mType)
+		{
+		case ya::enums::eColliderType::Rect:
+			mesh.type = eColliderType::Rect;
+			mesh.scale = scale;
+			break;
+
+		case ya::enums::eColliderType::Circle:
+			mesh.type = eColliderType::Circle;
+
+			if (scale.x < scale.y)
+			{
+				mRadius = scale.y / 2;
+				mesh.radius = mRadius;
+			}
+
+			else
+			{
+				mRadius = scale.x / 2;
+				mesh.radius = mRadius;
+			}
+			mesh.scale = Vector3(mRadius * 2, mRadius * 2, mRadius * 2);
+
+			break;
+		
+		case ya::enums::eColliderType::Sphere:
+			break;
+		
+		case ya::enums::eColliderType::Cube:
+			break;
+		
+		case ya::enums::eColliderType::End:
+			break;
+		default:
+			break;
+		}
 
 		renderer::PushDebugMeshAttribute(mesh);
 	}
@@ -80,5 +117,26 @@ namespace ya
 		{
 			script->OnCollisionExit(other);
 		}
+	}
+
+	Vector3 Collider2D::TranslateWorldPos(Vector3 pos)
+	{	
+		Vector3 scale = mTransform->GetScale();
+		scale.x *= mSize.x;
+		scale.y *= mSize.y;
+
+		Vector3 worldpos = pos * scale * mTransform->GetRotation() * mPosition;
+
+		return Vector3(worldpos);
+	}
+
+	Vector3 Collider2D::GetSideVector(Vector3 right, Vector3 left)
+	{
+		Vector3 leftPos = TranslateWorldPos(left);
+		Vector3 rightPos = TranslateWorldPos(right);
+
+		Vector3 sideVector = right - left;
+		
+		return sideVector;
 	}
 }

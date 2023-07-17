@@ -25,10 +25,10 @@ namespace ya
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector3 cursorPos = tr->GetPosition();
+			cursorPos.x -= TILE_SIZE_X / 2;
+			cursorPos.y -= TILE_SIZE_Y / 2;
 			int x = (int)cursorPos.x / TILE_SIZE_X;
 			int y = (int)cursorPos.y / TILE_SIZE_Y;
-
-			Vector2 tilePos = Vector2::Zero;
 
 			TilePalatte::CreateTile(mIndex, Vector2((float)x, (float)y));
 		}

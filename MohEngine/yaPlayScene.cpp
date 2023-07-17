@@ -13,6 +13,9 @@
 #include "yaGridScript.h"
 #include "yaCollider2D.h"
 #include "yaRenderer.h"
+#include "yaDog.h"
+#include "yaObject.h"
+#include "yaCollisionManager.h"
 
 using namespace ho;
 extern ya::Application application;
@@ -36,11 +39,20 @@ namespace ya
 		AddGameObject(eLayerType::Player, player);
 		Collider2D* cd = player->AddComponent<Collider2D>();
 		cd->SetCenter(Vector2(0.0f, -10.0f));
-		cd->SetSize(Vector2(0.6f, 0.6f));
-		MainCamera* camera = new MainCamera();
+		cd->SetSize(Vector2(2.0f, 2.0f));
+		cd->SetType(eColliderType::Circle);
 		
+		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);
+		Collider2D* dogcd = dog->AddComponent<Collider2D>();
+		dogcd->SetCenter(Vector2(0.0f, 0.0f));
+		dogcd->SetSize(Vector2(2.0f, 2.0f));
+		dogcd->SetType(eColliderType::Circle);
+
+		MainCamera* camera = new MainCamera();
 		Camera* maincam = camera->GetComponent<Camera>();
+		camera->SetTarget(player);
 		ya::renderer::mainCamera = maincam;
+
 		UICamera* uicamera = new UICamera();
 
 		UI* heart = new UI(Vector3(-half_width/2 + 32.0f, half_height/2 - 32.0f,-6.0f), (L"Heart_material"));
@@ -69,6 +81,9 @@ namespace ya
 
 		//camera->SetTarget(player);
 		Cursor* cursor = new Cursor(uicamera);
+
+
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
 		//GameObject* grid = new GameObject();
 		//grid->SetName(L"Grid");
