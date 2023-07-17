@@ -17,7 +17,7 @@ cbuffer Grid : register(b2)
 
 cbuffer UVCB : register(b3)
 {
-    float4 LeftTop;
+    float4 Offset;
 }
 
 

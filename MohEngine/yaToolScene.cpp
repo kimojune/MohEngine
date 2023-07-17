@@ -87,7 +87,7 @@ namespace ya
 	}
 }
 
-static std::shared_ptr <ya::Image> tile;
+static std::shared_ptr <ya::Image> tileatlas;
 
 LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
@@ -102,9 +102,9 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 	{
 	case WM_CREATE:
 	{
-		tile = std::make_shared<ya::Image>();
-		tile = ya::Resources::Load<ya::Image >(L"TileAtlas", L"..\\Resources\\Tile\\Tile.bmp");
-		RECT rect = { 0, 0, tile->GetWidth(), tile->GetHeight() };
+		tileatlas = std::make_shared<ya::Image>();
+		tileatlas = ya::Resources::Load<ya::Image >(L"TileAtlas", L"..\\Resources\\Tile\\Tile.bmp");
+		RECT rect = { 0, 0, tileatlas->GetWidth(), tileatlas->GetHeight() };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 		SetWindowPos(hWnd
@@ -128,8 +128,8 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 			int x = mousePos.x / TILE_SIZE_X;
 			int y = mousePos.y / TILE_SIZE_Y;
 
-			int MAX_X = tile ->GetWidth() / TILE_SIZE_X;
-			int MAX_Y = tile ->GetHeight() / TILE_SIZE_Y;
+			int MAX_X = tileatlas->GetWidth() / TILE_SIZE_X;
+			int MAX_Y = tileatlas->GetHeight() / TILE_SIZE_Y;
 
 			int index = (y * MAX_X) + (x % MAX_X);
 			

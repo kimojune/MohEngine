@@ -55,7 +55,7 @@ namespace ya
 		case ya::enums::eColliderType::Circle:
 			mesh.type = eColliderType::Circle;
 
-			if (scale.x < scale.y)
+			if (scale.x > scale.y)
 			{
 				mRadius = scale.y / 2;
 				mesh.radius = mRadius;

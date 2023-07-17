@@ -40,10 +40,11 @@ namespace ya
 		mAtlas = atlas;
 		SetIndex(index);
 		Transform* tr = GetComponent<Transform>();
-		tr->SetScale(Vector3(TILE_SIZE_X / 2, TILE_SIZE_Y / 2, -10.0f));
+		tr->SetScale(Vector3(TILE_SIZE_X , TILE_SIZE_Y, -10.0f));
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"TileMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"tile_material"));
+
 		//GameObject::Initialize();
 	}
 
@@ -57,8 +58,6 @@ namespace ya
 	}
 	void Tile::Update()
 	{
-
-
 		GameObject::Update();
 	}
 	void Tile::Render()

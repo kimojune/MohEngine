@@ -19,7 +19,7 @@ public:
 
 	void BindBuffer();
 	void Render();
-
+	
 	UINT GetIndexCount() { return mIndexCount; }
 
 private:

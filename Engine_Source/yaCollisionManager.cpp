@@ -103,7 +103,6 @@ namespace ya
 	}
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
 	{
-
 		//원 충돌
 		if (left->GetColliderType() == eColliderType::Circle 
 			&& right->GetColliderType() == eColliderType::Circle)
@@ -122,6 +121,41 @@ namespace ya
 		if (distance <= sumRadius)
 			return true;
 		}
+		
+		//분리 축
+		else if (left->GetColliderType() == eColliderType::Rect
+			&& right->GetColliderType() == eColliderType::Rect)
+		{
+			Transform* leftTF = left->GetOwner()->GetComponent<Transform>();
+			Transform* rightTF = right->GetOwner()->GetComponent<Transform>();
+
+			std::vector<Vector3> axisVectors = {};
+			
+			axisVectors.push_back(leftTF->Right());
+			axisVectors.push_back(leftTF->Up());
+			axisVectors.push_back(leftTF->Forward());
+			axisVectors.push_back(rightTF->Right());
+			axisVectors.push_back(rightTF->Up());
+			axisVectors.push_back(rightTF->Forward());
+			axisVectors.push_back(leftTF->Right().Cross(rightTF->Right()));
+			axisVectors.push_back(leftTF->Right().Cross(rightTF->Up()));
+			axisVectors.push_back(leftTF->Right().Cross(rightTF->Forward()));
+			axisVectors.push_back(leftTF->Up().Cross(rightTF->Right()));
+			axisVectors.push_back(leftTF->Up().Cross(rightTF->Up()));
+			axisVectors.push_back(leftTF->Up().Cross(rightTF->Forward()));
+			axisVectors.push_back(leftTF->Forward().Cross(rightTF->Right()));
+			axisVectors.push_back(leftTF->Forward().Cross(rightTF->Up()));
+			axisVectors.push_back(leftTF->Forward().Cross(rightTF->Forward()));
+
+			std::vector<Vector3>::iterator iter ;
+
+			for (iter = axisVectors.begin(); iter != axisVectors.end(); iter++)
+			{
+//				iter()
+			}
+		
+		}
+
 
 		return false;
 	}

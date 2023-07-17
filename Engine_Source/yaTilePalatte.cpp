@@ -30,10 +30,7 @@ namespace ya
 			return;
 		if (mousPos.y >= 900.0f || mousPos.y <= 0.0f)
 			return;
-		//Transform* tr = GetOwner()->GetComponent<Transform>();
-		//Vector3 cursorPos = tr->GetPosition();
-		//int x = (int)cursorPos.x / TILE_SIZE_X;
-		//int y = (int)cursorPos.y / TILE_SIZE_Y;
+		
 
 		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
 		tile->InitializeTile(mImage, index);
@@ -41,35 +38,38 @@ namespace ya
 		
 		Vector3 tilepos = Vector3::Zero;
 		
-		tilepos.x = pos.x * TILE_SIZE_X;
-		tilepos.y = pos.y * TILE_SIZE_Y;
+		tilepos.x = pos.x * TILE_SIZE_X ;
+		tilepos.y = pos.y * TILE_SIZE_Y ;
 		tilepos.z = 0.3f;
 
-		///*if (pos.x == 0)
+		//if (pos.x == 0)
 		//	pos.x = 0;
-		//else*/ if (pos.x < 0)
-		//	tilepos.x = pos.x * TILE_SIZE_X - TILE_SIZE_X / 2;
+		//else if (pos.x < 0)
+		//	tilepos.x = ((int)pos.x - TILE_SIZE_X / 2) / TILE_SIZE_X * TILE_SIZE_X;
 		//else
-		//	tilepos.x = pos.x* TILE_SIZE_X + TILE_SIZE_X / 2;
+		//	tilepos.x = ((int)pos.x + TILE_SIZE_X / 2) / TILE_SIZE_X * TILE_SIZE_X;
 
 
-		////if (pos.y == 0)
-		////	pos.y = 0;
+
+		//if (pos.y == 0)
+		//	pos.y = 0;
 		//if(pos.y < 0 )
-		//	tilepos.y = pos.y * TILE_SIZE_Y - TILE_SIZE_Y / 2;
-		//else
-		//	tilepos.y = pos.y * TILE_SIZE_Y + TILE_SIZE_Y / 2;
+		//	tilepos.y = ((int)pos.y - TILE_SIZE_Y / 2) / TILE_SIZE_Y * TILE_SIZE_Y;
 
-		//tilepos.z = 0.3f;
+		//else
+		//	tilepos.y = ((int)pos.y + TILE_SIZE_Y / 2) / TILE_SIZE_Y * TILE_SIZE_Y;
+
 
 		tr->SetPosition(tilepos);
+		//tilepos.z = 0.3f;
+
 
 		TileID id;
 		id.x = (UINT32)pos.x;
 		id.y = (UINT32)pos.y;
 
 		//tr->SetPosition(Vector3((float)id.x, (float)id.y, 0.5f));
-		//mTiles.insert(std::make_pair(id.id, tile));
+		mTiles.insert(std::make_pair(id.id, tile));
 
 	}
 

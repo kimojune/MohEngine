@@ -210,19 +210,19 @@ namespace ya::renderer
 		std::shared_ptr<Mesh> tilemesh = std::make_shared<Mesh>();
 		Resources::Insert(L"TileMesh", tilemesh);
 
-		tilevertexes[0].pos = Vector3(-1.0f, 1.0f, 0.0f);
+		tilevertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
 		tilevertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
 		tilevertexes[0].uv = Vector2(0.0f, 0.0f);
 
-		tilevertexes[1].pos = Vector3(1.0f, 1.0f, 0.0f);
+		tilevertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
 		tilevertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
 		tilevertexes[1].uv = Vector2(0.125f, 0.0f);
 
-		tilevertexes[2].pos = Vector3(1.0f, -1.0f, 0.0f);
+		tilevertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
 		tilevertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
 		tilevertexes[2].uv = Vector2(0.125f, 0.166f);
 
-		tilevertexes[3].pos = Vector3(-1.0f, -1.0f, 0.0f);
+		tilevertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
 		tilevertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 		tilevertexes[3].uv = Vector2(0.0f, 0.166f);
 
@@ -334,7 +334,7 @@ namespace ya::renderer
 		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
 		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
 		debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
-		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_LINESTRIP);
 		debugShader->SetRSState(eRSType::WireframeNone);
 		//debugShader->SetDSState(eDSType::NoWrite);
 		ya::Resources::Insert(L"DebugShader", debugShader);
