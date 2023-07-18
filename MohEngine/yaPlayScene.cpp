@@ -16,6 +16,7 @@
 #include "yaDog.h"
 #include "yaObject.h"
 #include "yaCollisionManager.h"
+#include "yaInput.h"
 
 using namespace ho;
 extern ya::Application application;
@@ -102,6 +103,12 @@ namespace ya
 	}
 	void PlayScene::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::N))
+		{
+			Vector2 mousePos = Input::GetMousePos();
+			SceneManager::LoadScene(L"ToolScene");
+		}
+
 		Scene::Update();
 	}
 	void PlayScene::LateUpdate()

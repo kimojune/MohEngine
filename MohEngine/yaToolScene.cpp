@@ -50,11 +50,6 @@ namespace ya
 		wCursor->AddComponent<TileScript>();
 		
 
-		//GameObject* tileGenerator = new GameObject();
-		//tileGenerator->AddComponent<TileScript>();
-		//Grid* grid = object::Instantiate<Grid>(eLayerType::Grid);
-		//grid->GetScript()->SetCamera(camera->GetComponent<Camera>());
-
 		TilePalatte::Intialize();
 
 

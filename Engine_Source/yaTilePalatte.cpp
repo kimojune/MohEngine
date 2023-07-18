@@ -31,6 +31,13 @@ namespace ya
 		if (mousPos.y >= 900.0f || mousPos.y <= 0.0f)
 			return;
 		
+		TileID id;
+		id.x = (UINT32)pos.x;
+		id.y = (UINT32)pos.y;
+
+		std::unordered_map<UINT64, Tile*>::iterator iter = mTiles.find(id.id);
+		if (iter != mTiles.end())
+			return;
 
 		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
 		tile->InitializeTile(mImage, index);
@@ -42,41 +49,14 @@ namespace ya
 		tilepos.y = pos.y * TILE_SIZE_Y ;
 		tilepos.z = 0.3f;
 
-		//if (pos.x == 0)
-		//	pos.x = 0;
-		//else if (pos.x < 0)
-		//	tilepos.x = ((int)pos.x - TILE_SIZE_X / 2) / TILE_SIZE_X * TILE_SIZE_X;
-		//else
-		//	tilepos.x = ((int)pos.x + TILE_SIZE_X / 2) / TILE_SIZE_X * TILE_SIZE_X;
-
-
-
-		//if (pos.y == 0)
-		//	pos.y = 0;
-		//if(pos.y < 0 )
-		//	tilepos.y = ((int)pos.y - TILE_SIZE_Y / 2) / TILE_SIZE_Y * TILE_SIZE_Y;
-
-		//else
-		//	tilepos.y = ((int)pos.y + TILE_SIZE_Y / 2) / TILE_SIZE_Y * TILE_SIZE_Y;
-
-
 		tr->SetPosition(tilepos);
-		//tilepos.z = 0.3f;
-
-
-		TileID id;
-		id.x = (UINT32)pos.x;
-		id.y = (UINT32)pos.y;
-
-		//tr->SetPosition(Vector3((float)id.x, (float)id.y, 0.5f));
+		
 		mTiles.insert(std::make_pair(id.id, tile));
-
 	}
 
 
 	void TilePalatte::DeleateTile(Vector2 pos)
 	{
-
 		Vector2 mousPos = Input::GetMousePos();
 		if (mousPos.x >= 1600.0f || mousPos.x <= 0.0f)
 			return;
@@ -88,10 +68,13 @@ namespace ya
 		id.y = (UINT32)pos.y;
 
 		std::unordered_map<UINT64, Tile*>::iterator iter = mTiles.find(id.id);
+		if (iter == mTiles.end())
+			return;
 
-
+		Tile* tile = iter->second;
+		
+		tile->SetState(GameObject::eState::Dead);
 		mTiles.erase(id.id);
-
 	}
 
 	void TilePalatte::CreateTiles(int index, UINT width, UINT height)
