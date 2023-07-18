@@ -193,7 +193,7 @@ namespace ya
 		while (true)
 		{
 			int index = -1;
-			TileID id;
+			TileID id = {};
 
 			if (fread(&index, sizeof(int), 1, file) == NULL)
 				break;
@@ -201,7 +201,7 @@ namespace ya
 			if (fread(&id.id, sizeof(TileID), 1, file) == NULL)
 				break;
 
-			CreateTile(index, Vector2(id.x, id.y));
+			CreateTile(index, Vector2((INT)id.x, (INT)id.y));
 
 
 			//mPixel = Image::Create(L"Pixels", id.x, id.y,RGB(255,0,255));

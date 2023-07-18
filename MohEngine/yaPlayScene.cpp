@@ -17,7 +17,7 @@
 #include "yaObject.h"
 #include "yaCollisionManager.h"
 #include "yaInput.h"
-
+#include "yaTilePalatte.h"
 using namespace ho;
 extern ya::Application application;
 
@@ -90,7 +90,6 @@ namespace ya
 		Cursor* cursor = new Cursor(uicamera);
 
 
-
 		//GameObject* grid = new GameObject();
 		//grid->SetName(L"Grid");
 		//AddGameObject(eLayerType::Grid, grid);
@@ -118,5 +117,14 @@ namespace ya
 	void PlayScene::Render()
 	{
 		Scene::Render();
+	}
+	void PlayScene::OnEnter()
+	{
+		const std::wstring& path = { L"..\\Resources\\Tile\\1234" };
+
+		TilePalatte::Load(path);
+	}
+	void PlayScene::OnExit()
+	{
 	}
 }
