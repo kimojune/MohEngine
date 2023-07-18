@@ -40,6 +40,7 @@ namespace ya
 		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
 		Collider2D* cd = player->AddComponent<Collider2D>();
+		cd->SetCenter(Vector2(0.0f, -10.0f));
 		cd->SetSize(Vector2(2.0f, 2.0f));
 		cd->SetType(eColliderType::Rect);
 		
@@ -47,7 +48,7 @@ namespace ya
 		Collider2D* dogcd = dog->AddComponent<Collider2D>();
 		Transform* tr = dog->GetComponent<Transform>();
 		float degree = PI / 8.0f;
-		
+
 
 		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
 		dogcd->SetCenter(Vector2(0.0f, 0.0f));

@@ -164,7 +164,7 @@ namespace ya
 				Axis[i].z = 0;
 			}
 
-			Vector3 vc = leftTr->GetPosition() - rightTr->GetPosition();
+			Vector3 vc = left->GetPosition() - right->GetPosition();
 			vc.z = 0.0f;
 
 			Vector3 centerDir = vc;
