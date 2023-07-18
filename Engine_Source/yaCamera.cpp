@@ -133,7 +133,6 @@ namespace ya
 		mCutOutGameObjects.clear();
 		mTransparentGameObjects.clear();
 
-
 		//alphasorting
 		Scene* scene = SceneManager::GetActiveScene();
 		for (size_t i = 0; i < (UINT)eLayerType::End ; i++)
