@@ -29,11 +29,6 @@ namespace ya
 		Vector2 GetSize() { return mSize; }
 		float GetRadius() { return mRadius; }
 
-		Vector3 TranslateWorldPos(Vector3 pos);
-		Vector3 GetSideVector(Vector3 left, Vector3 right);
-
-		
-
 	private:
 		static UINT mColliderNumber;
 		UINT mColliderID;

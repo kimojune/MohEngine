@@ -119,24 +119,4 @@ namespace ya
 		}
 	}
 
-	Vector3 Collider2D::TranslateWorldPos(Vector3 pos)
-	{	
-		Vector3 scale = mTransform->GetScale();
-		scale.x *= mSize.x;
-		scale.y *= mSize.y;
-
-		Vector3 worldpos = pos * scale * mTransform->GetRotation() * mPosition;
-
-		return Vector3(worldpos);
-	}
-
-	Vector3 Collider2D::GetSideVector(Vector3 right, Vector3 left)
-	{
-		Vector3 leftPos = TranslateWorldPos(left);
-		Vector3 rightPos = TranslateWorldPos(right);
-
-		Vector3 sideVector = right - left;
-		
-		return sideVector;
-	}
 }

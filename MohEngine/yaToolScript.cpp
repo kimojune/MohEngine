@@ -33,10 +33,8 @@ namespace ya
 			else
 				x = ((int)cursorPos.x + TILE_SIZE_X / 2) / TILE_SIZE_X;
 
-
 			if (cursorPos.y < 0)
 				y = ((int)cursorPos.y - TILE_SIZE_Y / 2) / TILE_SIZE_Y;
-
 			else
 				y = ((int)cursorPos.y + TILE_SIZE_Y / 2) / TILE_SIZE_Y;
 

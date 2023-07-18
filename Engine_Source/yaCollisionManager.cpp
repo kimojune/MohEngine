@@ -104,60 +104,86 @@ namespace ya
 	bool CollisionManager::Intersect(Collider2D* left, Collider2D* right)
 	{
 		//원 충돌
-		if (left->GetColliderType() == eColliderType::Circle 
+		if (left->GetColliderType() == eColliderType::Circle
 			&& right->GetColliderType() == eColliderType::Circle)
-		{	
-		Vector3 leftPos = left->GetPosition();
-		Vector3 rightPos = right->GetPosition();
+		{
+			Vector3 leftPos = left->GetPosition();
+			Vector3 rightPos = right->GetPosition();
 
-		float leftRadius = left->GetRadius();
-		float rightRadius = right->GetRadius();
-		
-		float sumRadius = leftRadius + rightRadius;
+			float leftRadius = left->GetRadius();
+			float rightRadius = right->GetRadius();
 
-		float distance = 
-		sqrt((rightPos.x - leftPos.x) * (rightPos.x - leftPos.x) + (rightPos.y - leftPos.y) * (rightPos.y - leftPos.y));
-		
-		if (distance <= sumRadius)
-			return true;
+			float sumRadius = leftRadius + rightRadius;
+
+			float distance =
+				sqrt((rightPos.x - leftPos.x) * (rightPos.x - leftPos.x) + (rightPos.y - leftPos.y) * (rightPos.y - leftPos.y));
+
+			if (distance > sumRadius)
+				return false;
 		}
-		
+
 		//분리 축
 		else if (left->GetColliderType() == eColliderType::Rect
 			&& right->GetColliderType() == eColliderType::Rect)
 		{
-			Transform* leftTF = left->GetOwner()->GetComponent<Transform>();
-			Transform* rightTF = right->GetOwner()->GetComponent<Transform>();
+			Vector3 arrLocalPos[4] = {};
+			arrLocalPos[0] = Vector3(-1.0f, 1.0f, 0.0f);
+			arrLocalPos[1] = Vector3(1.0f, 1.0f, 0.0f);
+			arrLocalPos[2] = Vector3(1.0f, -1.0f, 0.0f);
+			arrLocalPos[3] = Vector3(-1.0f, -1.0f, 0.0f);
 
-			std::vector<Vector3> axisVectors = {};
-			
-			axisVectors.push_back(leftTF->Right());
-			axisVectors.push_back(leftTF->Up());
-			axisVectors.push_back(leftTF->Forward());
-			axisVectors.push_back(rightTF->Right());
-			axisVectors.push_back(rightTF->Up());
-			axisVectors.push_back(rightTF->Forward());
-			axisVectors.push_back(leftTF->Right().Cross(rightTF->Right()));
-			axisVectors.push_back(leftTF->Right().Cross(rightTF->Up()));
-			axisVectors.push_back(leftTF->Right().Cross(rightTF->Forward()));
-			axisVectors.push_back(leftTF->Up().Cross(rightTF->Right()));
-			axisVectors.push_back(leftTF->Up().Cross(rightTF->Up()));
-			axisVectors.push_back(leftTF->Up().Cross(rightTF->Forward()));
-			axisVectors.push_back(leftTF->Forward().Cross(rightTF->Right()));
-			axisVectors.push_back(leftTF->Forward().Cross(rightTF->Up()));
-			axisVectors.push_back(leftTF->Forward().Cross(rightTF->Forward()));
+			Transform* leftTr = left->GetOwner()->GetComponent<Transform>();
+			Transform* rightTr = right->GetOwner()->GetComponent<Transform>();
 
-			std::vector<Vector3>::iterator iter ;
 
-			for (iter = axisVectors.begin(); iter != axisVectors.end(); iter++)
+			Matrix leftMatrix = leftTr->GetMatrix();
+			Matrix rightMatrix = rightTr->GetMatrix();
+
+			Vector3 leftScale = Vector3(left->GetSize().x, left->GetSize().y, 1.0f);
+			Matrix finalLeft = Matrix::CreateScale(leftScale);
+			finalLeft *= leftMatrix;
+
+			Vector3 rightScale = Vector3(right->GetSize().x, right->GetSize().y, 1.0f);
+			Matrix finalRight = Matrix::CreateScale(rightScale);
+			finalRight *= rightMatrix;
+
+			Vector3 Axis[4] = {};
+
+			Axis[0] = Vector3::Transform(arrLocalPos[1], finalLeft);
+			Axis[1] = Vector3::Transform(arrLocalPos[3], finalLeft);
+			Axis[2] = Vector3::Transform(arrLocalPos[1], finalRight);
+			Axis[3] = Vector3::Transform(arrLocalPos[3], finalRight);
+
+			Axis[0] -= Vector3::Transform(arrLocalPos[0], finalLeft);
+			Axis[1] -= Vector3::Transform(arrLocalPos[0], finalLeft);
+			Axis[2] -= Vector3::Transform(arrLocalPos[0], finalRight);
+			Axis[3] -= Vector3::Transform(arrLocalPos[0], finalRight);
+
+			for (size_t i = 0; i < 4; i++)
 			{
-//				iter()
+				Axis[i].z = 0;
 			}
-		
+
+			Vector3 vc = leftTr->GetPosition() - rightTr->GetPosition();
+			vc.z = 0.0f;
+
+			Vector3 centerDir = vc;
+			for (size_t i = 0; i < 4; i++)
+			{
+				Vector3 vA = Axis[i];
+
+				float projDistance = 0.0f;
+				for (size_t j = 0; j < 4; j++)
+				{
+					projDistance += fabsf(Axis[j].Dot(vA) / 2.0f);
+				}
+
+				float centerDistance = fabsf(centerDir.Dot(vA));
+				if (projDistance < centerDistance)
+					return false;
+			}
 		}
-
-
-		return false;
+		return true;
 	}
 	void CollisionManager::SetLayer(eLayerType left, eLayerType right, bool enable)
 	{

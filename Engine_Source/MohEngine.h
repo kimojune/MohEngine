@@ -22,4 +22,5 @@
 
 #define TILE_SIZE_X 64
 #define TILE_SIZE_Y 64
+#define PI 3.141592f
 

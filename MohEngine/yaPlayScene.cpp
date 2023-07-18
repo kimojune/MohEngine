@@ -34,19 +34,25 @@ namespace ya
 		float half_width = application.GetWidth() / 2;
 		float half_height = application.GetHeight() / 2;
 
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
+
 		Player* player = new Player();
 		player->Intialize();
 		AddGameObject(eLayerType::Player, player);
 		Collider2D* cd = player->AddComponent<Collider2D>();
-		cd->SetCenter(Vector2(0.0f, -10.0f));
 		cd->SetSize(Vector2(2.0f, 2.0f));
-		cd->SetType(eColliderType::Circle);
+		cd->SetType(eColliderType::Rect);
 		
 		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);
 		Collider2D* dogcd = dog->AddComponent<Collider2D>();
+		Transform* tr = dog->GetComponent<Transform>();
+		float degree = PI / 8.0f;
+		
+
+		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
 		dogcd->SetCenter(Vector2(0.0f, 0.0f));
 		dogcd->SetSize(Vector2(2.0f, 2.0f));
-		dogcd->SetType(eColliderType::Circle);
+		dogcd->SetType(eColliderType::Rect);
 
 		MainCamera* camera = new MainCamera();
 		Camera* maincam = camera->GetComponent<Camera>();
@@ -83,7 +89,6 @@ namespace ya
 		Cursor* cursor = new Cursor(uicamera);
 
 
-		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
 		//GameObject* grid = new GameObject();
 		//grid->SetName(L"Grid");
