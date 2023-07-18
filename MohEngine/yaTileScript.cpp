@@ -1,20 +1,20 @@
-#include "yaToolScript.h"
+#include "yaTileScript.h"
 #include "yaInput.h"
 #include "yaTilePalatte.h"
 
 namespace ya
 {
-	ToolScript::ToolScript()
+	TileScript::TileScript()
 		:mIndex(-1)
 	{
 	}
-	ToolScript::~ToolScript()
+	TileScript::~TileScript()
 	{
 	}
-	void ToolScript::Initialize()
+	void TileScript::Initialize()
 	{
 	}
-	void ToolScript::Update()
+	void TileScript::Update()
 	{
 		mIndex = TilePalatte::GetIndex();
 		
@@ -41,10 +41,10 @@ namespace ya
 			TilePalatte::CreateTile(mIndex, Vector2(x, y));
 		}
 	}
-	void ToolScript::LateUpdate()
+	void TileScript::LateUpdate()
 	{
 	}
-	void ToolScript::Render()
+	void TileScript::Render()
 	{
 	}
 }

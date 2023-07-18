@@ -41,7 +41,7 @@ namespace ya
 		AddGameObject(eLayerType::Player, player);
 		Collider2D* cd = player->AddComponent<Collider2D>();
 		cd->SetCenter(Vector2(0.0f, -10.0f));
-		cd->SetSize(Vector2(2.0f, 2.0f));
+		cd->SetSize(Vector2(0.6f, 0.6f));
 		cd->SetType(eColliderType::Rect);
 		
 		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);
@@ -52,7 +52,6 @@ namespace ya
 
 		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
 		dogcd->SetCenter(Vector2(0.0f, 0.0f));
-		dogcd->SetSize(Vector2(2.0f, 2.0f));
 		dogcd->SetType(eColliderType::Rect);
 
 		MainCamera* camera = new MainCamera();

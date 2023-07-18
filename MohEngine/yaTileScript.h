@@ -2,11 +2,11 @@
 #include "yaScript.h"
 namespace ya
 {
-	class ToolScript: public Script
+	class TileScript: public Script
 	{
 	public:
-		ToolScript();
-		~ToolScript();
+		TileScript();
+		~TileScript();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

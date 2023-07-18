@@ -8,8 +8,8 @@
 #include "yaGridScript.h"
 #include "yaMainCamera.h"
 #include "hoCursor.h"
-#include "yaToolScript.h"
 #include "haWorldCursor.h"
+#include "yaTileScript.h"
 
 using namespace ho;
 
@@ -47,11 +47,11 @@ namespace ya
 
 		Cursor* cursor = new Cursor(uicamera);
 		WorldCursor* wCursor = new WorldCursor(mCamera);
-		wCursor->AddComponent<ToolScript>();
+		wCursor->AddComponent<TileScript>();
 		
 
 		//GameObject* tileGenerator = new GameObject();
-		//tileGenerator->AddComponent<ToolScript>();
+		//tileGenerator->AddComponent<TileScript>();
 		//Grid* grid = object::Instantiate<Grid>(eLayerType::Grid);
 		//grid->GetScript()->SetCamera(camera->GetComponent<Camera>());
 

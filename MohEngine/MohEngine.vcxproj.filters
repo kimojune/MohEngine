@@ -50,7 +50,7 @@
     <ClInclude Include="yaGrid.h">
       <Filter>Contents\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="yaToolScript.h">
+    <ClInclude Include="yaTileScript.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
     <ClInclude Include="haWorldCursor.h">
@@ -103,7 +103,7 @@
     <ClCompile Include="yaGrid.cpp">
       <Filter>Contents\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="yaToolScript.cpp">
+    <ClCompile Include="yaTileScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
     <ClCompile Include="haWorldCursor.cpp">
