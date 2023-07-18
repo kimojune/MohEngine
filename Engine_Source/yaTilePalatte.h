@@ -9,10 +9,10 @@ namespace ya
 	{
 		struct
 		{
-			UINT32 x;
-			UINT32 y;
+			INT32 x;
+			INT32 y;
 		};
-		UINT64 id;
+		INT64 id;
 	};
 
 
@@ -30,6 +30,7 @@ namespace ya
 		static void Save();
 		static void Load();
 		static void Load(const std::wstring& path);
+		static void Clear();
 
 		static Vector2 GetTilePos(Vector2 mousePos);
 		static void SetIndex(UINT index) { mIndex = index; }

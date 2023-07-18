@@ -32,8 +32,8 @@ namespace ya
 			return;
 		
 		TileID id;
-		id.x = (UINT32)pos.x;
-		id.y = (UINT32)pos.y;
+		id.x = (INT32)pos.x;
+		id.y = (INT32)pos.y;
 
 		std::unordered_map<UINT64, Tile*>::iterator iter = mTiles.find(id.id);
 		if (iter != mTiles.end())
@@ -116,7 +116,7 @@ namespace ya
 		{
 			int index = iter->second->Index();
 
-			if (mIndex == -1)
+			if (index == -1)
 			{
 				continue;
 			}
@@ -161,7 +161,7 @@ namespace ya
 		while (true)
 		{
 			int index = -1;
-			TileID id;
+			TileID id = {};
 
 			if (fread(&index, sizeof(int), 1, file) == NULL)
 				break;
@@ -169,7 +169,7 @@ namespace ya
 			if (fread(&id.id, sizeof(TileID), 1, file) == NULL)
 				break;
 
-			CreateTile(index, Vector2(id.x, id.y));
+			CreateTile(index, Vector2((INT)id.x, (INT)id.y));
 		}
 
 		fclose(file);
@@ -213,7 +213,18 @@ namespace ya
 		delete[] lpwstr;
 	}
 
+	void TilePalatte::Clear()
+	{
+		std::unordered_map<UINT64, Tile*>::iterator iter = mTiles.begin();
+		for (; iter != mTiles.end(); iter++)
+		{
+			iter->second->SetState(GameObject::eState::Dead);
+		}
 
+		mTiles.clear();
+	}
+
+	
 	Vector2 TilePalatte::GetTilePos(Vector2 mousePos)
 	{
 		int indexY = mousePos.y / TILE_SIZE_Y;

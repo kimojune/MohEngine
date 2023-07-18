@@ -36,18 +36,19 @@ namespace ya
 		if (atlas == nullptr || index < 0)
 			return;
 		SetName(L"Tile");
-
 		mAtlas = atlas;
 		SetIndex(index);
+
 		Transform* tr = GetComponent<Transform>();
 		tr->SetScale(Vector3(TILE_SIZE_X , TILE_SIZE_Y, -10.0f));
+		
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"TileMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"tile_material"));
 
 		//GameObject::Initialize();
 	}
-
+	
 	void Tile::SetIndex(int index)
 	{
 		maxRow = mAtlas->GetWidth() / TILE_SIZE_X;
@@ -63,7 +64,6 @@ namespace ya
 	void Tile::Render()
 	{
 		BindConstantBuffer();
-
 		GameObject::Render();
 	}
 
@@ -72,7 +72,7 @@ namespace ya
 		ya::renderer::uvCB uvCB = {};
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::UV];
 		
-		uvCB.LeftTop = Vector4(mX * 0.125f, mY * 0.1666f, 0.0f, 0.0f);
+		uvCB.offSet = Vector4(mX * 0.125f, mY * 0.1666f, 0.0f, 0.0f);
 
 		cb->SetData(&uvCB);
 		cb->Bind(eShaderStage::VS);
