@@ -60,16 +60,12 @@ namespace ya
 				}
 			}
 
-			
-
 			POINT mousePos = {};
 			GetCursorPos(&mousePos);
 			ScreenToClient(application.GetHwnd(), &mousePos);
 
 			mMousePos.x = mousePos.x;
 			mMousePos.y = mousePos.y;
-
-			
 
 		}
 		else

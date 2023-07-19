@@ -79,7 +79,7 @@ namespace ya
 		if (Input::GetKeyDown(eKeyCode::LBUTTON))
 		{
 			Vector2 mousePos = Input::GetMousePos();	
-			SceneManager::LoadScene(L"PlayScene");
+			SceneManager::LoadScene(L"LobbyScene");
 		}
 
 		Scene::Update();

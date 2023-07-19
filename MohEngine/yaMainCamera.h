@@ -16,6 +16,7 @@ namespace ya
 
 		void SetPos(Vector3 pos) { mPos = pos; }
 		void SetTarget(GameObject* obj);
+		void SetSize(float size);
 
 	private:
 		Vector3 mPos;

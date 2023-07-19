@@ -10,7 +10,7 @@ namespace ya
 		:mPos(Vector3(0.0f, 0.0f, -10.0f))
 	{
 		Camera* camera = AddComponent<Camera>();
-		camera->SetSize(0.9f);
+		camera->SetSize(1.0f);
 		camera->TurnLayerMask(eLayerType::UI, false);
 		renderer::cameras.push_back(camera);
 
@@ -41,5 +41,10 @@ namespace ya
 	{
 		CameraScript* camScript = GetComponent<CameraScript>();
 		camScript->SetTarget(obj);
+	}
+	void MainCamera::SetSize(float size)
+	{
+		Camera* camera = GetComponent<Camera>();
+		camera->SetSize(size);
 	}
 }
