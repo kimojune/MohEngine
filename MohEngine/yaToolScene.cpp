@@ -75,6 +75,7 @@ namespace ya
 
 	void ToolScene::OnEnter()
 	{
+		TilePalatte::Clear();
 	}
 
 	void ToolScene::OnExit()

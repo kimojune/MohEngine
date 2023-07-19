@@ -177,6 +177,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCollisionManager.cpp">
       <Filter>GameObject\Component\Collider2D</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -278,6 +280,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCollisionManager.h">
       <Filter>GameObject\Component\Collider2D</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
