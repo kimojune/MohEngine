@@ -15,11 +15,14 @@ cbuffer Grid : register(b2)
     float2 Resolution;
 }
 
-cbuffer UVCB : register(b3)
+cbuffer Animator : register(b3)
 {
-    float4 Offset;
+    float2 SpriteLeftTop;
+    float2 SpriteSize;
+    float2 SpriteOffset;
+    float2 AtlasSize;
+    
 }
-
 
 Texture2D albedoTexture : register(t0);
 

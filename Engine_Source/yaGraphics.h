@@ -14,7 +14,7 @@
 
 #define CBSLOT_TRANSFORM		0
 #define CBSLOT_GRID				2
-#define CBSLOT_UV				3
+#define CBSLOT_ANIMATION2D		3
 //#define CBSLOT_PARTICLE			1
 
 namespace ya::graphics
@@ -35,7 +35,7 @@ namespace ya::graphics
 		Transform,
 		Material,
 		Grid,
-		UV,
+		Animator,
 		End,
 	};
 

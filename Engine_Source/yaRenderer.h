@@ -30,10 +30,14 @@ namespace ya::renderer
 		Vector2 Resolution;
 	};
 
-	CBUFFER(uvCB, CBSLOT_UV)
+	CBUFFER(AnimatorCB, CBSLOT_ANIMATION2D)
 	{
-		Vector4 offSet;
+		Vector2 spriteLeftTop;
+		Vector2 spriteSize;
+		Vector2 spriteOffset;
+		Vector2 atlasSize;
 	};
+
 
 	extern Vertex vertexes[];
 	extern ya::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];

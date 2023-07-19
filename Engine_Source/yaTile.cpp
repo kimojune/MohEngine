@@ -69,12 +69,12 @@ namespace ya
 
 	void Tile::BindConstantBuffer()
 	{
-		ya::renderer::uvCB uvCB = {};
-		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::UV];
+		ya::renderer::AnimatorCB animatorCB = {};
+		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
 		
-		uvCB.offSet = Vector4(mX * 0.125f, mY * 0.1666f, 0.0f, 0.0f);
+		animatorCB.spriteLeftTop = Vector2(mX * 0.125f, mY * 0.1666f);
 
-		cb->SetData(&uvCB);
+		cb->SetData(&animatorCB);
 		cb->Bind(eShaderStage::VS);
 	}
 

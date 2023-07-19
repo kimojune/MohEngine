@@ -23,7 +23,7 @@ VSOut main(VSIn In)
     float4 proj = mul(view, ProjectionMatrix);
     
     Out.Pos = proj;
-    Out.UV = float2(In.UV.x + Offset.x, In.UV.y + Offset.y);
+    Out.UV = float2(In.UV.x + SpriteLeftTop.x, In.UV.y + SpriteLeftTop.y);
     Out.Color = In.Color;
     
     // sin();

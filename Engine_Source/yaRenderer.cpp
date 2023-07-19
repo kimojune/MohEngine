@@ -305,8 +305,8 @@ namespace ya::renderer
 		constantBuffer[(UINT)eCBType::Grid] = new ya::graphics::ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(TransformCB));
 
-		constantBuffer[(UINT)eCBType::UV] = new ya::graphics::ConstantBuffer(eCBType::UV);
-		constantBuffer[(UINT)eCBType::UV]->Create(sizeof(uvCB));
+		constantBuffer[(UINT)eCBType::Animator] = new ya::graphics::ConstantBuffer(eCBType::Animator);
+		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 	}
 
 	void LoadShader()
