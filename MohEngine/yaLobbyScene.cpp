@@ -23,7 +23,7 @@ namespace ya
 		dogcd->SetType(eColliderType::Rect);
 
 
-	/*	BackGround* circle_floor_pitwall_001 = new BackGround(L"circle_floor_pitwall_001_material");
+		BackGround* circle_floor_pitwall_001 = new BackGround(L"circle_floor_pitwall_001_material");
 		circle_floor_pitwall_001->SetPosition(Vector3(0.0f, 200.0f, 1.0f));
 
 		BackGround* bottom_floor_level_two_pitwall_001 = new BackGround(L"bottom_floor_level_two_pitwall_001_material");
@@ -66,7 +66,7 @@ namespace ya
 		bottom_floor_side_stairs_right->SetPosition(Vector3(415.0f, 340.0f, 1.0f));
 
 		BackGround* foyer_new_entrance_archway_topwalls_001 = new BackGround(L"foyer_new_entrance_archway_topwalls_001_material");
-		foyer_new_entrance_archway_topwalls_001->SetPosition(Vector3(0.0f, 700.0f, 1.0f));*/
+		foyer_new_entrance_archway_topwalls_001->SetPosition(Vector3(0.0f, 700.0f, 1.5f));
 		
 		BackGround* bottom_wall_001 = new BackGround(L"bottom_wall_001_material");
 		bottom_wall_001->SetPosition(Vector3(0.0f, 760.0f, 1.0f));
@@ -85,7 +85,7 @@ namespace ya
 		
 		BackGround* bullet_door_001 = new BackGround(L"bullet_door_001_material");
 		bullet_door_001->SetPosition(Vector3(0.0f, 1200.0f, 1.0f));
-		//
+		
 		BackGround* archway_upper_001 = new BackGround(L"archway_upper_001_material");
 		archway_upper_001->SetPosition(Vector3(-350.0f, 1450.0f, 1.0f));
 

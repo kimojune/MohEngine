@@ -114,7 +114,7 @@ namespace ya::renderer
 
 		//less
 		depthstencildesc.DepthEnable = true;
-		depthstencildesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS;
+		depthstencildesc.DepthFunc = D3D11_COMPARISON_FUNC::D3D11_COMPARISON_LESS_EQUAL;
 		depthstencildesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
 		depthstencildesc.StencilEnable = false;
 		GetDevice()->CreateDepthStencilState(&depthstencildesc, depthStencilStates[(UINT)eDSType::Less].GetAddressOf());

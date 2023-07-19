@@ -220,7 +220,7 @@ namespace ya
 
 		std::shared_ptr<ya::graphics::Texture> ceiling_borders_black_001
 			= Resources::Load<ya::graphics::Texture>(L"ceiling_borders_black_001", L"..\\Resources\\Texture\\Foyer_Collection\\ceiling_borders_black_001.png");
-		CreateMaterial(L"SpriteShader", ceiling_borders_black_001, L"ceiling_borders_black_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", ceiling_borders_black_001, L"ceiling_borders_black_001_material", eRenderingMode::Opaque);
 
 		std::shared_ptr<ya::graphics::Texture> bullet_giant_001
 			= Resources::Load<ya::graphics::Texture>(L"bullet_giant_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_giant_001.png");
@@ -244,19 +244,19 @@ namespace ya
 
 		std::shared_ptr<ya::graphics::Texture> livery_poker_table_001
 			= Resources::Load<ya::graphics::Texture>(L"livery_poker_table_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_poker_table_001.png");
-		CreateMaterial(L"SpriteShader", livery_poker_table_001, L"livery_poker_table_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", livery_poker_table_001, L"livery_poker_table_001_material", eRenderingMode::Transparent);
 		
 		std::shared_ptr<ya::graphics::Texture> livery_bunk_001
 			= Resources::Load<ya::graphics::Texture>(L"livery_bunk_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_bunk_001.png");
-		CreateMaterial(L"SpriteShader", livery_bunk_001, L"livery_bunk_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", livery_bunk_001, L"livery_bunk_001_material", eRenderingMode::Transparent);
 
 		std::shared_ptr<ya::graphics::Texture> livery_couch_001
 			= Resources::Load<ya::graphics::Texture>(L"livery_couch_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_couch_001.png");
-		CreateMaterial(L"SpriteShader", livery_couch_001, L"livery_couch_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", livery_couch_001, L"livery_couch_001_material", eRenderingMode::Transparent);
 		
 		std::shared_ptr<ya::graphics::Texture> livery_easychair_001
 			= Resources::Load<ya::graphics::Texture>(L"livery_easychair_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_easychair_001.png");
-		CreateMaterial(L"SpriteShader", livery_easychair_001, L"livery_easychair_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", livery_easychair_001, L"livery_easychair_001_material", eRenderingMode::Transparent);
 
 		std::shared_ptr<ya::graphics::Texture> elevator_icon_001
 			= Resources::Load<ya::graphics::Texture>(L"elevator_icon_001", L"..\\Resources\\Texture\\Foyer_Collection\\elevator_icon_001.png");
@@ -276,19 +276,19 @@ namespace ya
 
 		std::shared_ptr<ya::graphics::Texture> bullet_collumn_anger_001
 			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_anger_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_anger_001.png");
-		CreateMaterial(L"SpriteShader", bullet_collumn_anger_001, L"bullet_collumn_anger_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", bullet_collumn_anger_001, L"bullet_collumn_anger_001_material", eRenderingMode::Transparent);
 
 		std::shared_ptr<ya::graphics::Texture> bullet_collumn_dignity_001
 			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_dignity_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_dignity_001.png");
-		CreateMaterial(L"SpriteShader", bullet_collumn_dignity_001, L"bullet_collumn_dignity_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", bullet_collumn_dignity_001, L"bullet_collumn_dignity_001_material", eRenderingMode::Transparent);
 		
 		std::shared_ptr<ya::graphics::Texture> bullet_collumn_horror_001
 			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_horror_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_horror_001.png");
-		CreateMaterial(L"SpriteShader", bullet_collumn_horror_001, L"bullet_collumn_horror_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", bullet_collumn_horror_001, L"bullet_collumn_horror_001_material", eRenderingMode::Transparent);
 
 		std::shared_ptr<ya::graphics::Texture> bullet_collumn_ignorance_001
 			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_ignorance_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_ignorance_001.png");
-		CreateMaterial(L"SpriteShader", bullet_collumn_ignorance_001, L"bullet_collumn_ignorance_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", bullet_collumn_ignorance_001, L"bullet_collumn_ignorance_001_material", eRenderingMode::Transparent);
 		
 		
 
