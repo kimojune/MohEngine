@@ -31,12 +31,13 @@ public:
 		return true;
 	}
 	static Scene* LoadScene(std::wstring name);
-
+	static void LoadPrevScene();
 	static Scene* GetActiveScene() { return mActiveScene; }
 
 	static std::map<std::wstring, Scene*> mScenes;
 private:
 	static Scene* mActiveScene;
+	static Scene* mPrevScene;
 };
 
 }

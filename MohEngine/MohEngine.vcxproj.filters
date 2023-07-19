@@ -59,6 +59,12 @@
     <ClInclude Include="yaLobbyScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="yaSetUpMenuScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaInventoryScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -113,6 +119,12 @@
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClCompile>
     <ClCompile Include="yaLobbyScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaSetUpMenuScene.cpp">
+      <Filter>Contents\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="yaInventoryScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
   </ItemGroup>

@@ -9,6 +9,7 @@ namespace ya
 	{
 	public:
 
+		UI(const std::wstring& materialname);
 		UI(Vector3 pos, const std::wstring& materialname);
 		UI(GameObject* obj,Vector3 pos, const std::wstring& materialname);
 		~UI();
@@ -18,13 +19,17 @@ namespace ya
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		Vector3 GetScale() { return mScale; }
+		void SetPosition(Vector3 pos);
+		void SetScale(Vector3 scale);
+
+		float GetWidth() { return mScale.x; }
+		float GetHeight() { return mScale.y; }
 
 	private:
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;
 
-		Vector3 mPositon;
+		Vector3 mPosition;
 		Vector3 mScale;
 		
 	};

@@ -4,6 +4,7 @@
 namespace ya
 {
 	Scene* SceneManager::mActiveScene = nullptr;
+	Scene* SceneManager::mPrevScene = nullptr;
 	std::map<std::wstring, Scene*> SceneManager::mScenes;
 
 	void SceneManager::Initialize()
@@ -41,10 +42,22 @@ namespace ya
 			return nullptr;
 
 		mActiveScene->OnExit();
+		mPrevScene = mActiveScene;
 		mActiveScene = iter->second;
 		mActiveScene->OnEnter();
 
 
 		return iter->second;
+	}
+	void SceneManager::LoadPrevScene()
+	{
+		if (mPrevScene == nullptr)
+			return;
+
+		mActiveScene->OnExit();
+		Scene* temp = mActiveScene;
+		mActiveScene = mPrevScene;
+		mPrevScene = temp;
+		mActiveScene->OnEnter();
 	}
 }

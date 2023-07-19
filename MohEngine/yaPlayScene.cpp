@@ -86,8 +86,11 @@ namespace ya
 	{
 		if (Input::GetKeyDown(eKeyCode::N))
 		{
-			Vector2 mousePos = Input::GetMousePos();
 			SceneManager::LoadScene(L"ToolScene");
+		}
+		if (Input::GetKeyDown(eKeyCode::I))
+		{
+			SceneManager::LoadScene(L"InventoryScene");
 		}
 
 		Scene::Update();

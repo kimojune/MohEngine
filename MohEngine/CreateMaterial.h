@@ -314,7 +314,13 @@ namespace ya
 		CreateMaterial(L"TileShader", tile, L"tile_material");
 		
 	
-		
+#pragma region Inventory
+		std::shared_ptr<ya::graphics::Texture> ammonomicon_outro_001
+			= Resources::Load<ya::graphics::Texture>(L"ammonomicon_outro_001", L"..\\Resources\\Texture\\Inventory\\ammonomicon_outro_001.png");
+		CreateMaterial(L"SpriteShader", ammonomicon_outro_001, L"ammonomicon_outro_001_material", eRenderingMode::Transparent);
+
+#pragma endregion
+
 
 	}
 

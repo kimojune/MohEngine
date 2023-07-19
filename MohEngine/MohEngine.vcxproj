@@ -154,11 +154,13 @@
     <ClInclude Include="yaDog.h" />
     <ClInclude Include="yaGrid.h" />
     <ClInclude Include="yaGridScript.h" />
+    <ClInclude Include="yaInventoryScene.h" />
     <ClInclude Include="yaLobbyScene.h" />
     <ClInclude Include="yaMainCamera.h" />
     <ClInclude Include="yaPlayer.h" />
     <ClInclude Include="yaPlayerScript.h" />
     <ClInclude Include="yaPlayScene.h" />
+    <ClInclude Include="yaSetUpMenuScene.h" />
     <ClInclude Include="yaTitleScene.h" />
     <ClInclude Include="CreateMaterial.h" />
     <ClInclude Include="yaToolScene.h" />
@@ -175,11 +177,13 @@
     <ClCompile Include="yaDog.cpp" />
     <ClCompile Include="yaGrid.cpp" />
     <ClCompile Include="yaGridScript.cpp" />
+    <ClCompile Include="yaInventoryScene.cpp" />
     <ClCompile Include="yaLobbyScene.cpp" />
     <ClCompile Include="yaMainCamera.cpp" />
     <ClCompile Include="yaPlayer.cpp" />
     <ClCompile Include="yaPlayerScript.cpp" />
     <ClCompile Include="yaPlayScene.cpp" />
+    <ClCompile Include="yaSetUpMenuScene.cpp" />
     <ClCompile Include="yaTitleScene.cpp" />
     <ClCompile Include="yaToolScene.cpp" />
     <ClCompile Include="yaTileScript.cpp" />
