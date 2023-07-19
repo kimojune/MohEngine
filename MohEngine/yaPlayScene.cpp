@@ -33,8 +33,8 @@ namespace ya
 	}
 	void PlayScene::Initialize()
 	{
-		float half_width = application.GetWidth() / 2;
-		float half_height = application.GetHeight() / 2;
+		float width = application.GetWidth() ;
+		float height = application.GetHeight() ;
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
@@ -53,12 +53,12 @@ namespace ya
 
 		UICamera* uicamera = new UICamera();
 
-		UI* heart = new UI(Vector3(-half_width/2 + 32.0f, half_height/2 - 32.0f,-6.0f), (L"Heart_material"));
-		UI* key = new UI(heart, Vector3(0.0f , -32.0f, -3.0f), (L"ui_key_material"));
-		UI* ui_coin = new UI(heart, Vector3(64.0f, -32.0f, -3.0f), (L"ui_coin_material"));
+		UI* heart = new UI(Vector3(-width/2 + UI_SIZE, height/2 - UI_SIZE,-6.0f), (L"Heart_material"));
+		UI* key = new UI(heart, Vector3(0.0f , -UI_SIZE, -3.0f), (L"ui_key_material"));
+		UI* ui_coin = new UI(heart, Vector3(UI_SIZE * 2, -UI_SIZE, -3.0f), (L"ui_coin_material"));
 		UI* ui_blank[5] = {};	for (size_t i = 0; i < 5; i++)	{
-			ui_blank[i] = new UI(heart, Vector3(0.0f + (32.0f * i), -64.0f, -3.0f), (L"ui_blank_material"));}
-		UI* BulletCount = new UI(heart, Vector3(half_width - 64.0f, - half_height + 64.0f, 0.0f), (L"Bullet_count_bottom_material"));
+			ui_blank[i] = new UI(heart, Vector3(0.0f + (UI_SIZE * i), -UI_SIZE * 2, -3.0f), (L"ui_blank_material"));}
+		UI* BulletCount = new UI(heart, Vector3(width - UI_SIZE * 2, - height + UI_SIZE * 2, 0.0f), (L"Bullet_count_bottom_material"));
 		
 		UI* EmeptyBullet[6] = {};
 		for (size_t i = 0; i < 6; i++)

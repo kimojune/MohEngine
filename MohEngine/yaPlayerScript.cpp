@@ -13,56 +13,46 @@ namespace ya
 
 		 if (Input::GetKey(eKeyCode::W) &&Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 140.0f * Time::DeltaTime();
-			pos.y += 140.0f * Time::DeltaTime();
+			pos.x += 150.0f * Time::DeltaTime();
+			pos.y += 150.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::W) &&Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 140.0f * Time::DeltaTime();
-			pos.y += 140.0f * Time::DeltaTime();
+			pos.x -= 150.0f * Time::DeltaTime();
+			pos.y += 150.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S) &&Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 140.0f * Time::DeltaTime();
-			pos.y -= 140.0f * Time::DeltaTime();
+			pos.x += 150.0f * Time::DeltaTime();
+			pos.y -= 150.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S) &&Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 140.0f * Time::DeltaTime();
-			pos.y -= 140.0f * Time::DeltaTime();
+			pos.x -= 150.0f * Time::DeltaTime();
+			pos.y -= 150.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::W))
 		{
-			pos.y += 200.0f * Time::DeltaTime();
+			pos.y += 210.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S))
 		{
-			pos.y -= 200.0f * Time::DeltaTime();
+			pos.y -= 210.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 200.0f * Time::DeltaTime();
+			pos.x -= 210.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 200.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::Q))
-		{
-			pos.z -= 200.0f * Time::DeltaTime();
-			tr->SetPosition(pos);
-		}
-		else if (Input::GetKey(eKeyCode::E))
-		{
-			pos.z += 200.0f * Time::DeltaTime();
+			pos.x += 210.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 	}

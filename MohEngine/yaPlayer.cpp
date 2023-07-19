@@ -15,7 +15,7 @@ namespace ya
 		mr->SetMaterial(Resources::Find<Material>((L"guide_idle_front_001_material")));
 		//player->AddComponent<CameraScript>();
 		Transform* tr = GetComponent<Transform>();
-		tr->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		tr->SetPosition(Vector3(0.0f, 0.0f, -5.0f));
 		Vector2 scale = mr->GetSize();
 		tr->SetScale(scale.x, scale.y , -0.0f);
 		AddComponent<PlayerScript>();

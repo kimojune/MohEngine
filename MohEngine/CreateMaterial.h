@@ -40,14 +40,9 @@ namespace ya
 			= Resources::Load<ya::graphics::Texture>(L"MagentaTexture", L"..\\Resources\\Texture\\MagentaTexture.png");
 		CreateMaterial(L"SpriteShader", MagentaTexture, L"MagentaTexture_material");
 
-		std::shared_ptr<ya::graphics::Texture> guide_idle_front_001
-			= Resources::Load<ya::graphics::Texture>(L"guide_idle_front_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
-		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_idle_front_001_material", eRenderingMode::CutOut);
+#pragma region TitleScene
+		// TitleScene Texture
 
-		std::shared_ptr<ya::graphics::Texture> dog_idle_left_001
-			= Resources::Load<ya::graphics::Texture>(L"dog_idle_left_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
-		
-		CreateMaterial(L"SpriteShader", dog_idle_left_001, L"dog_idle_left_001_material", eRenderingMode::CutOut);
 
 		std::shared_ptr<ya::graphics::Texture> marsh_of_gungeon_001
 			= Resources::Load<ya::graphics::Texture>(L"marsh_of_gungeon_001", L"..\\Resources\\Texture\\TitleScreenCollection\\marsh_of_gungeon_001.png");
@@ -95,7 +90,9 @@ namespace ya
 		std::shared_ptr<ya::graphics::Texture> dragun_title_screen_001
 			= Resources::Load<ya::graphics::Texture>(L"dragun_title_screen_001", L"..\\Resources\\Texture\\TitleScreenCollection\\dragun_title_screen_001.png");
 		CreateMaterial(L"SpriteShader", dragun_title_screen_001, L"dragun_title_screen_001_material", eRenderingMode::CutOut);
+#pragma endregion
 		
+#pragma region UI
 		std::shared_ptr<ya::graphics::Texture> reticle_crosshair_002
 			= Resources::Load<ya::graphics::Texture>(L"reticle_crosshair_002", L"..\\Resources\\Texture\\UI\\reticle_crosshair_002.png");
 		CreateMaterial(L"SpriteShader", reticle_crosshair_002, L"reticle_crosshair_002_material", eRenderingMode::CutOut);
@@ -147,7 +144,170 @@ namespace ya
 		std::shared_ptr<ya::graphics::Texture> Bullet_type_01
 			= Resources::Load<ya::graphics::Texture>(L"Bullet_type_01", L"..\\Resources\\Texture\\UI\\GameUI\\bullet_count\\Bullet\\Bullet_type_01.png");
 		CreateMaterial(L"SpriteShader", Bullet_type_01, L"Bullet_type_01_material", eRenderingMode::CutOut);
+#pragma endregion
+
+
+#pragma region Lobby
 		
+		std::shared_ptr<ya::graphics::Texture> new_bottom_floor_level_one_final_floor_001
+			= Resources::Load<ya::graphics::Texture>(L"new_bottom_floor_level_one_final_floor_001", L"..\\Resources\\Texture\\Foyer_Collection\\new_bottom_floor_level_one_final_floor_001.png");
+		CreateMaterial(L"SpriteShader", new_bottom_floor_level_one_final_floor_001, L"new_bottom_floor_level_one_final_floor_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> circle_floor_pitwall_001
+			= Resources::Load<ya::graphics::Texture>(L"circle_floor_pitwall_001", L"..\\Resources\\Texture\\Foyer_Collection\\circle_floor_pitwall_001.png");
+		CreateMaterial(L"SpriteShader", circle_floor_pitwall_001, L"circle_floor_pitwall_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> bottom_floor_level_two_pitwall_001
+			= Resources::Load<ya::graphics::Texture>(L"bottom_floor_level_two_pitwall_001", L"..\\Resources\\Texture\\Foyer_Collection\\bottom_floor_level_two_pitwall_001.png");
+		CreateMaterial(L"SpriteShader", bottom_floor_level_two_pitwall_001, L"bottom_floor_level_two_pitwall_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> circle_floor_top_001
+			= Resources::Load<ya::graphics::Texture>(L"circle_floor_top_001", L"..\\Resources\\Texture\\Foyer_Collection\\circle_floor_top_001.png");
+		CreateMaterial(L"SpriteShader", circle_floor_top_001, L"circle_floor_top_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> main_stairway_001
+			= Resources::Load<ya::graphics::Texture>(L"main_stairway_001", L"..\\Resources\\Texture\\Foyer_Collection\\main_stairway_001.png");
+		CreateMaterial(L"SpriteShader", main_stairway_001, L"main_stairway_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> bottom_floor_side_stairs_001
+			= Resources::Load<ya::graphics::Texture>(L"bottom_floor_side_stairs_001", L"..\\Resources\\Texture\\Foyer_Collection\\bottom_floor_side_stairs_001.png");
+		CreateMaterial(L"SpriteShader", bottom_floor_side_stairs_001, L"bottom_floor_side_stairs_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> bottom_floor_level_two_001
+			= Resources::Load<ya::graphics::Texture>(L"bottom_floor_level_two_001", L"..\\Resources\\Texture\\Foyer_Collection\\bottom_floor_level_two_001.png");
+		CreateMaterial(L"SpriteShader", bottom_floor_level_two_001, L"bottom_floor_level_two_001_material", eRenderingMode::CutOut);
+	
+		std::shared_ptr<ya::graphics::Texture> before_into_stage_001
+			= Resources::Load<ya::graphics::Texture>(L"before_into_stage_001", L"..\\Resources\\Texture\\Foyer_Collection\\before_into_stage_001.png");
+		CreateMaterial(L"SpriteShader", before_into_stage_001, L"before_into_stage_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> foyer_new_entrance_archway_topwalls_001
+			= Resources::Load<ya::graphics::Texture>(L"foyer_new_entrance_archway_topwalls_001", L"..\\Resources\\Texture\\Foyer_Collection\\foyer_new_entrance_archway_topwalls_001.png");
+		CreateMaterial(L"SpriteShader", foyer_new_entrance_archway_topwalls_001, L"foyer_new_entrance_archway_topwalls_001_material", eRenderingMode::CutOut);
+	
+		std::shared_ptr<ya::graphics::Texture> bottom_wall_001
+			= Resources::Load<ya::graphics::Texture>(L"bottom_wall_001", L"..\\Resources\\Texture\\Foyer_Collection\\bottom_wall_001.png");
+		CreateMaterial(L"SpriteShader", bottom_wall_001, L"bottom_wall_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> top_floor_wall_001
+			= Resources::Load<ya::graphics::Texture>(L"top_floor_wall_001", L"..\\Resources\\Texture\\Foyer_Collection\\top_floor_wall_001.png");
+		CreateMaterial(L"SpriteShader", top_floor_wall_001, L"top_floor_wall_001_material", eRenderingMode::CutOut);
+	
+		std::shared_ptr<ya::graphics::Texture> new_bottom_wall_001
+			= Resources::Load<ya::graphics::Texture>(L"new_bottom_wall_001", L"..\\Resources\\Texture\\Foyer_Collection\\new_bottom_wall_001.png");
+		CreateMaterial(L"SpriteShader", new_bottom_wall_001, L"new_bottom_wall_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> new_bottom_wall_002
+			= Resources::Load<ya::graphics::Texture>(L"new_bottom_wall_002", L"..\\Resources\\Texture\\Foyer_Collection\\new_bottom_wall_002.png");
+		CreateMaterial(L"SpriteShader", new_bottom_wall_002, L"new_bottom_wall_002_material", eRenderingMode::CutOut);
+
+
+		std::shared_ptr<ya::graphics::Texture> new_pit_border_001
+			= Resources::Load<ya::graphics::Texture>(L"new_pit_border_001", L"..\\Resources\\Texture\\Foyer_Collection\\new_pit_border_001.png");
+		CreateMaterial(L"SpriteShader", new_pit_border_001, L"new_pit_border_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> pit_border_002
+			= Resources::Load<ya::graphics::Texture>(L"pit_border_002", L"..\\Resources\\Texture\\Foyer_Collection\\pit_border_002.png");
+		CreateMaterial(L"SpriteShader", pit_border_002, L"pit_border_002_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> pit_border_003
+			= Resources::Load<ya::graphics::Texture>(L"pit_border_003", L"..\\Resources\\Texture\\Foyer_Collection\\pit_border_003.png");
+		CreateMaterial(L"SpriteShader", pit_border_003, L"pit_border_003_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> new_pit_border_004
+			= Resources::Load<ya::graphics::Texture>(L"new_pit_border_004", L"..\\Resources\\Texture\\Foyer_Collection\\new_pit_border_004.png");
+		CreateMaterial(L"SpriteShader", new_pit_border_004, L"new_pit_border_004_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> ceiling_borders_black_001
+			= Resources::Load<ya::graphics::Texture>(L"ceiling_borders_black_001", L"..\\Resources\\Texture\\Foyer_Collection\\ceiling_borders_black_001.png");
+		CreateMaterial(L"SpriteShader", ceiling_borders_black_001, L"ceiling_borders_black_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> bullet_giant_001
+			= Resources::Load<ya::graphics::Texture>(L"bullet_giant_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_giant_001.png");
+		CreateMaterial(L"SpriteShader", bullet_giant_001, L"bullet_giant_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> bullet_door_001
+			= Resources::Load<ya::graphics::Texture>(L"bullet_door_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_door_001.png");
+		CreateMaterial(L"SpriteShader", bullet_door_001, L"bullet_door_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> archway_upper_001
+			= Resources::Load<ya::graphics::Texture>(L"archway_upper_001", L"..\\Resources\\Texture\\Foyer_Collection\\archway_upper_001.png");
+		CreateMaterial(L"SpriteShader", archway_upper_001, L"archway_upper_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> livery_boxes_001
+			= Resources::Load<ya::graphics::Texture>(L"livery_boxes_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_boxes_001.png");
+		CreateMaterial(L"SpriteShader", livery_boxes_001, L"livery_boxes_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> livery_tent_001
+			= Resources::Load<ya::graphics::Texture>(L"livery_tent_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_tent_001.png");
+		CreateMaterial(L"SpriteShader", livery_tent_001, L"livery_tent_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> livery_poker_table_001
+			= Resources::Load<ya::graphics::Texture>(L"livery_poker_table_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_poker_table_001.png");
+		CreateMaterial(L"SpriteShader", livery_poker_table_001, L"livery_poker_table_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> livery_bunk_001
+			= Resources::Load<ya::graphics::Texture>(L"livery_bunk_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_bunk_001.png");
+		CreateMaterial(L"SpriteShader", livery_bunk_001, L"livery_bunk_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> livery_couch_001
+			= Resources::Load<ya::graphics::Texture>(L"livery_couch_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_couch_001.png");
+		CreateMaterial(L"SpriteShader", livery_couch_001, L"livery_couch_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> livery_easychair_001
+			= Resources::Load<ya::graphics::Texture>(L"livery_easychair_001", L"..\\Resources\\Texture\\Foyer_Collection\\livery_easychair_001.png");
+		CreateMaterial(L"SpriteShader", livery_easychair_001, L"livery_easychair_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> elevator_icon_001
+			= Resources::Load<ya::graphics::Texture>(L"elevator_icon_001", L"..\\Resources\\Texture\\Foyer_Collection\\elevator_icon_001.png");
+		CreateMaterial(L"SpriteShader", elevator_icon_001, L"elevator_icon_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> tutorial_icon_001
+			= Resources::Load<ya::graphics::Texture>(L"tutorial_icon_001", L"..\\Resources\\Texture\\Foyer_Collection\\tutorial_icon_001.png");
+		CreateMaterial(L"SpriteShader", tutorial_icon_001, L"tutorial_icon_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> right_railing_001
+			= Resources::Load<ya::graphics::Texture>(L"right_railing_001", L"..\\Resources\\Texture\\Foyer_Collection\\right_railing_001.png");
+		CreateMaterial(L"SpriteShader", right_railing_001, L"right_railing_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> left_railing_001
+			= Resources::Load<ya::graphics::Texture>(L"left_railing_001", L"..\\Resources\\Texture\\Foyer_Collection\\left_railing_001.png");
+		CreateMaterial(L"SpriteShader", left_railing_001, L"left_railing_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> bullet_collumn_anger_001
+			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_anger_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_anger_001.png");
+		CreateMaterial(L"SpriteShader", bullet_collumn_anger_001, L"bullet_collumn_anger_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> bullet_collumn_dignity_001
+			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_dignity_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_dignity_001.png");
+		CreateMaterial(L"SpriteShader", bullet_collumn_dignity_001, L"bullet_collumn_dignity_001_material", eRenderingMode::CutOut);
+		
+		std::shared_ptr<ya::graphics::Texture> bullet_collumn_horror_001
+			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_horror_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_horror_001.png");
+		CreateMaterial(L"SpriteShader", bullet_collumn_horror_001, L"bullet_collumn_horror_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> bullet_collumn_ignorance_001
+			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_ignorance_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_ignorance_001.png");
+		CreateMaterial(L"SpriteShader", bullet_collumn_ignorance_001, L"bullet_collumn_ignorance_001_material", eRenderingMode::CutOut);
+		
+		
+
+		
+
+
+#pragma endregion
+
+
+
+		std::shared_ptr<ya::graphics::Texture> guide_idle_front_001
+			= Resources::Load<ya::graphics::Texture>(L"guide_idle_front_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
+		CreateMaterial(L"SpriteShader", guide_idle_front_001, L"guide_idle_front_001_material", eRenderingMode::CutOut);
+
+		std::shared_ptr<ya::graphics::Texture> dog_idle_left_001
+			= Resources::Load<ya::graphics::Texture>(L"dog_idle_left_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
+
+		CreateMaterial(L"SpriteShader", dog_idle_left_001, L"dog_idle_left_001_material", eRenderingMode::CutOut);
+
 		//Tile Texture
 		std::shared_ptr<ya::graphics::Texture> tile
 			= Resources::Load<ya::graphics::Texture>(L"Tile", L"..\\Resources\\Tile\\Tile.bmp");
