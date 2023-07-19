@@ -21,6 +21,7 @@
 using namespace ho;
 extern ya::Application application;
 
+
 namespace ya
 {
 
@@ -44,16 +45,6 @@ namespace ya
 		cd->SetCenter(Vector2(0.0f, -10.0f));
 		cd->SetSize(Vector2(0.6f, 0.6f));
 		cd->SetType(eColliderType::Rect);
-		
-		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);
-		Collider2D* dogcd = dog->AddComponent<Collider2D>();
-		Transform* tr = dog->GetComponent<Transform>();
-		float degree = PI / 8.0f;
-
-
-		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
-		dogcd->SetCenter(Vector2(0.0f, 0.0f));
-		dogcd->SetType(eColliderType::Rect);
 
 		MainCamera* camera = new MainCamera();
 		Camera* maincam = camera->GetComponent<Camera>();
@@ -90,15 +81,6 @@ namespace ya
 		Cursor* cursor = new Cursor(uicamera);
 
 
-		//GameObject* grid = new GameObject();
-		//grid->SetName(L"Grid");
-		//AddGameObject(eLayerType::Grid, grid);
-		//MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
-		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
-		//GridScript* gridSc = grid->AddComponent<GridScript>();
-		//gridSc->SetCamera(camera->GetComponent<Camera>());
-
 	}
 	void PlayScene::Update()
 	{
@@ -121,7 +103,6 @@ namespace ya
 	void PlayScene::OnEnter()
 	{
 		const std::wstring& path = { L"..\\Resources\\Tile\\1234" };
-
 		TilePalatte::Load(path);
 	}
 	void PlayScene::OnExit()

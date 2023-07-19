@@ -56,6 +56,9 @@
     <ClInclude Include="haWorldCursor.h">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClInclude>
+    <ClInclude Include="yaLobbyScene.h">
+      <Filter>Contents\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -108,6 +111,9 @@
     </ClCompile>
     <ClCompile Include="haWorldCursor.cpp">
       <Filter>Contents\GameObject\Cursor</Filter>
+    </ClCompile>
+    <ClCompile Include="yaLobbyScene.cpp">
+      <Filter>Contents\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

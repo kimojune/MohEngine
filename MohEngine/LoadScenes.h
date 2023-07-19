@@ -3,6 +3,7 @@
 #include "yaPlayScene.h"
 #include "yaTitleScene.h"
 #include "yaToolScene.h"
+#include "yaLobbyScene.h"
 
 
 
@@ -16,7 +17,7 @@ namespace ya
 	{
 		//PlayScene* playScene = new PlayScene();
 		SceneManager::CreateScene<ToolScene>(L"ToolScene");
-		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
+		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
 	}
 }
