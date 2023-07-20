@@ -8,6 +8,7 @@ namespace ya
 {
 	double Time::mDeltaTime = 0.0l;
 	double Time::mSecond = 0.0f;
+	float Time::fps = 0.0f;
 	LARGE_INTEGER Time::mCpuFrequency = {};
 	LARGE_INTEGER Time::mPrevFrequency = {};
 	LARGE_INTEGER Time::mCurFrequency = {};
@@ -28,7 +29,7 @@ namespace ya
 		double differnceFrequency = mCurFrequency.QuadPart - mPrevFrequency.QuadPart;
 
 		mDeltaTime = differnceFrequency / mCpuFrequency.QuadPart;
-		
+
 		mPrevFrequency.QuadPart = mCurFrequency.QuadPart;
 	}
 
@@ -36,21 +37,25 @@ namespace ya
 	{
 		mSecond += mDeltaTime;
 
+		HWND hWnd = application.GetHwnd();
+
+		wchar_t szFloat[256] = {};
+		Vector2 cursorPos = Input::GetMousePos();
+		Vector2 mainCursorPos = Input::GetClientMousePos(enums::eCameraType::Main);
+		Vector2 UICursorPos = Input::GetClientMousePos(enums::eCameraType::UI);
+
 		if (mSecond > 1.0f)
 		{
-			HWND hWnd = application.GetHwnd();
-
-			wchar_t szFloat[50] = {};
-			float FPS = 1.0f / (float)mDeltaTime;
-			Vector2 cursorPos = Input::GetMousePos();
-
-			//swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
-			swprintf_s(szFloat, 50, L"FPS : %d | Mouse X: %f, Y: %f", (UINT)FPS, cursorPos.x, cursorPos.y);
-			//int iLen = wcsnlen_s(szFloat, 50);
-			SetWindowText(hWnd, szFloat);
-			
-			//TextOut(hdc, 0, 0, szFloat, 20);
+			fps = 1.0f / (float)mDeltaTime;
 			mSecond = 0.0f;
 		}
+		//swprintf_s(szFloat, 50, L"FPS : %d", (UINT)FPS);
+		swprintf_s(szFloat, 256, L"FPS : %d | Window : %f, %f Main : %f, %f, UI %f, %f) "
+			, (UINT)fps
+			, cursorPos.x, cursorPos.y
+			, mainCursorPos.x, mainCursorPos.y
+			, UICursorPos.x, UICursorPos.y);
+
+		SetWindowText(hWnd, szFloat);
 	}
 }

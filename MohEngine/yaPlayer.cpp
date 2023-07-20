@@ -19,6 +19,7 @@ namespace ya
 		Vector2 scale = mr->GetSize();
 		tr->SetScale(scale.x, scale.y , -0.0f);
 		AddComponent<PlayerScript>();
+
 	}
 	Player::~Player()
 	{

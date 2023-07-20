@@ -50,7 +50,15 @@ namespace ya
 		else
 		{
 			Transform* tr = GetOwner()->GetComponent<Transform>();
-			tr->SetPosition(mTarget->GetComponent<Transform>()->GetPosition() + Vector3(0.0f, 0.0f, -10.0f));
+			Vector2 wCursorPos = Input::GetClientMousePos(eCameraType::Main);
+			Vector3 targetPos = mTarget->GetComponent<Transform>()->GetPosition();
+
+			Vector3 ConvertPos = Vector3::Zero;
+			ConvertPos.x = (wCursorPos.x - targetPos.x) / 3.0f + targetPos.x ;
+			ConvertPos.y = (wCursorPos.y - targetPos.y) / 3.0f + targetPos.y ;
+			ConvertPos.z = tr->GetPosition().z;
+
+			tr->SetPosition(ConvertPos);
 		}
 
 	}

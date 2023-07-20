@@ -7,11 +7,11 @@
 #include "yaGrid.h"
 #include "yaGridScript.h"
 #include "yaMainCamera.h"
-#include "hoCursor.h"
-#include "haWorldCursor.h"
+#include "yaCursor.h"
+#include "yaWorldCursor.h"
 #include "yaTileScript.h"
 
-using namespace ho;
+using namespace ya;
 
 extern ya::Application application;
 static MainCamera* mCamera = nullptr;
@@ -45,8 +45,8 @@ namespace ya
 		MainCamera* mCamera = new MainCamera();
 		UICamera* uicamera = new UICamera();
 
-		Cursor* cursor = new Cursor(uicamera);
-		WorldCursor* wCursor = new WorldCursor(mCamera);
+		Cursor* cursor = new Cursor;
+		WorldCursor* wCursor = new WorldCursor();
 		wCursor->AddComponent<TileScript>();
 		
 

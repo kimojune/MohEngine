@@ -8,11 +8,11 @@
 #include "yaInput.h"
 #include "yaSceneManager.h"
 #include "yaBackGround.h"
-#include "hoCursor.h"
+#include "yaCursor.h"
 
 extern ya::Application application;
 
-using namespace ho;
+using namespace ya;
 
 namespace ya
 {
@@ -66,7 +66,7 @@ namespace ya
 		MainCamera* mainCamera = new MainCamera();
 		UICamera* uicamera = new UICamera();
 
-		Cursor* cursor = new Cursor(uicamera);
+		Cursor* cursor = new Cursor;
 	}
 	void TitleScene::Update()
 	{

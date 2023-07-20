@@ -1,7 +1,7 @@
 #include "yaInventoryScene.h"
 #include "yaUI.h"
 #include "yaUICamera.h"
-#include "hoCursor.h"
+#include "yaCursor.h"
 #include "yaInput.h"
 #include "yaSceneManager.h"
 namespace ya
@@ -17,7 +17,7 @@ namespace ya
 		UI* ammonomicon_outro_001 = new UI(L"ammonomicon_outro_001_material");
 		UICamera* uicamera = new UICamera();
 
-		ho::Cursor* cursor = new ho::Cursor(uicamera);
+		ya::Cursor* cursor = new ya::Cursor;
 		
 
 		Scene::Initialize();

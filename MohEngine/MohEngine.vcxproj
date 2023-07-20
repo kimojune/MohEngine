@@ -146,8 +146,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="haWorldCursor.h" />
-    <ClInclude Include="hoCursor.h" />
+    <ClInclude Include="yaWorldCursor.h" />
+    <ClInclude Include="yaCursor.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="yaBackGround.h" />
     <ClInclude Include="yaCameraScript.h" />
@@ -169,8 +169,8 @@
     <ClInclude Include="yaUICamera.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="haWorldCursor.cpp" />
-    <ClCompile Include="hoCursor.cpp" />
+    <ClCompile Include="yaWorldCursor.cpp" />
+    <ClCompile Include="yaCursor.cpp" />
     <ClCompile Include="MohEngine.cpp" />
     <ClCompile Include="yaBackGround.cpp" />
     <ClCompile Include="yaCameraScript.cpp" />

@@ -48,7 +48,7 @@ namespace gui
 		//EditorObject* grid = new EditorObject();
 		//grid->SetName(L"Grid");
 
-		//mr = grid->AddComponent<ya::MeshRenderer>();
+		//ya::MeshRenderer* mr = grid->AddComponent<ya::MeshRenderer>();
 		//mr->SetMesh(ya::Resources::Find<ya::Mesh>(L"RectMesh"));
 		//mr->SetMaterial(ya::Resources::Find<ya::Material>(L"GridMaterial"));
 		//ya::GridScript* gridSc = grid->AddComponent<ya::GridScript>();

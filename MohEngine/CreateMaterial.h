@@ -220,7 +220,7 @@ namespace ya
 
 		std::shared_ptr<ya::graphics::Texture> ceiling_borders_black_001
 			= Resources::Load<ya::graphics::Texture>(L"ceiling_borders_black_001", L"..\\Resources\\Texture\\Foyer_Collection\\ceiling_borders_black_001.png");
-		CreateMaterial(L"SpriteShader", ceiling_borders_black_001, L"ceiling_borders_black_001_material", eRenderingMode::Opaque);
+		CreateMaterial(L"SpriteShader", ceiling_borders_black_001, L"ceiling_borders_black_001_material", eRenderingMode::CutOut);
 
 		std::shared_ptr<ya::graphics::Texture> bullet_giant_001
 			= Resources::Load<ya::graphics::Texture>(L"bullet_giant_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_giant_001.png");
@@ -264,11 +264,11 @@ namespace ya
 		
 		std::shared_ptr<ya::graphics::Texture> tutorial_icon_001
 			= Resources::Load<ya::graphics::Texture>(L"tutorial_icon_001", L"..\\Resources\\Texture\\Foyer_Collection\\tutorial_icon_001.png");
-		CreateMaterial(L"SpriteShader", tutorial_icon_001, L"tutorial_icon_001_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", tutorial_icon_001, L"tutorial_icon_001_material", eRenderingMode::Transparent);
 
 		std::shared_ptr<ya::graphics::Texture> right_railing_001
 			= Resources::Load<ya::graphics::Texture>(L"right_railing_001", L"..\\Resources\\Texture\\Foyer_Collection\\right_railing_001.png");
-		CreateMaterial(L"SpriteShader", right_railing_001, L"right_railing_material", eRenderingMode::CutOut);
+		CreateMaterial(L"SpriteShader", right_railing_001, L"right_railing_material", eRenderingMode::Transparent);
 		
 		std::shared_ptr<ya::graphics::Texture> left_railing_001
 			= Resources::Load<ya::graphics::Texture>(L"left_railing_001", L"..\\Resources\\Texture\\Foyer_Collection\\left_railing_001.png");

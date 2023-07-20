@@ -29,6 +29,7 @@ namespace ya
 
 		bool CreateViewMatrix();
 		bool CreateProjectionMatrix(eProjectionType);
+
 		void RegisterCameraInRenderer();
 
 		void TurnLayerMask(eLayerType type, bool enable = true);
@@ -47,11 +48,15 @@ namespace ya
 		void DisableDepthStencilState();
 		
 		void SetSize(float size) { mSize = size; }
-		void SetType(eProjectionType type) { mType = type; }
-
 		float GetSize() { return mSize; }
+		
+		void SetCameraType(eCameraType type) { mCameraType = type; }
+		void SetProjectionType(eProjectionType type) { mProjectionType = type; }
+
 
 		Vector3 GetWorldTransform(Vector3 pos);
+
+
 
 		Matrix& GetViewMatrix() { return mView; }
 		Matrix& GetProjectionMatrix() { return mProjection; }
@@ -63,7 +68,9 @@ namespace ya
 		Matrix mView;
 		Matrix mProjection;
 
-		eProjectionType mType;
+		eProjectionType mProjectionType;
+		eCameraType mCameraType;
+
 		float mAspectRatio;
 		float mNear;
 		float mFar;

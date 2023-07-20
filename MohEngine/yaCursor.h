@@ -2,16 +2,14 @@
 #include "yaGameObject.h"
 #include "yaUICamera.h"
 
-using namespace ya::math;
-using namespace ya;
 
 
-namespace ho
+namespace ya
 {
 class Cursor : public ya::GameObject
 {
 public:
-	Cursor(GameObject* camera);
+	Cursor();
 	~Cursor();
 
 	virtual void Intialize() override;
@@ -19,11 +17,10 @@ public:
 	virtual void LateUpdate() override;
 	virtual void Render() override;
 
-//	Vector3 TranslateWorldPos(Vector3 pos);
-
+	Vector3 GetPos() { return mPos; }
+	
 private:
 	Vector3 mPos;
-	GameObject* mCamera;
 };
 }
 

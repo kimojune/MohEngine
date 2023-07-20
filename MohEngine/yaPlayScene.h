@@ -3,7 +3,7 @@
 
 namespace ya
 {
-
+	class MainCamera;
 	class PlayScene : public Scene
 	{
 	public:
@@ -19,5 +19,6 @@ namespace ya
 		virtual void OnExit() override;
 
 	private:
+		MainCamera* mMainCamera;
 	};
 }

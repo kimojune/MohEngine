@@ -16,7 +16,8 @@ namespace ya
 	};
 
 	std::vector<Input::Key> Input::mKeys;
-	Vector2 Input::mMousePos = Vector2::Zero;
+	std::vector<Vector2> Input::mClientMousePos = {};
+	Vector2 Input::mMousePos = Vector2::Zero;	
 
 	void Input::Initialize()
 	{
@@ -29,6 +30,8 @@ namespace ya
 
 			mKeys.push_back(keyInfo);
 		}
+
+		mClientMousePos.resize((UINT)enums::eCameraType::End);
 	}
 	
 	void Input::Update()
@@ -64,9 +67,7 @@ namespace ya
 			GetCursorPos(&mousePos);
 			ScreenToClient(application.GetHwnd(), &mousePos);
 
-			mMousePos.x = mousePos.x;
-			mMousePos.y = mousePos.y;
-
+			mMousePos = Vector2(mousePos.x, mousePos.y);
 		}
 		else
 		{
@@ -90,5 +91,21 @@ namespace ya
 	void Input::Render(HDC hdc)
 	{
 
+	}
+	void Input::SetClientPos(enums::eCameraType type, Matrix view, Matrix proj)
+	{
+		Viewport viewport;
+		viewport.width = application.GetWidth();
+		viewport.height = application.GetHeight();
+		viewport.x = 0;
+		viewport.y = 0;
+		viewport.minDepth = 0.0f;
+		viewport.maxDepth = 1.0f;
+
+		Vector3 pos(mMousePos.x, mMousePos.y, 0.0f);
+		pos = viewport.Unproject(pos, proj, view, Matrix::Identity);
+
+		mClientMousePos[(UINT)type].x = pos.x;
+		mClientMousePos[(UINT)type].y = pos.y;
 	}
 }

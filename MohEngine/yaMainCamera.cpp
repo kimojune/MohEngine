@@ -12,6 +12,7 @@ namespace ya
 		Camera* camera = AddComponent<Camera>();
 		camera->SetSize(1.0f);
 		camera->TurnLayerMask(eLayerType::UI, false);
+		camera->SetCameraType(enums::eCameraType::Main);
 		renderer::cameras.push_back(camera);
 
 		Scene* scene = SceneManager::GetActiveScene();

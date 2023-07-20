@@ -6,7 +6,7 @@
 #include "yaPlayer.h"
 #include "yaPlayerScript.h"
 #include "yaMainCamera.h"
-#include "hoCursor.h"
+#include "yaCursor.h"
 #include "yaUICamera.h"
 #include "yaApplication.h"
 #include "yaUI.h"
@@ -18,7 +18,7 @@
 #include "yaCollisionManager.h"
 #include "yaInput.h"
 #include "yaTilePalatte.h"
-using namespace ho;
+using namespace ya;
 extern ya::Application application;
 
 
@@ -26,6 +26,7 @@ namespace ya
 {
 
 	PlayScene::PlayScene()
+		:mMainCamera(nullptr)
 	{
 	}
 	PlayScene::~PlayScene()
@@ -38,19 +39,18 @@ namespace ya
 
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
-		Player* player = new Player();
-		player->Intialize();
-		AddGameObject(eLayerType::Player, player);
-		Collider2D* cd = player->AddComponent<Collider2D>();
+		Player* Hunter = new Player();
+		Hunter->Intialize();
+		AddGameObject(eLayerType::Player, Hunter);
+		Collider2D* cd = Hunter->AddComponent<Collider2D>();
 		cd->SetCenter(Vector2(0.0f, -10.0f));
 		cd->SetSize(Vector2(0.6f, 0.6f));
 		cd->SetType(eColliderType::Rect);
 
-		MainCamera* camera = new MainCamera();
-		Camera* maincam = camera->GetComponent<Camera>();
-		camera->SetTarget(player);
-		ya::renderer::mainCamera = maincam;
-
+		mMainCamera = new MainCamera();
+		Camera* maincam = mMainCamera->GetComponent<Camera>();
+		mMainCamera->SetTarget(Hunter);
+		
 		UICamera* uicamera = new UICamera();
 
 		UI* heart = new UI(Vector3(-width/2 + UI_SIZE, height/2 - UI_SIZE,-6.0f), (L"Heart_material"));
@@ -77,8 +77,8 @@ namespace ya
 					, (L"Bullet_type_01_material"));
 		}
 
-		//camera->SetTarget(player);
-		Cursor* cursor = new Cursor(uicamera);
+		//camera->SetTarget(Hunter);
+		Cursor* cursor = new Cursor;
 
 
 	}
@@ -105,10 +105,10 @@ namespace ya
 	}
 	void PlayScene::OnEnter()
 	{
-		const std::wstring& path = { L"..\\Resources\\Tile\\1234" };
-		TilePalatte::Load(path);
+		mMainCamera->SetSize(0.8f);
 	}
 	void PlayScene::OnExit()
 	{
+		mMainCamera->SetSize(1.0f);
 	}
 }

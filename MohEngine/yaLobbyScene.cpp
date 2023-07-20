@@ -140,9 +140,6 @@ namespace ya
 		bullet_collumn_ignorance_001->SetPosition(Vector3(175.0f, 0.0f, 1.0f));
 
 
-
-
-
 		
 		PlayScene::Initialize();
 	}

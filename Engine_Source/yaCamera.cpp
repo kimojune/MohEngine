@@ -6,6 +6,7 @@
 #include "yaScene.h"
 #include "yaSceneManager.h"
 #include "yaMeshRenderer.h"
+#include "yaInput.h"
 
 extern ya::Application application;
 
@@ -25,7 +26,7 @@ namespace ya
 
 	Camera::Camera()
 		:Component(eComponentType::Camera)
-		,mType(eProjectionType::OrthoGraphic)
+		,mProjectionType(eProjectionType::OrthoGraphic)
 		,mAspectRatio(1.0f)
 		,mNear(1.0f)
 		,mFar(1000.0f)
@@ -51,8 +52,25 @@ namespace ya
 	void Camera::LateUpdate()
 	{
 		CreateViewMatrix();
-		CreateProjectionMatrix(mType);
+		CreateProjectionMatrix(mProjectionType);
 		RegisterCameraInRenderer();
+
+		switch (mCameraType)
+		{
+		case ya::enums::eCameraType::Main:
+			renderer::mainCamera = this;
+			Input::SetClientPos(eCameraType::Main, mView, mProjection);
+			break;
+
+		case ya::enums::eCameraType::UI:
+			Input::SetClientPos(eCameraType::UI, mView, mProjection);
+			break;
+
+		case ya::enums::eCameraType::End:
+			break;
+		default:
+			break;
+		}
 	}
 	void Camera::Render()
 	{
@@ -93,7 +111,7 @@ namespace ya
 		return true;
 	}
 
-	bool Camera::CreateProjectionMatrix(eProjectionType)
+	bool Camera::CreateProjectionMatrix(eProjectionType type)
 	{
 		RECT rect = {};
 		GetClientRect(application.GetHwnd(), &rect);
@@ -102,7 +120,7 @@ namespace ya
 		mAspectRatio = width / height;
 
 
-		if (mType == eProjectionType::OrthoGraphic)
+		if (type == eProjectionType::OrthoGraphic)
 		{
 			float OrthorGraphicRatio = mSize;
 			width *= OrthorGraphicRatio;
@@ -120,7 +138,8 @@ namespace ya
 	}
 	void Camera::RegisterCameraInRenderer()
 	{
-		renderer::cameras.push_back(this);
+		renderer::cameras[(UINT)mCameraType] = this;
+		//renderer::cameras.push_back(this);
 	}
 
 	void Camera::TurnLayerMask(eLayerType type, bool enable)

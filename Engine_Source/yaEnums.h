@@ -39,6 +39,13 @@ namespace ya::enums
 		End,
 	};
 
+	enum class eCameraType
+	{
+		Main,
+		UI,
+		End,
+	};
+
 	enum class eColliderType
 	{
 		Rect,
@@ -48,10 +55,4 @@ namespace ya::enums
 		End,
 	};
 
-	enum class eCameraType
-	{
-		Main,
-		UI,
-		End,
-	};
 }

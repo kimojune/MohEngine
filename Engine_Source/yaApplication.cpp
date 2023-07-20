@@ -48,6 +48,7 @@ namespace ya
 	}
 	void Application::LateUpdate()
 	{
+		renderer::cameras.resize((UINT)eCameraType::End);
 		SceneManager::LateUpdate();
 	}
 	void Application::Render()

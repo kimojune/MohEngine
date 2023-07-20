@@ -1,4 +1,4 @@
-#include "haWorldCursor.h"
+#include "yaWorldCursor.h"
 #include "yaInput.h"
 #include "yaTransform.h"
 #include "yaCamera.h"
@@ -6,8 +6,7 @@
 
 namespace ya
 {
-	WorldCursor::WorldCursor(GameObject* mainCamera)
-		:mCamera(mainCamera)
+	WorldCursor::WorldCursor()
 	{
 		Transform* tr = GetComponent<Transform>();
 		tr->SetScale(Vector3::One);
@@ -25,11 +24,10 @@ namespace ya
 	void WorldCursor::Update()
 	{
 		Transform* tr = GetComponent<Transform>();
-		Vector2 Pos = ya::Input::GetMousePos();
+		Vector2 Pos = ya::Input::GetClientMousePos(eCameraType::Main);
 		mPos = Vector3(Pos.x, Pos.y, -10.0f);
 		
-		Camera* camera = mCamera->GetComponent<Camera>();
-		tr->SetPosition(camera->GetWorldTransform(mPos));
+		tr->SetPosition(mPos);
 
 		GameObject::Update();
 	}

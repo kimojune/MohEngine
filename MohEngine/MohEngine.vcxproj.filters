@@ -38,7 +38,7 @@
     <ClInclude Include="yaPlayer.h">
       <Filter>Contents\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="hoCursor.h">
+    <ClInclude Include="yaCursor.h">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClInclude>
     <ClInclude Include="yaBackGround.h">
@@ -53,7 +53,7 @@
     <ClInclude Include="yaTileScript.h">
       <Filter>Contents\Script</Filter>
     </ClInclude>
-    <ClInclude Include="haWorldCursor.h">
+    <ClInclude Include="yaWorldCursor.h">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClInclude>
     <ClInclude Include="yaLobbyScene.h">
@@ -100,7 +100,7 @@
     <ClCompile Include="yaPlayer.cpp">
       <Filter>Contents\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="hoCursor.cpp">
+    <ClCompile Include="yaCursor.cpp">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClCompile>
     <ClCompile Include="yaBackGround.cpp">
@@ -115,7 +115,7 @@
     <ClCompile Include="yaTileScript.cpp">
       <Filter>Contents\Script</Filter>
     </ClCompile>
-    <ClCompile Include="haWorldCursor.cpp">
+    <ClCompile Include="yaWorldCursor.cpp">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClCompile>
     <ClCompile Include="yaLobbyScene.cpp">

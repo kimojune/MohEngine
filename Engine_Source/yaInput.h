@@ -37,6 +37,8 @@ namespace ya
 		static void Update();
 		static void Render(HDC hdc);
 
+		static void SetClientPos(enums::eCameraType type, Matrix view, Matrix proj);
+
 		inline static eKeyState GetKeyState(eKeyCode keyCode)
 		{
 			return mKeys[(UINT)keyCode].state;
@@ -62,9 +64,11 @@ namespace ya
 		}
 		
 		static __forceinline Vector2 GetMousePos() { return mMousePos; }
+		static __forceinline Vector2 GetClientMousePos(enums::eCameraType type) { return mClientMousePos[(UINT)type]; }
 
 	private:
 		static std::vector<Key> mKeys;
 		static Vector2 mMousePos;
+		static std::vector <Vector2> mClientMousePos;
 	};
 }

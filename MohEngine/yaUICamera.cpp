@@ -13,7 +13,7 @@ namespace ya
 		camera->SetSize(1.0f);
 		camera->DisableLayerMasks();
 		camera->TurnLayerMask(eLayerType::UI);
-		camera->SetType(Camera::eProjectionType::OrthoGraphic);
+		camera->SetCameraType(enums::eCameraType::UI);
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
 	}

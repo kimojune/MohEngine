@@ -5,7 +5,7 @@ namespace ya
 class WorldCursor : public GameObject
 {
 public:
-	WorldCursor(GameObject* Camera);
+	WorldCursor();
 	~WorldCursor();
 
 	virtual void Intialize() override;
@@ -15,8 +15,6 @@ public:
 
 
 private:
-	GameObject* mCamera;
-
 	Vector3 mPos;
 };
 
