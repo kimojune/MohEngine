@@ -16,10 +16,17 @@ namespace ya::graphics
 	class Texture : public  Resource
 	{
 	public:
+		struct SpriteInfo
+		{
+				
+		};
+
 		Texture();
 		~Texture();
 
 		virtual HRESULT Load(const std::wstring& path) override;
+		void CreateTexture(const std::wstring& name, const std::wstring& path);
+		
 		void BindShader(eShaderStage stage, UINT startSlot);
 
 		void Clear();

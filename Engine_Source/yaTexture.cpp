@@ -19,6 +19,7 @@ namespace ya::graphics
 	HRESULT Texture::Load(const std::wstring& path)
 	{
 		wchar_t szExtension[50] = {};
+		//경로를 나누어 저장해주는 함수
 		_wsplitpath_s(path.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExtension, 50);
 
 		std::wstring extension = szExtension;
@@ -51,6 +52,24 @@ namespace ya::graphics
 		return S_OK;
 	}
 
+	void Texture::CreateTexture(const std::wstring& name, const std::wstring& path)
+	{
+		UINT width = 0;
+		UINT height = 0;
+		UINT fileCount = 0;
+
+		std::filesystem::path fs(path);
+
+		for (const auto& p : std::filesystem::directory_iterator(path))
+		{
+			std::wstring fileName = p.path().filename();
+			std::wstring fullName = path + L"\\" + fileName;
+
+			const std::wstring ext = p.path().extension();
+
+		}
+		
+	}
 	void Texture::BindShader(eShaderStage stage, UINT startSlot)
 	{
 		GetDevice()->BindShaderResource(stage, startSlot, mSRV.GetAddressOf());

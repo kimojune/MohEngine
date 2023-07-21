@@ -34,9 +34,6 @@ namespace ya
 	}
 	void PlayScene::Initialize()
 	{
-		float width = application.GetWidth() ;
-		float height = application.GetHeight() ;
-
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
 		Player* Hunter = new Player();
@@ -51,7 +48,16 @@ namespace ya
 		Camera* maincam = mMainCamera->GetComponent<Camera>();
 		mMainCamera->SetTarget(Hunter);
 		
+		float width = application.GetWidth() ;
+		float height = application.GetHeight() ;
+
 		UICamera* uicamera = new UICamera();
+		Camera* uicam = uicamera->GetComponent<Camera>();
+
+		width *= uicam->GetSize();
+		height *= uicam->GetSize();
+
+
 
 		UI* heart = new UI(Vector3(-width/2 + UI_SIZE, height/2 - UI_SIZE,-6.0f), (L"Heart_material"));
 		UI* key = new UI(heart, Vector3(0.0f , -UI_SIZE, -3.0f), (L"ui_key_material"));

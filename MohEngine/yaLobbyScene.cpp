@@ -3,7 +3,9 @@
 #include "yaDog.h"
 #include "yaObject.h"
 #include "yaBackGround.h"
-
+#include "yaAnimator.h"
+#include "yaResources.h"
+#include "yaMeshRenderer.h"
 namespace ya
 {
 	LobbyScene::LobbyScene()
@@ -14,15 +16,7 @@ namespace ya
 	}
 	void LobbyScene::Initialize()
 	{
-		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);
-		Collider2D* dogcd = dog->AddComponent<Collider2D>();
-		Transform* tr = dog->GetComponent<Transform>();
-		float degree = PI / 8.0f;
-		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
-		dogcd->SetCenter(Vector2(0.0f, 0.0f));
-		dogcd->SetType(eColliderType::Rect);
-
-
+#pragma region BackGround
 		BackGround* circle_floor_pitwall_001 = new BackGround(L"circle_floor_pitwall_001_material");
 		circle_floor_pitwall_001->SetPosition(Vector3(0.0f, 200.0f, 1.0f));
 
@@ -46,13 +40,13 @@ namespace ya
 
 		BackGround* mainFloor = new BackGround(L"new_bottom_floor_level_one_final_floor_001_material");
 		mainFloor->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-		
+
 		BackGround* circle_floor_top_001 = new BackGround(L"circle_floor_top_001_material");
 		circle_floor_top_001->SetPosition(Vector3(-1.0f, 250.0f, 1.0f));
-		
+
 		BackGround* main_stairway_001 = new BackGround(L"main_stairway_001_material");
 		main_stairway_001->SetPosition(Vector3(0.0f, 665.0f, 1.0f));
-		
+
 		BackGround* bottom_floor_level_two_001 = new BackGround(L"bottom_floor_level_two_001_material");
 		bottom_floor_level_two_001->SetPosition(Vector3(0.0f, 445.0f, 1.0f));
 
@@ -67,7 +61,7 @@ namespace ya
 
 		BackGround* foyer_new_entrance_archway_topwalls_001 = new BackGround(L"foyer_new_entrance_archway_topwalls_001_material");
 		foyer_new_entrance_archway_topwalls_001->SetPosition(Vector3(0.0f, 700.0f, 1.5f));
-		
+
 		BackGround* bottom_wall_001 = new BackGround(L"bottom_wall_001_material");
 		bottom_wall_001->SetPosition(Vector3(0.0f, 760.0f, 1.0f));
 
@@ -82,10 +76,10 @@ namespace ya
 
 		BackGround* bullet_giant_001 = new BackGround(L"bullet_giant_001_material");
 		bullet_giant_001->SetPosition(Vector3(0.0f, 1500.0f, 1.0f));
-		
+
 		BackGround* bullet_door_001 = new BackGround(L"bullet_door_001_material");
 		bullet_door_001->SetPosition(Vector3(0.0f, 1200.0f, 1.0f));
-		
+
 		BackGround* archway_upper_001 = new BackGround(L"archway_upper_001_material");
 		archway_upper_001->SetPosition(Vector3(-350.0f, 1450.0f, 1.0f));
 
@@ -106,7 +100,7 @@ namespace ya
 
 		BackGround* livery_poker_table_001 = new BackGround(livery_boxes_001, L"livery_poker_table_001_material");
 		livery_poker_table_001->SetPosition(Vector3(400.0f, 100.0f, 1.0f));
-		
+
 		BackGround* livery_couch_001 = new BackGround(livery_poker_table_001, L"livery_couch_001_material");
 		livery_couch_001->SetPosition(Vector3(-100.0f, -75.0f, 1.0f));
 
@@ -119,7 +113,7 @@ namespace ya
 		BackGround* tutorial_icon_001 = new BackGround(archway_upper_002, L"tutorial_icon_001_material");
 		tutorial_icon_001->SetPosition(Vector3(0.0f, 80.0f, 1.0f));
 
-		
+
 		BackGround* left_railing_001 = new BackGround(archway_upper_002, L"left_railing_material");
 		left_railing_001->SetPosition(Vector3(48.0f, 330.0f, 1.0f));
 
@@ -138,6 +132,16 @@ namespace ya
 
 		BackGround* bullet_collumn_ignorance_001 = new BackGround(bullet_collumn_horror_001, L"bullet_collumn_ignorance_001_material");
 		bullet_collumn_ignorance_001->SetPosition(Vector3(175.0f, 0.0f, 1.0f));
+#pragma endregion
+
+		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);
+		Collider2D* dogcd = dog->AddComponent<Collider2D>();
+		Transform* tr = dog->GetComponent<Transform>();
+		float degree = PI / 8.0f;
+		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
+		dogcd->SetCenter(Vector2(0.0f, 0.0f));
+		dogcd->SetType(eColliderType::Rect);
+
 
 
 		
