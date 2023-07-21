@@ -1,5 +1,6 @@
 #include "yaTexture.h"
 #include "yaGraphicDevice_Dx11.h"
+#include "yaResources.h"
 
 namespace ya::graphics
 {
@@ -35,7 +36,8 @@ namespace ya::graphics
 		}
 		else // WIC (png, jpg, jpeg, bmp )
 		{
-			if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
+			//if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
+			if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_IGNORE_SRGB, nullptr, mImage)))
 				return S_FALSE;
 		}
 
@@ -52,24 +54,56 @@ namespace ya::graphics
 		return S_OK;
 	}
 
-	void Texture::CreateTexture(const std::wstring& name, const std::wstring& path)
-	{
-		UINT width = 0;
-		UINT height = 0;
-		UINT fileCount = 0;
+	//std::shared_ptr<Texture> Texture::CreateTextureSheet(const std::wstring& name, const std::wstring& path)
+	//{
+	//	UINT width = 0;
+	//	UINT height = 0;
+	//	UINT fileCount = 0;
 
-		std::filesystem::path fs(path);
+	//	std::filesystem::path fs(path);
+	//	std::vector<std::shared_ptr<Texture>> textures = {};
+	//	for (const auto& p : std::filesystem::directory_iterator(path))
+	//	{
+	//		std::wstring fileName = p.path().filename();
+	//		std::wstring grandparentName = p.path().parent_path().parent_path();
+	//		std::wstring fullName = path + L"\\" + fileName;
+	//		std::wstring keyName = fullName.erase(0, grandparentName.length());
 
-		for (const auto& p : std::filesystem::directory_iterator(path))
-		{
-			std::wstring fileName = p.path().filename();
-			std::wstring fullName = path + L"\\" + fileName;
+	//		const std::wstring ext = p.path().extension();
+	//		if (ext != L".png")
+	//			continue;
 
-			const std::wstring ext = p.path().extension();
+	//		//textures = Resources::
+	//		std::shared_ptr<Texture> texture = Resources::Load<Texture>(keyName, fullName);
 
-		}
-		
-	}
+	//		textures.push_back(texture);
+	//		if (width < texture->GetWidth())
+	//		{
+	//			width = texture->GetWidth();
+	//		}
+	//		if (height < texture->GetHeight())
+	//		{
+	//			height = texture->GetHeight();
+	//		}
+	//		fileCount++;
+
+
+	//	}
+	//	
+	//	D3D11_TEXTURE2D_DESC textureDesc = {};
+	//	textureDesc.Width = width * fileCount;
+	//	textureDesc.Height = 1024;
+	//	textureDesc.MipLevels = 1;
+	//	textureDesc.ArraySize = 1;
+	//	textureDesc.Format = DXGI_FORMAT_R8G8B8A8_UNORM;
+	//	textureDesc.SampleDesc.Count = 1;
+	//	textureDesc.Usage = D3D11_USAGE_DEFAULT;
+	//	textureDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
+
+	//	std::shared_ptr<Texture> texture;
+	//	
+	//	return texture;
+	//}
 	void Texture::BindShader(eShaderStage stage, UINT startSlot)
 	{
 		GetDevice()->BindShaderResource(stage, startSlot, mSRV.GetAddressOf());

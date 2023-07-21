@@ -25,7 +25,7 @@ namespace ya::graphics
 		~Texture();
 
 		virtual HRESULT Load(const std::wstring& path) override;
-		void CreateTexture(const std::wstring& name, const std::wstring& path);
+		//std::shared_ptr<Texture> CreateTextureSheet(const std::wstring& name, const std::wstring& path);
 		
 		void BindShader(eShaderStage stage, UINT startSlot);
 
@@ -35,6 +35,8 @@ namespace ya::graphics
 		{
 			return math::Vector2((float)mImage.GetImages()->width, ((float)mImage.GetImages()->height));
 		}
+		float GetWidth() { return (float)mImage.GetImages()->width; }
+		float GetHeight() { return (float)mImage.GetImages()->height; }
 
 	private:
 		ScratchImage mImage;
