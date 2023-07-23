@@ -43,14 +43,26 @@ namespace ya
 			, std::shared_ptr<graphics::Texture> atlas
 			, Vector2 leftTop
 			, Vector2 size
-			, UINT coulumnLength
+			, UINT columnLength
 			, Vector2 offset = Vector2::Zero
 			, float duration = 0.0f);
+
+		Animation* CreateAnimations(const std::wstring& path, float duration);
+		Events* FindEvents(const std::wstring& name);
+		Animation* FindAnimation(const std::wstring& name);
+		void PlayAnimation(const std::wstring& name, bool loop);
+		void Binds();
+
+
+		std::function<void()>& StartEvent(const std::wstring key);
+		std::function<void()>& CompleteEvent(const std::wstring key);
+		std::function<void()>& EndEvent(const std::wstring key);
 
 	private:
 		std::map < std::wstring, Animation*> mAnimations;
 		std::map < std::wstring, Events*> mEvents;
 		Animation* mActiveAnimation;
+		std::shared_ptr<graphics::Texture> mImageAtlas;
 
 		bool mbLoop;
 	};
