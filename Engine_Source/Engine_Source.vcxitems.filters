@@ -91,6 +91,9 @@
     <Filter Include="GameObject\Component\Collider2D">
       <UniqueIdentifier>{4d4f7079-e4b4-4d9c-9d3a-b1896a3c4674}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject\Component\Animator">
+      <UniqueIdentifier>{80b69113-a916-4a89-8669-fb37e5eac21e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
@@ -177,8 +180,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCollisionManager.cpp">
       <Filter>GameObject\Component\Collider2D</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimator.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaSprite.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimation.cpp">
+      <Filter>Resource\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimator.cpp">
+      <Filter>GameObject\Component\Animator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -280,8 +288,13 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCollisionManager.h">
       <Filter>GameObject\Component\Collider2D</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimator.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaSprite.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimation.h">
+      <Filter>Resource\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimator.h">
+      <Filter>GameObject\Component\Animator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

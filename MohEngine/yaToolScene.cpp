@@ -10,6 +10,11 @@
 #include "yaCursor.h"
 #include "yaWorldCursor.h"
 #include "yaTileScript.h"
+#include "yaResources.h"
+#include "yaMeshRenderer.h"
+#include "yaAnimator.h"
+#include "yaTexture.h"
+
 
 using namespace ya;
 
@@ -48,8 +53,43 @@ namespace ya
 		Cursor* cursor = new Cursor;
 		WorldCursor* wCursor = new WorldCursor();
 		wCursor->AddComponent<TileScript>();
-		
 
+		std::shared_ptr<Texture> atlas
+			= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
+
+		//std::shared_ptr<Texture> mTileatls = std::make_shared<Texture>();
+
+		//mTileatls.get()->CreateTextureSheet(L"TileAtlas", L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Tileset_Forge");
+		//{
+		//	GameObject* player
+		//		= object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);
+
+		//	player->SetName(L"Zelda");
+
+		//	Collider2D* cd = player->AddComponent<Collider2D>();
+		//	cd->SetSize(Vector2(1.2f, 1.2f));
+
+		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//	std::shared_ptr<Material> material = Resources::Find<Material>(L"AnimatorMaterial");
+		//	material->SetRenderingMode(eRenderingMode::Transparent);
+		//	mr->SetMaterial(material);
+
+		//	Transform* tr = player->GetComponent<Transform>();
+		//	Vector2 scale = mr->GetSize();
+
+		//	tr->SetScale(scale.x, scale.y, 0.0f);
+		//	tr->SetPosition(100.0f, 100.0f, 1.0f);
+		//	const float pi = 3.141592f;
+		//	float degree = pi / 8.0f;
+
+		//	Animator* at = player->AddComponent<Animator>();
+		//	at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
+		//	at->PlayAnimation(L"Idle", true);
+
+		//}
+
+		
 		TilePalatte::Intialize();
 
 

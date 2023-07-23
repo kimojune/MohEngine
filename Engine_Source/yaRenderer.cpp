@@ -72,6 +72,11 @@ namespace ya::renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = ya::Resources::Find<Shader>(L"AnimatorShader");
+		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 
 #pragma endregion
 #pragma region Sampler State
@@ -331,6 +336,11 @@ namespace ya::renderer
 		shader->Create(eShaderStage::PS, L"TilePS.hlsl", "main");
 		ya::Resources::Insert(L"TileShader", shader);
 
+		shader = std::make_shared<Shader>();
+		shader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		shader->Create(eShaderStage::PS, L"AnimationPS.hlsl", "main");
+		ya::Resources::Insert(L"AnimatorShader", shader);
+
 		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
 		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");
 		debugShader->Create(eShaderStage::PS, L"DebugPS.hlsl", "main");
@@ -351,7 +361,14 @@ namespace ya::renderer
 		std::shared_ptr<Material> material = std::make_shared<Material>();
 		material->SetShader(spriteShader);
 		material->SetTexture(texture);
-		Resources::Insert(L"SpriteMaterial", material);
+		Resources::Insert(L"SpriteMaterial", material);	
+		
+		std::shared_ptr<Shader> animatorShader
+			= Resources::Find<Shader>(L"AnimatorShader");
+		material = std::make_shared<Material>();
+		material->SetShader(animatorShader);
+		material->SetTexture(texture);
+		Resources::Insert(L"AnimatorMaterial", material);
 
 		texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
 		material = std::make_shared<Material>();
