@@ -1,5 +1,6 @@
 #include "yaTexture.h"
 #include "yaGraphicDevice_Dx11.h"
+#include "yaResources.h"
 
 namespace ya::graphics
 {
@@ -19,6 +20,7 @@ namespace ya::graphics
 	HRESULT Texture::Load(const std::wstring& path)
 	{
 		wchar_t szExtension[50] = {};
+		//경로를 나누어 저장해주는 함수
 		_wsplitpath_s(path.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, szExtension, 50);
 
 		std::wstring extension = szExtension;
@@ -34,7 +36,8 @@ namespace ya::graphics
 		}
 		else // WIC (png, jpg, jpeg, bmp )
 		{
-			if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
+			//if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
+			if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_IGNORE_SRGB, nullptr, mImage)))
 				return S_FALSE;
 		}
 
