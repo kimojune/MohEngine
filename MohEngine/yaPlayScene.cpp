@@ -36,13 +36,8 @@ namespace ya
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
-		Player* Hunter = new Player();
+		Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
 		Hunter->Initialize();
-		AddGameObject(eLayerType::Player, Hunter);
-		Collider2D* cd = Hunter->AddComponent<Collider2D>();
-		cd->SetCenter(Vector2(0.0f, -10.0f));
-		cd->SetSize(Vector2(0.6f, 0.6f));
-		cd->SetType(eColliderType::Rect);
 
 		mMainCamera = new MainCamera();
 		Camera* maincam = mMainCamera->GetComponent<Camera>();

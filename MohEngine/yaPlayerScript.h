@@ -16,6 +16,7 @@ namespace ya
 			End,
 		};
 
+		virtual void Initialize() override;
 		virtual void Update() override;
 
 		void Idle();
@@ -26,15 +27,19 @@ namespace ya
 
 		void PlayAnimationDir(const std::wstring& name, eDirection direction, bool loop);
 
+		void StartDodge();
+		void CompleteDodge();
+
 	private:
-		ePlayerState mState;
+		ePlayerState mPlayerState;
 		eDirection mDirection;
 		
 		ePlayerState mPrevState;
 		eDirection mPrevDirection;
-		bool mbPlayed;
-
 		Vector3 mPos;
+
+		bool mbPlayed = false;
+		bool invincible = false;
 		
 	};
 }

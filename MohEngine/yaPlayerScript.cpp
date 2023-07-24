@@ -6,13 +6,29 @@
 #include "yaAnimator.h"
 namespace ya
 {
+	void PlayerScript::Initialize()
+	{
+		Animator* at = GetOwner()->GetComponent<Animator>();
+
+		//at->StartEvent(L"dodgefront") = std::bind(&PlayerScript::StartDodge, this);
+		//at->CompleteEvent(L"dodgefront") = std::bind(&PlayerScript::CompleteDodge, this);
+		// 
+		//at->StartEvent(L"dodgeback") = std::bind(&PlayerScript::StartDodge, this);
+		//at->CompleteEvent(L"dodgeback") = std::bind(&PlayerScript::CompleteDodge, this);
+		// 
+		//at->StartEvent(L"dodgeback_right") = std::bind(&PlayerScript::StartDodge, this);
+		//at->CompleteEvent(L"dodgeback_right") = std::bind(&PlayerScript::CompleteDodge, this);
+		// 
+		//at->StartEvent(L"dodgefront_right") = std::bind(&PlayerScript::StartDodge, this);
+		//at->CompleteEvent(L"dodgefront_right") = std::bind(&PlayerScript::CompleteDodge, this);
+	}
 	void PlayerScript::Update()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		mPos = tr->GetPosition();
 
 		mPrevDirection = mDirection;
-		mPrevState = mState;
+		mPrevState = mPlayerState;
 
 		Vector2 playerPos = Vector2(mPos.x, mPos.y);
 		Vector2 cursorPos = Input::GetClientMousePos(eCameraType::Main);
@@ -54,7 +70,7 @@ namespace ya
 		}
 		//cursorPos()
 
-		switch (mState)
+		switch (mPlayerState)
 		{
 		case ya::PlayerScript::ePlayerState::Idle:
 			Idle();
@@ -65,6 +81,8 @@ namespace ya
 			PlayAnimationDir(L"run", mDirection, true);
 			break;
 		case ya::PlayerScript::ePlayerState::Dodge:
+			//Dodge();
+			//PlayAnimationDir(L"dodge", mDirection, false);
 			break;
 		case ya::PlayerScript::ePlayerState::PitFall:
 			break;
@@ -76,7 +94,7 @@ namespace ya
 			break;
 		}
 
-		if (mPrevState != mState || mPrevDirection != mDirection)
+		if (mPrevState != mPlayerState || mPrevDirection != mDirection)
 			mbPlayed = false;
 
 		tr->SetPosition(mPos);
@@ -86,12 +104,15 @@ namespace ya
 	{
 		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::D)
 			|| Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::A))
-			mState = ePlayerState::Run;
+			mPlayerState = ePlayerState::Run;
+
+
+		//if (Input::GetKeyDown(eKeyCode::RBUTTON))
+		//	mPlayerState = ePlayerState::Dodge;
 	}
 
 	void PlayerScript::Run()
 	{
-
 		if (Input::GetKey(eKeyCode::W) && Input::GetKey(eKeyCode::D))
 		{
 			mPos.x += 150.0f * Time::DeltaTime();
@@ -130,10 +151,13 @@ namespace ya
 			mPos.x += 210.0f * Time::DeltaTime();
 		}
 		else
-			mState = ePlayerState::Idle;
+			mPlayerState = ePlayerState::Idle;
 	}
 	void PlayerScript::Dodge()
 	{
+		Animator* at = GetOwner()->GetComponent<Animator>();
+		if (at->GetActiveAnimation()->IsComplete())
+			mPlayerState = ePlayerState::Idle;
 	}
 	void PlayerScript::PitFall()
 	{
@@ -183,5 +207,13 @@ namespace ya
 		}
 
 		mbPlayed = true;
+	}
+	void PlayerScript::StartDodge()
+	{
+
+	}
+	void PlayerScript::CompleteDodge()
+	{
+		
 	}
 }
