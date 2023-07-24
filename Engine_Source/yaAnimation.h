@@ -51,6 +51,8 @@ namespace ya
 
 		bool IsComplete() { return mbComplete; }
 
+		void SetReverse(bool left) { mReverse = left; }
+
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
 		Animator* mAnimator;
@@ -58,5 +60,6 @@ namespace ya
 		int mIndex;
 		float mTime;
 		bool mbComplete;
+		bool mReverse = false;
 	};
 }

@@ -8,7 +8,7 @@ namespace gui
 	EditorObject::~EditorObject()
 	{
 	}
-	void EditorObject::Intialize()
+	void EditorObject::Initialize()
 	{
 	}
 	void EditorObject::Update()

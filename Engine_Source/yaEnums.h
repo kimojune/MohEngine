@@ -55,4 +55,16 @@ namespace ya::enums
 		End,
 	};
 
+	enum class eDirection
+	{
+		Left,
+		Right,
+		Up,
+		Down,
+		LeftUp,
+		LeftDown,
+		RightUp,
+		RigntDown,
+		End,
+	};
 }

@@ -30,7 +30,7 @@ namespace ya
 			script = nullptr;
 		}
 	}
-	void GameObject::Intialize()
+	void GameObject::Initialize()
 	{
 	}
 	void GameObject::Update()

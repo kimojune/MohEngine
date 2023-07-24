@@ -16,6 +16,11 @@ namespace ya::graphics
 	class Texture : public  Resource
 	{
 	public:
+		struct SpriteInfo
+		{
+				
+		};
+
 		Texture();
 		~Texture();
 
@@ -31,6 +36,8 @@ namespace ya::graphics
 		{
 			return math::Vector2((float)mImage.GetImages()->width, ((float)mImage.GetImages()->height));
 		}
+		float GetWidth() { return (float)mImage.GetImages()->width; }
+		float GetHeight() { return (float)mImage.GetImages()->height; }
 
 	private:
 		ScratchImage mImage;

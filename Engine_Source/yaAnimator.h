@@ -39,7 +39,7 @@ namespace ya
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		Animation* Create(std::wstring name
+		void Create(const std::wstring& name
 			, std::shared_ptr<graphics::Texture> atlas
 			, Vector2 leftTop
 			, Vector2 size
@@ -48,15 +48,11 @@ namespace ya
 			, float duration = 0.1f);
 
 		Animation* FindAnimation(const std::wstring& name);
-		void PlayAnimation(const std::wstring& name, bool loop);
+		void PlayAnimation(const std::wstring& name, bool loop, bool reverse = false);
 		void Binds();
 
 		Animation* CreateAnimations(const std::wstring& path, float duration);
 		Events* FindEvents(const std::wstring& name);
-		Animation* FindAnimation(const std::wstring& name);
-		void PlayAnimation(const std::wstring& name, bool loop);
-		void Binds();
-
 
 		std::function<void()>& StartEvent(const std::wstring key);
 		std::function<void()>& CompleteEvent(const std::wstring key);

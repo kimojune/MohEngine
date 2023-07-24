@@ -13,7 +13,7 @@ namespace ya
 		BackGround(GameObject* obj, const std::wstring& materialname);
 		~BackGround() override;
 
-		virtual void Intialize() override;
+		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;

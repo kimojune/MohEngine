@@ -9,7 +9,7 @@ namespace ya
 		MainCamera();
 		~MainCamera();
 
-		virtual void Intialize();
+		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();

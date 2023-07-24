@@ -7,7 +7,7 @@ namespace gui
 	DebugObject::~DebugObject()
 	{
 	}
-	void DebugObject::Intialize()
+	void DebugObject::Initialize()
 	{
 	}
 	void DebugObject::Update()

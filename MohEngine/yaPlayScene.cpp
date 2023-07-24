@@ -37,7 +37,7 @@ namespace ya
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
 		Player* Hunter = new Player();
-		Hunter->Intialize();
+		Hunter->Initialize();
 		AddGameObject(eLayerType::Player, Hunter);
 		Collider2D* cd = Hunter->AddComponent<Collider2D>();
 		cd->SetCenter(Vector2(0.0f, -10.0f));

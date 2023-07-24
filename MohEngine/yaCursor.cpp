@@ -35,7 +35,7 @@ namespace ya
 	Cursor::~Cursor()
 	{
 	}
-	void Cursor::Intialize()
+	void Cursor::Initialize()
 	{
 
 	}

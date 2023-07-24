@@ -17,7 +17,7 @@ namespace ya
 		GameObject();
 		virtual ~GameObject();
 
-		virtual void Intialize();
+		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render();
@@ -87,6 +87,7 @@ namespace ya
 				mScripts.push_back(script);
 
 			comp->SetOwner(this);
+			comp->Initialize();
 
 			return comp;
 		}

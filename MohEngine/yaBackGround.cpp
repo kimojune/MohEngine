@@ -60,7 +60,7 @@ namespace ya
 	BackGround::~BackGround()
 	{
 	}
-	void BackGround::Intialize()
+	void BackGround::Initialize()
 	{
 
 	}

@@ -18,7 +18,7 @@ namespace ya
 	WorldCursor::~WorldCursor()
 	{
 	}
-	void WorldCursor::Intialize()
+	void WorldCursor::Initialize()
 	{
 	}
 	void WorldCursor::Update()

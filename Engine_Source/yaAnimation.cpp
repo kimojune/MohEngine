@@ -65,7 +65,7 @@ namespace ya
 			sprite.size.x = size.x / mAtlasSize.x;
 			sprite.size.y = size.y / mAtlasSize.y;
 			sprite.offset = offset;
-			sprite.atlasSize = Vector2(200.0f / mAtlasSize.x, 200.0f / mAtlasSize.y);
+			sprite.atlasSize = Vector2(30.0f / mAtlasSize.x, 30.0f / mAtlasSize.y);
 			sprite.duration = duration;
 
 			mSprites.push_back(sprite);
@@ -83,7 +83,7 @@ namespace ya
 		data.spriteSize = mSprites[mIndex].size;
 		data.spriteOffset = mSprites[mIndex].offset;
 		data.atlasSize = mSprites[mIndex].atlasSize;
-		data.animationType = 1;
+		data.animationType = mReverse;
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
 		cb->SetData(&data);

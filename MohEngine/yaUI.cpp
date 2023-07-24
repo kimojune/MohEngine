@@ -71,7 +71,7 @@ namespace ya
 	UI::~UI()
 	{
 	}
-	void UI::Intialize()
+	void UI::Initialize()
 	{
 	}
 	void UI::Update()

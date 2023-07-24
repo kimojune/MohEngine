@@ -20,9 +20,9 @@ namespace ya
 	UICamera::~UICamera()
 	{
 	}
-	void UICamera::Intialize()
+	void UICamera::Initialize()
 	{
-		GameObject::Intialize();
+		GameObject::Initialize();
 	}
 	void UICamera::Update()
 	{

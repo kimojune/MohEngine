@@ -17,7 +17,7 @@ namespace ya
 	Grid::~Grid()
 	{
 	}
-	void Grid::Intialize()
+	void Grid::Initialize()
 	{
 	}
 	void Grid::Update()

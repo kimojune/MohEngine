@@ -22,9 +22,9 @@ namespace ya
 	MainCamera::~MainCamera()
 	{
 	}
-	void MainCamera::Intialize()
+	void MainCamera::Initialize()
 	{
-		GameObject::Intialize();
+		GameObject::Initialize();
 	}
 	void MainCamera::Update()
 	{

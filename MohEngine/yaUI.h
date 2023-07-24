@@ -14,7 +14,7 @@ namespace ya
 		UI(GameObject* obj,Vector3 pos, const std::wstring& materialname);
 		~UI();
 
-		virtual void Intialize() override;
+		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;

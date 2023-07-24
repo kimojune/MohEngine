@@ -10,7 +10,7 @@ namespace ya
 		Grid();
 		~Grid();
 
-		virtual void Intialize() override;
+		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
