@@ -10,17 +10,17 @@ namespace ya
 	{
 		Animator* at = GetOwner()->GetComponent<Animator>();
 
-		//at->StartEvent(L"dodgefront") = std::bind(&PlayerScript::StartDodge, this);
-		//at->CompleteEvent(L"dodgefront") = std::bind(&PlayerScript::CompleteDodge, this);
-		// 
-		//at->StartEvent(L"dodgeback") = std::bind(&PlayerScript::StartDodge, this);
-		//at->CompleteEvent(L"dodgeback") = std::bind(&PlayerScript::CompleteDodge, this);
-		// 
-		//at->StartEvent(L"dodgeback_right") = std::bind(&PlayerScript::StartDodge, this);
-		//at->CompleteEvent(L"dodgeback_right") = std::bind(&PlayerScript::CompleteDodge, this);
-		// 
-		//at->StartEvent(L"dodgefront_right") = std::bind(&PlayerScript::StartDodge, this);
-		//at->CompleteEvent(L"dodgefront_right") = std::bind(&PlayerScript::CompleteDodge, this);
+		at->StartEvent(L"dodgefront") = std::bind(&PlayerScript::StartDodge, this);
+		at->CompleteEvent(L"dodgefront") = std::bind(&PlayerScript::CompleteDodge, this);
+
+		at->StartEvent(L"dodgeback") = std::bind(&PlayerScript::StartDodge, this);
+		at->CompleteEvent(L"dodgeback") = std::bind(&PlayerScript::CompleteDodge, this);
+
+		at->StartEvent(L"dodgeback_right") = std::bind(&PlayerScript::StartDodge, this);
+		at->CompleteEvent(L"dodgeback_right") = std::bind(&PlayerScript::CompleteDodge, this);
+
+		at->StartEvent(L"dodgefront_right") = std::bind(&PlayerScript::StartDodge, this);
+		at->CompleteEvent(L"dodgefront_right") = std::bind(&PlayerScript::CompleteDodge, this);
 	}
 	void PlayerScript::Update()
 	{
@@ -81,8 +81,8 @@ namespace ya
 			PlayAnimationDir(L"run", mDirection, true);
 			break;
 		case ya::PlayerScript::ePlayerState::Dodge:
-			//Dodge();
-			//PlayAnimationDir(L"dodge", mDirection, false);
+			Dodge();
+			PlayAnimationDir(L"dodge", mDirection, false);
 			break;
 		case ya::PlayerScript::ePlayerState::PitFall:
 			break;
@@ -104,16 +104,25 @@ namespace ya
 	{
 		if (Input::GetKey(eKeyCode::W) || Input::GetKey(eKeyCode::D)
 			|| Input::GetKey(eKeyCode::S) || Input::GetKey(eKeyCode::A))
+		{
 			mPlayerState = ePlayerState::Run;
+		}
 
+		else if (Input::GetKeyDown(eKeyCode::RBUTTON))
+		{
+			mPlayerState = ePlayerState::Dodge;
+		}
 
-		//if (Input::GetKeyDown(eKeyCode::RBUTTON))
-		//	mPlayerState = ePlayerState::Dodge;
 	}
 
 	void PlayerScript::Run()
 	{
-		if (Input::GetKey(eKeyCode::W) && Input::GetKey(eKeyCode::D))
+		if (Input::GetKeyDown(eKeyCode::RBUTTON))
+		{
+			mPlayerState = ePlayerState::Dodge;
+			PlayAnimationDir(L"dodge", mDirection, false);
+		}
+		else if (Input::GetKey(eKeyCode::W) && Input::GetKey(eKeyCode::D))
 		{
 			mPos.x += 150.0f * Time::DeltaTime();
 			mPos.y += 150.0f * Time::DeltaTime();
@@ -150,14 +159,21 @@ namespace ya
 		{
 			mPos.x += 210.0f * Time::DeltaTime();
 		}
+
 		else
+		{
 			mPlayerState = ePlayerState::Idle;
+		}
+
 	}
 	void PlayerScript::Dodge()
 	{
 		Animator* at = GetOwner()->GetComponent<Animator>();
 		if (at->GetActiveAnimation()->IsComplete())
+		{
 			mPlayerState = ePlayerState::Idle;
+			PlayAnimationDir(L"idle", mDirection, true);
+		}
 	}
 	void PlayerScript::PitFall()
 	{
@@ -171,33 +187,33 @@ namespace ya
 			return;
 
 		Animator* at = GetOwner()->GetComponent<Animator>();
-		std::wstring anmationName = name;
+		std::wstring animationName = name;
 		std::wstring directionName = {};
 
 		switch (direction)
 		{
 		case ya::enums::eDirection::Up:
-			directionName = name + L"back";
+			directionName = animationName + L"back";
 			at->PlayAnimation(directionName, loop);
 			break;
 		case ya::enums::eDirection::Down:
-			directionName = name + L"front";
+			directionName = animationName + L"front";
 			at->PlayAnimation(directionName, loop);
 			break;
 		case ya::enums::eDirection::LeftUp:
-			directionName = name + L"back_right";
+			directionName = animationName + L"back_right";
 			at->PlayAnimation(directionName, loop, true);
 			break;
 		case ya::enums::eDirection::LeftDown:
-			directionName = name + L"front_right";
+			directionName = animationName + L"front_right";
 			at->PlayAnimation(directionName, loop, true);
 			break;
 		case ya::enums::eDirection::RightUp:
-			directionName = name + L"back_right";
+			directionName = animationName + L"back_right";
 			at->PlayAnimation(directionName, loop);
 			break;
 		case ya::enums::eDirection::RigntDown:
-			directionName = name + L"front_right";
+			directionName = animationName + L"front_right";
 			at->PlayAnimation(directionName, loop);
 			break;
 		case ya::enums::eDirection::End:
@@ -205,15 +221,14 @@ namespace ya
 		default:
 			break;
 		}
-
 		mbPlayed = true;
 	}
 	void PlayerScript::StartDodge()
 	{
-
+		mbPlayed = true;
 	}
 	void PlayerScript::CompleteDodge()
 	{
-		
+		mbPlayed = false;
 	}
 }

@@ -50,25 +50,47 @@ namespace ya
 		, Vector2 size
 		, UINT columnLength
 		, Vector2 offset
-		, float duration)
+		, float duration
+		, bool reverse)
 	{
 		SetKey(name);
 		mAtlas = atlas;
 
 		Vector2 mAtlasSize = atlas->GetSize();
-		
-		for (size_t i = 0; i < columnLength; i++)
-		{
-			Sprite sprite = {};
-			sprite.leftTop.x = leftTop.x + (i * size.x) / mAtlasSize.x;
-			sprite.leftTop.y = leftTop.y / mAtlasSize.y;
-			sprite.size.x = size.x / mAtlasSize.x;
-			sprite.size.y = size.y / mAtlasSize.y;
-			sprite.offset = offset;
-			sprite.atlasSize = Vector2(30.0f / mAtlasSize.x, 30.0f / mAtlasSize.y);
-			sprite.duration = duration;
 
-			mSprites.push_back(sprite);
+
+		if (reverse)
+		{
+			for (size_t i = columnLength - 1; i >= 0; i--)
+			{
+				Sprite sprite = {};
+				sprite.leftTop.x = leftTop.x + (i * size.x) / mAtlasSize.x;
+				sprite.leftTop.y = leftTop.y / mAtlasSize.y;
+				sprite.size.x = size.x / mAtlasSize.x;
+				sprite.size.y = size.y / mAtlasSize.y;
+				sprite.offset = offset;
+				sprite.atlasSize = Vector2(30.0f / mAtlasSize.x, 30.0f / mAtlasSize.y);
+				sprite.duration = duration;
+
+				mSprites.push_back(sprite);
+			}
+		}
+
+		else
+		{
+			for (size_t i = 0; i < columnLength; i++)
+			{
+				Sprite sprite = {};
+				sprite.leftTop.x = leftTop.x + (i * size.x) / mAtlasSize.x;
+				sprite.leftTop.y = leftTop.y / mAtlasSize.y;
+				sprite.size.x = size.x / mAtlasSize.x;
+				sprite.size.y = size.y / mAtlasSize.y;
+				sprite.offset = offset;
+				sprite.atlasSize = Vector2(30.0f / mAtlasSize.x, 30.0f / mAtlasSize.y);
+				sprite.duration = duration;
+
+				mSprites.push_back(sprite);
+			}
 		}
 	}
 	void Animation::Binds()
@@ -78,8 +100,17 @@ namespace ya
 
 		//AnimationCB;
 		renderer::AnimatorCB data = {};
+		
+		if (mReverse)
+		{
+			data.spriteLeftTop = Vector2(1.0f - (mSprites[mIndex].size.x) - mSprites[mIndex].leftTop.x
+											, mSprites[mIndex].leftTop.y);
+		}
 
-		data.spriteLeftTop = mSprites[mIndex].leftTop;
+		else
+		{
+			data.spriteLeftTop = mSprites[mIndex].leftTop;
+		}
 		data.spriteSize = mSprites[mIndex].size;
 		data.spriteOffset = mSprites[mIndex].offset;
 		data.atlasSize = mSprites[mIndex].atlasSize;

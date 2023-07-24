@@ -34,28 +34,28 @@ namespace ya
 		cd->SetType(eColliderType::Rect);
 		
 		Animator* at = AddComponent<Animator>();
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\back", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\back_right", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_hand", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_hand2", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right_hand", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right_hand2", 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\back", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\back_right", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_hand", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_hand2", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right_hand", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right_hand2", 0.15f);
 
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\back", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\back_right", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_hand", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_hand2", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right_hand", 0.2f);
-		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right_hand2", 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\back", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\back_right", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_hand", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_hand2", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right_hand", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right_hand2", 0.15f);
 
-		//at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\front", 0.2f);
-		//at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\back", 0.2f);
-		//at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\back_right", 0.2f);	
-		//at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\front_right", 0.2f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\front", 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\back", 0.1f);
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\back_right", 0.1f);	
+		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\front_right", 0.1f);
 
 		AddComponent<PlayerScript>();
 	}
