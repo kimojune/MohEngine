@@ -6,10 +6,9 @@ namespace ya
 	class PlayerScript : public Script
  	{
 	public:
-		enum class ePlayState
+		enum class ePlayerState
 		{
 			Idle,
-			Move,
 			Run,
 			Dodge,
 			PitFall,
@@ -20,16 +19,22 @@ namespace ya
 		virtual void Update() override;
 
 		void Idle();
-		void Move();
 		void Run();
 		void Dodge();
 		void PitFall();
 		void Death();
 
-
+		void PlayAnimationDir(const std::wstring& name, eDirection direction, bool loop);
 
 	private:
-		ePlayState mState;
+		ePlayerState mState;
 		eDirection mDirection;
+		
+		ePlayerState mPrevState;
+		eDirection mPrevDirection;
+		bool mbPlayed;
+
+		Vector3 mPos;
+		
 	};
 }
