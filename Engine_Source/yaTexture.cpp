@@ -99,7 +99,7 @@ namespace ya::graphics
                 }
                 if (isMake == false)
                 {
-                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * filecnt, imageMaxHeight * 2, 1, 1);
+                    hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * filecnt, imageMaxHeight * 1, 1, 1);
                     isMake = true;
                 }
                 if (FAILED(hr))
@@ -125,11 +125,6 @@ namespace ya::graphics
             return hr;
         }
 
-        if (FAILED(hr))
-        {
-            // Error handling if the texture creation failed
-            return hr;
-        }
 
         CreateShaderResourceView
         (

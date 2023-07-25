@@ -125,8 +125,6 @@ namespace ya
 
 	void PlayerScript::Run()
 	{
-
-
 		if (Input::GetKeyDown(eKeyCode::RBUTTON))
 		{
 			mPlayerState = ePlayerState::Dodge;
@@ -189,41 +187,81 @@ namespace ya
 		Animator* at = GetOwner()->GetComponent<Animator>();
 		mTime += Time::DeltaTime();
 
+		float dodgeSpeed = 300.0f;
+		float diagonalDodge = 215.0f;
 		if (at->GetActiveAnimation()->IsComplete())
 		{
 			mPlayerState = ePlayerState::Idle;
 		}
-		if (mTime < 0.8f)
+		if (mTime < 0.5f)
 		{
 			switch (mInputDirection)
 			{
 			case ya::enums::eDirection::Left:
-				mPos.x -= 300.0f * Time::DeltaTime();
+				mPos.x -= dodgeSpeed * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::Right:
-				mPos.x += 300.0f * Time::DeltaTime();
+				mPos.x += dodgeSpeed * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::Up:
-				mPos.y += 300.0f * Time::DeltaTime();
+				mPos.y += dodgeSpeed * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::Down:
-				mPos.y -= 300.0f * Time::DeltaTime();
+				mPos.y -= dodgeSpeed * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::LeftUp:
-				mPos.x -= 215.0f * Time::DeltaTime();
-				mPos.y += 215.0f * Time::DeltaTime();
+				mPos.x -= diagonalDodge * Time::DeltaTime();
+				mPos.y += diagonalDodge * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::LeftDown:
-				mPos.x -= 215.0f * Time::DeltaTime();
-				mPos.y -= 215.0f * Time::DeltaTime();
+				mPos.x -= diagonalDodge * Time::DeltaTime();
+				mPos.y -= diagonalDodge * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::RightUp:
-				mPos.x += 215.0f * Time::DeltaTime();
-				mPos.y += 215.0f * Time::DeltaTime();
+				mPos.x += diagonalDodge * Time::DeltaTime();
+				mPos.y += diagonalDodge * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::RightDown:
-				mPos.x += 215.0f * Time::DeltaTime();
-				mPos.y -= 215.0f * Time::DeltaTime();
+				mPos.x += diagonalDodge * Time::DeltaTime();
+				mPos.y -= diagonalDodge * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::End:
+				break;
+			default:
+				break;
+			}
+		}
+		else
+		{
+			switch (mInputDirection)
+			{
+			case ya::enums::eDirection::Left:
+				mPos.x -= dodgeSpeed / 4 * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::Right:
+				mPos.x += dodgeSpeed / 4 * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::Up:
+				mPos.y += dodgeSpeed / 4 * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::Down:
+				mPos.y -= dodgeSpeed / 4 * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::LeftUp:
+				mPos.x -= diagonalDodge / 4 * Time::DeltaTime();
+				mPos.y += diagonalDodge / 4 * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::LeftDown:
+				mPos.x -= diagonalDodge / 4 * Time::DeltaTime();
+				mPos.y -= diagonalDodge / 4 * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::RightUp:
+				mPos.x += diagonalDodge / 4 * Time::DeltaTime();
+				mPos.y += diagonalDodge / 4 * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::RightDown:
+				mPos.x += diagonalDodge / 4 * Time::DeltaTime();
+				mPos.y -= diagonalDodge / 4 * Time::DeltaTime();
 				break;
 			case ya::enums::eDirection::End:
 				break;
