@@ -41,6 +41,14 @@ namespace ya
 			mActiveAnimation->Reset();
 		}
 
+		else if (mActiveAnimation->IsComplete())
+		{
+			Events* events
+			= FindEvents(mActiveAnimation->GetKey());
+			if (events)
+				events->completeEvent();
+		}
+
 		mActiveAnimation->LateUpdate();
 	}
 	void Animator::LateUpdate()

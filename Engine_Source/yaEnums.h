@@ -64,7 +64,7 @@ namespace ya::enums
 		LeftUp,
 		LeftDown,
 		RightUp,
-		RigntDown,
+		RightDown,
 		End,
 	};
 }

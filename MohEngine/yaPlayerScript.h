@@ -33,13 +33,18 @@ namespace ya
 	private:
 		ePlayerState mPlayerState;
 		eDirection mDirection;
+		eDirection mInputDirection;
 		
 		ePlayerState mPrevState;
 		eDirection mPrevDirection;
+		
+
 		Vector3 mPos;
 
 		bool mbPlayed = false;
 		bool invincible = false;
-		
+		bool animationLoop = true;
+		float mTime;
+
 	};
 }

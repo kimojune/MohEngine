@@ -41,7 +41,7 @@ namespace ya
 
 		if (degree >= -60.f && degree <= 0.0f)
 		{
-			mDirection = eDirection::RigntDown;
+			mDirection = eDirection::RightDown;
 		}
 
 		else if (degree >= 0.0f && degree <= 60.f)
@@ -74,15 +74,19 @@ namespace ya
 		{
 		case ya::PlayerScript::ePlayerState::Idle:
 			Idle();
-			PlayAnimationDir(L"idle", mDirection, true);
+			animationLoop = true;
+			PlayAnimationDir(L"idle", mDirection, animationLoop);
 			break;
 		case ya::PlayerScript::ePlayerState::Run:
 			Run();
-			PlayAnimationDir(L"run", mDirection, true);
+			animationLoop = true;
+			PlayAnimationDir(L"run", mDirection, animationLoop);
 			break;
 		case ya::PlayerScript::ePlayerState::Dodge:
 			Dodge();
-			PlayAnimationDir(L"dodge", mDirection, false);
+			animationLoop = false;
+			PlayAnimationDir(L"dodge", mInputDirection, animationLoop);
+
 			break;
 		case ya::PlayerScript::ePlayerState::PitFall:
 			break;
@@ -94,8 +98,17 @@ namespace ya
 			break;
 		}
 
-		if (mPrevState != mPlayerState || mPrevDirection != mDirection)
-			mbPlayed = false;
+
+		if (animationLoop)
+		{
+			if (mPrevState != mPlayerState || mPrevDirection != mDirection)
+				mbPlayed = false;
+		}
+		else
+		{
+			if (mPrevState != mPlayerState)
+				mbPlayed = false;
+		}
 
 		tr->SetPosition(mPos);
 	}
@@ -108,71 +121,115 @@ namespace ya
 			mPlayerState = ePlayerState::Run;
 		}
 
-		else if (Input::GetKeyDown(eKeyCode::RBUTTON))
-		{
-			mPlayerState = ePlayerState::Dodge;
-		}
-
 	}
 
 	void PlayerScript::Run()
 	{
+
+
 		if (Input::GetKeyDown(eKeyCode::RBUTTON))
 		{
 			mPlayerState = ePlayerState::Dodge;
-			PlayAnimationDir(L"dodge", mDirection, false);
 		}
 		else if (Input::GetKey(eKeyCode::W) && Input::GetKey(eKeyCode::D))
 		{
 			mPos.x += 150.0f * Time::DeltaTime();
 			mPos.y += 150.0f * Time::DeltaTime();
+			mInputDirection = eDirection::RightUp;
 		}
 		else if (Input::GetKey(eKeyCode::W) && Input::GetKey(eKeyCode::A))
 		{
 			mPos.x -= 150.0f * Time::DeltaTime();
 			mPos.y += 150.0f * Time::DeltaTime();
-
+			mInputDirection = eDirection::LeftUp;
 		}
 		else if (Input::GetKey(eKeyCode::S) && Input::GetKey(eKeyCode::D))
 		{
 			mPos.x += 150.0f * Time::DeltaTime();
 			mPos.y -= 150.0f * Time::DeltaTime();
+			mInputDirection = eDirection::RightDown;
 		}
 		else if (Input::GetKey(eKeyCode::S) && Input::GetKey(eKeyCode::A))
 		{
 			mPos.x -= 150.0f * Time::DeltaTime();
 			mPos.y -= 150.0f * Time::DeltaTime();
+			mInputDirection = eDirection::LeftDown;
+
 		}
 		else if (Input::GetKey(eKeyCode::W))
 		{
 			mPos.y += 210.0f * Time::DeltaTime();
+			mInputDirection = eDirection::Up;
 		}
 		else if (Input::GetKey(eKeyCode::S))
 		{
 			mPos.y -= 210.0f * Time::DeltaTime();
+			mInputDirection = eDirection::Down;
 		}
 		else if (Input::GetKey(eKeyCode::A))
 		{
 			mPos.x -= 210.0f * Time::DeltaTime();
+			mInputDirection = eDirection::Left;
 		}
 		else if (Input::GetKey(eKeyCode::D))
 		{
 			mPos.x += 210.0f * Time::DeltaTime();
+			mInputDirection = eDirection::Right;
 		}
 
 		else
 		{
 			mPlayerState = ePlayerState::Idle;
+			mInputDirection = eDirection::End;
 		}
 
 	}
 	void PlayerScript::Dodge()
 	{
 		Animator* at = GetOwner()->GetComponent<Animator>();
+		mTime += Time::DeltaTime();
+
 		if (at->GetActiveAnimation()->IsComplete())
 		{
 			mPlayerState = ePlayerState::Idle;
-			PlayAnimationDir(L"idle", mDirection, true);
+		}
+		if (mTime < 0.8f)
+		{
+			switch (mInputDirection)
+			{
+			case ya::enums::eDirection::Left:
+				mPos.x -= 300.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::Right:
+				mPos.x += 300.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::Up:
+				mPos.y += 300.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::Down:
+				mPos.y -= 300.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::LeftUp:
+				mPos.x -= 215.0f * Time::DeltaTime();
+				mPos.y += 215.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::LeftDown:
+				mPos.x -= 215.0f * Time::DeltaTime();
+				mPos.y -= 215.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::RightUp:
+				mPos.x += 215.0f * Time::DeltaTime();
+				mPos.y += 215.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::RightDown:
+				mPos.x += 215.0f * Time::DeltaTime();
+				mPos.y -= 215.0f * Time::DeltaTime();
+				break;
+			case ya::enums::eDirection::End:
+				break;
+			default:
+				break;
+			}
 		}
 	}
 	void PlayerScript::PitFall()
@@ -200,6 +257,14 @@ namespace ya
 			directionName = animationName + L"front";
 			at->PlayAnimation(directionName, loop);
 			break;
+		case ya::enums::eDirection::Left:
+			directionName = animationName + L"front_right";
+			at->PlayAnimation(directionName, loop, true);
+			break;
+		case ya::enums::eDirection::Right:
+			directionName = animationName + L"front_right";
+			at->PlayAnimation(directionName, loop);
+			break;
 		case ya::enums::eDirection::LeftUp:
 			directionName = animationName + L"back_right";
 			at->PlayAnimation(directionName, loop, true);
@@ -212,7 +277,7 @@ namespace ya
 			directionName = animationName + L"back_right";
 			at->PlayAnimation(directionName, loop);
 			break;
-		case ya::enums::eDirection::RigntDown:
+		case ya::enums::eDirection::RightDown:
 			directionName = animationName + L"front_right";
 			at->PlayAnimation(directionName, loop);
 			break;
@@ -225,10 +290,11 @@ namespace ya
 	}
 	void PlayerScript::StartDodge()
 	{
-		mbPlayed = true;
+		invincible = true;
+		mTime = 0.0f;
 	}
 	void PlayerScript::CompleteDodge()
 	{
-		mbPlayed = false;
+		invincible = false;
 	}
 }
