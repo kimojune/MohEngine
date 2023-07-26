@@ -26,9 +26,9 @@ namespace ya::graphics
 
 
 		virtual HRESULT Load(const std::wstring& path) override;
-		HRESULT CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight);
+		HRESULT CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight, UINT maxIndex = 0 );
 		
-		//T CreateAtlas((const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight));
+		void CreateAtlas(const std::wstring& path);
 
 		void BindShader(eShaderStage stage, UINT startSlot);
 
