@@ -15,6 +15,7 @@
 #include "yaAnimator.h"
 #include "yaTexture.h"
 #include "yaBackGround.h"
+#include "yaPlayer.h"
 using namespace ya;
 
 extern ya::Application application;
@@ -59,6 +60,8 @@ namespace ya
 
 		BackGround* matlas = new BackGround(L"mTileAtlas_material");
 
+		Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
+		Hunter->Initialize();
 		//GameObject* mGameObject = object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);;
 		//mGameObject->SetName(L"atlas");
 

@@ -10,7 +10,7 @@ namespace ya
 		SetName(L"UICamera");
 
 		Camera* camera = AddComponent<Camera>();
-		camera->SetSize(0.8f);
+		camera->SetSize(1.0);
 		camera->DisableLayerMasks();
 		camera->TurnLayerMask(eLayerType::UI);
 		camera->SetCameraType(enums::eCameraType::UI);
