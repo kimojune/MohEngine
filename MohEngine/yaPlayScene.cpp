@@ -18,6 +18,8 @@
 #include "yaCollisionManager.h"
 #include "yaInput.h"
 #include "yaTilePalatte.h"
+#include "yaLight.h"
+
 using namespace ya;
 extern ya::Application application;
 
@@ -38,7 +40,7 @@ namespace ya
 
 		Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
 		Hunter->Initialize();
-
+		
 		mMainCamera = new MainCamera();
 		Camera* maincam = mMainCamera->GetComponent<Camera>();
 		mMainCamera->SetTarget(Hunter);
@@ -52,7 +54,12 @@ namespace ya
 		width *= uicam->GetSize();
 		height *= uicam->GetSize();
 
-
+		GameObject* light = new GameObject();
+		light->SetName(L"Smile");
+		AddGameObject(eLayerType::Light, light);
+		Light* lightComp = light->AddComponent<Light>();
+		lightComp->SetType(eLightType::Directional);
+		lightComp->SetColor(Vector4(1.0f, 0.0f, 1.0f, 1.0f));
 
 		UI* heart = new UI(Vector3(-width/2 + UI_SIZE, height/2 - UI_SIZE,-6.0f), (L"Heart_material"));
 		UI* key = new UI(heart, Vector3(0.0f , -UI_SIZE, -3.0f), (L"ui_key_material"));

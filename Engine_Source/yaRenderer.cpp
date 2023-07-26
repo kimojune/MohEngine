@@ -2,6 +2,7 @@
 #include "yaResources.h"
 #include "yaTexture.h"
 #include "yaMaterial.h"
+#include "yaStructedBuffer.h"
 
 namespace ya::renderer
 {
@@ -12,6 +13,11 @@ namespace ya::renderer
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[(UINT)eDSType::End];
 	Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[(UINT)eBSType::End];
 
+	// light
+	std::vector<Light*> lights = {};
+	StructedBuffer* lightsBuffer = nullptr;
+
+	// camera
 	ya::Camera* mainCamera = nullptr;
 	std::vector<ya::Camera*> cameras = {};
 	std::vector<DebugMesh> debugMeshes = {};
@@ -275,19 +281,6 @@ namespace ya::renderer
 			vertexes.push_back(center);
 		}
 
-		//for (UINT i = 0; i < (UINT)iSlice; ++i)
-		//{
-		//	indexes.push_back(0);
-		//	if (i == iSlice - 1)
-		//	{
-		//		indexes.push_back(1);
-		//	}
-		//	else
-		//	{
-		//		indexes.push_back(i + 2);
-		//	}
-		//	indexes.push_back(i + 1);
-		//}
 
 		for (int i = 0; i < vertexes.size() - 2; ++i)
 		{
@@ -312,6 +305,10 @@ namespace ya::renderer
 
 		constantBuffer[(UINT)eCBType::Animator] = new ya::graphics::ConstantBuffer(eCBType::Animator);
 		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
+
+		// light structed Buffer
+		lightsBuffer = new StructedBuffer();
+		lightsBuffer->Create(sizeof LightAttribute, 2, eSRVType::None);
 	}
 
 	void LoadShader()
@@ -401,9 +398,23 @@ namespace ya::renderer
 		LoadMaterial();
 	}
 
+	void BindLights()
+	{
+		std::vector<LightAttribute> lightAttributes = {};
+		for (Light* light : lights)
+		{
+			LightAttribute attribute = light->GetAttibute();
+			lightAttributes.push_back(attribute);
+		}
 
+		lightsBuffer->SetData(lightAttributes.data(), lightAttributes.size());
+		lightsBuffer->Bind(eShaderStage::VS, 13);
+		lightsBuffer->Bind(eShaderStage::PS, 13);
+	}
 	void Render()
 	{
+		BindLights();
+
 		for (Camera* cam : cameras)
 		{
 			if (cam == nullptr)
@@ -413,6 +424,7 @@ namespace ya::renderer
 		}
 
 		cameras.clear();
+		lights.clear();
 	}
 	void Release()
 	{
@@ -424,6 +436,9 @@ namespace ya::renderer
 			delete buff;
 			buff = nullptr;
 		}
+
+		delete lightsBuffer;
+		lightsBuffer = nullptr;
 	}
 	void PushDebugMeshAttribute(DebugMesh& mesh)
 	{

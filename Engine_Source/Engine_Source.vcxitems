@@ -28,6 +28,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaImage.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaInput.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaLight.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMaterial.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
@@ -39,7 +40,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaSprite.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTile.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaTilePalatte.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaImage.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaInput.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaLight.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMaterial.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMesh.h" />
@@ -74,7 +76,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaShader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaSprite.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTile.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaTilePalatte.h" />
