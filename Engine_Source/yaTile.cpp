@@ -40,11 +40,11 @@ namespace ya
 		SetIndex(index);
 
 		Transform* tr = GetComponent<Transform>();
-		tr->SetScale(Vector3(TILE_SIZE_X , TILE_SIZE_Y, -10.0f));
+		tr->SetScale(Vector3(TILE_SIZE_X, TILE_SIZE_Y, -10.0f));
 		
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"TileMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"tile_material"));
+		mr->SetMaterial(Resources::Find<Material>(L"mTileAtlas_material"));
 
 		//GameObject::Initialize();
 	}
@@ -72,7 +72,9 @@ namespace ya
 		ya::renderer::AnimatorCB animatorCB = {};
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
 		
-		animatorCB.spriteLeftTop = Vector2(mX * 0.125f, mY * 0.1666f);
+
+
+		animatorCB.spriteLeftTop = Vector2(mX * 0.03125, mY * 0.04545);
 
 		cb->SetData(&animatorCB);
 		cb->Bind(eShaderStage::VS);

@@ -227,15 +227,15 @@ namespace ya::renderer
 
 		tilevertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
 		tilevertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		tilevertexes[1].uv = Vector2(0.125f, 0.0f);
+		tilevertexes[1].uv = Vector2(0.03125f, 0.0f);
 
 		tilevertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
 		tilevertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		tilevertexes[2].uv = Vector2(0.125f, 0.166f);
+		tilevertexes[2].uv = Vector2(0.03125f, 0.04545f);
 
 		tilevertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
 		tilevertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		tilevertexes[3].uv = Vector2(0.0f, 0.166f);
+		tilevertexes[3].uv = Vector2(0.0f, 0.04545f);
 
 		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 		tilemesh->CreateVertexBuffer(tilevertexes.data(), tilevertexes.size());

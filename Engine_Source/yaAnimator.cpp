@@ -130,7 +130,6 @@ namespace ya
 		mImageAtlas->CreateTex(path, fileCount, maxwidth, maxheight);
 		Create(key, mImageAtlas, Vector2(0.0), Vector2(maxwidth, maxheight), fileCount, Vector2::Zero, duration);
 
-
 		return nullptr;
 	}
 	Animation* Animator::FindAnimation(const std::wstring& name)

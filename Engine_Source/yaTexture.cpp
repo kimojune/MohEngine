@@ -10,6 +10,8 @@ namespace ya::graphics
 		, mTexture(nullptr)
 		, mSRV(nullptr)
 		, mDesc{}
+		, maxY(0)
+		, maxX(0)
 	{
 	}
 
@@ -58,21 +60,12 @@ namespace ya::graphics
 	{
 		if (filecnt == 0)
 			return E_INVALIDARG;
-		
+
 		ScratchImage atlasImage;
 		HRESULT hr = S_OK;
 
 		wchar_t ext[_MAX_EXT] = {};
 		_wsplitpath_s(path.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, ext, _MAX_EXT);
-
-		//UINT idx_x = filecnt;
-		//UINT idx_y = 0;
-
-		//if (maxIndex != 0)
-		//{
-		//    idx_y = filecnt / maxIndex;
-		//    idx_x %= maxIndex;
-		//}
 
 		ScratchImage image;
 		UINT idx = 0;
@@ -103,7 +96,8 @@ namespace ya::graphics
 			{
 				// Convert the image to a different format if needed (e.g., to DXGI_FORMAT_R8G8B8A8_UNORM)
 				ScratchImage convertedImage;
-				hr = Convert(image.GetImages(), image.GetImageCount(), image.GetMetadata(), DXGI_FORMAT_R8G8B8A8_UNORM, TEX_FILTER_DEFAULT, TEX_THRESHOLD_DEFAULT, convertedImage);
+				hr = Convert(image.GetImages(), image.GetImageCount(), image.GetMetadata()
+					, DXGI_FORMAT_R8G8B8A8_UNORM, TEX_FILTER_DEFAULT, TEX_THRESHOLD_DEFAULT, convertedImage);
 				if (FAILED(hr))
 				{
 					// Handle the conversion error if necessary
@@ -111,17 +105,19 @@ namespace ya::graphics
 				}
 				if (isMake == false)
 				{
-					if (maxIndex == 0)
-						hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * filecnt, imageMaxHeight * 1, 1, 1);
-
+					if (maxIndex == 1)
+					{
+						maxX = filecnt;
+						maxY = 1;
+					}
 					else
 					{
-						hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM
-							, imageMaxWidth * maxIndex
-							, imageMaxHeight + imageMaxHeight * ((filecnt - 1) / maxIndex)
-							, 1, 1);
+						maxX = maxIndex;
+						maxY = filecnt / maxIndex;
 					}
 
+					hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * maxX, imageMaxHeight * maxY, 1, 1);
+				
 					isMake = true;
 				}
 				if (FAILED(hr))
@@ -129,11 +125,21 @@ namespace ya::graphics
 					// Handle the atlas image initialization error if necessary
 					return hr;
 				}
+				
+				UINT mY = idx / maxIndex;
+				UINT mX = idx % maxIndex;
 
+				if (maxIndex == 1)
+				{
+					hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
+						*atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth)*idx, 0);
+				}
 
-				// Copy the converted image data to the atlas image
-				hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
-					*atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth)*idx, 0);
+				else
+				{
+					hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
+						*atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth)* mX, imageMaxHeight * mY);
+				}
 				//(imageMaxWidth)*idx, 0);
 				if (FAILED(hr))
 				{
@@ -175,7 +181,7 @@ namespace ya::graphics
 		return S_OK;
 	}
 
-	void Texture::CreateAtlas(const std::wstring& path)
+	void Texture::CreateAtlas(const std::wstring& path, UINT maxIndex)
 	{
 		size_t maxwidth = 0;
 		size_t maxheight = 0;
@@ -185,23 +191,23 @@ namespace ya::graphics
 		std::vector<std::shared_ptr<graphics::Texture>> textures = {};
 		for (const auto& p : std::filesystem::recursive_directory_iterator(path))
 		{
-			std::wstring fileName = p.path().filename();
-			std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
+			//std::wstring fileName = p.path().filename();
+			//std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
 
-			const std::wstring ext = p.path().extension();
+			//const std::wstring ext = p.path().extension();
 
-			std::shared_ptr<graphics::Texture> tex = Resources::Load<graphics::Texture>(fileName, fullName);
+			//std::shared_ptr<graphics::Texture> tex = Resources::Load<graphics::Texture>(fileName, fullName);
 
 
-			textures.push_back(tex);
+			//textures.push_back(tex);
 
 			fileCount++;
 		}
 
 		std::wstring key = fs.parent_path().filename();
 		key += fs.filename();
-		
-		CreateTex(path, fileCount, TILE_SIZE_X, TILE_SIZE_Y);
+
+		CreateTex(path, fileCount, TILE_SIZE_X, TILE_SIZE_Y, maxIndex);
 
 		//return std::make_shared<Texture> ;
 	}

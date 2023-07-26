@@ -26,9 +26,9 @@ namespace ya::graphics
 
 
 		virtual HRESULT Load(const std::wstring& path) override;
-		HRESULT CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight, UINT maxIndex = 0 );
+		HRESULT CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight, UINT maxIndex = 1 );
 		
-		void CreateAtlas(const std::wstring& path);
+		void CreateAtlas(const std::wstring& path, UINT maxIndex = 1);
 
 		void BindShader(eShaderStage stage, UINT startSlot);
 
@@ -41,12 +41,17 @@ namespace ya::graphics
 		float GetWidth() { return (float)mImage.GetImages()->width; }
 		float GetHeight() { return (float)mImage.GetImages()->height; }
 
+		UINT GetmaxX() { return maxX; }
+		UINT GetmaxY() { return maxY; }
+
 	private:
 		ScratchImage mImage;
 		Microsoft::WRL::ComPtr<ID3D11Texture2D> mTexture;
 		Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> mSRV;
 		D3D11_TEXTURE2D_DESC mDesc;
 
+		UINT maxY;
+		UINT maxX;
 	};
 
 }

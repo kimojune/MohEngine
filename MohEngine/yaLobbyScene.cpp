@@ -17,6 +17,7 @@ namespace ya
 	void LobbyScene::Initialize()
 	{
 #pragma region BackGround
+
 		BackGround* circle_floor_pitwall_001 = new BackGround(L"circle_floor_pitwall_001_material");
 		circle_floor_pitwall_001->SetPosition(Vector3(0.0f, 200.0f, 1.0f));
 

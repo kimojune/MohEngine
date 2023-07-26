@@ -290,11 +290,6 @@ namespace ya
 			= Resources::Load<ya::graphics::Texture>(L"bullet_collumn_ignorance_001", L"..\\Resources\\Texture\\Foyer_Collection\\bullet_collumn_ignorance_001.png");
 		CreateMaterial(L"SpriteShader", bullet_collumn_ignorance_001, L"bullet_collumn_ignorance_001_material", eRenderingMode::Transparent);
 		
-		
-
-		
-
-
 #pragma endregion
 
 
@@ -313,6 +308,11 @@ namespace ya
 			= Resources::Load<ya::graphics::Texture>(L"Tile", L"..\\Resources\\Tile\\Tile.bmp");
 		CreateMaterial(L"TileShader", tile, L"tile_material");
 		
+		
+		std::shared_ptr<ya::graphics::Texture> mTileAtlas = std::make_shared<Texture>();
+		mTileAtlas.get()->CreateAtlas(L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Tileset_Forge", 32);
+		CreateMaterial(L"TileShader", mTileAtlas, L"mTileAtlas_material", eRenderingMode::Opaque);
+
 	
 #pragma region Inventory
 		std::shared_ptr<ya::graphics::Texture> ammonomicon_outro_001

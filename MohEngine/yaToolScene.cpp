@@ -14,8 +14,7 @@
 #include "yaMeshRenderer.h"
 #include "yaAnimator.h"
 #include "yaTexture.h"
-
-
+#include "yaBackGround.h"
 using namespace ya;
 
 extern ya::Application application;
@@ -27,7 +26,8 @@ namespace ya
 	ToolScene::ToolScene()
 	{
 
-		
+
+
 		//GameObject* grid = new GameObject();
 		//grid->SetName(L"Grid");
 		//AddGameObject(eLayerType::Grid, grid);
@@ -56,6 +56,16 @@ namespace ya
 
 		std::shared_ptr<Texture> atlas
 			= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
+
+		BackGround* matlas = new BackGround(L"mTileAtlas_material");
+
+		//GameObject* mGameObject = object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);;
+		//mGameObject->SetName(L"atlas");
+
+		//AddGameObject(eLayerType::Player, mGameObject);
+		//MeshRenderer* mr = mGameObject->AddComponent<MeshRenderer>();
+		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
+		//mr->SetMaterial(Resources::Find<Material>(L"mTileAtlas_material"));
 
 		//std::shared_ptr<Texture> mTileatls = std::make_shared<Texture>();
 
