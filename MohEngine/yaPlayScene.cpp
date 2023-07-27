@@ -127,7 +127,7 @@ namespace ya
 	}
 	void PlayScene::OnEnter()
 	{
-		//mMainCamera->SetSize(1.0f);
+		mMainCamera->SetSize(1.0f);
 	}
 	void PlayScene::OnExit()
 	{

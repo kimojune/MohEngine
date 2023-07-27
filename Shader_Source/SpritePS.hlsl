@@ -1,4 +1,6 @@
 #include "globals.hlsli"
+
+
 struct VSIn
 {
     float3 Pos : POSITION;
@@ -21,7 +23,8 @@ float4 main(VSOut In) : SV_TARGET
     
     color = albedoTexture.Sample(pointSampler, In.UV);
     
-    float4 lightColor = float4(1.0f, 1.0f, 1.0f, 1.0f);
+    float4 lightColor = float4(0.0f, 0.0f, 0.0f, 0.0f);
+    //float4 lightColor = ambientColor;
     
     for (int i = 0; i < 2; i++)
     {

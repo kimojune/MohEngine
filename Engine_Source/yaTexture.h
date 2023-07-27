@@ -24,7 +24,6 @@ namespace ya::graphics
 		Texture();
 		~Texture();
 
-
 		virtual HRESULT Load(const std::wstring& path) override;
 		HRESULT CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight, UINT maxIndex = 1 );
 		

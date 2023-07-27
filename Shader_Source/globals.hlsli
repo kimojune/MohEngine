@@ -44,10 +44,12 @@ StructuredBuffer<LightAttribute> lightsAttribute : register(t13);
 SamplerState pointSampler : register(s0);
 SamplerState anisotropicSampler : register(s1);
 
-//float4 ambientColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
+float4 ambientColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
 
 void CalculateLight2D(in out float4 lightColor, float3 position, int idx)
 {
+    ambientColor = float4(0.2f, 0.2f, 0.2f, 1.0f);
+    
     if (lightsAttribute[idx].type == 0)
     {
         lightColor += lightsAttribute[idx].color;

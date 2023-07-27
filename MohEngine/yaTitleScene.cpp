@@ -25,7 +25,7 @@ namespace ya
 	{
 		MainCamera* mainCamera = new MainCamera();
 		UICamera* uicamera = new UICamera();
-		mainCamera->SetSize(1.0f);
+		mainCamera->SetSize(0.5f);
 
 		float mainCameraSize = mainCamera->GetSize();
 		
@@ -74,11 +74,11 @@ namespace ya
 		int half_width = width / 2;
 		int half_height = height / 2;
 
-		//if (Input::GetKeyDown(eKeyCode::LBUTTON))
-		//{
-		//	Vector2 mousePos = Input::GetMousePos();	
-		//	SceneManager::LoadScene(L"LobbyScene");
-		//}
+		if (Input::GetKeyDown(eKeyCode::LBUTTON))
+		{
+			Vector2 mousePos = Input::GetMousePos();	
+			SceneManager::LoadScene(L"LobbyScene");
+		}
 
 		Scene::Update();
 	}
