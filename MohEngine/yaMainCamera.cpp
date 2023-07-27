@@ -9,7 +9,7 @@ namespace ya
 {
 	MainCamera::MainCamera()
 		: mPos(Vector3(0.0f, 0.0f, -10.0f))
-		, mSize(0.5f)
+		, mSize(1.0f)
 		, mCamera(nullptr)
 	{
 		mCamera = AddComponent<Camera>();
