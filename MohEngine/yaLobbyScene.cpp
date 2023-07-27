@@ -143,9 +143,6 @@ namespace ya
 		dogcd->SetCenter(Vector2(0.0f, 0.0f));
 		dogcd->SetType(eColliderType::Rect);
 
-
-
-		
 		PlayScene::Initialize();
 	}
 	void LobbyScene::Update()

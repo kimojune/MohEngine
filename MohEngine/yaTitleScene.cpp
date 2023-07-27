@@ -1,5 +1,4 @@
 #include "yaTitleScene.h"
-#include "yaPlayer.h"
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
 #include "yaTransform.h"
@@ -24,17 +23,22 @@ namespace ya
 	}
 	void TitleScene::Initialize()
 	{
+		MainCamera* mainCamera = new MainCamera();
+		UICamera* uicamera = new UICamera();
+
+		float mainCameraSize = mainCamera->GetSize();
+
 		int width = application.GetWidth();
 		int height = application.GetHeight();
 
-		int half_width = width / 2;
-		int half_height = height / 2;
+		int caculateWidth = width * mainCameraSize;
+		int caculateHeight = height * mainCameraSize;
 
 		BackGround* cloud_1 = new BackGround((L"cheapo_cloud_001_material"));
 		cloud_1->SetPosition(Vector3(0.0f, 0.0f, -0.3f));
 
 		BackGround* cloud_2 = new BackGround(cloud_1, (L"cheapo_cloud_002_material"));
-		cloud_2->SetPosition(Vector3(0.0f, -100.0f, -0.3f));
+		cloud_2->SetPosition(Vector3(0.0f, -caculateHeight, -0.3f));
 		
 		BackGround* water = new BackGround(cloud_2, (L"title_water_001_material"));
 		water->SetPosition(Vector3(0.0f, -2 * (water->GetHeight()) , -0.3f));
@@ -43,7 +47,7 @@ namespace ya
 		grass->SetPosition(Vector3(0.0f, 0.0f, -0.3f));
 
 		BackGround* castle = new BackGround((L"marsh_of_gungeon_material"));
-		castle->SetPosition(Vector3(half_width-(castle->GetWidth()/2), 0.0f, -0.3f));
+		castle->SetPosition(Vector3(caculateWidth -(castle->GetWidth()/2), 0.0f, -0.3f));
 
 		BackGround* catlelight = new BackGround(castle, (L"marsh_of_gungeon_glow_001_material"));
 		catlelight->SetPosition(Vector3(-(catlelight->GetWidth() + 10.0f), 5.0f, -0.3f));
@@ -52,7 +56,7 @@ namespace ya
 		dragon->SetPosition(Vector3(0.0f, dragon->GetHeight()+ 150.0f, -0.3f));
 
 		BackGround* gunmanbot = new BackGround((L"silhouette_lich_bot_material"));
-		gunmanbot->SetPosition(Vector3(-half_width + gunmanbot->GetWidth() -10.0f , -gunmanbot->GetHeight(), -0.3f));
+		gunmanbot->SetPosition(Vector3(-caculateWidth + gunmanbot->GetWidth() -10.0f , -gunmanbot->GetHeight(), -0.3f));
 
 		BackGround* gunmantop = new BackGround(gunmanbot, (L"silhouette_lich_top_windy_material"));
 		gunmantop->SetPosition(Vector3(0.0f, 2 * gunmantop->GetHeight() -100.f , -0.3f));
@@ -63,8 +67,7 @@ namespace ya
 		BackGround* title = new BackGround((L"title_words_black_001_material"));
 		title->SetPosition(Vector3(0.0f, 0.0f, -0.3f));
 
-		MainCamera* mainCamera = new MainCamera();
-		UICamera* uicamera = new UICamera();
+
 
 		Cursor* cursor = new Cursor;
 	}

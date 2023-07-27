@@ -3,6 +3,7 @@
 
 namespace ya
 {
+	class Camera;
 	class MainCamera : public GameObject
 	{
 	public:
@@ -18,7 +19,11 @@ namespace ya
 		void SetTarget(GameObject* obj);
 		void SetSize(float size);
 
+		float GetSize() { return mSize; }
+
 	private:
+		Camera* mCamera;
 		Vector3 mPos;
+		float mSize;
 	};
 }

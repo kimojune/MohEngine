@@ -3,17 +3,20 @@
 #include "yaSceneManager.h"
 #include "yaCameraScript.h"
 #include "yaRenderer.h"
+#include "yaObject.h"
 
 namespace ya
 {
 	MainCamera::MainCamera()
-		:mPos(Vector3(0.0f, 0.0f, -10.0f))
+		: mPos(Vector3(0.0f, 0.0f, -10.0f))
+		, mSize(0.5f)
+		, mCamera(nullptr)
 	{
-		Camera* camera = AddComponent<Camera>();
-		camera->SetSize(1.0f);
-		camera->TurnLayerMask(eLayerType::UI, false);
-		camera->SetCameraType(enums::eCameraType::Main);
-		renderer::cameras.push_back(camera);
+		mCamera = AddComponent<Camera>();
+		mCamera->SetSize(mSize);
+		mCamera->TurnLayerMask(eLayerType::UI, false);
+		mCamera->SetCameraType(enums::eCameraType::Main);
+		renderer::cameras.push_back(mCamera);
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
@@ -45,7 +48,7 @@ namespace ya
 	}
 	void MainCamera::SetSize(float size)
 	{
-		Camera* camera = GetComponent<Camera>();
-		camera->SetSize(size);
+		mSize = size;
+		mCamera->SetSize(mSize);
 	}
 }

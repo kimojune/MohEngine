@@ -54,24 +54,24 @@ namespace ya
 		width *= uicam->GetSize();
 		height *= uicam->GetSize();
 
-		{
-		GameObject* light = new GameObject();
-		light->SetName(L"Smile");
-		AddGameObject(eLayerType::Light, light);
-		Light* lightComp = light->AddComponent<Light>();
-		lightComp->SetType(eLightType::Directional);
-		lightComp->SetColor(Vector4(1.0f, 0.0f, 1.0f, 1.0f));
-		}
-		{
-		GameObject* light = new GameObject();
-		light->SetName(L"Smile");
-		AddGameObject(eLayerType::Light, light);
-		Light* lightComp = light->AddComponent<Light>();
-		lightComp->SetType(eLightType::Point);
-		lightComp->SetColor(Vector4(1.0f, 1.0f, 1.0f, 1.0f));
-		lightComp->SetRadius(100.0f);
-		
-		}
+		//{
+		//GameObject* light = new GameObject();
+		//light->SetName(L"Smile");
+		//AddGameObject(eLayerType::Light, light);
+		//Light* lightComp = light->AddComponent<Light>();
+		//lightComp->SetType(eLightType::Directional);
+		//lightComp->SetColor(Vector4(1.0f, 0.0f, 1.0f, 1.0f));
+		//}
+		//{
+		//GameObject* light = new GameObject();
+		//light->SetName(L"Smile");
+		//AddGameObject(eLayerType::Light, light);
+		//Light* lightComp = light->AddComponent<Light>();
+		//lightComp->SetType(eLightType::Point);
+		//lightComp->SetColor(Vector4(1.0f, 1.0f, 1.0f, 1.0f));
+		//lightComp->SetRadius(100.0f);
+		//
+		//}
 
 
 
@@ -127,10 +127,10 @@ namespace ya
 	}
 	void PlayScene::OnEnter()
 	{
-		mMainCamera->SetSize(1.0f);
+		//mMainCamera->SetSize(1.0f);
 	}
 	void PlayScene::OnExit()
 	{
-		mMainCamera->SetSize(1.0f);
+		//mMainCamera->SetSize(1.0f);
 	}
 }
