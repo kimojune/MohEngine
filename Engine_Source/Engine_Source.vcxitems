@@ -21,6 +21,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp" />
@@ -56,6 +57,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h" />

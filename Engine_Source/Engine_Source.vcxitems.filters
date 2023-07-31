@@ -193,6 +193,7 @@
       <Filter>GameObject\Component\Light</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -304,6 +305,7 @@
       <Filter>GameObject\Component\Light</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
