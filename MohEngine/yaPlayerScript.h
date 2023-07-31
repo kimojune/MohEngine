@@ -44,6 +44,11 @@ namespace ya
 		bool mbPlayed = false;
 		bool invincible = false;
 		bool animationLoop = true;
+
+
+		float mSpeed;
+		float mStretchSpeed;
+		float diagonalRatio;
 		float mTime;
 
 	};

@@ -48,6 +48,10 @@ namespace ya
 	void Scene::OnExit()
 	{
 	}
+	float Scene::GetCameraSize()
+	{
+		return 1.0f;
+	}
 	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
 	{
 		mLayers[(UINT)type].AddGameObject(gameObj);

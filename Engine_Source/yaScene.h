@@ -20,6 +20,7 @@ public:
 	virtual void OnEnter();
 	virtual void OnExit();
 
+	virtual float GetCameraSize();
 
 	void AddGameObject(eLayerType type, GameObject* gameObj);
 
