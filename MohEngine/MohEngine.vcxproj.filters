@@ -35,9 +35,6 @@
     <ClInclude Include="yaDog.h">
       <Filter>Contents\GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="yaPlayer.h">
-      <Filter>Contents\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="yaCursor.h">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClInclude>
@@ -64,6 +61,18 @@
     </ClInclude>
     <ClInclude Include="yaInventoryScene.h">
       <Filter>Contents\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayer.h">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="yaWeapon.h">
+      <Filter>Contents\GameObject\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="yaRust_Sidearm.h">
+      <Filter>Contents\GameObject\Weapon</Filter>
+    </ClInclude>
+    <ClInclude Include="yaWeaponScript.h">
+      <Filter>Contents\GameObject\Weapon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -97,9 +106,6 @@
     <ClCompile Include="yaDog.cpp">
       <Filter>Contents\GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="yaPlayer.cpp">
-      <Filter>Contents\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="yaCursor.cpp">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClCompile>
@@ -127,6 +133,16 @@
     <ClCompile Include="yaInventoryScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="yaPlayer.cpp">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="yaWeapon.cpp">
+      <Filter>Contents\GameObject\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="yaRust_Sidearm.cpp">
+      <Filter>Contents\GameObject\Weapon</Filter>
+    </ClCompile>
+    <ClCompile Include="yaWeaponScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -161,6 +177,12 @@
     </Filter>
     <Filter Include="Contents\GameObject\UI\Base">
       <UniqueIdentifier>{2f7493c1-b21e-4c98-b5a6-152086f9644e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Weapon">
+      <UniqueIdentifier>{8a69bf8e-5334-4061-b5c5-0e844d02a9ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Player">
+      <UniqueIdentifier>{ed8f1493-4215-4320-9dd0-ec33b6a589b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

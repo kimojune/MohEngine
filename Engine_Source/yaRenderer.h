@@ -36,7 +36,7 @@ namespace ya::renderer
 		Vector2 spriteLeftTop;
 		Vector2 spriteSize;
 		Vector2 spriteOffset;
-		Vector2 atlasSize;
+		Vector2 outputSize;
 		UINT animationType;
 	};
 

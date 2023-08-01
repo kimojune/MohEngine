@@ -16,6 +16,7 @@
 #include "yaTexture.h"
 #include "yaBackGround.h"
 #include "yaPlayer.h"
+#include "yaRust_Sidearm.h"
 using namespace ya;
 
 extern ya::Application application;
@@ -26,7 +27,7 @@ namespace ya
 
 	ToolScene::ToolScene()
 	{
-
+		SetName(L"ToolScene");
 
 
 		//GameObject* grid = new GameObject();
@@ -48,20 +49,23 @@ namespace ya
 
 	void ToolScene::Initialize()
 	{
+		Rust_Sidearm* rust = ya::object::Instantiate<Rust_Sidearm>(eLayerType::Player);
+
+
 		MainCamera* mCamera = new MainCamera();
-		UICamera* uicamera = new UICamera();
+		//UICamera* uicamera = new UICamera();
 
-		Cursor* cursor = new Cursor;
-		WorldCursor* wCursor = new WorldCursor();
-		wCursor->AddComponent<TileScript>();
+		//Cursor* cursor = new Cursor;
+		//WorldCursor* wCursor = new WorldCursor();
+		//wCursor->AddComponent<TileScript>();
 
-		std::shared_ptr<Texture> atlas
-			= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
+		//std::shared_ptr<Texture> atlas
+		//	= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
 
-		BackGround* matlas = new BackGround(L"mTileAtlas_material");
+		//BackGround* matlas = new BackGround(L"mTileAtlas_material");
 
-		Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
-		Hunter->Initialize();
+		//Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
+		//Hunter->Initialize();
 		//GameObject* mGameObject = object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);;
 		//mGameObject->SetName(L"atlas");
 

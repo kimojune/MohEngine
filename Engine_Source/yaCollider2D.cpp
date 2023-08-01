@@ -29,22 +29,41 @@ namespace ya
 	void Collider2D::LateUpdate()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-
 		Vector3 scale = tr->GetScale();
-		scale.x *= mSize.x;
-		scale.y *= mSize.y;
+	
+		if (tr->GetParent() != nullptr)
+		{
+			Vector3 scale = tr->GetScale();
+			scale.x *= mSize.x;
+			scale.y *= mSize.y;
 
-		Vector3 pos = tr->GetPosition();
-		pos.x += mCenter.x;
-		pos.y += mCenter.y;
+			Vector3 parentPos = tr->GetParent()->GetPosition();
+			Vector3 pos = tr->GetPosition();
+			pos.x += parentPos.x + mCenter.x;
+			pos.y += parentPos.y + mCenter.y;
 
-		mPosition = pos;
+			mPosition = pos;
+
+		}
+
+		else 
+		{
+			scale.x *= mSize.x;
+			scale.y *= mSize.y;
+
+			Vector3 pos = tr->GetPosition();
+			pos.x += mCenter.x;
+			pos.y += mCenter.y;
+
+			mPosition = pos;
+
+		}
 
 		graphics::DebugMesh mesh = {};
 
-		mesh.position = pos;
+		mesh.position = mPosition;
 		mesh.rotation = tr->GetRotation();
-		
+
 		switch (mType)
 		{
 		case ya::enums::eColliderType::Rect:

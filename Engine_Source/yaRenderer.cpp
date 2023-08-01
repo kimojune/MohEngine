@@ -83,6 +83,11 @@ namespace ya::renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+				shader = ya::Resources::Find<Shader>(L"testShader");
+		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 
 #pragma endregion
 #pragma region Sampler State
@@ -192,6 +197,7 @@ namespace ya::renderer
 	{
 		std::vector<Vertex> vertexes = {};
 		std::vector<Vertex> tilevertexes = {};
+		std::vector<Vertex> testvertexes = {};
 		std::vector<UINT> indexes = {};
 
 		//RECT
@@ -215,6 +221,7 @@ namespace ya::renderer
 		//Vertex Buffer
 		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
+		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 
 		//tile Mesh
 		tilevertexes.resize(4);
@@ -237,9 +244,28 @@ namespace ya::renderer
 		tilevertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 		tilevertexes[3].uv = Vector2(0.0f, 0.04545f);
 
-		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 		tilemesh->CreateVertexBuffer(tilevertexes.data(), tilevertexes.size());
+		
+		testvertexes.resize(4);
+		testvertexes[0].pos = Vector3(0.0f, 1.0f, 0.0f);
+		testvertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		testvertexes[0].uv = Vector2(0.0f, 0.0f);
+		
+		testvertexes[1].pos = Vector3(1.0f, 1.0f, 0.0f);
+		testvertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		testvertexes[1].uv = Vector2(1.0f, 0.0f);
+		
+		testvertexes[2].pos = Vector3(1.0f, 0.0f, 0.0f);
+		testvertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		testvertexes[2].uv = Vector2(1.0f, 1.0f);
+		
+		testvertexes[3].pos = Vector3(0.0f, 0.0f, 0.0f);
+		testvertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		testvertexes[3].uv = Vector2(0.0f, 1.0f);
 
+		std::shared_ptr<Mesh> testmesh = std::make_shared<Mesh>();
+		Resources::Insert(L"testMesh", testmesh);
+		testmesh->CreateVertexBuffer(testvertexes.data(), testvertexes.size());
 
 		indexes.push_back(0);
 		indexes.push_back(1);
@@ -251,6 +277,7 @@ namespace ya::renderer
 
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 		tilemesh->CreateIndexBuffer(indexes.data(), indexes.size());
+		testmesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 
 		// Rect Debug Mesh
@@ -337,6 +364,11 @@ namespace ya::renderer
 		shader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"AnimationPS.hlsl", "main");
 		ya::Resources::Insert(L"AnimatorShader", shader);
+
+		shader = std::make_shared<Shader>();
+		shader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		shader->Create(eShaderStage::PS, L"testPS.hlsl", "main");
+		ya::Resources::Insert(L"testShader", shader);
 
 		std::shared_ptr<Shader> debugShader = std::make_shared<Shader>();
 		debugShader->Create(eShaderStage::VS, L"DebugVS.hlsl", "main");

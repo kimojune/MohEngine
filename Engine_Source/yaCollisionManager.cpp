@@ -81,6 +81,8 @@ namespace ya
 				//최초 충돌
 				left->OnCollisionEnder(right);
 				right->OnCollisionEnder(left);
+
+				iter->second = true;
 			}
 
 			else
@@ -98,6 +100,8 @@ namespace ya
 				// 충돌하고 있다가 나갈떄
 				left->OnCollisionExit(right);
 				right->OnCollisionExit(left);
+
+				iter->second = false;
 			}
 		}
 	}
@@ -127,10 +131,10 @@ namespace ya
 			&& right->GetColliderType() == eColliderType::Rect)
 		{
 			Vector3 arrLocalPos[4] = {};
-			arrLocalPos[0] = Vector3(-1.0f, 1.0f, 0.0f);
-			arrLocalPos[1] = Vector3(1.0f, 1.0f, 0.0f);
-			arrLocalPos[2] = Vector3(1.0f, -1.0f, 0.0f);
-			arrLocalPos[3] = Vector3(-1.0f, -1.0f, 0.0f);
+			arrLocalPos[0] = Vector3(-0.5f, 0.5f, 0.0f);
+			arrLocalPos[1] = Vector3(0.5f, 0.5f, 0.0f);
+			arrLocalPos[2] = Vector3(0.5f, -0.5f, 0.0f);
+			arrLocalPos[3] = Vector3(-0.5f, -0.5f, 0.0f);
 
 			Transform* leftTr = left->GetOwner()->GetComponent<Transform>();
 			Transform* rightTr = right->GetOwner()->GetComponent<Transform>();

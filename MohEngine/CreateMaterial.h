@@ -293,7 +293,6 @@ namespace ya
 #pragma endregion
 
 
-
 		std::shared_ptr<ya::graphics::Texture> guide_idle_front_001
 			= Resources::Load<ya::graphics::Texture>(L"guide_idle_front_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
 		CreateMaterial(L"AnimatorShader", guide_idle_front_001, L"guide_idle_front_001_material", eRenderingMode::CutOut);
@@ -321,6 +320,11 @@ namespace ya
 
 #pragma endregion
 
+#pragma region Weapon
+		std::shared_ptr<ya::graphics::Texture> Rust_Sidearm_idle_001
+			= Resources::Load<ya::graphics::Texture>(L"Rust_Sidearm_idle_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Weapon\\basic\\idle\\Rust_Sidearm_idle_001.png");
+		CreateMaterial(L"AnimatorShader", Rust_Sidearm_idle_001, L"Rust_Sidearm_idle_001_material", eRenderingMode::Transparent);
+#pragma endregion
 
 	}
 

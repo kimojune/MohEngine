@@ -27,8 +27,7 @@ float4 main(VSOut In) : SV_TARGET
     
     if (animationType == 1)
     {
-        
-        float2 diff = (outputSize - SpriteSize) / 2.0f;
+        float2 diff = (outputSize - SpriteSize);
         float2 UV = (SpriteLeftTop - diff - SpriteOffset)
                 + (outputSize * In.UV);
     
@@ -42,10 +41,9 @@ float4 main(VSOut In) : SV_TARGET
     
     if (animationType == 0)
     {
-        float2 diff = (outputSize - SpriteSize) / 2.0f;
+        float2 diff = (outputSize - SpriteSize);
         float2 UV = (SpriteLeftTop - diff - SpriteOffset)
                 + (outputSize * In.UV);
-    
         if (UV.x < SpriteLeftTop.x || UV.x > SpriteLeftTop.x + SpriteSize.x
         || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
             discard;

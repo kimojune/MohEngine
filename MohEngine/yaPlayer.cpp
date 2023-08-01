@@ -6,12 +6,14 @@
 #include "yaCameraScript.h"
 #include "yaPlayerScript.h"
 #include "yaAnimator.h"
+#include "yaRust_Sidearm.h"
+#include "yaObject.h"
 
 namespace ya
 {
 	Player::Player()
 	{
-
+		SetName(L"Player");
 
 	}
 	Player::~Player()
@@ -25,11 +27,11 @@ namespace ya
 		//player->AddComponent<CameraScript>();
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.0f, 0.0f, -5.0f));
-		Vector2 scale = mr->GetSize();
-		tr->SetScale(scale.x, scale.y, -0.0f);
+		//Vector2 scale = mr->GetSize();
+		tr->SetScale(26.0f, 31.0f, 1.0f);
 
 		Collider2D* cd = AddComponent<Collider2D>();
-		cd->SetCenter(Vector2(0.0f, -10.0f));
+		cd->SetCenter(Vector2(0.0f, -6.0f));
 		cd->SetSize(Vector2(0.6f, 0.6f));
 		cd->SetType(eColliderType::Rect);
 		
@@ -42,7 +44,7 @@ namespace ya
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_hand2", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right_hand", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front_right_hand2", 0.15f);
-
+																	  
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\back", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\back_right", 0.15f);
@@ -51,13 +53,19 @@ namespace ya
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_hand2", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right_hand", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\run\\front_right_hand2", 0.15f);
-
+																	  
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\front", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\back", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\back_right", 0.1f);	
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\front_right", 0.1f);
 
 		AddComponent<PlayerScript>();
+
+		Rust_Sidearm* weapon = object::Instantiate<Rust_Sidearm>(eLayerType::Weapon);
+		weapon->Initialize();
+		Transform* weapontr = weapon->GetComponent<Transform>();
+		
+		weapontr->SetParent(tr);
 	}
 	void Player::Update()
 	{

@@ -1,5 +1,7 @@
 #pragma once
 #include "yaGameObject.h"
+#include "yaWeapon.h"
+
 namespace ya
 {
 	class Player : public GameObject
@@ -7,6 +9,14 @@ namespace ya
 	public:
 		Player();
 		~Player();
+
+		struct PlayerInfo
+		{
+			int HP;
+			int Blanks; // uiManager?)
+			int Money;
+			int key;//weaponManager
+		};
 
 		virtual void Initialize() override;
 		virtual void Update() override;

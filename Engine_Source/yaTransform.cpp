@@ -49,10 +49,12 @@ namespace ya
 
 		if (mParent)
 		{
-			Vector3 parentScale = mParent->mScale;
-			Vector3 inversescale = Vector3(1.0f / parentScale.x, 1.0f / parentScale.y, 1.0f / parentScale.z);
-			Matrix parentScaleInverse = Matrix::CreateScale(inversescale);
-			mWorld *= parentScaleInverse * mParent->mWorld ;
+			Vector3 vParentScale = mParent->mScale;
+			Matrix mParentScale = Matrix::CreateScale(vParentScale);
+			
+			mWorld *= (mParentScale.Invert() * mParent->mWorld) ;
+
+			int a = 0;
 		}
 		//CreateRotationX Matrix
 		//XMMATRIX M;

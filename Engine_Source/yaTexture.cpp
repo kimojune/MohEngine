@@ -65,7 +65,6 @@ namespace ya::graphics
 		HRESULT hr = S_OK;
 
 		wchar_t ext[_MAX_EXT] = {};
-		_wsplitpath_s(path.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, ext, _MAX_EXT);
 
 		ScratchImage image;
 		UINT idx = 0;
@@ -75,6 +74,12 @@ namespace ya::graphics
 		{
 			std::wstring fileName = p.path().filename();
 			std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
+			
+			_wsplitpath_s(fileName.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, ext, _MAX_EXT);
+
+			if (_wcsicmp(ext, L".ini") == 0)
+				continue;
+
 			if (_wcsicmp(ext, L".dds") == 0)
 			{
 				hr = LoadFromDDSFile(fullName.c_str(), DDS_FLAGS_NONE, nullptr, image);
@@ -116,6 +121,10 @@ namespace ya::graphics
 						maxY = filecnt / maxIndex;
 					}
 
+					if (filecnt == 1)
+						hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth , imageMaxHeight , 1, 1);
+
+					else
 					hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * maxX, imageMaxHeight * maxY, 1, 1);
 				
 					isMake = true;

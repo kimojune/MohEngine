@@ -20,7 +20,7 @@ cbuffer Animator : register(b3)
     float2 SpriteLeftTop;
     float2 SpriteSize;
     float2 SpriteOffset;
-    float2 AtlasSize;
+    float2 outputSize;
     uint animationType;
     float3 pad;
 }

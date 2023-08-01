@@ -15,14 +15,14 @@ namespace ya
 			Vector2 leftTop;
 			Vector2 size;
 			Vector2 offset;
-			Vector2 atlasSize;
+			Vector2 outputSize;
 			float duration;
 
 			Sprite()
 				: leftTop(Vector2::Zero)
 				, size(Vector2::Zero)
 				, offset(Vector2::Zero)
-				, atlasSize(Vector2::Zero)
+				, outputSize(Vector2::Zero)
 				, duration(0.0f)
 			{
 

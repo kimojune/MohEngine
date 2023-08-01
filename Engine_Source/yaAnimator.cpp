@@ -107,6 +107,9 @@ namespace ya
 
 			const std::wstring ext = p.path().extension();
 
+			if (ext == L".ini")
+				continue;
+
 			std::shared_ptr<graphics::Texture> tex = Resources::Load<graphics::Texture>(fileName, fullName);
 
 			if (maxwidth < tex->GetWidth())

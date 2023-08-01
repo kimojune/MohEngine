@@ -6,10 +6,13 @@
 #include "yaAnimator.h"
 #include "yaResources.h"
 #include "yaMeshRenderer.h"
+#include "yaRust_Sidearm.h"
 namespace ya
 {
 	LobbyScene::LobbyScene()
 	{
+		SetName(L"LobbyScene");
+
 	}
 	LobbyScene::~LobbyScene()
 	{
@@ -142,6 +145,10 @@ namespace ya
 		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
 		dogcd->SetCenter(Vector2(0.0f, 0.0f));
 		dogcd->SetType(eColliderType::Rect);
+
+		//Rust_Sidearm* weapon = object::Instantiate<Rust_Sidearm>(eLayerType::Weapon);
+		//weapon->Initialize();
+		//Transform* weapontr = weapon->GetComponent<Transform>();
 
 		PlayScene::Initialize();
 	}

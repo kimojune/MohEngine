@@ -8,6 +8,7 @@
 #include "yaSceneManager.h"
 #include "yaBackGround.h"
 #include "yaCursor.h"
+#include "yaRust_Sidearm.h"
 
 extern ya::Application application;
 
@@ -17,6 +18,8 @@ namespace ya
 {
 	TitleScene::TitleScene()
 	{
+		SetName(L"TitleScene");
+
 	}
 	TitleScene::~TitleScene()
 	{
@@ -61,7 +64,6 @@ namespace ya
 
 		BackGround* title = new BackGround((L"title_words_black_001_material"));
 		title->SetPosition(Vector3(0.0f, 0.0f, -0.3f));
-
 
 
 		Cursor* cursor = new Cursor;

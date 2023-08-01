@@ -26,7 +26,6 @@ extern ya::Application application;
 
 namespace ya
 {
-
 	PlayScene::PlayScene()
 		:mMainCamera(nullptr)
 	{

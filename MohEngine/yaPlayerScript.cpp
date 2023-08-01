@@ -25,9 +25,9 @@ namespace ya
 		at->CompleteEvent(L"dodgefront_right") = std::bind(&PlayerScript::CompleteDodge, this);
 
 
-		mSpeed = 125.0f;
+		mSpeed = 100.0f;
 		diagonalRatio = 1 / sqrt(2);
-		mStretchSpeed = (float)1 / 3;
+		mStretchSpeed = (float)1 / 2;
 	}
 	void PlayerScript::Update()
 	{
@@ -339,7 +339,7 @@ namespace ya
 	void PlayerScript::StartDodge()
 	{
 		invincible = true;
-		mTime = 0.0f;
+		mTime = 0.0;
 	}
 	void PlayerScript::CompleteDodge()
 	{

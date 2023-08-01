@@ -45,7 +45,6 @@ namespace ya
 		bool invincible = false;
 		bool animationLoop = true;
 
-
 		float mSpeed;
 		float mStretchSpeed;
 		float diagonalRatio;

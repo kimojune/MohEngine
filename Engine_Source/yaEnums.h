@@ -21,6 +21,7 @@ namespace ya::enums
 	{
 		Grid,
 		Player,
+		Weapon,
 		Tile,
 		Light,
 		Companions,
