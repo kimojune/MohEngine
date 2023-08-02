@@ -45,14 +45,14 @@ namespace ya
 			, UINT columnLength
 			, Vector2 offset = Vector2::Zero
 			, float duration = 0.0f
-			, bool reverse = false);
+			);
 
 		void Binds();
 		void Reset();
 
 		bool IsComplete() { return mbComplete; }
 
-		void SetReverse(bool left) { mReverse = left; }
+		void SetFlip(ya::enums::eFlipType type) { mFlip = type; }
 
 	private:
 		std::shared_ptr<graphics::Texture> mAtlas;
@@ -61,6 +61,6 @@ namespace ya
 		int mIndex;
 		float mTime;
 		bool mbComplete;
-		bool mReverse = false;
+		ya::enums::eFlipType mFlip;
 	};
 }

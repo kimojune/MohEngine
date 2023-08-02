@@ -2,11 +2,12 @@
 #include "yaGameObject.h"
 #include "yaMesh.h"
 #include "yaMaterial.h"
-
+#include "yaPlayerhand.h"
 
 namespace ya
 {
 	class Animator;
+	class WeaponScript;
 	class Weapon : public GameObject
 	{
 	public:
@@ -66,13 +67,17 @@ namespace ya
 		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
 
 		void SetInfo(WeaponInfo info) { mInfo = info; }
+		void IsFlip(bool flip);
+
 
 	private:
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;
 
 		WeaponInfo mInfo;
+		WeaponScript* mScript;
 		Animator* ActiveAnimator;
 
+		eFlipType mFlip;
 	};
 }

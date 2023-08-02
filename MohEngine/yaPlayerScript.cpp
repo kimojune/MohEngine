@@ -28,6 +28,7 @@ namespace ya
 		mSpeed = 100.0f;
 		diagonalRatio = 1 / sqrt(2);
 		mStretchSpeed = (float)1 / 2;
+		cursorDegree = 0.0f;
 	}
 	void PlayerScript::Update()
 	{
@@ -44,37 +45,37 @@ namespace ya
 		vDirection.Normalize();
 
 		float radian = atan2f(vDirection.y, vDirection.x);
-		float degree = radian * 180 / PI;
+		cursorDegree = radian * 180 / PI;
 
 		Scene* scene = SceneManager::GetActiveScene();
 
 
-		if (degree >= -60.f && degree <= 0.0f)
+		if (cursorDegree >= -60.f && cursorDegree <= 0.0f)
 		{
 			mDirection = eDirection::RightDown;
 		}
 
-		else if (degree >= 0.0f && degree <= 60.f)
+		else if (cursorDegree >= 0.0f && cursorDegree <= 60.f)
 		{
 			mDirection = eDirection::RightUp;
 		}
 
-		else if (degree >= 60.f && degree <= 120.0f)
+		else if (cursorDegree >= 60.f && cursorDegree <= 120.0f)
 		{
 			mDirection = eDirection::Up;
 		}
 
-		else if (degree >= 120.0f && degree <= 180.0f)
+		else if (cursorDegree >= 120.0f && cursorDegree <= 180.0f)
 		{
 			mDirection = eDirection::LeftUp;
 		}
 
-		else if (degree >= -180.0f && degree <= -120.0f)
+		else if (cursorDegree >= -180.0f && cursorDegree <= -120.0f)
 		{
 			mDirection = eDirection::LeftDown;
 		}
 
-		else if (degree >= -120.0f && degree <= -60.0f)
+		else if (cursorDegree >= -120.0f && cursorDegree <= -60.0f)
 		{
 			mDirection = eDirection::Down;
 		}
@@ -307,7 +308,7 @@ namespace ya
 			break;
 		case ya::enums::eDirection::Left:
 			directionName = animationName + L"front_right";
-			at->PlayAnimation(directionName, loop, true);
+			at->PlayAnimation(directionName, loop, eFlipType::X);
 			break;
 		case ya::enums::eDirection::Right:
 			directionName = animationName + L"front_right";
@@ -315,11 +316,11 @@ namespace ya
 			break;
 		case ya::enums::eDirection::LeftUp:
 			directionName = animationName + L"back_right";
-			at->PlayAnimation(directionName, loop, true);
+			at->PlayAnimation(directionName, loop, eFlipType::X);
 			break;
 		case ya::enums::eDirection::LeftDown:
 			directionName = animationName + L"front_right";
-			at->PlayAnimation(directionName, loop, true);
+			at->PlayAnimation(directionName, loop, eFlipType::X);
 			break;
 		case ya::enums::eDirection::RightUp:
 			directionName = animationName + L"back_right";

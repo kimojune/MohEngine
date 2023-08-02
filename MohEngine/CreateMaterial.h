@@ -297,6 +297,10 @@ namespace ya
 			= Resources::Load<ya::graphics::Texture>(L"guide_idle_front_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\idle\\front\\guide_idle_front_001.png");
 		CreateMaterial(L"AnimatorShader", guide_idle_front_001, L"guide_idle_front_001_material", eRenderingMode::CutOut);
 
+		std::shared_ptr<ya::graphics::Texture> guide_hand_001
+			= Resources::Load<ya::graphics::Texture>(L"guide_hand_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\guide_hand_001.png");
+		CreateMaterial(L"SpriteShader", guide_hand_001, L"guide_hand_001_material", eRenderingMode::CutOut);
+
 		std::shared_ptr<ya::graphics::Texture> dog_idle_left_001
 			= Resources::Load<ya::graphics::Texture>(L"dog_idle_left_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Companions\\idle_left\\dog_idle_left_001.png");
 

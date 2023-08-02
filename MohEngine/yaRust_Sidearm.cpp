@@ -51,10 +51,10 @@ namespace ya
 
 		Weapon::SetInfo(mInfo);
 
-		Collider2D* cd = AddComponent<Collider2D>();
-		cd->SetCenter(Vector2(0.0f, 0.0f));
-		cd->SetSize(Vector2(1.0f, 1.0f));
-		cd->SetType(eColliderType::Rect);
+		//Collider2D* cd = AddComponent<Collider2D>();
+		//cd->SetCenter(Vector2(0.0f, 0.0f));
+		//cd->SetSize(Vector2(1.0f, 1.0f));
+		//cd->SetType(eColliderType::Rect);
 
 		Weapon::Initialize();
 	}

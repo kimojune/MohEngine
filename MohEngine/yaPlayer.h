@@ -4,6 +4,7 @@
 
 namespace ya
 {
+	class Playerhand;
 	class Player : public GameObject
 	{
 	public:
@@ -25,5 +26,6 @@ namespace ya
 
 	private:
 		int mHP;
+		Playerhand* hand;
 	};
 }

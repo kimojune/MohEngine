@@ -48,7 +48,7 @@ namespace ya
 			, float duration = 0.1f);
 
 		Animation* FindAnimation(const std::wstring& name);
-		void PlayAnimation(const std::wstring& name, bool loop, bool reverse = false);
+		void PlayAnimation(const std::wstring& name, bool loop, eFlipType type = eFlipType::None);
 		void Binds();
 
 		Animation* CreateAnimations(const std::wstring& path, float duration);

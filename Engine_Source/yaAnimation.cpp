@@ -13,6 +13,7 @@ namespace ya
 		, mIndex(-1)
 		, mTime(0.0f)
 		, mbComplete(false)
+		, mFlip(ya::enums::eFlipType::None)
 	{
 	}
 	Animation::~Animation()
@@ -51,7 +52,7 @@ namespace ya
 		, UINT columnLength
 		, Vector2 offset
 		, float duration
-		, bool reverse)
+	)
 	{
 		SetKey(name);
 		mAtlas = atlas;
@@ -59,41 +60,20 @@ namespace ya
 		Vector2 mAtlasSize = atlas->GetSize();
 		float mRatio = 1.0f;
 
-		if (reverse)
+		for (size_t i = 0; i < columnLength; i++)
 		{
-			for (int i = columnLength - 1; i >= 0; i--)
-			{
-				Sprite sprite = {};
-				sprite.leftTop.x = leftTop.x + (i * size.x) / mAtlasSize.x;
-				sprite.leftTop.y = leftTop.y / mAtlasSize.y;
-				sprite.size.x = size.x / mAtlasSize.x;
-				sprite.size.y = size.y / mAtlasSize.y;
-				sprite.offset = offset;
-				//sprite.atlasSize = Vector2(1.0f, 1.0f);
-				sprite.outputSize = Vector2(size.x / mAtlasSize.x, size.y / mAtlasSize.y);
+			Sprite sprite = {};
+			sprite.leftTop.x = leftTop.x + (i * size.x) / mAtlasSize.x;
+			sprite.leftTop.y = leftTop.y / mAtlasSize.y;
+			sprite.size.x = size.x / mAtlasSize.x;
+			sprite.size.y = size.y / mAtlasSize.y;
+			sprite.offset = offset;
+			sprite.outputSize = Vector2(size.x / mAtlasSize.x, size.y / mAtlasSize.y);
+			sprite.duration = duration;
 
-				sprite.duration = duration;
-
-				mSprites.push_back(sprite);
-			}
+			mSprites.push_back(sprite);
 		}
 
-		else
-		{
-			for (size_t i = 0; i < columnLength; i++)
-			{
-				Sprite sprite = {};
-				sprite.leftTop.x = leftTop.x + (i * size.x) / mAtlasSize.x;
-				sprite.leftTop.y = leftTop.y / mAtlasSize.y;
-				sprite.size.x = size.x / mAtlasSize.x;
-				sprite.size.y = size.y / mAtlasSize.y;
-				sprite.offset = offset;
-				sprite.outputSize = Vector2(size.x / mAtlasSize.x, size.y / mAtlasSize.y);
-				sprite.duration = duration;
-
-				mSprites.push_back(sprite);
-			}
-		}
 	}
 	void Animation::Binds()
 	{
@@ -102,11 +82,11 @@ namespace ya
 
 		//AnimationCB;
 		renderer::AnimatorCB data = {};
-		
-		if (mReverse)
+
+		if (mFlip == eFlipType::X)
 		{
 			data.spriteLeftTop = Vector2(1.0f - (mSprites[mIndex].size.x) - mSprites[mIndex].leftTop.x
-											, mSprites[mIndex].leftTop.y);
+				, mSprites[mIndex].leftTop.y);
 		}
 
 		else
@@ -116,7 +96,7 @@ namespace ya
 		data.spriteSize = mSprites[mIndex].size;
 		data.spriteOffset = mSprites[mIndex].offset;
 		data.outputSize = mSprites[mIndex].outputSize;
-		data.animationType = mReverse;
+		data.animationType = (UINT)mFlip;
 
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Animator];
 		cb->SetData(&data);

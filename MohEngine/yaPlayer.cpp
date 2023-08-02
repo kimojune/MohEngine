@@ -8,6 +8,8 @@
 #include "yaAnimator.h"
 #include "yaRust_Sidearm.h"
 #include "yaObject.h"
+#include "yaPlayerhand.h"
+#include "yaWeaponScript.h"
 
 namespace ya
 {
@@ -61,11 +63,18 @@ namespace ya
 
 		AddComponent<PlayerScript>();
 
+		hand = object::Instantiate<Playerhand>(eLayerType::Player);
+		Transform* handtr = hand->GetComponent<Transform>();
+		handtr->SetParent(tr);
+		hand->Initialize();
+		
 		Rust_Sidearm* weapon = object::Instantiate<Rust_Sidearm>(eLayerType::Weapon);
 		weapon->Initialize();
-		Transform* weapontr = weapon->GetComponent<Transform>();
+		hand->SetWeapon(weapon);
 		
-		weapontr->SetParent(tr);
+		Transform* weapontr = weapon->GetComponent<Transform>();
+		weapontr->SetParent(handtr);
+
 	}
 	void Player::Update()
 	{

@@ -15,10 +15,10 @@ namespace ya
 		mFireLate = mInfo.fireRate_Automatic;
 
 		mTime = 0.0f;
-		mReverse = false;
+		mFlip = eFlipType::None;
 
 		Animator* at = GetOwner()->GetComponent<Animator>();
-		at->PlayAnimation(L"basicidle", false, mReverse);
+		at->PlayAnimation(L"basicidle", false, mFlip);
 
 	}
 	void WeaponScript::Update()
@@ -27,25 +27,29 @@ namespace ya
 
 		mTime += Time::DeltaTime();
 
-		if (Input::GetKeyDown(eKeyCode::LBUTTON)&& mFireLate < mTime)
-		{
-			at->PlayAnimation(L"basicshoot", false, mReverse);
-			mBullets -= 1;
-			mTime = 0;
+		at->PlayAnimation(L"basicidle", false, mFlip);
 
-
-		}
 
 		if (mBullets < 0)
 		{
-			at->PlayAnimation(L"basicreload", false, mReverse);
+			
+			at->PlayAnimation(L"basicreload", false, mFlip);
 
 			if (mTime >= mReloadTime)
 			{
-				at->PlayAnimation(L"basicidle", false, mReverse);
+				at->PlayAnimation(L"basicidle", false, mFlip);
 				mBullets = mInfo.magazineSize;
+				
 			}
 		}
+
+		else if (Input::GetKeyDown(eKeyCode::LBUTTON)&& mFireLate < mTime)
+		{
+			at->PlayAnimation(L"basicshoot", false, mFlip);
+			mBullets -= 1;
+			mTime = 0;
+		}
+
 
 	}
 }

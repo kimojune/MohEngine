@@ -26,9 +26,12 @@ namespace ya
 		void Death();
 
 		void PlayAnimationDir(const std::wstring& name, eDirection direction, bool loop);
+		
 
 		void StartDodge();
 		void CompleteDodge();
+
+	
 
 	private:
 		ePlayerState mPlayerState;
@@ -37,9 +40,9 @@ namespace ya
 		
 		ePlayerState mPrevState;
 		eDirection mPrevDirection;
-		
 
 		Vector3 mPos;
+		float cursorDegree;
 
 		bool mbPlayed = false;
 		bool invincible = false;

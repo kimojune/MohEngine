@@ -155,7 +155,7 @@ namespace ya
 
 		return iter->second;
 	}
-	void Animator::PlayAnimation(const std::wstring& name, bool loop, bool reverse)
+	void Animator::PlayAnimation(const std::wstring& name, bool loop, eFlipType type)
 	{
 		Animation* prevAnimation = mActiveAnimation;
 
@@ -172,7 +172,7 @@ namespace ya
 		if (animation)
 		{
 			mActiveAnimation = animation;
-			mActiveAnimation->SetReverse(reverse);
+			mActiveAnimation->SetFlip(type);
 		}
 
 		events = FindEvents(mActiveAnimation->GetKey());

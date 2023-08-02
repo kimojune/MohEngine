@@ -16,9 +16,8 @@ namespace ya
 		virtual void OnCollisionExit(Collider2D* other) {};
 
 		void SetWeaponInfo(Weapon::WeaponInfo info) { mInfo = info; }
-		void SetReverse(bool reverse) { mReverse = reverse; }
-
-
+		void SetFlip(eFlipType fliptype) { mFlip = fliptype; }
+		
 	private:
 		Weapon::WeaponInfo mInfo;
 		bool bPlayed = false;
@@ -31,7 +30,7 @@ namespace ya
 		float mFireLate;
 		float mReloadTime;
 
-		bool mReverse;
+		eFlipType mFlip;
 	};
 
 }

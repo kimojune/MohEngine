@@ -78,4 +78,12 @@ namespace ya::enums
 		Spot,
 		End,
 	};
+
+	enum class eFlipType
+	{
+		None,
+		X,
+		Y,
+		End,
+	};
 }

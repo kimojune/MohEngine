@@ -74,6 +74,9 @@
     <ClInclude Include="yaWeaponScript.h">
       <Filter>Contents\GameObject\Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="yaPlayerhand.h">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -143,6 +146,9 @@
       <Filter>Contents\GameObject\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="yaWeaponScript.cpp" />
+    <ClCompile Include="yaPlayerhand.cpp">
+      <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">

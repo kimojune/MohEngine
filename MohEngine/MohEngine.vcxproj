@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="yaPlayerhand.h" />
     <ClInclude Include="yaRust_Sidearm.h" />
     <ClInclude Include="yaWeapon.h" />
     <ClInclude Include="yaWeaponScript.h" />
@@ -172,6 +173,7 @@
     <ClInclude Include="yaUICamera.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="yaPlayerhand.cpp" />
     <ClCompile Include="yaRust_Sidearm.cpp" />
     <ClCompile Include="yaWeapon.cpp" />
     <ClCompile Include="yaWeaponScript.cpp" />

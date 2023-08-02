@@ -36,7 +36,23 @@ float4 main(VSOut In) : SV_TARGET
         || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
             discard;
         
-        UV.x = 1 - UV.x;
+        UV.x = -1 * UV.x;
+        //UV.y = -1 * UV.y;
+        color = atlasTexture.Sample(pointSampler, UV);
+    }
+    
+    if(animationType == 2)
+    {
+        float2 diff = (outputSize - SpriteSize) / 2.0f;
+        float2 UV = (SpriteLeftTop - diff - SpriteOffset)
+                + (outputSize * In.UV);
+    
+        if (UV.x < SpriteLeftTop.x || UV.x > SpriteLeftTop.x + SpriteSize.x
+        || UV.y < SpriteLeftTop.y || UV.y > SpriteLeftTop.y + SpriteSize.y)
+            discard;
+        
+        //UV.x = -1 * UV.x;
+        UV.y = -1 * UV.y;
         color = atlasTexture.Sample(pointSampler, UV);
     }
     
