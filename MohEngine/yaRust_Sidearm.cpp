@@ -48,6 +48,7 @@ namespace ya
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Weapon\\basic\\idle", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Weapon\\basic\\reload", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Weapon\\basic\\shoot", 0.15f);
+		at->CreateAnimations(L"..\\Resources\\Test", 0.15f);
 
 		Weapon::SetInfo(mInfo);
 

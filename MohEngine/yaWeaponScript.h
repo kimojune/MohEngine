@@ -3,10 +3,17 @@
 #include "yaWeapon.h"
 namespace ya
 {
-
+	class Animator;
 	class WeaponScript : public Script
 	{
 	public:
+		enum class eWeaponState
+		{
+			idle,
+			reload,
+			shoot,
+			End,
+		};
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -17,9 +24,30 @@ namespace ya
 
 		void SetWeaponInfo(Weapon::WeaponInfo info) { mInfo = info; }
 		void SetFlip(eFlipType fliptype) { mFlip = fliptype; }
-		
+		void SetPlayed(bool bplay) { bPlayed = bplay; }
+		void SetAttack();
+
+		void Idle();
+		void Reload();
+		void Shoot();
+		void End();
+
+		void StartIdle();
+		void CompleteIdle();
+		void EndIdle();
+
+		void StartReload();
+		void CompleteReload();
+		void EndReload();
+
+		void StartShoot();
+		void CompleteShoot();
+		void EndShoot();
+
 	private:
 		Weapon::WeaponInfo mInfo;
+		eWeaponState mState;
+		eWeaponState mPrevState;
 		bool bPlayed = false;
 
 		int mBullets;
@@ -31,6 +59,8 @@ namespace ya
 		float mReloadTime;
 
 		eFlipType mFlip;
+		
+		Animator* mAnimator;
 	};
 
 }

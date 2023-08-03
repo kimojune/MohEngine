@@ -37,7 +37,6 @@ float4 main(VSOut In) : SV_TARGET
             discard;
         
         UV.x = -1 * UV.x;
-        //UV.y = -1 * UV.y;
         color = atlasTexture.Sample(pointSampler, UV);
     }
     

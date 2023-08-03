@@ -1,7 +1,8 @@
 #include "yaWeapon.h"
 #include "yaWeaponScript.h"
 #include "yaMeshRenderer.h"
-
+#include "yaObject.h"
+#include "yaSceneManager.h"
 namespace ya
 {
 	Weapon::Weapon()
@@ -16,9 +17,19 @@ namespace ya
 	}
 	void Weapon::Initialize()
 	{
+		Transform* tr = GetComponent<Transform>();
+		MeshRenderer* mr = GetComponent<MeshRenderer>();
+		Vector2 mPosition = mr->GetSize() / 2;
+
+		tr->SetPosition(mPosition.x, mPosition.y, -5.0f);
+
 		mScript = AddComponent<WeaponScript>();
 		mScript->SetWeaponInfo(mInfo);
 		mScript->Initialize();
+
+		Scene* scene = SceneManager::GetActiveScene();
+
+		scene->AddGameObject(eLayerType::Player, this);
 
 		GameObject::Initialize();
 	}
@@ -34,6 +45,7 @@ namespace ya
 	{
 		GameObject::Render();
 	}
+
 	void Weapon::IsFlip(bool flip)
 	{
 		Transform* tr = GetComponent<Transform>();
@@ -44,12 +56,14 @@ namespace ya
 		{
 			tr->SetPosition(mPosition.x, -mPosition.y, -5.0f);
 			mScript->SetFlip(eFlipType::Y);
+			mScript->SetPlayed(false);
 		}
 
 		else
 		{
 			tr->SetPosition(mPosition.x, mPosition.y, -5.0f);
 			mScript->SetFlip(eFlipType::None);
+			mScript->SetPlayed(false);
 		}
 	}
 }

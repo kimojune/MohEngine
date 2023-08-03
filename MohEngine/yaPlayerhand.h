@@ -6,11 +6,11 @@
 namespace ya
 {	
 	class Weapon;
-	class Playerhand : public GameObject
+	class PlayerHand : public GameObject
 	{
 	public:
-		Playerhand();
-		virtual ~Playerhand();
+		PlayerHand();
+		virtual ~PlayerHand();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -19,9 +19,11 @@ namespace ya
 
 		bool IsFlip() { return isFlip; }
 		void SetWeapon(Weapon* weapon) { mWeapon = weapon; }
+		void SetAttack();
 
 	private:
 		bool isFlip;
+		bool prevFlip;
 		Weapon* mWeapon;
 	};
 }

@@ -58,7 +58,7 @@ namespace ya
 		mAtlas = atlas;
 
 		Vector2 mAtlasSize = atlas->GetSize();
-		float mRatio = 1.0f;
+		float mRatio = 30.0f;
 
 		for (size_t i = 0; i < columnLength; i++)
 		{

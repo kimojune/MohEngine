@@ -3,8 +3,7 @@
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
 #include "yaMesh.h"
-#include "yaPlayer.h"
-#include "yaPlayerScript.h"
+#include "yaGuide.h"
 #include "yaMainCamera.h"
 #include "yaCursor.h"
 #include "yaUICamera.h"
@@ -37,7 +36,7 @@ namespace ya
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
-		Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
+		Guide* Hunter = object::Instantiate<Guide>(eLayerType::Player);
 		Hunter->Initialize();
 		
 		mMainCamera = new MainCamera();

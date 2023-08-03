@@ -5,7 +5,8 @@
 #include "yaGameObject.h"
 #include "yaAnimator.h"
 #include "yaSceneManager.h"
-
+#include "yaWeapon.h"
+#include "yaWeaponScript.h"
 namespace ya
 {
 	void PlayerScript::Initialize()
@@ -132,6 +133,17 @@ namespace ya
 			mPlayerState = ePlayerState::Run;
 		}
 
+		if (Input::GetKey(eKeyCode::LBUTTON))
+		{
+			if (mActiveWeapon == nullptr)
+				return;
+			else
+			{
+				WeaponScript* ws = mActiveWeapon->GetComponent<WeaponScript>();
+				if (ws != nullptr)
+					ws->SetAttack();
+			}
+		}
 	}
 
 	void PlayerScript::Run()

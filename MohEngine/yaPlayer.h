@@ -4,7 +4,7 @@
 
 namespace ya
 {
-	class Playerhand;
+	class PlayerHand;
 	class Player : public GameObject
 	{
 	public:
@@ -24,8 +24,12 @@ namespace ya
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-	private:
-		int mHP;
-		Playerhand* hand;
+		void SetAttack();
+		Weapon* GetActiveWeapon() { return mActiveWeapon; }
+
+	protected:
+		std::vector<Weapon*>mWeapons;
+		PlayerHand* hand;
+		Weapon* mActiveWeapon;
 	};
 }
