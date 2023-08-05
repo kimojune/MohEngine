@@ -16,8 +16,7 @@ namespace ya
 		mr->SetMesh(mMesh);
 		mr->SetMaterial(mMaterial);
 
-		Vector2 scale = mr->GetSize();
-		mScale = Vector3(scale.x, scale.y, 1.0f);
+		mScale = Vector3(mr->GetWidth(), mr->GetHeight(), 1.0f);
 
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(mPosition);
@@ -36,8 +35,7 @@ namespace ya
 		mr->SetMesh(mMesh);
 		mr->SetMaterial(mMaterial);
 
-		Vector2 scale = mr->GetSize();
-		mScale = Vector3(scale.x, scale.y, 1.0f);
+		mScale = Vector3(mr->GetWidth(), mr->GetHeight(), 1.0f);
 
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(mPosition);
@@ -56,8 +54,8 @@ namespace ya
 		mr->SetMesh(mMesh);
 		mr->SetMaterial(mMaterial);
 
-		Vector2 scale = mr->GetSize();
-		mScale = Vector3(scale.x, scale.y, 1.0f);
+	
+		mScale = Vector3(mr->GetWidth(), mr->GetHeight(), 1.0f);
 		//mScale = Vector3(1.f, 1.f, 1.f);
 
 		Transform* tr = GetComponent<Transform>();

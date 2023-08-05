@@ -8,6 +8,7 @@
 #include "yaMeshRenderer.h"
 #include "yaRust_Sidearm.h"
 #include "yaComputeShader.h"
+#include "yaPaintShader.h"
 
 namespace ya
 {
@@ -149,6 +150,11 @@ namespace ya
 		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
 		dogcd->SetCenter(Vector2(0.0f, 0.0f));
 		dogcd->SetType(eColliderType::Rect);
+
+		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
+		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");
+		paintShader->SetTarget(paintTexture);
+		paintShader->OnExcute();
 
 		//Rust_Sidearm* weapon = object::Instantiate<Rust_Sidearm>(eLayerType::Weapon);
 		//weapon->Initialize();

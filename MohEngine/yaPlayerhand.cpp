@@ -20,8 +20,8 @@ namespace ya
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
 		mr->SetMaterial(Resources::Find<Material>((L"guide_hand_001_material")));
-		Vector2 scale = mr->GetSize();
-		tr->SetScale(scale.x, scale.y, 1.0f);
+		
+		tr->SetScale(mr->GetWidth(), mr->GetHeight(), 1.0f);
 		tr->SetPosition(8.0f, -8.0f, 0.0f);
 
 		GameObject::Initialize();

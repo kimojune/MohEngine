@@ -25,8 +25,7 @@ namespace ya
 		mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(Resources::Find<Material>(L"reticle_crosshair_002_material"));
 
-		Vector2 scale = mr->GetSize();
-		tr->SetScale(Vector3(scale.x, scale.y, 1.0f));
+		tr->SetScale(Vector3(mr->GetWidth(), mr->GetHeight(), 1.0f));
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(eLayerType::UI, this);
 

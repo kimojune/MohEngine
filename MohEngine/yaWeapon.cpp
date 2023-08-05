@@ -19,9 +19,8 @@ namespace ya
 	{
 		Transform* tr = GetComponent<Transform>();
 		MeshRenderer* mr = GetComponent<MeshRenderer>();
-		Vector2 mPosition = mr->GetSize() / 2;
 
-		tr->SetPosition(mPosition.x, mPosition.y, -5.0f);
+		tr->SetPosition(mr->GetWidth() / 2, mr->GetHeight() / 2,  -5.0f);
 
 		mScript = AddComponent<WeaponScript>();
 		mScript->SetWeaponInfo(mInfo);
@@ -50,18 +49,17 @@ namespace ya
 	{
 		Transform* tr = GetComponent<Transform>();
 		MeshRenderer* mr = GetComponent<MeshRenderer>();
-		Vector2 mPosition = mr->GetSize() / 2;
 		
 		if (flip)
 		{
-			tr->SetPosition(mPosition.x, -mPosition.y, -5.0f);
+			tr->SetPosition(mr->GetWidth() / 2, -1 * (mr->GetHeight()) / 2, -5.0f);
 			mScript->SetFlip(eFlipType::Y);
 			mScript->SetPlayed(false);
 		}
 
 		else
 		{
-			tr->SetPosition(mPosition.x, mPosition.y, -5.0f);
+			tr->SetPosition(mr->GetWidth() / 2, mr->GetHeight() / 2, -5.0f);
 			mScript->SetFlip(eFlipType::None);
 			mScript->SetPlayed(false);
 		}

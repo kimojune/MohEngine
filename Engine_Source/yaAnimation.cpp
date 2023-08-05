@@ -57,8 +57,10 @@ namespace ya
 		SetKey(name);
 		mAtlas = atlas;
 
-		Vector2 mAtlasSize = atlas->GetSize();
+		
 		float mRatio = 30.0f;
+
+		Vector2 mAtlasSize = Vector2(atlas.get()->GetWidth(), atlas.get()->GetHeight());
 
 		for (size_t i = 0; i < columnLength; i++)
 		{
@@ -78,7 +80,7 @@ namespace ya
 	void Animation::Binds()
 	{
 		// texture bind
-		mAtlas->BindShader(graphics::eShaderStage::PS, 12);
+		mAtlas->BindShaderResource(graphics::eShaderStage::PS, 12);
 
 		//AnimationCB;
 		renderer::AnimatorCB data = {};

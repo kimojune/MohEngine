@@ -29,15 +29,14 @@ namespace ya::graphics
 		HRESULT CreateTex(const std::wstring& path, UINT filecnt, size_t imageMaxWidth, size_t imageMaxHeight, UINT maxIndex = 1 );
 		
 		void CreateAtlas(const std::wstring& path, UINT maxIndex = 1);
-		void BindShader(eShaderStage stage, UINT startSlot);
+		void BindShaderResource(eShaderStage stage, UINT startSlot);
+		void BindUnorderedAccessViews(UINT slot);
+		void ClearUnorderedAccessViews(UINT slot);
+
 		void Clear();
 
-		math::Vector2 GetSize()
-		{
-			return math::Vector2((float)mImage.GetImages()->width, ((float)mImage.GetImages()->height));
-		}
-		float GetWidth() { return (float)mImage.GetImages()->width; }
-		float GetHeight() { return (float)mImage.GetImages()->height; }
+		size_t GetWidth() { return mWidth; }
+		size_t GetHeight() { return mHeight; }
 
 		Microsoft::WRL::ComPtr<ID3D11RenderTargetView>    GetRTV() { return  mRTV; }
 		void SetRTV(Microsoft::WRL::ComPtr<ID3D11RenderTargetView> rtv) { mRTV = rtv; }
@@ -60,6 +59,8 @@ namespace ya::graphics
 		Microsoft::WRL::ComPtr<ID3D11DepthStencilView> mDSV;
 		Microsoft::WRL::ComPtr<ID3D11UnorderedAccessView> mUAV;
 		D3D11_TEXTURE2D_DESC mDesc;
+		UINT mWidth;
+		UINT mHeight;
 
 		UINT maxY;
 		UINT maxX;

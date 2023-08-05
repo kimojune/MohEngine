@@ -199,6 +199,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp">
       <Filter>Resource\Shader\CS</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPaintShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -313,6 +314,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h">
       <Filter>Resource\Shader\CS</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPaintShader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

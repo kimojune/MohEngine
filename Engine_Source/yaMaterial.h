@@ -21,7 +21,8 @@ namespace ya::graphics
 		void SetRenderingMode(eRenderingMode mode) { mMode = mode; }
 		eRenderingMode GetRenderingMode() { return mMode; }
 
-		math::Vector2 GetSize() { return mTexture->GetSize(); }
+		size_t GetWidth() { return mTexture->GetWidth(); }
+		size_t GetHeight() { return mTexture->GetHeight(); }
 
 	private:
 		std::shared_ptr<Shader> mShader;

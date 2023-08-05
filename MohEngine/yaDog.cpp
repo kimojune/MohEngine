@@ -9,12 +9,14 @@ namespace ya
 	{
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>((L"RectMesh")));
-		mr->SetMaterial(Resources::Find<Material>((L"dog_idle_left_001_material")));
-		Vector2 size = mr->GetSize();
+		//mr->SetMaterial(Resources::Find<Material>((L"dog_idle_left_001_material")));
+		mr->SetMaterial(Resources::Find<Material>((L"SpriteMaterial02")));
+	
 
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(Vector3(0.5f, 0.5f, 0.0f));
-		tr->SetScale(size.x,size.y, -0.3f);
+		//tr->SetScale(mr->GetWidth(), mr->GetHeight(), -0.3f);
+		tr->SetScale(50.f, 50.f, -0.3f);
 
 	}
 	Dog::~Dog()

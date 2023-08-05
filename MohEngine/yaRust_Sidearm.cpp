@@ -17,8 +17,7 @@ namespace ya
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(mMesh);
 		mr->SetMaterial(mMaterial);
-		Vector2 scale = mMaterial->GetSize();
-		tr->SetScale(scale.x , scale.y, 1.0f);
+		tr->SetScale(mr->GetWidth(), mr->GetHeight(), 1.0f);
 		//tr->SetScale(scale.x * 2.0f, scale.y * 2.0f, 1.0f);
 		tr->SetPosition(0.0f, 0.0f, -5.0f);
 

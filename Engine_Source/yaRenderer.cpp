@@ -3,6 +3,7 @@
 #include "yaTexture.h"
 #include "yaMaterial.h"
 #include "yaStructedBuffer.h"
+#include "yaPaintShader.h"
 
 namespace ya::renderer
 {
@@ -377,8 +378,21 @@ namespace ya::renderer
 		debugShader->SetRSState(eRSType::WireframeNone);
 		//debugShader->SetDSState(eDSType::NoWrite);
 		ya::Resources::Insert(L"DebugShader", debugShader);
+
+		std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
+		paintShader->Create(L"PaintCS.hlsl", "main");
+		ya::Resources::Insert(L"PaintShader", paintShader);
 	}
 
+	void LoadTexture()
+	{
+		//paint texture
+		std::shared_ptr<Texture> uavTexture = std::make_shared<Texture>();
+		uavTexture->Create(1024, 1024, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
+		ya::Resources::Insert(L"PaintTexuture", uavTexture);
+
+
+	}
 	void LoadMaterial()
 	{
 		std::shared_ptr<Shader> spriteShader
@@ -399,12 +413,20 @@ namespace ya::renderer
 		material->SetTexture(texture);
 		Resources::Insert(L"AnimatorMaterial", material);
 
-		texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+
+		texture = Resources::Find<Texture>(L"PaintTexuture");
 		material = std::make_shared<Material>();
 		material->SetShader(spriteShader);
 		material->SetTexture(texture);
 		material->SetRenderingMode(eRenderingMode::Transparent);
 		Resources::Insert(L"SpriteMaterial02", material);
+
+		//texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+		//material = std::make_shared<Material>();
+		//material->SetShader(spriteShader);
+		//material->SetTexture(texture);
+		//material->SetRenderingMode(eRenderingMode::Transparent);
+		//Resources::Insert(L"SpriteMaterial02", material);
 
 		std::shared_ptr<Shader> gridShader
 			= Resources::Find<Shader>(L"GridShader");
@@ -421,12 +443,15 @@ namespace ya::renderer
 		Resources::Insert(L"DebugMaterial", material);
 	}
 
+
+
 	void Initialize()
 	{
 		LoadMesh();
 		LoadBuffer();
 		LoadShader();
 		SetupState();
+		LoadTexture();
 		LoadMaterial();
 	}
 
