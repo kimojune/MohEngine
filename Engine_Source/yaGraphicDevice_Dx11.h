@@ -53,6 +53,8 @@ public:
 	void BindBlendState(ID3D11BlendState* pBlendState);
 
 	void DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation);
+	void DrawIndexedInstanced(UINT IndexCountPerInstance, UINT InstanceCount
+		, UINT StartIndexLocation, INT BaseVertexLocation, UINT StartInstanceLocation);
 	void ClearTarget();
 	void UpdateViewPort();
 	void Draw();

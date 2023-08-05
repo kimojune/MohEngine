@@ -20,6 +20,7 @@ public:
 	void SetMesh(std::shared_ptr<Mesh> mesh) { mMesh = mesh; }
 	void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
 	std::shared_ptr<Material> GetMaterial() { return mMaterial; }
+	std::shared_ptr<Mesh> GetMesh() { return mMesh; }
 
 	size_t GetWidth() {return mMaterial->GetWidth();}
 	size_t GetHeight() {return mMaterial->GetHeight();}

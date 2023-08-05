@@ -84,7 +84,12 @@ namespace ya::renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
-				shader = ya::Resources::Find<Shader>(L"testShader");
+		shader = ya::Resources::Find<Shader>(L"testShader");
+		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+		
+		shader = ya::Resources::Find<Shader>(L"ParticleShader");
 		ya::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -379,9 +384,19 @@ namespace ya::renderer
 		//debugShader->SetDSState(eDSType::NoWrite);
 		ya::Resources::Insert(L"DebugShader", debugShader);
 
+
 		std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
 		paintShader->Create(L"PaintCS.hlsl", "main");
 		ya::Resources::Insert(L"PaintShader", paintShader);
+		
+		std::shared_ptr<Shader> particleShader = std::make_shared<Shader>();
+		particleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
+		particleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
+		particleShader->SetRSState(eRSType::SolidNone);
+		particleShader->SetDSState(eDSType::NoWrite);
+		particleShader->SetBSState(eBSType::AlphaBlend);
+
+		ya::Resources::Insert(L"ParticleShader", particleShader);
 	}
 
 	void LoadTexture()
@@ -395,14 +410,14 @@ namespace ya::renderer
 	}
 	void LoadMaterial()
 	{
-		std::shared_ptr<Shader> spriteShader
+		std::shared_ptr<Shader> shader
 			= Resources::Find<Shader>(L"SpriteShader");
 
 		std::shared_ptr<Texture> texture
 			= Resources::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
 
 		std::shared_ptr<Material> material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		Resources::Insert(L"SpriteMaterial", material);	
 		
@@ -416,14 +431,14 @@ namespace ya::renderer
 
 		texture = Resources::Find<Texture>(L"PaintTexuture");
 		material = std::make_shared<Material>();
-		material->SetShader(spriteShader);
+		material->SetShader(shader);
 		material->SetTexture(texture);
 		material->SetRenderingMode(eRenderingMode::Transparent);
 		Resources::Insert(L"SpriteMaterial02", material);
 
 		//texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
 		//material = std::make_shared<Material>();
-		//material->SetShader(spriteShader);
+		//material->SetShader(shader);
 		//material->SetTexture(texture);
 		//material->SetRenderingMode(eRenderingMode::Transparent);
 		//Resources::Insert(L"SpriteMaterial02", material);
@@ -441,9 +456,14 @@ namespace ya::renderer
 		material = std::make_shared<Material>();
 		material->SetShader(debugShader);
 		Resources::Insert(L"DebugMaterial", material);
+
+		shader
+			= Resources::Find<Shader>(L"ParticleShader");
+		material = std::make_shared<Material>();
+		material->SetShader(shader);
+		material->SetRenderingMode(eRenderingMode::Transparent);
+		Resources::Insert(L"ParticleMaterial", material);
 	}
-
-
 
 	void Initialize()
 	{
