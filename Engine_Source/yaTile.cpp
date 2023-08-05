@@ -74,7 +74,7 @@ namespace ya
 		
 
 
-		animatorCB.spriteLeftTop = Vector2(mX * 0.03125, mY * 0.04545);
+		animatorCB.spriteLeftTop = Vector2(mX * 0.03125, mY * 0.03125f);
 
 		cb->SetData(&animatorCB);
 		cb->Bind(eShaderStage::VS);

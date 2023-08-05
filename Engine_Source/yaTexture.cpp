@@ -118,7 +118,7 @@ namespace ya::graphics
 					else
 					{
 						maxX = maxIndex;
-						maxY = filecnt / maxIndex;
+						maxY = maxIndex;
 					}
 
 					if (filecnt == 1)
@@ -158,6 +158,8 @@ namespace ya::graphics
 			}
 			idx++;
 		}
+
+		int a = 0;
 		if (FAILED(hr))
 		{
 			// Error handling if image loading, conversion, or copy rectangle fails

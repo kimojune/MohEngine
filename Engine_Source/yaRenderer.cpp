@@ -238,11 +238,11 @@ namespace ya::renderer
 
 		tilevertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
 		tilevertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		tilevertexes[2].uv = Vector2(0.03125f, 0.04545f);
+		tilevertexes[2].uv = Vector2(0.03125f, 0.03125f);
 
 		tilevertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
 		tilevertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		tilevertexes[3].uv = Vector2(0.0f, 0.04545f);
+		tilevertexes[3].uv = Vector2(0.0f, 0.03125f);
 
 		tilemesh->CreateVertexBuffer(tilevertexes.data(), tilevertexes.size());
 		

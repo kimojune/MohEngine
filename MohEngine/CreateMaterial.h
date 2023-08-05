@@ -314,9 +314,14 @@ namespace ya
 		
 		std::shared_ptr<ya::graphics::Texture> mTileAtlas = std::make_shared<Texture>();
 		mTileAtlas.get()->CreateAtlas(L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Tileset_Forge", 32);
+		
+	/*	std::shared_ptr<ya::graphics::Texture> mTileAtlas 
+			= Resources::Load<ya::graphics::Texture>(L"mTileAtlas", L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Stamps_Forge.png");*/
+
+
 		CreateMaterial(L"TileShader", mTileAtlas, L"mTileAtlas_material", eRenderingMode::Opaque);
 
-	
+		
 #pragma region Inventory
 		std::shared_ptr<ya::graphics::Texture> ammonomicon_outro_001
 			= Resources::Load<ya::graphics::Texture>(L"ammonomicon_outro_001", L"..\\Resources\\Texture\\Inventory\\ammonomicon_outro_001.png");

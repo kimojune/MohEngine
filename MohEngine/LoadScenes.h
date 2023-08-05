@@ -18,8 +18,8 @@ namespace ya
 	{
 		//PlayScene* playScene = new PlayScene();
 		SceneManager::CreateScene<InventoryScene>(L"InventoryScene");
-		SceneManager::CreateScene<ToolScene>(L"ToolScene");
 		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
+		SceneManager::CreateScene<ToolScene>(L"ToolScene");
 	}
 }

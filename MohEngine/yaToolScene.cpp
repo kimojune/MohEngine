@@ -17,6 +17,7 @@
 #include "yaBackGround.h"
 #include "yaPlayer.h"
 #include "yaRust_Sidearm.h"
+#include "yaMaterial.h"
 using namespace ya;
 
 extern ya::Application application;
@@ -49,20 +50,20 @@ namespace ya
 
 	void ToolScene::Initialize()
 	{
-		Rust_Sidearm* rust = ya::object::Instantiate<Rust_Sidearm>(eLayerType::Player);
+		//Rust_Sidearm* rust = ya::object::Instantiate<Rust_Sidearm>(eLayerType::Player);
 
 
 		MainCamera* mCamera = new MainCamera();
-		//UICamera* uicamera = new UICamera();
+		UICamera* uicamera = new UICamera();
 
-		//Cursor* cursor = new Cursor;
-		//WorldCursor* wCursor = new WorldCursor();
-		//wCursor->AddComponent<TileScript>();
+		Cursor* cursor = new Cursor;
+		WorldCursor* wCursor = new WorldCursor();
+		wCursor->AddComponent<TileScript>();
 
 		//std::shared_ptr<Texture> atlas
 		//	= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
 
-		//BackGround* matlas = new BackGround(L"mTileAtlas_material");
+		BackGround* matlas = new BackGround(L"mTileAtlas_material");
 
 		//Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
 		//Hunter->Initialize();
@@ -70,7 +71,7 @@ namespace ya
 		//mGameObject->SetName(L"atlas");
 
 		//AddGameObject(eLayerType::Player, mGameObject);
-		//MeshRenderer* mr = mGameObject->AddComponent<MeshRenderer>();
+		//MeshRenderer* mr = mGameObject->AddComponent<MeshRenderer>();%
 		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		//mr->SetMaterial(Resources::Find<Material>(L"mTileAtlas_material"));
 
@@ -142,8 +143,10 @@ namespace ya
 
 static std::shared_ptr <ya::Image> tileatlas;
 
+
 LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+
 	switch (message)
 	{
 		//case WM_KEYDOWN:
@@ -156,7 +159,9 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 	case WM_CREATE:
 	{
 		tileatlas = std::make_shared<ya::Image>();
-		tileatlas = ya::Resources::Load<ya::Image >(L"TileAtlas", L"..\\Resources\\Tile\\Tile.bmp");
+		tileatlas = ya::Resources::Load<ya::Image >(L"TileAtlas", L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Stamps_Forge.bmp");
+		//Gdiplus::Image* image = Gdiplus::Image::FromStream(tileatlas);
+
 		RECT rect = { 0, 0, tileatlas->GetWidth(), tileatlas->GetHeight() };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
@@ -196,6 +201,8 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 
 		std::shared_ptr <ya::Image> tile
 			= ya::Resources::Find<ya::Image>(L"TileAtlas");
+
+		
 		::BitBlt(hdc, 0, 0, tile->GetWidth(), tile->GetHeight(), tile->GetHdc(), 0, 0, SRCCOPY);
 		//Ellipse(hdc, 500, 500, 600, 700);
 		//RoundRect(hdc, 200, 200, 300, 300, 500, 500);
