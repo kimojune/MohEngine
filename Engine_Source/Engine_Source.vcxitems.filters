@@ -97,6 +97,9 @@
     <Filter Include="GameObject\Component\Light">
       <UniqueIdentifier>{1bdfa2af-be46-44d4-a167-db84d2133e60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Shader\CS">
+      <UniqueIdentifier>{d7a31d09-f854-41cd-a5ba-4bd6017d741e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
@@ -193,7 +196,9 @@
       <Filter>GameObject\Component\Light</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -305,7 +310,9 @@
       <Filter>GameObject\Component\Light</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h">
+      <Filter>Resource\Shader\CS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">

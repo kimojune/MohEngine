@@ -19,6 +19,71 @@ namespace ya::graphics
 	{
 	}
 
+	bool Texture::Create(UINT width, UINT height, DXGI_FORMAT format, UINT bindflag)
+	{
+		if (mTexture == nullptr)
+		{
+			mDesc.BindFlags = bindflag;
+			mDesc.Usage = D3D11_USAGE_DEFAULT;
+			mDesc.CPUAccessFlags = 0;
+			mDesc.Format = format;
+			mDesc.Width = width;
+			mDesc.Height = height;
+			mDesc.ArraySize = 1;
+
+			mDesc.SampleDesc.Count = 1;
+			mDesc.SampleDesc.Quality = 0;
+
+			mDesc.MipLevels = 0;
+			mDesc.MiscFlags = 0;
+
+			if (!GetDevice()->CreateTexture2D(&mDesc, nullptr, mTexture.GetAddressOf()))
+				return false;
+		}
+
+		if (bindflag & (UINT)D3D11_BIND_FLAG::D3D11_BIND_DEPTH_STENCIL)
+		{
+			if (!GetDevice()->CreateDepthStencilView(mTexture.Get(), nullptr, mDSV.GetAddressOf()))
+				return false;
+		}
+
+		if (bindflag & (UINT)D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE)
+		{
+			D3D11_SHADER_RESOURCE_VIEW_DESC tSRVDesc = {};
+			tSRVDesc.Format = mDesc.Format;
+			tSRVDesc.Texture2D.MipLevels = 1;
+			tSRVDesc.Texture2D.MostDetailedMip = 0;
+			tSRVDesc.ViewDimension = D3D11_SRV_DIMENSION::D3D11_SRV_DIMENSION_TEXTURE2D;
+
+			if (!GetDevice()->CreateShaderResourceView(mTexture.Get(), &tSRVDesc, mSRV.GetAddressOf()))
+				return false;
+		}
+
+		if (bindflag & (UINT)D3D11_BIND_FLAG::D3D11_BIND_RENDER_TARGET)
+		{
+			D3D11_RENDER_TARGET_VIEW_DESC tSRVDesc = {};
+			tSRVDesc.Format = mDesc.Format;
+			tSRVDesc.Texture2D.MipSlice = 0;
+			tSRVDesc.ViewDimension = D3D11_RTV_DIMENSION::D3D11_RTV_DIMENSION_TEXTURE2D;
+
+			if (!GetDevice()->CreateRenderTargetView(mTexture.Get(), nullptr, mRTV.GetAddressOf()))
+				return false;
+		}
+
+		if (bindflag & (UINT)D3D11_BIND_FLAG::D3D11_BIND_UNORDERED_ACCESS)
+		{
+			D3D11_UNORDERED_ACCESS_VIEW_DESC tUAVDesc = {};
+			tUAVDesc.Format = mDesc.Format;
+			tUAVDesc.Texture2D.MipSlice = 0;
+			tUAVDesc.ViewDimension = D3D11_UAV_DIMENSION::D3D11_UAV_DIMENSION_TEXTURE2D;
+
+			if (!GetDevice()->CreateUnordedAccessView(mTexture.Get(), &tUAVDesc, mUAV.GetAddressOf()))
+				return false;
+		}
+
+		return true;
+	}
+
 	HRESULT Texture::Load(const std::wstring& path)
 	{
 		wchar_t szExtension[50] = {};
@@ -74,7 +139,7 @@ namespace ya::graphics
 		{
 			std::wstring fileName = p.path().filename();
 			std::wstring fullName = p.path().wstring(); // Use the full path from the iterator
-			
+
 			_wsplitpath_s(fileName.c_str(), nullptr, 0, nullptr, 0, nullptr, 0, ext, _MAX_EXT);
 
 			if (_wcsicmp(ext, L".ini") == 0)
@@ -122,11 +187,11 @@ namespace ya::graphics
 					}
 
 					if (filecnt == 1)
-						hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth , imageMaxHeight , 1, 1);
+						hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth, imageMaxHeight, 1, 1);
 
 					else
-					hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * maxX, imageMaxHeight * maxY, 1, 1);
-				
+						hr = atlasImage.Initialize2D(DXGI_FORMAT_R8G8B8A8_UNORM, imageMaxWidth * maxX, imageMaxHeight * maxY, 1, 1);
+
 					isMake = true;
 				}
 				if (FAILED(hr))
@@ -134,7 +199,7 @@ namespace ya::graphics
 					// Handle the atlas image initialization error if necessary
 					return hr;
 				}
-				
+
 				UINT mY = idx / maxIndex;
 				UINT mX = idx % maxIndex;
 
@@ -147,7 +212,7 @@ namespace ya::graphics
 				else
 				{
 					hr = CopyRectangle(*convertedImage.GetImage(0, 0, 0), Rect(0, 0, convertedImage.GetMetadata().width, convertedImage.GetMetadata().height),
-						*atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth)* mX, imageMaxHeight * mY);
+						*atlasImage.GetImage(0, 0, 0), TEX_FILTER_DEFAULT, (imageMaxWidth)*mX, imageMaxHeight * mY);
 				}
 				//(imageMaxWidth)*idx, 0);
 				if (FAILED(hr))

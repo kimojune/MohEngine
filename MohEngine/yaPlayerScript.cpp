@@ -199,10 +199,23 @@ namespace ya
 			mInputDirection = eDirection::Right;
 		}
 
+
 		else
 		{
 			mPlayerState = ePlayerState::Idle;
 			mInputDirection = eDirection::End;
+		}
+
+		if (Input::GetKey(eKeyCode::LBUTTON))
+		{
+			if (mActiveWeapon == nullptr)
+				return;
+			else
+			{
+				WeaponScript* ws = mActiveWeapon->GetComponent<WeaponScript>();
+				if (ws != nullptr)
+					ws->SetAttack();
+			}
 		}
 
 	}

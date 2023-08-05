@@ -38,6 +38,7 @@ namespace ya::enums
 		Material,
 		Mesh,
 		Animation,
+		ComputeShader,
 		Image,
 		End,
 	};
