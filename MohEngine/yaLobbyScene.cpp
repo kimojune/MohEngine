@@ -7,6 +7,8 @@
 #include "yaResources.h"
 #include "yaMeshRenderer.h"
 #include "yaRust_Sidearm.h"
+#include "yaComputeShader.h"
+
 namespace ya
 {
 	LobbyScene::LobbyScene()
@@ -137,6 +139,8 @@ namespace ya
 		BackGround* bullet_collumn_ignorance_001 = new BackGround(bullet_collumn_horror_001, L"bullet_collumn_ignorance_001_material");
 		bullet_collumn_ignorance_001->SetPosition(Vector3(88.0f, 0.0f, 1.0f));
 #pragma endregion
+
+
 
 		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);
 		Collider2D* dogcd = dog->AddComponent<Collider2D>();

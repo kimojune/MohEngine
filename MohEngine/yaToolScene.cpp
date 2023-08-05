@@ -16,8 +16,8 @@
 #include "yaTexture.h"
 #include "yaBackGround.h"
 #include "yaPlayer.h"
-#include "yaRust_Sidearm.h"
 #include "yaMaterial.h"
+#include "yaComputeShader.h"
 using namespace ya;
 
 extern ya::Application application;
@@ -62,8 +62,9 @@ namespace ya
 
 		//std::shared_ptr<Texture> atlas
 		//	= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
-
-		BackGround* matlas = new BackGround(L"mTileAtlas_material");
+		ComputeShader* cs = new ComputeShader();
+		cs->Create(L"PaintCS.hlsl", "main");
+		//BackGround* matlas = new BackGround(L"mTileAtlas_material");
 
 		//Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
 		//Hunter->Initialize();
