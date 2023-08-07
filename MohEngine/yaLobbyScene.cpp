@@ -157,14 +157,16 @@ namespace ya
 		paintShader->SetTarget(paintTexture);
 		paintShader->OnExcute();
 
+
 		{
-		GameObject* player = new GameObject();
-		player->SetName(L"Particle");
-		AddGameObject(eLayerType::Monster, player);
-		ParticleSystem* mr = player->AddComponent<ParticleSystem>();
-		player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-		player->GetComponent<Transform>()->SetScale(Vector3(0.2f, 0.2f, 0.2f));
+			GameObject* player = new GameObject();
+			player->SetName(L"Particle");
+			AddGameObject(eLayerType::Monster, player);
+			ParticleSystem* mr = player->AddComponent<ParticleSystem>();
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+			player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
 		}
+
 		//Collider2D* cd = player->AddComponent<Collider2D>();
 		//cd->SetSize(Vector2(1.2f, 1.2f));
 		//player->AddComponent<PlayerScript>();

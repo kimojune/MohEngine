@@ -19,6 +19,7 @@
 #include "yaMaterial.h"
 #include "yaComputeShader.h"
 #include "yaPaintShader.h"
+#include "yaParticleSystem.h"
 using namespace ya;
 
 extern ya::Application application;
@@ -55,12 +56,21 @@ namespace ya
 
 
 		MainCamera* mCamera = new MainCamera();
-		UICamera* uicamera = new UICamera();
+		//UICamera* uicamera = new UICamera();
 
 		Cursor* cursor = new Cursor;
 		WorldCursor* wCursor = new WorldCursor();
 		wCursor->AddComponent<TileScript>();
 
+
+		{
+			GameObject* player = new GameObject();
+			player->SetName(L"Particle");
+			AddGameObject(eLayerType::Monster, player);
+			ParticleSystem* mr = player->AddComponent<ParticleSystem>();
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
+			player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
+		}
 		//std::shared_ptr<Texture> atlas
 		//	= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
 

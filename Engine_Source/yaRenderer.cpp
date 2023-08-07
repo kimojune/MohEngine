@@ -205,6 +205,18 @@ namespace ya::renderer
 		std::vector<Vertex> tilevertexes = {};
 		std::vector<Vertex> testvertexes = {};
 		std::vector<UINT> indexes = {};
+		//PointMesh
+		Vertex v = {};
+		v.pos = Vector3(0.0f, 0.0f, 0.0f);
+		vertexes.push_back(v);
+		indexes.push_back(0);
+		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
+		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
+		Resources::Insert(L"PointMesh", mesh);
+
+		vertexes.clear();
+		indexes.clear();
 
 		//RECT
 		vertexes.resize(4);
@@ -225,7 +237,7 @@ namespace ya::renderer
 		vertexes[3].uv = Vector2(0.0f, 1.0f);
 
 		//Vertex Buffer
-		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
+		mesh = std::make_shared<Mesh>();
 		Resources::Insert(L"RectMesh", mesh);
 		mesh->CreateVertexBuffer(vertexes.data(), vertexes.size());
 
@@ -392,9 +404,11 @@ namespace ya::renderer
 		std::shared_ptr<Shader> particleShader = std::make_shared<Shader>();
 		particleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
 		particleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
+		particleShader->Create(eShaderStage::GS, L"ParticleGS.hlsl", "main");
 		particleShader->SetRSState(eRSType::SolidNone);
 		particleShader->SetDSState(eDSType::NoWrite);
 		particleShader->SetBSState(eBSType::AlphaBlend);
+		particleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
 
 		ya::Resources::Insert(L"ParticleShader", particleShader);
 	}

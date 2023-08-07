@@ -17,7 +17,7 @@ namespace ya
 			,mEndColor(Vector4::One)
 			,mLifeTime(0.0f)
 	{
-		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"RectMesh");
+		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"PointMesh");
 		SetMesh(mesh);
 
 		std::shared_ptr<Material> material = Resources::Find<Material>(L"ParticleMaterial");
@@ -27,8 +27,8 @@ namespace ya
 		for (size_t i = 0; i < 1000; i++)
 		{
 			Vector4 pos = Vector4::Zero;
-			pos.x += rand() % 20;
-			pos.y += rand() % 10;
+			pos.x += rand() % 500;
+			pos.y += rand() % 300;
 
 			int sign = rand() % 2;
 			if (sign == 0)
@@ -38,6 +38,7 @@ namespace ya
 				pos.y *= -1.0f;
 
 			particles[i].position = pos;
+			particles[i].active = 1;
 		}
 
 		mBuffer = new graphics::StructedBuffer();
@@ -60,6 +61,7 @@ namespace ya
 	{
 		GetOwner()->GetComponent<Transform>()->BindConstantBuffer();
 		mBuffer->Bind(eShaderStage::VS, 14);
+		mBuffer->Bind(eShaderStage::GS, 14);
 		mBuffer->Bind(eShaderStage::PS, 14);
 
 		GetMaterial()->Binds();
