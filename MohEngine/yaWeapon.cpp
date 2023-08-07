@@ -54,14 +54,12 @@ namespace ya
 		{
 			tr->SetPosition(mr->GetWidth() / 2, -1.0f * mr->GetHeight() / 2, -5.0f);
 			mScript->SetFlip(eFlipType::Y);
-			mScript->SetPlayed(false);
 		}
 
 		else
 		{
 			tr->SetPosition(mr->GetWidth() / 2, mr->GetHeight() / 2, -5.0f);
 			mScript->SetFlip(eFlipType::None);
-			mScript->SetPlayed(false);
 		}
 	}
 }

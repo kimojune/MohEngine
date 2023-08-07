@@ -148,12 +148,14 @@
     <ClCompile Include="yaRust_Sidearm.cpp">
       <Filter>Contents\GameObject\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="yaWeaponScript.cpp" />
     <ClCompile Include="yaPlayerHand.cpp">
       <Filter>Contents\GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="yaGuide.cpp">
       <Filter>Contents\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="yaWeaponScript.cpp">
+      <Filter>Contents\GameObject\Weapon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
