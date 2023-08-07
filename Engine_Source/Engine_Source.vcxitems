@@ -35,6 +35,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaMeshRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaPaintShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaParticleShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaParticleSystem.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaResource.cpp" />
@@ -74,6 +75,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaMeshRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaPaintShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaParticleShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaParticleSystem.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaResource.h" />

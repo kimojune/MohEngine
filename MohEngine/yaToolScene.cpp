@@ -54,6 +54,11 @@ namespace ya
 	{
 		//Rust_Sidearm* rust = ya::object::Instantiate<Rust_Sidearm>(eLayerType::Player);
 
+		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
+		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");
+		paintShader->SetTarget(paintTexture);
+		paintShader->OnExcute();
+
 
 		MainCamera* mCamera = new MainCamera();
 		//UICamera* uicamera = new UICamera();

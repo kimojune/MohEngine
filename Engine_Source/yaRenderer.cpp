@@ -4,6 +4,7 @@
 #include "yaMaterial.h"
 #include "yaStructedBuffer.h"
 #include "yaPaintShader.h"
+#include "yaParticleShader.h"
 
 namespace ya::renderer
 {
@@ -341,19 +342,25 @@ namespace ya::renderer
 
 	void LoadBuffer()
 	{
+		//ParticleCB
+		constantBuffer[(UINT)eCBType::Particle] = new ConstantBuffer(eCBType::Particle);
+		constantBuffer[(UINT)eCBType::Particle]->Create(sizeof(ParticleCB));
+
 		//constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new ya::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
+		//Grid Buffer
 		constantBuffer[(UINT)eCBType::Grid] = new ya::graphics::ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(TransformCB));
 
+		//Animator Buffer
 		constantBuffer[(UINT)eCBType::Animator] = new ya::graphics::ConstantBuffer(eCBType::Animator);
 		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 
 		// light structed Buffer
 		lightsBuffer = new StructedBuffer();
-		lightsBuffer->Create(sizeof LightAttribute, 2, eSRVType::None);
+		lightsBuffer->Create(sizeof LightAttribute, 2, eViewType::SRV, nullptr);
 	}
 
 	void LoadShader()
@@ -400,7 +407,11 @@ namespace ya::renderer
 		std::shared_ptr<PaintShader> paintShader = std::make_shared<PaintShader>();
 		paintShader->Create(L"PaintCS.hlsl", "main");
 		ya::Resources::Insert(L"PaintShader", paintShader);
-		
+
+		std::shared_ptr<ParticleShader> psSystemShader = std::make_shared<ParticleShader>();
+		psSystemShader->Create(L"ParticleCS.hlsl", "main");
+		ya::Resources::Insert(L"ParticleSystemShader", psSystemShader);
+
 		std::shared_ptr<Shader> particleShader = std::make_shared<Shader>();
 		particleShader->Create(eShaderStage::VS, L"ParticleVS.hlsl", "main");
 		particleShader->Create(eShaderStage::PS, L"ParticlePS.hlsl", "main");
@@ -409,7 +420,6 @@ namespace ya::renderer
 		particleShader->SetDSState(eDSType::NoWrite);
 		particleShader->SetBSState(eBSType::AlphaBlend);
 		particleShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_POINTLIST);
-
 		ya::Resources::Insert(L"ParticleShader", particleShader);
 	}
 
@@ -499,8 +509,8 @@ namespace ya::renderer
 		}
 
 		lightsBuffer->SetData(lightAttributes.data(), lightAttributes.size());
-		lightsBuffer->Bind(eShaderStage::VS, 13);
-		lightsBuffer->Bind(eShaderStage::PS, 13);
+		lightsBuffer->BindSRV(eShaderStage::VS, 13);
+		lightsBuffer->BindSRV(eShaderStage::PS, 13);
 	}
 	void Render()
 	{

@@ -17,6 +17,14 @@ namespace ya::renderer
 		Vector2 uv;
 	};
 
+	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
+	{
+		UINT elementCount;
+		float elpasedTime;
+		int padd;
+		int padd2;
+	};
+
 	CBUFFER(TransformCB, CBSLOT_TRANSFORM)
 	{
 		Matrix mWorld;
