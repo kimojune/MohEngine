@@ -49,10 +49,10 @@ namespace ya
 	{
 		Transform* tr = GetComponent<Transform>();
 		MeshRenderer* mr = GetComponent<MeshRenderer>();
-		
+
 		if (flip)
 		{
-			tr->SetPosition(mr->GetWidth() / 2, -1 * (mr->GetHeight()) / 2, -5.0f);
+			tr->SetPosition(mr->GetWidth() / 2, -1.0f * mr->GetHeight() / 2, -5.0f);
 			mScript->SetFlip(eFlipType::Y);
 			mScript->SetPlayed(false);
 		}
