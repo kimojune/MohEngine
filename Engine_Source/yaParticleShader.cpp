@@ -24,6 +24,7 @@ namespace ya::graphics
 	void ParticleShader::Clear()
 	{
 		mParticleBuffer->Clear();
+
 	}
 	void ParticleShader::SetParticleBuffer(StructedBuffer* particleBuffer)
 	{

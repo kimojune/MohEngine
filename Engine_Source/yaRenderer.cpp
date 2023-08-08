@@ -430,6 +430,9 @@ namespace ya::renderer
 		uavTexture->Create(1024, 1024, DXGI_FORMAT_R8G8B8A8_UNORM, D3D11_BIND_SHADER_RESOURCE | D3D11_BIND_UNORDERED_ACCESS);
 		ya::Resources::Insert(L"PaintTexuture", uavTexture);
 
+		std::shared_ptr<Texture> particle = std::make_shared<Texture>();
+		Resources::Load<Texture>(L"CartoonSmoke", L"..\\Resources\\particle\\CartoonSmoke.png");
+
 
 	}
 	void LoadMaterial()
@@ -460,13 +463,6 @@ namespace ya::renderer
 		material->SetRenderingMode(eRenderingMode::Transparent);
 		Resources::Insert(L"SpriteMaterial02", material);
 
-		//texture = Resources::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-		//material = std::make_shared<Material>();
-		//material->SetShader(shader);
-		//material->SetTexture(texture);
-		//material->SetRenderingMode(eRenderingMode::Transparent);
-		//Resources::Insert(L"SpriteMaterial02", material);
-
 		std::shared_ptr<Shader> gridShader
 			= Resources::Find<Shader>(L"GridShader");
 
@@ -486,6 +482,10 @@ namespace ya::renderer
 		material = std::make_shared<Material>();
 		material->SetShader(shader);
 		material->SetRenderingMode(eRenderingMode::Transparent);
+		std::shared_ptr<Texture> particleTexx
+			= Resources::Find<Texture>(L"CartoonSmoke");
+		material->SetTexture(particleTexx);
+
 		Resources::Insert(L"ParticleMaterial", material);
 	}
 

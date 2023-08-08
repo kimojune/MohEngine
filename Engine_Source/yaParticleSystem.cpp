@@ -1,6 +1,6 @@
 #include "yaParticleSystem.h"
 
-
+#include "yaTime.h"
 #include "yaMesh.h"
 #include "yaMaterial.h"
 #include "yaResources.h"
@@ -17,6 +17,7 @@ namespace ya
 			,mEndColor(Vector4::One)
 			,mLifeTime(0.0f)
 			,mFrequency(0.0f)
+			,mTime(0.0f)
 	{
 		std::shared_ptr<Mesh> mesh = Resources::Find<Mesh>(L"PointMesh");
 		SetMesh(mesh);

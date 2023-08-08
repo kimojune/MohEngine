@@ -13,6 +13,9 @@ float4 main(GSOut In) : SV_TARGET
     
     Out = float4(1.0f, 0.0f, 1.0f, 1.0f);
     
+    Out = albedoTexture.Sample(pointSampler, In.UV);
+
+    
     return Out;
 
 }
