@@ -49,6 +49,7 @@ namespace ya
 		eWeaponState mState;
 		eWeaponState mPrevState;
 		bool bPlayed = false;
+		bool bFlip;
 
 		int mBullets;
 		int mMagazineSize;

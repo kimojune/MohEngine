@@ -99,15 +99,12 @@ namespace ya
 	}
 	void WeaponScript::Shoot()
 	{
-
-
 		Animation* ani = mAnimator->GetActiveAnimation();
 		if (ani->IsComplete())
 		{
 			mState = eWeaponState::idle;
 			mBullets--;
 		}
-
 	}
 	void WeaponScript::End()
 	{
@@ -117,6 +114,7 @@ namespace ya
 	}
 	void WeaponScript::CompleteIdle()
 	{
+		bPlayed = false;
 	}
 	void WeaponScript::EndIdle()
 	{
@@ -126,6 +124,7 @@ namespace ya
 	}
 	void WeaponScript::CompleteReload()
 	{
+		bPlayed = false;
 	}
 	void WeaponScript::EndReload()
 	{
@@ -135,6 +134,7 @@ namespace ya
 	}
 	void WeaponScript::CompleteShoot()
 	{
+		bPlayed = false;
 	}
 	void WeaponScript::EndShoot()
 	{

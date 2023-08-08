@@ -22,6 +22,8 @@ public:
 
 	virtual float GetCameraSize();
 
+	Vector2 GetCursorDirectionVector(eCameraType type, GameObject* obj);
+
 	void AddGameObject(eLayerType type, GameObject* gameObj);
 
 	template <typename T>

@@ -17,12 +17,7 @@ public:
 
 
 private:
-	WeaponInfo mInfo;
-	std::shared_ptr<Mesh> mMesh;
-	std::shared_ptr<Material> mMaterial;
-	
 
-	bool bPlayed = false;
 };
 }
 

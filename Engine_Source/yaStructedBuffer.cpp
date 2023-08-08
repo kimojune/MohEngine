@@ -15,6 +15,7 @@ namespace ya::graphics
 	}
 	StructedBuffer::~StructedBuffer()
 	{
+		
 	}
 	bool StructedBuffer::Create(UINT size, UINT stride, eViewType type, void* data, bool cpuAccess)
 	{

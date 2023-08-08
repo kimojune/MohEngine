@@ -8,6 +8,7 @@ namespace ya
 {
 	class Animator;
 	class WeaponScript;
+	class Projectile;
 	class Weapon : public GameObject
 	{
 	public:
@@ -67,12 +68,14 @@ namespace ya
 		void SetMaterial(std::shared_ptr<Material> material) { mMaterial = material; }
 
 		void SetInfo(WeaponInfo info) { mInfo = info; }
+		void SetAttack();
 		void IsFlip(bool flip);
 
 
-	private:
+	protected:
 		std::shared_ptr<Mesh> mMesh;
 		std::shared_ptr<Material> mMaterial;
+		Projectile* mProjectile;
 
 		WeaponInfo mInfo;
 		WeaponScript* mScript;

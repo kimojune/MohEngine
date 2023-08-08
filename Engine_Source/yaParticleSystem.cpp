@@ -55,17 +55,11 @@ namespace ya
 		mBuffer->Create(sizeof(Particle), 1000, eViewType::UAV, particles);
 
 		mSharedBuffer = new graphics::StructedBuffer();
-		mSharedBuffer->Create(sizeof(Particle), 1, eViewType::UAV, nullptr, true);
-		//ParticleShared shareData = {};
-		//shareData.sharedActiveCount = 1000;
-		//mSharedBuffer->SetData(&shareData, 1);
+		mSharedBuffer->Create(sizeof(ParticleShared), 1, eViewType::UAV, nullptr, true);
 	}
 	ParticleSystem::~ParticleSystem()
 	{
-		mBuffer = nullptr;
-		mSharedBuffer = nullptr;
-		delete mBuffer;
-		delete mSharedBuffer;
+
 	}
 	void ParticleSystem::Initialize()
 	{

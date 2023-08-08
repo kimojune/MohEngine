@@ -1,5 +1,5 @@
 #include "yaScene.h"
-
+#include "yaInput.h"
 
 namespace ya
 {
@@ -51,6 +51,19 @@ namespace ya
 	float Scene::GetCameraSize()
 	{
 		return 1.0f;
+	}
+	Vector2 Scene::GetCursorDirectionVector(eCameraType type, GameObject* obj)
+	{
+		Transform* tr = obj->GetComponent<Transform>();
+		Vector3 objPos = tr->GetPosition();
+
+		Vector2 objPos2 = Vector2(objPos.x, objPos.y);
+		Vector2 cursorPos = Input::GetClientMousePos(type);
+
+		Vector2 vDirection = cursorPos - objPos2;
+		vDirection.Normalize();
+
+		return vDirection;
 	}
 	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
 	{

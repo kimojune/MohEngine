@@ -4,21 +4,23 @@
 #include "yaResources.h"
 #include "yaInput.h"
 #include "yaAnimator.h"
+#include "yaProjectile.h"
 namespace ya
 {
 	Rust_Sidearm::Rust_Sidearm()
-		: mInfo{}
-		, mMesh(Resources::Find<Mesh>((L"RectMesh")))
-		, mMaterial(Resources::Find<Material>((L"Rust_Sidearm_idle_001_material")))
+
 	{
 		SetName(L"Rust_Sidearm");
 		Transform* tr = GetComponent<Transform>();
+
+		mMesh = Resources::Find<Mesh>((L"RectMesh"));
+		mMaterial = Resources::Find<Material>((L"Rust_Sidearm_idle_001_material"));
 
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(mMesh);
 		mr->SetMaterial(mMaterial);
 		tr->SetScale(mr->GetWidth(), mr->GetHeight(), 1.0f);
-		//tr->SetScale(scale.x * 2.0f, scale.y * 2.0f, 1.0f);
+
 		tr->SetPosition(0.0f, 0.0f, -5.0f);
 
 		mInfo.type = eWeaponType::Semiautomatic;
@@ -35,8 +37,14 @@ namespace ya
 		mInfo.spreadDegree = 7.0f;
 		mInfo.price = 0;
 		
-		Weapon::SetInfo(mInfo);
 
+		MeshRenderer* ptmr = mProjectile->AddComponent<MeshRenderer>();
+		Transform* pttr = mProjectile->GetComponent<Transform>();
+		ptmr->SetMesh(mMesh);
+		std::shared_ptr<Material> ptmater = Resources::Find<Material>((L"rusty_sidearm_projectile_alt_001_material"));
+		ptmr->SetMaterial(ptmater);
+		pttr->SetScale(ptmater.get()->GetWidth(), ptmater.get()->GetHeight(), 1.0f);
+		pttr->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
 	}
 	Rust_Sidearm::~Rust_Sidearm()
 	{
@@ -48,13 +56,6 @@ namespace ya
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Weapon\\basic\\reload", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Weapon\\basic\\shoot", 0.15f);
 		at->CreateAnimations(L"..\\Resources\\Test", 0.15f);
-
-		Weapon::SetInfo(mInfo);
-
-		//Collider2D* cd = AddComponent<Collider2D>();
-		//cd->SetCenter(Vector2(0.0f, 0.0f));
-		//cd->SetSize(Vector2(1.0f, 1.0f));
-		//cd->SetType(eColliderType::Rect);
 
 		Weapon::Initialize();
 	}

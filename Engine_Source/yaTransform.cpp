@@ -26,7 +26,6 @@ namespace ya
 	void Transform::LateUpdate()
 	{
 		mWorld = Matrix::Identity;
-
 		Matrix scale = Matrix::CreateScale(mScale);
 
 		Matrix rotation;
@@ -50,12 +49,12 @@ namespace ya
 		if (mParent)
 		{
 			Vector3 vParentScale = mParent->mScale;
+			mCaculatePos += mParent->mPosition;
 			Matrix mParentScale = Matrix::CreateScale(vParentScale);
 			
 			mWorld *= (mParentScale.Invert() * mParent->mWorld) ;
-
-			int a = 0;
 		}
+
 		//CreateRotationX Matrix
 		//XMMATRIX M;
 		//M.m[0][0] = 1.0f;	 M.m[1][0] = 0.0f;		 M.m[2][0] = 0.0f;			M.m[3][0] = 0.0f;

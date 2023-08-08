@@ -33,17 +33,11 @@ namespace ya
 	}
 	void PlayerScript::Update()
 	{
-		Transform* tr = GetOwner()->GetComponent<Transform>();
-		mPos = tr->GetPosition();
+		Transform* tr = GetOwner()->GetComponent <Transform> ();
+		Vector2 vDirection = SceneManager::GetActiveScene()->GetCursorDirectionVector(eCameraType::Main, this->GetOwner());
 
 		mPrevDirection = mDirection;
 		mPrevState = mPlayerState;
-
-		Vector2 playerPos = Vector2(mPos.x, mPos.y);
-		Vector2 cursorPos = Input::GetClientMousePos(eCameraType::Main);
-
-		Vector2 vDirection = cursorPos - playerPos;
-		vDirection.Normalize();
 
 		float radian = atan2f(vDirection.y, vDirection.x);
 		cursorDegree = radian * 180 / PI;
@@ -135,14 +129,8 @@ namespace ya
 
 		if (Input::GetKey(eKeyCode::LBUTTON))
 		{
-			if (mActiveWeapon == nullptr)
-				return;
-			else
-			{
-				WeaponScript* ws = mActiveWeapon->GetComponent<WeaponScript>();
-				if (ws != nullptr)
-					ws->SetAttack();
-			}
+			if (mActiveWeapon != nullptr)
+				mActiveWeapon->SetAttack();
 		}
 	}
 
@@ -208,14 +196,8 @@ namespace ya
 
 		if (Input::GetKey(eKeyCode::LBUTTON))
 		{
-			if (mActiveWeapon == nullptr)
-				return;
-			else
-			{
-				WeaponScript* ws = mActiveWeapon->GetComponent<WeaponScript>();
-				if (ws != nullptr)
-					ws->SetAttack();
-			}
+			if (mActiveWeapon != nullptr)
+				mActiveWeapon->SetAttack();
 		}
 
 	}

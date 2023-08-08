@@ -5,6 +5,7 @@
 #include "yaInput.h"
 #include "yaWeapon.h"
 #include "yaPlayer.h"
+#include "yaSceneManager.h"
 
 namespace ya
 {
@@ -29,13 +30,9 @@ namespace ya
 	void PlayerHand::Update()
 	{
 		Transform* tr = GetComponent<Transform>();
-		Vector3 mplayerPos = tr->GetParent()->GetPosition();
 
-		Vector2 playerPos = Vector2(mplayerPos.x, mplayerPos.y);
-		Vector2 cursorPos = Input::GetClientMousePos(eCameraType::Main);
+		Vector2 vDirection = SceneManager::GetActiveScene()->GetCursorDirectionVector(eCameraType::Main,tr->GetParent()->GetOwner());
 
-		Vector2 vDirection = cursorPos - playerPos;
-		vDirection.Normalize();
 
 		float radian = atan2f(vDirection.y, vDirection.x);
 		float degree = radian * 180 / PI;

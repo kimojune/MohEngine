@@ -80,6 +80,12 @@
     <ClInclude Include="yaGuide.h">
       <Filter>Contents\GameObject\Player</Filter>
     </ClInclude>
+    <ClInclude Include="yaProjectile.h">
+      <Filter>Contents\GameObject\Projectile</Filter>
+    </ClInclude>
+    <ClInclude Include="yaProjectileScript.h">
+      <Filter>Contents\GameObject\Projectile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -157,6 +163,12 @@
     <ClCompile Include="yaWeaponScript.cpp">
       <Filter>Contents\GameObject\Weapon</Filter>
     </ClCompile>
+    <ClCompile Include="yaProjectile.cpp">
+      <Filter>Contents\GameObject\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="yaProjectileScript.cpp">
+      <Filter>Contents\GameObject\Projectile</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Contents">
@@ -197,6 +209,9 @@
     </Filter>
     <Filter Include="Contents\GameObject\Player">
       <UniqueIdentifier>{ed8f1493-4215-4320-9dd0-ec33b6a589b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\GameObject\Projectile">
+      <UniqueIdentifier>{cc43fe1c-0cae-4ba2-9c8f-273325d5617b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

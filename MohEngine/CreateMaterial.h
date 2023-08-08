@@ -335,6 +335,13 @@ namespace ya
 		CreateMaterial(L"AnimatorShader", Rust_Sidearm_idle_001, L"Rust_Sidearm_idle_001_material", eRenderingMode::Transparent);
 #pragma endregion
 
+#pragma region Projectile
+
+	std::shared_ptr<ya::graphics::Texture> rusty_sidearm_projectile_alt_001
+		= Resources::Load<ya::graphics::Texture>(L"rusty_sidearm_projectile_alt_001", L"..\\Resources\\Texture\\Charactor\\The Hunter\\Weapon\\basic\\projectile\\rusty_sidearm_projectile_alt_001.png");
+		CreateMaterial(L"SpriteShader", rusty_sidearm_projectile_alt_001, L"rusty_sidearm_projectile_alt_001_material", eRenderingMode::Transparent);
+
+#pragma endregion
 	}
 
 }
