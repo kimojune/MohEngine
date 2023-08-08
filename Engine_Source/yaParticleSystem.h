@@ -18,7 +18,7 @@ namespace ya
 
 	private:
 		graphics::StructedBuffer* mBuffer;
-		graphics::StructedBuffer* mShaderedBuffer;
+		graphics::StructedBuffer* mSharedBuffer;
 
 		std::shared_ptr<ParticleShader> mCS;
 

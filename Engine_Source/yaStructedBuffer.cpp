@@ -16,7 +16,7 @@ namespace ya::graphics
 	StructedBuffer::~StructedBuffer()
 	{
 	}
-	bool StructedBuffer::Create(UINT size, UINT stride, eViewType type, void* data)
+	bool StructedBuffer::Create(UINT size, UINT stride, eViewType type, void* data, bool cpuAccess)
 	{
 		mType = type;
 
@@ -26,8 +26,8 @@ namespace ya::graphics
 		desc.ByteWidth = mSize * stride;
 		desc.StructureByteStride = mSize;
 
-		desc.Usage = D3D11_USAGE_DYNAMIC;
-		desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		desc.Usage = D3D11_USAGE_DEFAULT;
+		desc.CPUAccessFlags = 0;
 		desc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
 		desc.MiscFlags = D3D11_RESOURCE_MISC_FLAG::D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
 
@@ -69,6 +69,24 @@ namespace ya::graphics
 			if (!GetDevice()->CreateUnordedAccessView(buffer.Get(), &uavDesc, mUAV.GetAddressOf()))
 				return false;
 		}
+
+		if (cpuAccess)
+			CreateRWBuffer();
+
+		return true;
+	}
+	bool StructedBuffer::CreateRWBuffer()
+	{
+		D3D11_BUFFER_DESC wDesc(desc);
+
+		wDesc.MiscFlags = D3D11_RESOURCE_MISC_FLAG::D3D11_RESOURCE_MISC_BUFFER_STRUCTURED;
+		wDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_SHADER_RESOURCE;
+		wDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
+		wDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
+
+		if (GetDevice()->CreateBuffer(mWriteBuffer.GetAddressOf(), &wDesc, nullptr))
+			return false;
+
 		return true;
 	}
 	void StructedBuffer::SetData(void* data, UINT buffercount)
@@ -76,7 +94,18 @@ namespace ya::graphics
 		if (mStride < buffercount)
 			Create(mSize, buffercount, mType, data);
 		else
-			GetDevice()->BindBuffer(buffer.Get(), data, mSize * buffercount);
+			GetDevice()->BindBuffer(mWriteBuffer.Get(), data, mSize * buffercount);
+
+		GetDevice()->CopyResource(buffer.Get(), mWriteBuffer.Get());
+	}
+	void StructedBuffer::GetData(void* data, UINT size)
+	{
+		GetDevice()->CopyResource(mReadBuffer.Get(), buffer.Get());
+
+		if (size == 0)
+			GetDevice()->BindBuffer(mReadBuffer.Get(), data, mSize * mStride);
+		else
+			GetDevice()->BindBuffer(mReadBuffer.Get(), data, size);
 	}
 	void StructedBuffer::BindSRV(eShaderStage stage, UINT slot)
 	{

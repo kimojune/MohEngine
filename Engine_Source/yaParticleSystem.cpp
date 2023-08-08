@@ -48,15 +48,24 @@ namespace ya
 
 			particles[i].position = pos;
 			particles[i].speed = 1.0f;
-			particles[i].active = 1;
+			particles[i].active = 0;
 		}
 
 		mBuffer = new graphics::StructedBuffer();
 		mBuffer->Create(sizeof(Particle), 1000, eViewType::UAV, particles);
-		//mBuffer->SetData(particles, 100);
+
+		mSharedBuffer = new graphics::StructedBuffer();
+		mSharedBuffer->Create(sizeof(Particle), 1, eViewType::UAV, nullptr, true);
+		//ParticleShared shareData = {};
+		//shareData.sharedActiveCount = 1000;
+		//mSharedBuffer->SetData(&shareData, 1);
 	}
 	ParticleSystem::~ParticleSystem()
 	{
+		mBuffer = nullptr;
+		mSharedBuffer = nullptr;
+		delete mBuffer;
+		delete mSharedBuffer;
 	}
 	void ParticleSystem::Initialize()
 	{
@@ -66,7 +75,28 @@ namespace ya
 	}
 	void ParticleSystem::LateUpdate()
 	{
+		float AliveTime = 1.0f / 1.0f;
+		mTime += Time::DeltaTime();
+
+		if (mTime > AliveTime)
+		{
+			float f = (mTime / AliveTime);
+			UINT AliveCount = (UINT)f;
+			mTime = f - floor(f);
+
+			ParticleShared shareData = {};
+			shareData.sharedActiveCount = 2;
+			mSharedBuffer->SetData(&shareData, 1);
+		}
+		else
+		{
+			ParticleShared shareData = {};
+			shareData.sharedActiveCount = 0;
+			mSharedBuffer->SetData(&shareData, 1);
+		}
+
 		mCS->SetParticleBuffer(mBuffer);
+		mCS->SetSharedBuffer(mSharedBuffer);
 		mCS->OnExcute();
 	}
 	void ParticleSystem::Render()

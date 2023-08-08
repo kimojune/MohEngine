@@ -360,7 +360,7 @@ namespace ya::renderer
 
 		// light structed Buffer
 		lightsBuffer = new StructedBuffer();
-		lightsBuffer->Create(sizeof LightAttribute, 2, eViewType::SRV, nullptr);
+		lightsBuffer->Create(sizeof LightAttribute, 2, eViewType::SRV, nullptr, true);
 	}
 
 	void LoadShader()
