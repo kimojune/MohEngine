@@ -97,18 +97,18 @@ namespace ya::graphics
 		if (extension == L".dds" || extension == L".DDS")
 		{
 			if (FAILED(LoadFromDDSFile(path.c_str(), DDS_FLAGS::DDS_FLAGS_NONE, nullptr, mImage)))
-				return S_FALSE;
+				return E_FAIL;
 		}
 		else if (extension == L".tga" || extension == L".TGA")
 		{
 			if (FAILED(LoadFromTGAFile(path.c_str(), nullptr, mImage)))
-				return S_FALSE;
+				return E_FAIL;
 		}
 		else // WIC (png, jpg, jpeg, bmp )
 		{
 			//if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_NONE, nullptr, mImage)))
 			if (FAILED(LoadFromWICFile(path.c_str(), WIC_FLAGS::WIC_FLAGS_IGNORE_SRGB, nullptr, mImage)))
-				return S_FALSE;
+				return E_FAIL;
 		}
 
 		CreateShaderResourceView
