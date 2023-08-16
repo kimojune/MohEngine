@@ -100,6 +100,21 @@
     <Filter Include="Resource\Shader\CS">
       <UniqueIdentifier>{d7a31d09-f854-41cd-a5ba-4bd6017d741e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Shader\CS\Basic">
+      <UniqueIdentifier>{7c453698-0238-488c-92cf-ee0e23009473}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader\CS\Paint">
+      <UniqueIdentifier>{7b1dfc79-cea7-4a86-abb9-9c29658cb1c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader\CS\Particle">
+      <UniqueIdentifier>{93d81ac3-e6a8-46f6-9eab-00cc50589cde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameObject\Component\ParticleSystem">
+      <UniqueIdentifier>{5635427a-1352-4d1c-8ad3-1cfeb378bba1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\StructedBuffer">
+      <UniqueIdentifier>{d479cbe6-8775-4e0f-b158-2d16618cc14c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
@@ -195,13 +210,21 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaLight.cpp">
       <Filter>GameObject\Component\Light</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp">
-      <Filter>Resource\Shader\CS</Filter>
+      <Filter>Resource\Shader\CS\Basic</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaPaintShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaParticleSystem.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaParticleShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaPaintShader.cpp">
+      <Filter>Resource\Shader\CS\Paint</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaParticleShader.cpp">
+      <Filter>Resource\Shader\CS\Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaParticleSystem.cpp">
+      <Filter>GameObject\Component\ParticleSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp">
+      <Filter>Graphics\StructedBuffer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h">
@@ -312,13 +335,21 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaLight.h">
       <Filter>GameObject\Component\Light</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h">
-      <Filter>Resource\Shader\CS</Filter>
+      <Filter>Resource\Shader\CS\Basic</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaPaintShader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaParticleSystem.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaParticleShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaPaintShader.h">
+      <Filter>Resource\Shader\CS\Paint</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaParticleShader.h">
+      <Filter>Resource\Shader\CS\Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaParticleSystem.h">
+      <Filter>GameObject\Component\ParticleSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h">
+      <Filter>Graphics\StructedBuffer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)yaMath.inl">
