@@ -5,11 +5,11 @@
 namespace ya
 {
 	class PlayerHand;
-	class Player : public GameObject
+	class Gungeoneer : public GameObject
 	{
 	public:
-		Player();
-		~Player();
+		Gungeoneer();
+		~Gungeoneer();
 
 		struct PlayerInfo
 		{

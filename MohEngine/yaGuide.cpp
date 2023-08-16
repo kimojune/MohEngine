@@ -53,18 +53,18 @@ namespace ya
 		rust_sidearm->Initialize();
 		mWeapons.push_back(rust_sidearm);
 
-		Player::Initialize();
+		Gungeoneer::Initialize();
 	}
 	void Guide::Update()
 	{
-		Player::Update();
+		Gungeoneer::Update();
 	}
 	void Guide::LateUpdate()
 	{
-		Player::LateUpdate();
+		Gungeoneer::LateUpdate();
 	}
 	void Guide::Render()
 	{
-		Player::Render();
+		Gungeoneer::Render();
 	}
 }

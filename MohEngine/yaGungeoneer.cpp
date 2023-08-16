@@ -1,4 +1,4 @@
-#include "yaPlayer.h"
+#include "yaGungeoneer.h"
 #include "yaMeshRenderer.h"
 #include "yaResources.h"
 #include "yaTransform.h"
@@ -13,17 +13,16 @@
 
 namespace ya
 {
-	static GameObject* mActivePlayer = nullptr;
 
-	Player::Player()
+	Gungeoneer::Gungeoneer()
 	{
 		SetName(L"Player");
 
 	}
-	Player::~Player()
+	Gungeoneer::~Gungeoneer()
 	{
 	}
-	void Player::Initialize()
+	void Gungeoneer::Initialize()
 	{
 		Transform* tr = GetComponent<Transform>();
 
@@ -47,20 +46,20 @@ namespace ya
 		//Transform* weapontr = weapon->GetComponent<Transform>();
 		//weapontr->SetParent(handtr);
 	}
-	void Player::Update()
+	void Gungeoneer::Update()
 	{
 		GameObject::Update();
 	}
-	void Player::LateUpdate()
+	void Gungeoneer::LateUpdate()
 	{
 		GameObject::LateUpdate();
 	}
-	void Player::Render()
+	void Gungeoneer::Render()
 	{
 		GameObject::Render();
 
 	}
-	void Player::SetAttack()
+	void Gungeoneer::SetAttack()
 	{
 		
 	}

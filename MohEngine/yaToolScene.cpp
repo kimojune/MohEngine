@@ -15,7 +15,7 @@
 #include "yaAnimator.h"
 #include "yaTexture.h"
 #include "yaBackGround.h"
-#include "yaPlayer.h"
+#include "yaGungeoneer.h"
 #include "yaMaterial.h"
 #include "yaComputeShader.h"
 #include "yaPaintShader.h"
@@ -81,12 +81,12 @@ namespace ya
 
 		//BackGround* matlas = new BackGround(L"mTileAtlas_material");
 
-		//Player* Hunter = object::Instantiate<Player>(eLayerType::Player);
+		//Gungeoneer* Hunter = object::Instantiate<Gungeoneer>(eLayerType::Gungeoneer);
 		//Hunter->Initialize();
-		//GameObject* mGameObject = object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);;
+		//GameObject* mGameObject = object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Gungeoneer);;
 		//mGameObject->SetName(L"atlas");
 
-		//AddGameObject(eLayerType::Player, mGameObject);
+		//AddGameObject(eLayerType::Gungeoneer, mGameObject);
 		//MeshRenderer* mr = mGameObject->AddComponent<MeshRenderer>();%
 		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
 		//mr->SetMaterial(Resources::Find<Material>(L"mTileAtlas_material"));
@@ -96,7 +96,7 @@ namespace ya
 		//mTileatls.get()->CreateTextureSheet(L"TileAtlas", L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Tileset_Forge");
 		//{
 		//	GameObject* player
-		//		= object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Player);
+		//		= object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Gungeoneer);
 
 		//	player->SetName(L"Zelda");
 

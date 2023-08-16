@@ -62,7 +62,7 @@
     <ClInclude Include="yaInventoryScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="yaPlayer.h">
+    <ClInclude Include="yaGungeoneer.h">
       <Filter>Contents\GameObject\Player</Filter>
     </ClInclude>
     <ClInclude Include="yaWeapon.h">
@@ -145,7 +145,7 @@
     <ClCompile Include="yaInventoryScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="yaPlayer.cpp">
+    <ClCompile Include="yaGungeoneer.cpp">
       <Filter>Contents\GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="yaWeapon.cpp">

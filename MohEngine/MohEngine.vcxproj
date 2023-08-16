@@ -164,7 +164,7 @@
     <ClInclude Include="yaInventoryScene.h" />
     <ClInclude Include="yaLobbyScene.h" />
     <ClInclude Include="yaMainCamera.h" />
-    <ClInclude Include="yaPlayer.h" />
+    <ClInclude Include="yaGungeoneer.h" />
     <ClInclude Include="yaPlayerScript.h" />
     <ClInclude Include="yaPlayScene.h" />
     <ClInclude Include="yaSetUpMenuScene.h" />
@@ -194,7 +194,7 @@
     <ClCompile Include="yaInventoryScene.cpp" />
     <ClCompile Include="yaLobbyScene.cpp" />
     <ClCompile Include="yaMainCamera.cpp" />
-    <ClCompile Include="yaPlayer.cpp" />
+    <ClCompile Include="yaGungeoneer.cpp" />
     <ClCompile Include="yaPlayerScript.cpp" />
     <ClCompile Include="yaPlayScene.cpp" />
     <ClCompile Include="yaSetUpMenuScene.cpp" />

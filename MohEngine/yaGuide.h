@@ -1,10 +1,10 @@
 #pragma once
-#include "yaPlayer.h"
+#include "yaGungeoneer.h"
 
 namespace ya
 {
 	class Weapon;
-class Guide : public Player
+class Guide : public Gungeoneer
 {
 public:
 	Guide();

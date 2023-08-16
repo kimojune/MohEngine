@@ -1,5 +1,5 @@
 #include "yaLobbyScene.h"
-#include "yaPlayer.h"
+#include "yaGungeoneer.h"
 #include "yaDog.h"
 #include "yaObject.h"
 #include "yaBackGround.h"

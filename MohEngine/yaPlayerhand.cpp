@@ -4,7 +4,7 @@
 #include "yaResources.h"
 #include "yaInput.h"
 #include "yaWeapon.h"
-#include "yaPlayer.h"
+#include "yaGungeoneer.h"
 #include "yaSceneManager.h"
 
 namespace ya
@@ -50,7 +50,7 @@ namespace ya
 			isFlip = true;
 		}
 
-		Player* player = (Player*)tr->GetParent()->GetOwner();
+		Gungeoneer* player = (Gungeoneer*)tr->GetParent()->GetOwner();
 
 		mWeapon = player->GetActiveWeapon();
 		Transform* weapontr = mWeapon->GetComponent<Transform>();
