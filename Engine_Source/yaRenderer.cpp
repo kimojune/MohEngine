@@ -358,6 +358,10 @@ namespace ya::renderer
 		constantBuffer[(UINT)eCBType::Animator] = new ya::graphics::ConstantBuffer(eCBType::Animator);
 		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 
+		//Noise Buffer
+		constantBuffer[(UINT)eCBType::Noise] = new ya::graphics::ConstantBuffer(eCBType::Noise);
+		constantBuffer[(UINT)eCBType::Noise]->Create(sizeof(NoiseCB));
+
 		// light structed Buffer
 		lightsBuffer = new StructedBuffer();
 		lightsBuffer->Create(sizeof LightAttribute, 2, eViewType::SRV, nullptr, true);
@@ -431,8 +435,9 @@ namespace ya::renderer
 		ya::Resources::Insert(L"PaintTexuture", uavTexture);
 
 		std::shared_ptr<Texture> particle = std::make_shared<Texture>();
-		Resources::Load<Texture>(L"CartoonSmoke", L"..\\Resources\\particle\\CartoonSmoke.png");
+		Resources::Load<Texture>(L"CartoonSmoke", L"..\\Resources\\particle\\Default-Particle.png");
 
+		Resources::Load<Texture>(L"Noise04", L"..\\Resources\\Noise\\PerlinHalfRough.png");
 
 	}
 	void LoadMaterial()
@@ -512,10 +517,36 @@ namespace ya::renderer
 		lightsBuffer->BindSRV(eShaderStage::VS, 13);
 		lightsBuffer->BindSRV(eShaderStage::PS, 13);
 	}
+
+	void BindNoiseTexture()
+	{
+		std::shared_ptr<Texture> texture
+			= Resources::Find<Texture>(L"Noise04");
+
+		texture->BindShaderResource(eShaderStage::VS, 15);
+		texture->BindShaderResource(eShaderStage::HS, 15);
+		texture->BindShaderResource(eShaderStage::DS, 15);
+		texture->BindShaderResource(eShaderStage::GS, 15);
+		texture->BindShaderResource(eShaderStage::PS, 15);
+		texture->BindShaderResource(eShaderStage::CS, 15);
+
+		ConstantBuffer* cb = constantBuffer[(UINT)eCBType::Noise];
+		NoiseCB data = {};
+		data.size.x = texture->GetWidth();
+		data.size.y = texture->GetHeight();
+
+		cb->SetData(&data);
+		cb->Bind(eShaderStage::VS);
+		cb->Bind(eShaderStage::GS);
+		cb->Bind(eShaderStage::PS);
+		cb->Bind(eShaderStage::CS);
+	}
+
 	void Render()
 	{
+		BindNoiseTexture();
 		BindLights();
-
+		
 		for (Camera* cam : cameras)
 		{
 			if (cam == nullptr)

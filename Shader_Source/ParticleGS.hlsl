@@ -24,13 +24,13 @@ void main(point VSOut In[1], inout TriangleStream<GSOut> output)
     
     float3 worldPos = (In[0].LocalPos.xyz) + particles[In[0].Instance].position.xyz;
     float3 viewPos = mul(float4(worldPos, 1.0f), ViewMatrix).xyz;
-    
+    float3 mScale = float3(5.0f, 5.0f, 0.0f);
     float3 NewPos[4] =
     {
-        viewPos - float3(-0.5f, 0.5f, 0.0f) * float3(1.0f, 1.0f, 1.0f),
-        viewPos - float3(0.5f, 0.5f, 0.0f) * float3(1.0f, 1.0f, 1.0f),
-        viewPos - float3(0.5f, -0.5f, 0.0f) * float3(1.0f, 1.0f, 1.0f),
-        viewPos - float3(-0.5f, -0.5f, 0.0f) * float3(1.0f, 1.0f, 1.0f)
+        viewPos - float3(-0.5f, 0.5f, 0.0f) * mScale,
+        viewPos - float3(0.5f, 0.5f, 0.0f) * mScale,
+        viewPos - float3(0.5f, -0.5f, 0.0f) * mScale,
+        viewPos - float3(-0.5f, -0.5f, 0.0f) * mScale
 
     };
     

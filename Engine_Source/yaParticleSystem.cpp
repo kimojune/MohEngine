@@ -31,15 +31,15 @@ namespace ya
 		for (size_t i = 0; i < 1000; i++)
 		{
 			Vector4 pos = Vector4::Zero;
-			pos.x += rand() % 500;
-			pos.y += rand() % 300;
+			//pos.x += rand() % 500;
+			//pos.y += rand() % 300;
 
-			int sign = rand() % 2;
-			if (sign == 0)
-				pos.x *= -1.0f;
-			sign = rand() % 2;
-			if (sign == 0)
-				pos.y *= -1.0f;
+			//int sign = rand() % 2;
+			//if (sign == 0)
+			//	pos.x *= -1.0f;
+			//sign = rand() % 2;
+			//if (sign == 0)
+			//	pos.y *= -1.0f;
 
 			particles[i].direction =
 				Vector4(cosf((float)i * (XM_2PI / (float)1000))

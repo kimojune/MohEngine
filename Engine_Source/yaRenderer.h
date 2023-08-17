@@ -17,14 +17,6 @@ namespace ya::renderer
 		Vector2 uv;
 	};
 
-	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
-	{
-		UINT elementCount;
-		float elpasedTime;
-		int padd;
-		int padd2;
-	};
-
 	CBUFFER(TransformCB, CBSLOT_TRANSFORM)
 	{
 		Matrix mWorld;
@@ -46,8 +38,21 @@ namespace ya::renderer
 		Vector2 spriteOffset;
 		Vector2 outputSize;
 		UINT animationType;
+
 	};
 
+	CBUFFER(ParticleCB, CBSLOT_PARTICLE)
+	{
+		UINT elementCount;
+		float elpasedTime;
+		float deltaTime;
+		int padd2;
+	};
+
+	CBUFFER(NoiseCB, CBSLOT_NOISE)
+	{
+		Vector4 size;
+	};
 
 	extern Vertex vertexes[];
 	extern ya::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
