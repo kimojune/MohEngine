@@ -18,12 +18,12 @@ namespace ya
 		virtual void Render() override;
 
 		bool IsFlip() { return isFlip; }
-		void SetWeapon(Weapon* weapon) { mWeapon = weapon; }
 		void SetAttack();
 
+		std::vector <Weapon*> mWeapons;
 	private:
 		bool isFlip;
 		bool prevFlip;
-		Weapon* mWeapon;
+		Weapon* mActiveWeapon;
 	};
 }

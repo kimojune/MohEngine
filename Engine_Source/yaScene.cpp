@@ -55,7 +55,7 @@ namespace ya
 	Vector2 Scene::GetCursorDirectionVector(eCameraType type, GameObject* obj)
 	{
 		Transform* tr = obj->GetComponent<Transform>();
-		Vector3 objPos = tr->GetPosition();
+		Vector3 objPos = tr->GetCaculatePos();
 
 		Vector2 objPos2 = Vector2(objPos.x, objPos.y);
 		Vector2 cursorPos = Input::GetClientMousePos(type);

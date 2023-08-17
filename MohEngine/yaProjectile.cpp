@@ -19,8 +19,8 @@ namespace ya
 	void Projectile::Update()
 	{
 		Vector2 vector = directionVector;
-
 		Transform* tr = GetComponent<Transform>();
+
 		GameObject::Update();
 	}
 	void Projectile::LateUpdate()
@@ -40,6 +40,5 @@ namespace ya
 		Transform* tr = GetComponent<Transform>();
 		tr->SetPosition(pos);
 		mScript->SetDirection(Vector2::Zero);
-
 	}
 }

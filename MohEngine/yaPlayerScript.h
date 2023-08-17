@@ -3,7 +3,7 @@
 
 namespace ya
 {
-	class Weapon;
+	class PlayerHand;
 	class PlayerScript : public Script
  	{
 	public:
@@ -25,9 +25,10 @@ namespace ya
 		void Dodge();
 		void PitFall();
 		void Death();
+		
+		void SetHand(PlayerHand* hand) { mHand = hand; }
 
 		void PlayAnimationDir(const std::wstring& name, eDirection direction, bool loop);
-		void SetWeapon(Weapon* weapon) {mActiveWeapon = weapon;}
 		void StartDodge();
 		void CompleteDodge();
 
@@ -40,8 +41,8 @@ namespace ya
 		
 		ePlayerState mPrevState;
 		eDirection mPrevDirection;
-
-		Weapon* mActiveWeapon;
+		
+		PlayerHand* mHand;
 
 		Vector3 mPos;
 		float cursorDegree;

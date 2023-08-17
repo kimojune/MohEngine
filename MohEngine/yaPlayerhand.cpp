@@ -24,7 +24,10 @@ namespace ya
 		
 		tr->SetScale(mr->GetWidth(), mr->GetHeight(), 1.0f);
 		tr->SetPosition(8.0f, -8.0f, 0.0f);
-
+		
+		mActiveWeapon = mWeapons[0];
+		Transform* wptr = mActiveWeapon->GetComponent<Transform>();
+		wptr->SetParent(tr);
 		GameObject::Initialize();
 	}
 	void PlayerHand::Update()
@@ -50,16 +53,9 @@ namespace ya
 			isFlip = true;
 		}
 
-		Gungeoneer* player = (Gungeoneer*)tr->GetParent()->GetOwner();
-
-		mWeapon = player->GetActiveWeapon();
-		Transform* weapontr = mWeapon->GetComponent<Transform>();
-
-		weapontr->SetParent(tr);
-
-
-		if (prevFlip != isFlip)
-			mWeapon->IsFlip(isFlip);
+	
+		if (prevFlip != isFlip && mActiveWeapon)
+			mActiveWeapon->IsFlip(isFlip);
 
 		prevFlip = isFlip;
 
@@ -75,5 +71,6 @@ namespace ya
 	}
 	void PlayerHand::SetAttack()
 	{
+		mActiveWeapon->SetAttack();
 	}
 }

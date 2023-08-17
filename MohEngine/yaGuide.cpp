@@ -5,6 +5,7 @@
 #include "yaResources.h"
 #include "yaRust_Sidearm.h"
 #include "yaObject.h"
+#include "yaPlayerHand.h"
 namespace ya
 {
 	Guide::Guide()
@@ -49,10 +50,13 @@ namespace ya
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\back_right", 0.1f);
 		at->CreateAnimations(L"..\\Resources\\Texture\\Charactor\\The Hunter\\Guide\\dodge\\front_right", 0.1f);
 
+		mHand = object::Instantiate<PlayerHand>(eLayerType::Player);
+		
 		rust_sidearm = new Rust_Sidearm;
 		rust_sidearm->Initialize();
-		mWeapons.push_back(rust_sidearm);
-
+		
+		mHand->mWeapons.push_back(rust_sidearm);
+		
 		Gungeoneer::Initialize();
 	}
 	void Guide::Update()

@@ -25,8 +25,10 @@ extern ya::Application application;
 
 namespace ya
 {
+	static Gungeoneer* mGungeoneer = nullptr;
+	static MainCamera* mMainCamera = nullptr;
+
 	PlayScene::PlayScene()
-		:mMainCamera(nullptr)
 	{
 	}
 	PlayScene::~PlayScene()
@@ -36,12 +38,12 @@ namespace ya
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Companions, true);
 
-		Guide* Hunter = object::Instantiate<Guide>(eLayerType::Player);
-		Hunter->Initialize();
+		mGungeoneer = object::Instantiate<Guide>(eLayerType::Player);
+		mGungeoneer->Initialize();
 		
 		mMainCamera = new MainCamera();
 		Camera* maincam = mMainCamera->GetComponent<Camera>();
-		mMainCamera->SetTarget(Hunter);
+		mMainCamera->SetTarget(mGungeoneer);
 		
 		float width = application.GetWidth() ;
 		float height = application.GetHeight() ;

@@ -49,7 +49,6 @@ namespace ya
 		if (mParent)
 		{
 			Vector3 vParentScale = mParent->mScale;
-			mCaculatePos += mParent->mPosition;
 			Matrix mParentScale = Matrix::CreateScale(vParentScale);
 			
 			mWorld *= (mParentScale.Invert() * mParent->mWorld) ;
@@ -97,5 +96,19 @@ namespace ya
 		cb->Bind(eShaderStage::DS);
 		cb->Bind(eShaderStage::GS);
 		cb->Bind(eShaderStage::PS);
+	}
+
+	Vector3 Transform::GetCaculatePos()
+	{
+		mCaculatePos = mPosition;
+		Transform* temp = mParent;
+
+		while (temp)
+		{
+			mCaculatePos += temp->mPosition;
+			temp = temp->GetParent();
+		}
+
+		return mCaculatePos;
 	}
 }

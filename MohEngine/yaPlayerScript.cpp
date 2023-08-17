@@ -5,8 +5,7 @@
 #include "yaGameObject.h"
 #include "yaAnimator.h"
 #include "yaSceneManager.h"
-#include "yaWeapon.h"
-#include "yaWeaponScript.h"
+#include "yaPlayerHand.h"
 namespace ya
 {
 	void PlayerScript::Initialize()
@@ -33,7 +32,7 @@ namespace ya
 	}
 	void PlayerScript::Update()
 	{
-		Transform* tr = GetOwner()->GetComponent <Transform> ();
+		Transform* tr = GetOwner()->GetComponent <Transform>();
 		Vector2 vDirection = SceneManager::GetActiveScene()->GetCursorDirectionVector(eCameraType::Main, this->GetOwner());
 
 		mPrevDirection = mDirection;
@@ -129,8 +128,8 @@ namespace ya
 
 		if (Input::GetKey(eKeyCode::LBUTTON))
 		{
-			if (mActiveWeapon != nullptr)
-				mActiveWeapon->SetAttack();
+			if (mHand)
+				mHand->SetAttack();
 		}
 	}
 
@@ -196,8 +195,8 @@ namespace ya
 
 		if (Input::GetKey(eKeyCode::LBUTTON))
 		{
-			if (mActiveWeapon != nullptr)
-				mActiveWeapon->SetAttack();
+			if (mHand)
+				mHand->SetAttack();
 		}
 
 	}

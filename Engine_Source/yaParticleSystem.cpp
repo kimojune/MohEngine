@@ -59,7 +59,10 @@ namespace ya
 	}
 	ParticleSystem::~ParticleSystem()
 	{
-
+		delete mSharedBuffer;
+		delete mBuffer;
+		mSharedBuffer = nullptr;
+		mBuffer = nullptr;
 	}
 	void ParticleSystem::Initialize()
 	{

@@ -4,6 +4,7 @@
 #include "yaObject.h"
 #include "yaSceneManager.h"
 #include "yaProjectile.h"
+#include "yaPlayScene.h"
 
 namespace ya
 {
@@ -52,9 +53,14 @@ namespace ya
 	void Weapon::SetAttack()
 	{
 		Transform* tr = GetComponent<Transform>();
-
+		
 		mScript->SetAttack();
-		mProjectile->SetPos(Vector3::Zero);
+		mProjectile->SetPos(tr->GetParent()->GetCaculatePos());
+
+
+		Vector3 pos = mProjectile->GetComponent<Transform>()->GetPosition();
+
+
 		mProjectile->SetDirection(SceneManager::
 			GetActiveScene()->GetCursorDirectionVector(eCameraType::Main, this));
 	}

@@ -1,9 +1,13 @@
 #pragma once
 #include "..\Engine_SOURCE\yaScene.h"
-
 namespace ya
 {
 	class MainCamera;
+	class Gungeoneer;
+
+	extern Gungeoneer* mActivePlayer;
+	extern MainCamera* mMainCamera;
+
 	class PlayScene : public Scene
 	{
 	public:
@@ -19,8 +23,9 @@ namespace ya
 		virtual void OnExit() override;
 
 		float GetCameraSize() override;
-
+		
 	private:
-		MainCamera* mMainCamera;
+
+		
 	};
 }

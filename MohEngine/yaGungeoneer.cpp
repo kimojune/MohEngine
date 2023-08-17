@@ -32,19 +32,11 @@ namespace ya
 		cd->SetType(eColliderType::Rect);
 		
 		PlayerScript* mScript = AddComponent<PlayerScript>();
-
-		hand = object::Instantiate<PlayerHand>(eLayerType::Player);
-		Transform* handtr = hand->GetComponent<Transform>();
+		Transform* handtr = mHand->GetComponent<Transform>();
 		handtr->SetParent(tr);
-		hand->Initialize();
+		mHand->Initialize();
 
-		mActiveWeapon = mWeapons[0];
-		//mActiveWeapon->AddComponent<WeaponScript>();
-		mScript->SetWeapon(mActiveWeapon);
-		//hand->SetWeapon(weapon);
-		
-		//Transform* weapontr = weapon->GetComponent<Transform>();
-		//weapontr->SetParent(handtr);
+		mScript->SetHand(mHand);
 	}
 	void Gungeoneer::Update()
 	{

@@ -25,11 +25,8 @@ namespace ya
 		virtual void Render() override;
 
 		void SetAttack();
-		Weapon* GetActiveWeapon() { return mActiveWeapon; }
-
+		
 	protected:
-		std::vector<Weapon*>mWeapons;
-		PlayerHand* hand;
-		Weapon* mActiveWeapon;
+		PlayerHand* mHand;
 	};
 }

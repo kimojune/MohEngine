@@ -36,8 +36,7 @@ public:
 	Transform* GetParent() { return mParent; }
 	Matrix& GetMatrix() { return mWorld; }
 
-	Vector3 GetCaculatePos() { return mCaculatePos; }
-
+	Vector3 GetCaculatePos();
 private:
 	Vector3 mPosition;
 	Vector3 mRotation;
