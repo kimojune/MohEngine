@@ -31,15 +31,6 @@ namespace ya
 		for (size_t i = 0; i < 1000; i++)
 		{
 			Vector4 pos = Vector4::Zero;
-			//pos.x += rand() % 500;
-			//pos.y += rand() % 300;
-
-			//int sign = rand() % 2;
-			//if (sign == 0)
-			//	pos.x *= -1.0f;
-			//sign = rand() % 2;
-			//if (sign == 0)
-			//	pos.y *= -1.0f;
 
 			particles[i].direction =
 				Vector4(cosf((float)i * (XM_2PI / (float)1000))
@@ -47,8 +38,9 @@ namespace ya
 					, 0.0f, 1.0f);
 
 			particles[i].position = pos;
-			particles[i].speed = 1.0f;
+			particles[i].speed = 2.0f;
 			particles[i].active = 0;
+			particles[i].endTime = 4.0f;
 		}
 
 		mBuffer = new graphics::StructedBuffer();
@@ -82,7 +74,7 @@ namespace ya
 			mTime = f - floor(f);
 
 			ParticleShared shareData = {};
-			shareData.sharedActiveCount = 2;
+			shareData.sharedActiveCount = 5;
 			mSharedBuffer->SetData(&shareData, 1);
 		}
 		else

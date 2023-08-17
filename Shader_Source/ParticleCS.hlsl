@@ -9,7 +9,7 @@ void main(uint3 DTid : SV_DispatchThreadID)
         return;
     
        if(ParticleBuffer[DTid.x].active == 0)
-        {
+       {
             while (0 < ParticleSharedBuffer[0].ActiveSharedCount)
             {
                 int origin = ParticleSharedBuffer[0].ActiveSharedCount;
@@ -45,16 +45,27 @@ void main(uint3 DTid : SV_DispatchThreadID)
             );
             
             ParticleBuffer[DTid.x].position.xyz = vRandom.xyz * 50.0f;
-            ParticleBuffer[DTid.x].position.x -= 0.65f;
-            ParticleBuffer[DTid.x].position.y -= 1.4f;
+            ParticleBuffer[DTid.x].position.x -= 10.0f;
+            ParticleBuffer[DTid.x].position.y -= 20.0f;
             ParticleBuffer[DTid.x].position.z = 0.0f;
+          
+            ParticleBuffer[DTid.x].speed *= vRandom * 5.0f;
+            ParticleBuffer[DTid.x].endTime *= vRandom * elapsedTime;
+
         }
-    }
+        
+        }
     
     else
     {
         ParticleBuffer[DTid.x].position 
         += ParticleBuffer[DTid.x].direction * ParticleBuffer[DTid.x].speed * deltaTime;
+        
+        if (ParticleBuffer[DTid.x].endTime < elapsedTime)
+        {
+            ParticleBuffer[DTid.x].active = 0;
+        }
+
     }
     
 }
