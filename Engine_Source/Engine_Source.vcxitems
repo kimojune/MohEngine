@@ -17,6 +17,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaAudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaAudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaAudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaCollisionManager.cpp" />
@@ -24,6 +27,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaComputeShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaFmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaImage.cpp" />
@@ -56,6 +60,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaAudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaAudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaAudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaCollisionManager.h" />
@@ -63,6 +70,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaComputeShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaEntity.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaFmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaGraphicDevice_Dx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaImage.h" />

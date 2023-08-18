@@ -18,6 +18,7 @@
 #include "yaInput.h"
 #include "yaTilePalatte.h"
 #include "yaLight.h"
+#include "yaAudioListener.h"
 
 using namespace ya;
 extern ya::Application application;
@@ -40,7 +41,8 @@ namespace ya
 
 		mGungeoneer = object::Instantiate<Guide>(eLayerType::Player);
 		mGungeoneer->Initialize();
-		
+		mGungeoneer->AddComponent<AudioListener>();
+
 		mMainCamera = new MainCamera();
 		Camera* maincam = mMainCamera->GetComponent<Camera>();
 		mMainCamera->SetTarget(mGungeoneer);

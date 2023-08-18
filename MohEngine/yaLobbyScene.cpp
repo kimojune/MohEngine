@@ -10,6 +10,9 @@
 #include "yaComputeShader.h"
 #include "yaPaintShader.h"
 #include "yaParticleSystem.h"
+#include "yaAudioListener.h"
+#include "yaAudioClip.h"
+#include "yaAudioSource.h"
 
 namespace ya
 {
@@ -151,6 +154,10 @@ namespace ya
 		tr->SetRotation(Vector3(0.0f, 0.0f, degree));
 		dogcd->SetCenter(Vector2(0.0f, 0.0f));
 		dogcd->SetType(eColliderType::Rect);
+		AudioSource* as = dog->AddComponent<AudioSource>();
+		as->SetClip(Resources::Load<AudioClip>(L"TestSound", L"..\\Resources\\Sound\\0.mp3"));
+		as->Play();
+
 
 		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
 		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");

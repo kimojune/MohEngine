@@ -6,6 +6,7 @@
 #include "..\Engine_SOURCE\yaApplication.h"
 #include "..\Engine_SOURCE\yaRenderer.h"
 #include "..\Engine_SOURCE\yaResources.h"
+#include "..\Engine_Source\yaFmod.h"
 #include "LoadScenes.h"
 #include "CreateMaterial.h"
 #include "yaToolScene.h"
@@ -86,6 +87,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     ya::renderer::Release();
     ya::SceneManager::Release();
+    ya::Fmod::Release();
     gui::Editor::Release();
 	return (int)msg.wParam;
 }
