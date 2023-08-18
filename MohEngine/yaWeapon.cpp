@@ -12,7 +12,8 @@ namespace ya
 		: mMesh(NULL)
 		, mMaterial(nullptr)
 		, mInfo{}
-		, mFlip(eFlipType::None)
+		, mMuzzlePos(Vector3::Zero)
+		, isFlip(false)
 	{
 		mProjectile = object::Instantiate<Projectile>(eLayerType::Projectile);
 		mProjectile->Initialize();
@@ -53,24 +54,33 @@ namespace ya
 	void Weapon::SetAttack()
 	{
 		Transform* tr = GetComponent<Transform>();
+		MeshRenderer* mr = GetComponent<MeshRenderer>();
 		
 		mScript->SetAttack();
-		mProjectile->SetPos(tr->GetParent()->GetCaculatePos());
+		Vector3 handPos = tr->GetParent()->GetCaculatePos();
+		Vector3 handRotation = tr->GetParent()->GetRotation();
 
+		float mRadian = handRotation.z;
+		float mLength = sqrtf(mr->GetWidth() * mr->GetWidth() + mr->GetHeight() * mr->GetHeight());
+		
+		mMuzzlePos = Vector3((handPos.x + mLength * cos(mRadian))
+			, (handPos.y + mLength * sin(mRadian)), -5.0f);
 
-		Vector3 pos = mProjectile->GetComponent<Transform>()->GetPosition();
-
-
-		mProjectile->SetDirection(SceneManager::
-			GetActiveScene()->GetCursorDirectionVector(eCameraType::Main, this));
+		Vector2 direction =
+			SceneManager::GetActiveScene()->GetCursorDirectionVector(eCameraType::Main, this);
+		//Vector3 caculatePos = Vector3(handPos.x + direction.x * mLength, handPos.y + direction.y * mLength, -5.0f);
+		
+		mProjectile->SetPos(mMuzzlePos);
+		mProjectile->SetDirection(direction);
 	}
 
 	void Weapon::IsFlip(bool flip)
 	{
 		Transform* tr = GetComponent<Transform>();
 		MeshRenderer* mr = GetComponent<MeshRenderer>();
+		isFlip = flip;
 
-		if (flip)
+		if (isFlip)
 		{
 			tr->SetPosition(mr->GetWidth() / 2, -1.0f * mr->GetHeight() / 2, -5.0f);
 			mScript->SetFlip(eFlipType::Y);

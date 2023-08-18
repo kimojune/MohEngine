@@ -77,10 +77,11 @@ namespace ya
 		std::shared_ptr<Material> mMaterial;
 		Projectile* mProjectile;
 
+		bool isFlip;
 		WeaponInfo mInfo;
 		WeaponScript* mScript;
 		Animator* ActiveAnimator;
 
-		eFlipType mFlip;
+		Vector3 mMuzzlePos;
 	};
 }

@@ -35,12 +35,9 @@ namespace ya
 		Transform* tr = GetComponent<Transform>();
 
 		Vector2 vDirection = SceneManager::GetActiveScene()->GetCursorDirectionVector(eCameraType::Main,tr->GetParent()->GetOwner());
-
-
 		float radian = atan2f(vDirection.y, vDirection.x);
 		float degree = radian * 180 / PI;
 		tr->SetRotation(0.0f, 0.0f, radian);
-
 
 		if (-90.0f < degree && 90.0f >= degree)
 		{
@@ -53,7 +50,6 @@ namespace ya
 			isFlip = true;
 		}
 
-	
 		if (prevFlip != isFlip && mActiveWeapon)
 			mActiveWeapon->IsFlip(isFlip);
 
