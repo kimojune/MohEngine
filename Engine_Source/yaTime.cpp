@@ -1,6 +1,7 @@
 #include "yaTime.h"
 #include "yaApplication.h"
 #include "yaInput.h"
+#include "yaFontWrapper.h"
 
 extern ya::Application application;
 
@@ -56,6 +57,7 @@ namespace ya
 			, mainCursorPos.x, mainCursorPos.y
 			, UICursorPos.x, UICursorPos.y);
 
+		FontWrapper::DrawFont(szFloat, 10.f, 30.f, 20, FONT_RGBA(255, 0, 255, 255));
 		SetWindowText(hWnd, szFloat);
 	}
 }

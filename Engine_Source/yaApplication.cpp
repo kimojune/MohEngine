@@ -5,6 +5,7 @@
 #include "yaSceneManager.h"
 #include "yaCollisionManager.h"
 #include "yaFmod.h"
+#include "yaFontWrapper.h"
 
 namespace ya
 {
@@ -33,6 +34,7 @@ namespace ya
 		Time::Initialize();
 		Input::Initialize();
 		Fmod::Initialize();
+		FontWrapper::Initialize();
 
 		renderer::Initialize();
 		SceneManager::Initialize();
@@ -55,12 +57,12 @@ namespace ya
 	}
 	void Application::Render()
 	{
-		Time::Render();
 
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
 		//SceneManager::Render();
 		renderer::Render();
+		Time::Render();
 	}
 	void Application::Destroy()
 	{

@@ -121,6 +121,9 @@
     <Filter Include="GameObject\Component\Audio">
       <UniqueIdentifier>{7c77d5a4-235e-4ce1-9932-ed975fe443b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Library">
+      <UniqueIdentifier>{f0244b25-3ed9-4d91-af8f-807b2bd32a85}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaEntity.cpp">
@@ -231,7 +234,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)yaStructedBuffer.cpp">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)yaFmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)yaAudioClip.cpp">
       <Filter>Resource\AudioClip</Filter>
     </ClCompile>
@@ -240,6 +242,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)yaAudioSource.cpp">
       <Filter>GameObject\Component\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaFmod.cpp">
+      <Filter>Library</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)yaFontWrapper.cpp">
+      <Filter>Library</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -366,7 +374,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)yaStructedBuffer.h">
       <Filter>Graphics\StructedBuffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)yaFmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)yaAudioClip.h">
       <Filter>Resource\AudioClip</Filter>
     </ClInclude>
@@ -375,6 +382,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)yaAudioSource.h">
       <Filter>GameObject\Component\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaFmod.h">
+      <Filter>Library</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)yaFontWrapper.h">
+      <Filter>Library</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
