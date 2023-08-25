@@ -14,8 +14,8 @@ namespace ya
 
 	void TilePalatte::Intialize()
 	{
-		mImage = Resources::Find<Image>(L"TileAtlas");
-		
+		mImage = Resources::Find<Image>(L"ENV_Tileset_Castle");
+
 	}
 	void TilePalatte::Update()
 	{
@@ -23,14 +23,17 @@ namespace ya
 	void TilePalatte::Render(HDC hdc)
 	{
 	}
-	void TilePalatte::CreateTile(int index, Vector2 pos)
+	void TilePalatte::CreateTile(int index, Vector2 pos, bool isTest)
 	{
-		Vector2 mousPos = Input::GetMousePos();
-		if (mousPos.x >= 1600.0f || mousPos.x <= 0.0f)
-			return;
-		if (mousPos.y >= 900.0f || mousPos.y <= 0.0f)
-			return;
-		
+		if (isTest)
+		{
+			Vector2 mousPos = Input::GetMousePos();
+			if (mousPos.x >= 1600.0f || mousPos.x <= 0.0f)
+				return;
+			if (mousPos.y >= 900.0f || mousPos.y <= 0.0f)
+				return;
+		}
+
 		TileID id;
 		id.x = (INT32)pos.x;
 		id.y = (INT32)pos.y;
@@ -42,15 +45,15 @@ namespace ya
 		Tile* tile = object::Instantiate<Tile>(eLayerType::Tile);
 		tile->InitializeTile(mImage, index);
 		Transform* tr = tile->GetComponent<Transform>();
-		
+
 		Vector3 tilepos = Vector3::Zero;
-		
-		tilepos.x = pos.x * TILE_SIZE_X ;
-		tilepos.y = pos.y * TILE_SIZE_Y ;
+
+		tilepos.x = pos.x * TILE_SIZE_X;
+		tilepos.y = pos.y * TILE_SIZE_Y;
 		tilepos.z = 0.3f;
 
 		tr->SetPosition(tilepos);
-		
+
 		mTiles.insert(std::make_pair(id.id, tile));
 	}
 
@@ -72,7 +75,7 @@ namespace ya
 			return;
 
 		Tile* tile = iter->second;
-		
+
 		tile->SetState(GameObject::eState::Dead);
 		mTiles.erase(id.id);
 	}
@@ -169,7 +172,7 @@ namespace ya
 			if (fread(&id.id, sizeof(TileID), 1, file) == NULL)
 				break;
 
-			CreateTile(index, Vector2((INT)id.x, (INT)id.y));
+			CreateTile(index, Vector2((INT)id.x, (INT)id.y), false);
 		}
 
 		fclose(file);
@@ -201,7 +204,7 @@ namespace ya
 			if (fread(&id.id, sizeof(TileID), 1, file) == NULL)
 				break;
 
-			CreateTile(index, Vector2((INT)id.x, (INT)id.y));
+			CreateTile(index, Vector2((INT)id.x, (INT)id.y), false);
 
 
 			//mPixel = Image::Create(L"Pixels", id.x, id.y,RGB(255,0,255));
@@ -224,7 +227,7 @@ namespace ya
 		mTiles.clear();
 	}
 
-	
+
 	Vector2 TilePalatte::GetTilePos(Vector2 mousePos)
 	{
 		int indexY = mousePos.y / TILE_SIZE_Y;

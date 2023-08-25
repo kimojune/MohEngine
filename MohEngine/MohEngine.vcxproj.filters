@@ -17,9 +17,6 @@
     <ClInclude Include="yaTitleScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="yaPlayScene.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="yaMainCamera.h">
       <Filter>Contents\GameObject\Camera</Filter>
     </ClInclude>
@@ -53,9 +50,6 @@
     <ClInclude Include="yaWorldCursor.h">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClInclude>
-    <ClInclude Include="yaLobbyScene.h">
-      <Filter>Contents\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="yaSetUpMenuScene.h">
       <Filter>Contents\Scene</Filter>
     </ClInclude>
@@ -86,6 +80,15 @@
     <ClInclude Include="yaProjectileScript.h">
       <Filter>Contents\GameObject\Projectile</Filter>
     </ClInclude>
+    <ClInclude Include="yaLobbyScene.h">
+      <Filter>Contents\Scene\PlayScene\Lobby</Filter>
+    </ClInclude>
+    <ClInclude Include="yaPlayScene.h">
+      <Filter>Contents\Scene\PlayScene\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="yaChamber1Scene.h">
+      <Filter>Contents\Scene\PlayScene\Chamber1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MohEngine.cpp">
@@ -96,9 +99,6 @@
     </ClCompile>
     <ClCompile Include="yaPlayerScript.cpp">
       <Filter>Contents\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="yaPlayScene.cpp">
-      <Filter>Contents\Scene</Filter>
     </ClCompile>
     <ClCompile Include="yaTitleScene.cpp">
       <Filter>Contents\Scene</Filter>
@@ -136,9 +136,6 @@
     <ClCompile Include="yaWorldCursor.cpp">
       <Filter>Contents\GameObject\Cursor</Filter>
     </ClCompile>
-    <ClCompile Include="yaLobbyScene.cpp">
-      <Filter>Contents\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="yaSetUpMenuScene.cpp">
       <Filter>Contents\Scene</Filter>
     </ClCompile>
@@ -168,6 +165,15 @@
     </ClCompile>
     <ClCompile Include="yaProjectileScript.cpp">
       <Filter>Contents\GameObject\Projectile</Filter>
+    </ClCompile>
+    <ClCompile Include="yaLobbyScene.cpp">
+      <Filter>Contents\Scene\PlayScene\Lobby</Filter>
+    </ClCompile>
+    <ClCompile Include="yaPlayScene.cpp">
+      <Filter>Contents\Scene\PlayScene\Basic</Filter>
+    </ClCompile>
+    <ClCompile Include="yaChamber1Scene.cpp">
+      <Filter>Contents\Scene\PlayScene\Chamber1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,6 +218,18 @@
     </Filter>
     <Filter Include="Contents\GameObject\Projectile">
       <UniqueIdentifier>{cc43fe1c-0cae-4ba2-9c8f-273325d5617b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene">
+      <UniqueIdentifier>{2cd1db45-8c94-4ec5-a24f-72a86282cb4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Basic">
+      <UniqueIdentifier>{bc2601fa-c473-4acd-95e4-b64cc9df9116}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Lobby">
+      <UniqueIdentifier>{e6462945-6613-43f1-bc70-5ff8e0b96205}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents\Scene\PlayScene\Chamber1">
+      <UniqueIdentifier>{cbeef205-3355-4835-9976-0f0ef6e08629}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

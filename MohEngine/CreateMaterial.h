@@ -314,12 +314,43 @@ namespace ya
 		
 		std::shared_ptr<ya::graphics::Texture> mTileAtlas = std::make_shared<Texture>();
 		mTileAtlas.get()->CreateAtlas(L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Tileset_Forge", 32);
+		CreateMaterial(L"TileShader", mTileAtlas, L"ENV_Tileset_Forge_material", eRenderingMode::Opaque);
+
+
+
+
+		mTileAtlas = std::make_shared<Texture>();
+		mTileAtlas.get()->CreateAtlas(L"..\\Resources\\Tile\\ENV_Tileset_Castle\\ENV_Tileset_Castle", 32);
+		CreateMaterial(L"TileShader", mTileAtlas, L"ENV_Tileset_Castle_material", eRenderingMode::Opaque);
 		
-	/*	std::shared_ptr<ya::graphics::Texture> mTileAtlas 
-			= Resources::Load<ya::graphics::Texture>(L"mTileAtlas", L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Stamps_Forge.png");*/
+		mTileAtlas = std::make_shared<Texture>();
+		mTileAtlas.get()->CreateAtlas(L"..\\Resources\\Tile\\ENV_Tileset_Castle\\ENV_Stamps_Castle", 32);
+		CreateMaterial(L"TileShader", mTileAtlas, L"ENV_Stamps_Castle_material", eRenderingMode::Opaque);
+		
+		mTileAtlas = std::make_shared<Texture>();
+		mTileAtlas.get()->CreateAtlas(L"..\\Resources\\Tile\\ENV_Tileset_Castle\\ENV_Tileset_Castle", 32);
+		CreateMaterial(L"TileShader", mTileAtlas, L"ENV_Tileset_Castle_material", eRenderingMode::Opaque);
+
+		
+		std::shared_ptr<ya::graphics::Texture> battle_floor_dark_blue_circle_002
+			= Resources::Load<ya::graphics::Texture>(L"battle_floor_dark_blue_circle_002", L"..\\Resources\\Texture\\Struct\\battle_floor_dark_blue_circle_002.png");
+		CreateMaterial(L"SpriteShader", battle_floor_dark_blue_circle_002, L"battle_floor_dark_blue_circle_002_material");
+		
+		std::shared_ptr<ya::graphics::Texture> shrine_legend_base_001
+			= Resources::Load<ya::graphics::Texture>(L"shrine_legend_base_001", L"..\\Resources\\Texture\\Struct\\shrine_legend_base_001.png");
+		CreateMaterial(L"SpriteShader", shrine_legend_base_001, L"shrine_legend_base_001_material");
+
+		std::shared_ptr<ya::graphics::Texture> shrine_legend_base_shadow_001
+			= Resources::Load<ya::graphics::Texture>(L"shrine_legend_base_shadow_001", L"..\\Resources\\Texture\\Struct\\shrine_legend_base_shadow_001.png");
+		CreateMaterial(L"SpriteShader", shrine_legend_base_shadow_001, L"shrine_legend_base_shadow_001_material");
+	
+		std::shared_ptr<ya::graphics::Texture> shrine_legend_statue_001
+			= Resources::Load<ya::graphics::Texture>(L"shrine_legend_statue_001", L"..\\Resources\\Texture\\Struct\\shrine_legend_statue_001.png");
+		CreateMaterial(L"SpriteShader", shrine_legend_statue_001, L"shrine_legend_statue_001_material");
 
 
-		CreateMaterial(L"TileShader", mTileAtlas, L"mTileAtlas_material", eRenderingMode::Opaque);
+
+
 
 		
 #pragma region Inventory

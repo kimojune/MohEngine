@@ -27,6 +27,7 @@ namespace ya
 
 	ToolScene::ToolScene()
 		:mAtlasIndex(0)
+		,cameraSize(0.0f)
 	{
 		SetName(L"ToolScene");
 	}
@@ -37,7 +38,7 @@ namespace ya
 
 	void ToolScene::Initialize()
 	{
-		MainCamera* mCamera = new MainCamera();
+		mCamera = new MainCamera();
 		//UICamera* uicamera = new UICamera();
 		Cursor* cursor = new Cursor;
 		WorldCursor* wCursor = new WorldCursor();
@@ -56,6 +57,9 @@ namespace ya
 		
 		if (Input::GetKeyDown(eKeyCode::P))
 			atlasIndex--;
+
+		if (Input::GetKeyDown(eKeyCode::N))
+			SceneManager::LoadScene(L"Chamber1Scene");
 			
 
 		if (atlasIndex >= (UINT)eAtlasType::End)
@@ -80,11 +84,13 @@ namespace ya
 
 	void ToolScene::OnEnter()
 	{
-		TilePalatte::Clear();
+		//TilePalatte::Clear();
+		mCamera->SetSize(0.25f);
 	}
 
 	void ToolScene::OnExit()
 	{
+
 	}
 }
 
@@ -152,7 +158,6 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 		std::shared_ptr <ya::Image> tile
 			= tileatlases[atlasIndex];
 
-		
 		::BitBlt(hdc, 0, 0, tile->GetWidth(), tile->GetHeight(), tile->GetHdc(), 0, 0, SRCCOPY);
 		EndPaint(hWnd, &ps);
 		////Ellipse(hdc, 500, 500, 600, 700);

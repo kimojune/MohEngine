@@ -63,7 +63,7 @@ namespace ya
 			TilePalatte::DeleateTile(Vector2(x, y));
 		}
 
-		if (Input::GetKeyDown(eKeyCode::S))
+		if (Input::GetKeyDown(eKeyCode::K))
 		{
 			TilePalatte::Save();
 		}

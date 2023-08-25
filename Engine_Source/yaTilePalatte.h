@@ -24,7 +24,7 @@ namespace ya
 		static void Update();
 		static void Render(HDC hdc);
 
-		static void CreateTile(int index, Vector2 pos);
+		static void CreateTile(int index, Vector2 pos, bool isTest = true);
 		static void DeleateTile(Vector2 pos);
 		static void CreateTiles(int index, UINT width, UINT height);
 		static void Save();

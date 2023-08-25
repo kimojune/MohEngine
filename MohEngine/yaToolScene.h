@@ -5,6 +5,7 @@
 
 namespace ya
 {
+	class MainCamera;
 	class ToolScene : public Scene
 	{
 	public:
@@ -29,5 +30,7 @@ namespace ya
 		virtual void OnExit();
 	private:
 		UINT mAtlasIndex;
+		MainCamera* mCamera;
+		float cameraSize;
 	};
 }

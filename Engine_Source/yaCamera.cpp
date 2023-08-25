@@ -200,6 +200,7 @@ namespace ya
 				break;
 			}
 		}
+
 	}
 
 	void Camera::RenderOpaque()

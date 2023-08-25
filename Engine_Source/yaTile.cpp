@@ -44,7 +44,7 @@ namespace ya
 		
 		MeshRenderer* mr = AddComponent<MeshRenderer>();
 		mr->SetMesh(Resources::Find<Mesh>(L"TileMesh"));
-		mr->SetMaterial(Resources::Find<Material>(L"mTileAtlas_material"));
+		mr->SetMaterial(Resources::Find<Material>(L"ENV_Tileset_Castle_material"));
 
 		//GameObject::Initialize();
 	}

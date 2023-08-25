@@ -145,6 +145,8 @@ namespace ya
 		bullet_collumn_ignorance_001->SetPosition(Vector3(88.0f, 0.0f, 1.0f));
 #pragma endregion
 
+		
+
 
 
 		Dog* dog = object::Instantiate<Dog>(eLayerType::Companions);

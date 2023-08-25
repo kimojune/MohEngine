@@ -5,7 +5,7 @@
 #include "yaToolScene.h"
 #include "yaLobbyScene.h"
 #include "yaInventoryScene.h"
-
+#include "yaChamber1Scene.h"
 
 
 
@@ -21,5 +21,6 @@ namespace ya
 		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
 		SceneManager::CreateScene<ToolScene>(L"ToolScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
+		SceneManager::CreateScene<Chamber1Scene>(L"Chamber1Scene");
 	}
 }
