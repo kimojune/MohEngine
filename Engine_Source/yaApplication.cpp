@@ -62,6 +62,8 @@ namespace ya
 		graphicDevice->UpdateViewPort();
 		//SceneManager::Render();
 		renderer::Render();
+
+		
 		Time::Render();
 	}
 	void Application::Destroy()

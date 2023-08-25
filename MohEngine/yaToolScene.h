@@ -11,6 +11,14 @@ namespace ya
 		ToolScene();
 		~ToolScene();
 
+		enum class eAtlasType
+		{
+			ENV_Tileset_Castle,
+			ENV_Stamps_Castle,
+			shoptileset001,
+			End,
+		};
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
@@ -20,5 +28,6 @@ namespace ya
 		virtual void OnEnter();
 		virtual void OnExit();
 	private:
+		UINT mAtlasIndex;
 	};
 }

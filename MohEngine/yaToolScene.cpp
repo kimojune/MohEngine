@@ -14,36 +14,21 @@
 #include "yaMeshRenderer.h"
 #include "yaAnimator.h"
 #include "yaTexture.h"
-#include "yaBackGround.h"
-#include "yaGungeoneer.h"
-#include "yaMaterial.h"
-#include "yaComputeShader.h"
-#include "yaPaintShader.h"
-#include "yaParticleSystem.h"
+#include "yaInput.h"
+
 using namespace ya;
 
 extern ya::Application application;
-static MainCamera* mCamera = nullptr;
+static std::vector<std::shared_ptr <ya::Image>> tileatlases = {};
+static UINT atlasIndex = 0;
 
 namespace ya
 {
 
 	ToolScene::ToolScene()
+		:mAtlasIndex(0)
 	{
 		SetName(L"ToolScene");
-
-
-		//GameObject* grid = new GameObject();
-		//grid->SetName(L"Grid");
-		//AddGameObject(eLayerType::Grid, grid);
-		//MeshRenderer* mr = grid->AddComponent<MeshRenderer>();
-		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//mr->SetMaterial(Resources::Find<Material>(L"GridMaterial"));
-		//GridScript* gridSc = grid->AddComponent<GridScript>();
-		//gridSc->SetCamera(camera->GetComponent<Camera>());
-
-		//grid->GetScript()->SetCamera(camera->GetComponent<Camera>());
-
 	}
 
 	ToolScene::~ToolScene()
@@ -52,78 +37,12 @@ namespace ya
 
 	void ToolScene::Initialize()
 	{
-		//Rust_Sidearm* rust = ya::object::Instantiate<Rust_Sidearm>(eLayerType::Player);
-
-		std::shared_ptr<PaintShader> paintShader = Resources::Find<PaintShader>(L"PaintShader");
-		std::shared_ptr<Texture> paintTexture = Resources::Find<Texture>(L"PaintTexuture");
-		paintShader->SetTarget(paintTexture);
-		paintShader->OnExcute();
-
-
 		MainCamera* mCamera = new MainCamera();
 		//UICamera* uicamera = new UICamera();
-
 		Cursor* cursor = new Cursor;
 		WorldCursor* wCursor = new WorldCursor();
 		wCursor->AddComponent<TileScript>();
 
-
-		{
-			GameObject* player = new GameObject();
-			player->SetName(L"Particle");
-			AddGameObject(eLayerType::Monster, player);
-			ParticleSystem* mr = player->AddComponent<ParticleSystem>();
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 1.0f));
-			player->GetComponent<Transform>()->SetScale(Vector3(1.0f, 1.0f, 1.0f));
-		}
-		//std::shared_ptr<Texture> atlas
-		//	= Resources::Load<Texture>(L"LinkSprite", L"..\\Resources\\linkSprites.png");
-
-		//BackGround* matlas = new BackGround(L"mTileAtlas_material");
-
-		//Gungeoneer* Hunter = object::Instantiate<Gungeoneer>(eLayerType::Gungeoneer);
-		//Hunter->Initialize();
-		//GameObject* mGameObject = object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Gungeoneer);;
-		//mGameObject->SetName(L"atlas");
-
-		//AddGameObject(eLayerType::Gungeoneer, mGameObject);
-		//MeshRenderer* mr = mGameObject->AddComponent<MeshRenderer>();%
-		//mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//mr->SetMaterial(Resources::Find<Material>(L"mTileAtlas_material"));
-
-		//std::shared_ptr<Texture> mTileatls = std::make_shared<Texture>();
-
-		//mTileatls.get()->CreateTextureSheet(L"TileAtlas", L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Tileset_Forge");
-		//{
-		//	GameObject* player
-		//		= object::Instantiate<GameObject>(Vector3(0.0f, 0.0f, 1.0001f), eLayerType::Gungeoneer);
-
-		//	player->SetName(L"Zelda");
-
-		//	Collider2D* cd = player->AddComponent<Collider2D>();
-		//	cd->SetSize(Vector2(1.2f, 1.2f));
-
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(Resources::Find<Mesh>(L"RectMesh"));
-		//	std::shared_ptr<Material> material = Resources::Find<Material>(L"AnimatorMaterial");
-		//	material->SetRenderingMode(eRenderingMode::Transparent);
-		//	mr->SetMaterial(material);
-
-		//	Transform* tr = player->GetComponent<Transform>();
-		//	Vector2 scale = mr->GetSize();
-
-		//	tr->SetScale(scale.x, scale.y, 0.0f);
-		//	tr->SetPosition(100.0f, 100.0f, 1.0f);
-		//	const float pi = 3.141592f;
-		//	float degree = pi / 8.0f;
-
-		//	Animator* at = player->AddComponent<Animator>();
-		//	at->Create(L"Idle", atlas, Vector2(0.0f, 0.0f), Vector2(120.0f, 130.0f), 3);
-		//	at->PlayAnimation(L"Idle", true);
-
-		//}
-
-		
 		TilePalatte::Intialize();
 
 
@@ -132,8 +51,20 @@ namespace ya
 
 	void ToolScene::Update()
 	{
+		if (Input::GetKeyDown(eKeyCode::O))
+			atlasIndex++;
+		
+		if (Input::GetKeyDown(eKeyCode::P))
+			atlasIndex--;
+			
 
-
+		if (atlasIndex >= (UINT)eAtlasType::End)
+			atlasIndex = 0;
+			
+		if (atlasIndex < 0)
+			atlasIndex = (UINT)eAtlasType::End - 1;
+			
+		UpdateWindow(application.GetToolHwnd());
 		Scene::Update();
 	}
 
@@ -157,7 +88,7 @@ namespace ya
 	}
 }
 
-static std::shared_ptr <ya::Image> tileatlas;
+
 
 
 LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -174,11 +105,14 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 	{
 	case WM_CREATE:
 	{
-		tileatlas = std::make_shared<ya::Image>();
-		tileatlas = ya::Resources::Load<ya::Image >(L"TileAtlas", L"..\\Resources\\Tile\\ENV_Tileset_Forge\\ENV_Stamps_Forge.bmp");
-		//Gdiplus::Image* image = Gdiplus::Image::FromStream(tileatlas);
+		tileatlases.resize((UINT)ya::ToolScene::eAtlasType::End);
 
-		RECT rect = { 0, 0, tileatlas->GetWidth(), tileatlas->GetHeight() };
+		tileatlases[0] = ya::Resources::Load<ya::Image >(L"ENV_Tileset_Castle", L"..\\Resources\\Tile\\ENV_Tileset_Castle\\ENV_Tileset_Castle.bmp");
+		tileatlases[1] = ya::Resources::Load<ya::Image >(L"ENV_Stamps_Castle", L"..\\Resources\\Tile\\ENV_Tileset_Castle\\ENV_Stamps_Castle.bmp");
+		tileatlases[2] = ya::Resources::Load<ya::Image >(L"shoptileset001", L"..\\Resources\\Tile\\ENV_Tileset_Castle\\shoptileset001.bmp");
+		
+
+		RECT rect = { 0, 0, tileatlases[atlasIndex]->GetWidth(), tileatlases[atlasIndex]->GetHeight() };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
 		SetWindowPos(hWnd
@@ -202,8 +136,8 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 			int x = mousePos.x / TILE_SIZE_X;
 			int y = mousePos.y / TILE_SIZE_Y;
 
-			int MAX_X = tileatlas->GetWidth() / TILE_SIZE_X;
-			int MAX_Y = tileatlas->GetHeight() / TILE_SIZE_Y;
+			int MAX_X = tileatlases[atlasIndex]->GetWidth() / TILE_SIZE_X;
+			int MAX_Y = tileatlases[atlasIndex]->GetHeight() / TILE_SIZE_Y;
 
 			int index = (y * MAX_X) + (x % MAX_X);
 			
@@ -216,15 +150,15 @@ LRESULT CALLBACK AtlasWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPa
 		HDC hdc = BeginPaint(hWnd, &ps);
 
 		std::shared_ptr <ya::Image> tile
-			= ya::Resources::Find<ya::Image>(L"TileAtlas");
+			= tileatlases[atlasIndex];
 
 		
 		::BitBlt(hdc, 0, 0, tile->GetWidth(), tile->GetHeight(), tile->GetHdc(), 0, 0, SRCCOPY);
-		//Ellipse(hdc, 500, 500, 600, 700);
-		//RoundRect(hdc, 200, 200, 300, 300, 500, 500);
-
-		// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
 		EndPaint(hWnd, &ps);
+		////Ellipse(hdc, 500, 500, 600, 700);
+		////RoundRect(hdc, 200, 200, 300, 300, 500, 500);
+
+		//// TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
 	}
 	int wmId = LOWORD(wParam);
 	// 메뉴 선택을 구문 분석합니다:
